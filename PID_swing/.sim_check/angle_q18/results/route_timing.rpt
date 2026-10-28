@@ -1,0 +1,437 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+-------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
+| Date         : Fri Oct 16 12:29:48 2026
+| Host         : Huffs running 64-bit major release  (build 9200)
+| Command      : report_timing_summary -file D:/FPGA/PID_swing/.sim_check/angle_q18/results/route_timing.rpt
+| Design       : pid_swing_hw_top
+| Device       : 7z020-clg484
+| Speed File   : -1  PRODUCTION 1.11 2014-09-11
+-------------------------------------------------------------------------------------------------------------
+
+Timing Summary Report
+
+------------------------------------------------------------------------------------------------
+| Timer Settings
+| --------------
+------------------------------------------------------------------------------------------------
+
+  Enable Multi Corner Analysis               :  Yes
+  Enable Pessimism Removal                   :  Yes
+  Pessimism Removal Resolution               :  Nearest Common Node
+  Enable Input Delay Default Clock           :  No
+  Enable Preset / Clear Arcs                 :  No
+  Disable Flight Delays                      :  No
+  Ignore I/O Paths                           :  No
+  Timing Early Launch at Borrowing Latches   :  false
+
+  Corner  Analyze    Analyze    
+  Name    Max Paths  Min Paths  
+  ------  ---------  ---------  
+  Slow    Yes        Yes        
+  Fast    Yes        Yes        
+
+
+
+check_timing report
+
+Table of Contents
+-----------------
+1. checking no_clock
+2. checking constant_clock
+3. checking pulse_width_clock
+4. checking unconstrained_internal_endpoints
+5. checking no_input_delay
+6. checking no_output_delay
+7. checking multiple_clock
+8. checking generated_clocks
+9. checking loops
+10. checking partial_input_delay
+11. checking partial_output_delay
+12. checking latch_loops
+
+1. checking no_clock
+--------------------
+ There are 0 register/latch pins with no clock.
+
+
+2. checking constant_clock
+--------------------------
+ There are 0 register/latch pins with constant_clock.
+
+
+3. checking pulse_width_clock
+-----------------------------
+ There are 0 register/latch pins which need pulse_width check
+
+
+4. checking unconstrained_internal_endpoints
+--------------------------------------------
+ There are 0 pins that are not constrained for maximum delay.
+
+ There are 0 pins that are not constrained for maximum delay due to constant clock.
+
+
+5. checking no_input_delay
+--------------------------
+ There are 4 input ports with no input delay specified. (HIGH)
+
+ There are 0 input ports with no input delay but user has a false path constraint.
+
+
+6. checking no_output_delay
+---------------------------
+ There are 6 ports with no output delay specified. (HIGH)
+
+ There are 0 ports with no output delay but user has a false path constraint
+
+ There are 0 ports with no output delay but with a timing clock defined on it or propagating through it
+
+
+7. checking multiple_clock
+--------------------------
+ There are 0 register/latch pins with multiple clocks.
+
+
+8. checking generated_clocks
+----------------------------
+ There are 0 generated clocks that are not connected to a clock source.
+
+
+9. checking loops
+-----------------
+ There are 0 combinational loops in the design.
+
+
+10. checking partial_input_delay
+--------------------------------
+ There are 0 input ports with partial input delay specified.
+
+
+11. checking partial_output_delay
+---------------------------------
+ There are 0 ports with partial output delay specified.
+
+
+12. checking latch_loops
+------------------------
+ There are 0 combinational latch loops in the design through latch input
+
+
+
+------------------------------------------------------------------------------------------------
+| Design Timing Summary
+| ---------------------
+------------------------------------------------------------------------------------------------
+
+    WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+    -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+     -7.169     -600.440                    204                 1896        0.075        0.000                      0                 1896        9.500        0.000                       0                   893  
+
+
+Timing constraints are not met.
+
+
+------------------------------------------------------------------------------------------------
+| Clock Summary
+| -------------
+------------------------------------------------------------------------------------------------
+
+Clock    Waveform(ns)       Period(ns)      Frequency(MHz)
+-----    ------------       ----------      --------------
+clk_50m  {0.000 10.000}     20.000          50.000          
+
+
+------------------------------------------------------------------------------------------------
+| Intra Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+-----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+clk_50m            -7.169     -600.440                    204                 1896        0.075        0.000                      0                 1896        9.500        0.000                       0                   893  
+
+
+------------------------------------------------------------------------------------------------
+| Inter Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Other Path Groups Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    ----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Timing Details
+| --------------
+------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  clk_50m
+  To Clock:  clk_50m
+
+Setup :          204  Failing Endpoints,  Worst Slack       -7.169ns,  Total Violation     -600.440ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.075ns,  Total Violation        0.000ns
+PW    :            0  Failing Endpoints,  Worst Slack        9.500ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (VIOLATED) :        -7.169ns  (required time - arrival time)
+  Source:                 u_control/u_swing_ctrl/command_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by clk_50m  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            u_control/u_motor_pwm/pwm_reg/D
+                            (rising edge-triggered cell FDRE clocked by clk_50m  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             clk_50m
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            20.000ns  (clk_50m rise@20.000ns - clk_50m rise@0.000ns)
+  Data Path Delay:        26.889ns  (logic 12.384ns (46.056%)  route 14.505ns (53.944%))
+  Logic Levels:           45  (CARRY4=31 LUT1=1 LUT3=2 LUT4=5 LUT5=2 LUT6=4)
+  Clock Path Skew:        -0.047ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    5.174ns = ( 25.174 - 20.000 ) 
+    Source Clock Delay      (SCD):    5.632ns
+    Clock Pessimism Removal (CPR):    0.411ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_50m rise edge)    0.000     0.000 r  
+    M19                                               0.000     0.000 r  clk_50m (IN)
+                         net (fo=0)                   0.000     0.000    clk_50m
+    M19                  IBUF (Prop_ibuf_I_O)         1.436     1.436 r  clk_50m_IBUF_inst/O
+                         net (fo=1, routed)           2.205     3.641    clk_50m_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     3.742 r  clk_50m_IBUF_BUFG_inst/O
+                         net (fo=898, routed)         1.890     5.632    u_control/u_swing_ctrl/clk_50m_IBUF_BUFG
+    SLICE_X54Y129        FDRE                                         r  u_control/u_swing_ctrl/command_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X54Y129        FDRE (Prop_fdre_C_Q)         0.518     6.150 f  u_control/u_swing_ctrl/command_reg[0]/Q
+                         net (fo=35, routed)          0.366     6.516    u_control/u_swing_ctrl/Q[0]
+    SLICE_X55Y128        LUT1 (Prop_lut1_I0_O)        0.124     6.640 r  u_control/u_swing_ctrl/pwm_i_672/O
+                         net (fo=1, routed)           0.332     6.972    u_control/u_swing_ctrl/pwm_i_672_n_0
+    SLICE_X54Y130        CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.595     7.567 r  u_control/u_swing_ctrl/pwm_reg_i_464/CO[3]
+                         net (fo=1, routed)           0.000     7.567    u_control/u_swing_ctrl/pwm_reg_i_464_n_0
+    SLICE_X54Y131        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     7.684 r  u_control/u_swing_ctrl/pwm_reg_i_294/CO[3]
+                         net (fo=1, routed)           0.000     7.684    u_control/u_swing_ctrl/pwm_reg_i_294_n_0
+    SLICE_X54Y132        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     7.801 r  u_control/u_swing_ctrl/pwm_reg_i_187/CO[3]
+                         net (fo=1, routed)           0.000     7.801    u_control/u_swing_ctrl/pwm_reg_i_187_n_0
+    SLICE_X54Y133        CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323     8.124 f  u_control/u_swing_ctrl/pwm_reg_i_110/O[1]
+                         net (fo=7, routed)           0.842     8.966    u_control/u_swing_ctrl/u_motor_pwm/abs_command0[14]
+    SLICE_X55Y130        LUT4 (Prop_lut4_I2_O)        0.306     9.272 r  u_control/u_swing_ctrl/pwm_i_475/O
+                         net (fo=1, routed)           0.000     9.272    u_control/u_swing_ctrl/pwm_i_475_n_0
+    SLICE_X55Y130        CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.398     9.670 r  u_control/u_swing_ctrl/pwm_reg_i_299/CO[3]
+                         net (fo=1, routed)           0.000     9.670    u_control/u_swing_ctrl/pwm_reg_i_299_n_0
+    SLICE_X55Y131        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     9.784 r  u_control/u_swing_ctrl/pwm_reg_i_191/CO[3]
+                         net (fo=1, routed)           0.000     9.784    u_control/u_swing_ctrl/pwm_reg_i_191_n_0
+    SLICE_X55Y132        CARRY4 (Prop_carry4_CI_CO[2])
+                                                      0.228    10.012 f  u_control/u_swing_ctrl/pwm_reg_i_111/CO[2]
+                         net (fo=112, routed)         0.894    10.906    u_control/u_swing_ctrl/command_reg[15]_2[0]
+    SLICE_X54Y134        LUT4 (Prop_lut4_I2_O)        0.313    11.219 r  u_control/u_swing_ctrl/pwm_i_293/O
+                         net (fo=6, routed)           0.737    11.956    u_control/u_swing_ctrl/u_motor_pwm/abs_command[11]
+    SLICE_X58Y131        CARRY4 (Prop_carry4_DI[2]_CO[3])
+                                                      0.404    12.360 r  u_control/u_swing_ctrl/pwm_reg_i_197/CO[3]
+                         net (fo=1, routed)           0.000    12.360    u_control/u_swing_ctrl/pwm_reg_i_197_n_0
+    SLICE_X58Y132        CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    12.599 r  u_control/u_swing_ctrl/pwm_reg_i_112/O[2]
+                         net (fo=3, routed)           0.730    13.330    u_control/u_swing_ctrl/pwm_reg_i_112_n_5
+    SLICE_X54Y136        LUT6 (Prop_lut6_I0_O)        0.301    13.631 r  u_control/u_swing_ctrl/pwm_i_180/O
+                         net (fo=1, routed)           0.478    14.109    u_control/u_swing_ctrl/pwm_i_180_n_0
+    SLICE_X56Y134        CARRY4 (Prop_carry4_DI[2]_CO[3])
+                                                      0.398    14.507 r  u_control/u_swing_ctrl/pwm_reg_i_101/CO[3]
+                         net (fo=1, routed)           0.000    14.507    u_control/u_swing_ctrl/pwm_reg_i_101_n_0
+    SLICE_X56Y135        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    14.621 r  u_control/u_swing_ctrl/pwm_reg_i_57/CO[3]
+                         net (fo=1, routed)           0.000    14.621    u_control/u_swing_ctrl/pwm_reg_i_57_n_0
+    SLICE_X56Y136        CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222    14.843 r  u_control/u_swing_ctrl/pwm_reg_i_27/O[0]
+                         net (fo=320, routed)         0.812    15.654    u_control/u_swing_ctrl/command_reg[15]_0[23]
+    SLICE_X56Y137        LUT4 (Prop_lut4_I2_O)        0.299    15.953 f  u_control/u_swing_ctrl/pwm_i_576/O
+                         net (fo=31, routed)          0.964    16.917    u_control/u_swing_ctrl/command_reg[4]_0
+    SLICE_X63Y132        LUT4 (Prop_lut4_I2_O)        0.124    17.041 r  u_control/u_swing_ctrl/pwm_i_829/O
+                         net (fo=1, routed)           0.839    17.880    u_control/u_motor_pwm/pwm_i_811_1[2]
+    SLICE_X60Y132        CARRY4 (Prop_carry4_DI[2]_CO[3])
+                                                      0.398    18.278 r  u_control/u_motor_pwm/pwm_reg_i_732/CO[3]
+                         net (fo=1, routed)           0.000    18.278    u_control/u_motor_pwm/pwm_reg_i_732_n_0
+    SLICE_X60Y133        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    18.392 r  u_control/u_motor_pwm/pwm_reg_i_532/CO[3]
+                         net (fo=1, routed)           0.000    18.392    u_control/u_motor_pwm/pwm_reg_i_532_n_0
+    SLICE_X60Y134        CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.313    18.705 r  u_control/u_motor_pwm/pwm_reg_i_392/O[3]
+                         net (fo=3, routed)           0.335    19.040    u_control/u_motor_pwm/pwm_reg_i_392_n_4
+    SLICE_X65Y134        LUT3 (Prop_lut3_I0_O)        0.306    19.346 r  u_control/u_motor_pwm/pwm_i_526/O
+                         net (fo=2, routed)           0.592    19.938    u_control/u_motor_pwm/pwm_i_526_n_0
+    SLICE_X66Y134        LUT5 (Prop_lut5_I1_O)        0.124    20.062 r  u_control/u_motor_pwm/pwm_i_374/O
+                         net (fo=2, routed)           1.127    21.190    u_control/u_motor_pwm/pwm_i_374_n_0
+    SLICE_X61Y134        LUT6 (Prop_lut6_I0_O)        0.124    21.314 r  u_control/u_motor_pwm/pwm_i_378/O
+                         net (fo=1, routed)           0.000    21.314    u_control/u_motor_pwm/pwm_i_378_n_0
+    SLICE_X61Y134        CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401    21.715 r  u_control/u_motor_pwm/pwm_reg_i_244/CO[3]
+                         net (fo=1, routed)           0.000    21.715    u_control/u_motor_pwm/pwm_reg_i_244_n_0
+    SLICE_X61Y135        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    21.829 r  u_control/u_motor_pwm/pwm_reg_i_144/CO[3]
+                         net (fo=1, routed)           0.000    21.829    u_control/u_motor_pwm/pwm_reg_i_144_n_0
+    SLICE_X61Y136        CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.313    22.142 r  u_control/u_motor_pwm/pwm_reg_i_237/O[3]
+                         net (fo=11, routed)          1.172    23.314    u_control/u_motor_pwm/pwm_reg_i_237_n_4
+    SLICE_X63Y142        LUT3 (Prop_lut3_I0_O)        0.306    23.620 r  u_control/u_motor_pwm/pwm_i_791/O
+                         net (fo=1, routed)           0.656    24.276    u_control/u_motor_pwm/pwm_i_791_n_0
+    SLICE_X62Y138        CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.396    24.672 r  u_control/u_motor_pwm/pwm_reg_i_700/CO[3]
+                         net (fo=1, routed)           0.000    24.672    u_control/u_motor_pwm/pwm_reg_i_700_n_0
+    SLICE_X62Y139        CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323    24.995 r  u_control/u_motor_pwm/pwm_reg_i_492/O[1]
+                         net (fo=3, routed)           0.464    25.459    u_control/u_swing_ctrl/pwm_reg_i_501[1]
+    SLICE_X67Y138        LUT4 (Prop_lut4_I0_O)        0.306    25.765 r  u_control/u_swing_ctrl/pwm_i_712/O
+                         net (fo=1, routed)           0.621    26.386    u_control/u_motor_pwm/pwm_reg_i_353_0[1]
+    SLICE_X63Y137        CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.507    26.893 r  u_control/u_motor_pwm/pwm_reg_i_501/CO[3]
+                         net (fo=1, routed)           0.000    26.893    u_control/u_motor_pwm/pwm_reg_i_501_n_0
+    SLICE_X63Y138        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    27.007 r  u_control/u_motor_pwm/pwm_reg_i_353/CO[3]
+                         net (fo=1, routed)           0.000    27.007    u_control/u_motor_pwm/pwm_reg_i_353_n_0
+    SLICE_X63Y139        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    27.121 r  u_control/u_motor_pwm/pwm_reg_i_222/CO[3]
+                         net (fo=1, routed)           0.000    27.121    u_control/u_motor_pwm/pwm_reg_i_222_n_0
+    SLICE_X63Y140        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    27.235 r  u_control/u_motor_pwm/pwm_reg_i_129/CO[3]
+                         net (fo=1, routed)           0.000    27.235    u_control/u_motor_pwm/pwm_reg_i_129_n_0
+    SLICE_X63Y141        CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.157    27.392 r  u_control/u_motor_pwm/pwm_reg_i_65/CO[1]
+                         net (fo=39, routed)          0.560    27.953    u_control/u_motor_pwm/pwm_reg_i_65_n_2
+    SLICE_X65Y143        LUT6 (Prop_lut6_I4_O)        0.329    28.282 r  u_control/u_motor_pwm/pwm_i_242/O
+                         net (fo=1, routed)           0.616    28.898    u_control/u_motor_pwm/pwm_i_242_n_0
+    SLICE_X58Y139        CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.637    29.535 r  u_control/u_motor_pwm/pwm_reg_i_141/CO[3]
+                         net (fo=1, routed)           0.000    29.535    u_control/u_motor_pwm/pwm_reg_i_141_n_0
+    SLICE_X58Y140        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    29.652 r  u_control/u_motor_pwm/pwm_reg_i_136/CO[3]
+                         net (fo=1, routed)           0.000    29.652    u_control/u_motor_pwm/pwm_reg_i_136_n_0
+    SLICE_X58Y141        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    29.769 r  u_control/u_motor_pwm/pwm_reg_i_81/CO[3]
+                         net (fo=1, routed)           0.000    29.769    u_control/u_motor_pwm/pwm_reg_i_81_n_0
+    SLICE_X58Y142        CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.315    30.084 r  u_control/u_motor_pwm/pwm_reg_i_76/O[3]
+                         net (fo=1, routed)           0.602    30.686    u_control/u_motor_pwm/pwm2[16]
+    SLICE_X60Y144        LUT5 (Prop_lut5_I0_O)        0.307    30.993 r  u_control/u_motor_pwm/pwm_i_51/O
+                         net (fo=2, routed)           0.422    31.415    u_control/u_motor_pwm/pwm_i_51_n_0
+    SLICE_X59Y145        LUT6 (Prop_lut6_I0_O)        0.124    31.539 r  u_control/u_motor_pwm/pwm_i_22/O
+                         net (fo=1, routed)           0.342    31.881    u_control/u_motor_pwm/pwm_i_22_n_0
+    SLICE_X56Y144        CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.526    32.407 r  u_control/u_motor_pwm/pwm_reg_i_4/CO[3]
+                         net (fo=1, routed)           0.000    32.407    u_control/u_motor_pwm/pwm_reg_i_4_n_0
+    SLICE_X56Y145        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    32.521 r  u_control/u_motor_pwm/pwm_reg_i_2/CO[3]
+                         net (fo=1, routed)           0.000    32.521    u_control/u_motor_pwm/p_0_in_0
+    SLICE_X56Y145        FDRE                                         r  u_control/u_motor_pwm/pwm_reg/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_50m rise edge)   20.000    20.000 r  
+    M19                                               0.000    20.000 r  clk_50m (IN)
+                         net (fo=0)                   0.000    20.000    clk_50m
+    M19                  IBUF (Prop_ibuf_I_O)         1.366    21.366 r  clk_50m_IBUF_inst/O
+                         net (fo=1, routed)           2.006    23.372    clk_50m_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    23.463 r  clk_50m_IBUF_BUFG_inst/O
+                         net (fo=898, routed)         1.711    25.174    u_control/u_motor_pwm/clk_50m_IBUF_BUFG
+    SLICE_X56Y145        FDRE                                         r  u_control/u_motor_pwm/pwm_reg/C
+                         clock pessimism              0.411    25.585    
+                         clock uncertainty           -0.035    25.550    
+    SLICE_X56Y145        FDRE (Setup_fdre_C_D)       -0.198    25.352    u_control/u_motor_pwm/pwm_reg
+  -------------------------------------------------------------------
+                         required time                         25.352    
+                         arrival time                         -32.521    
+  -------------------------------------------------------------------
+                         slack                                 -7.169    
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             0.075ns  (arrival time - required time)
+  Source:                 u_control/u_angle_pid/output_value_reg[12]/C
+                            (rising edge-triggered cell FDSE clocked by clk_50m  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            u_control/u_swing_ctrl/command_reg[12]/D
+                            (rising edge-triggered cell FDRE clocked by clk_50m  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             clk_50m
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_50m rise@0.000ns - clk_50m rise@0.000ns)
+  Data Path Delay:        0.423ns  (logic 0.186ns (43.943%)  route 0.237ns (56.057%))
+  Logic Levels:           1  (LUT3=1)
+  Clock Path Skew:        0.256ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.049ns
+    Source Clock Delay      (SCD):    1.537ns
+    Clock Pessimism Removal (CPR):    0.256ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_50m rise edge)    0.000     0.000 r  
+    M19                                               0.000     0.000 r  clk_50m (IN)
+                         net (fo=0)                   0.000     0.000    clk_50m
+    M19                  IBUF (Prop_ibuf_I_O)         0.205     0.205 r  clk_50m_IBUF_inst/O
+                         net (fo=1, routed)           0.674     0.879    clk_50m_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     0.905 r  clk_50m_IBUF_BUFG_inst/O
+                         net (fo=898, routed)         0.632     1.537    u_control/u_angle_pid/clk_50m_IBUF_BUFG
+    SLICE_X37Y132        FDSE                                         r  u_control/u_angle_pid/output_value_reg[12]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X37Y132        FDSE (Prop_fdse_C_Q)         0.141     1.678 r  u_control/u_angle_pid/output_value_reg[12]/Q
+                         net (fo=1, routed)           0.237     1.915    u_control/u_swing_ctrl/command_reg[12]_0
+    SLICE_X53Y131        LUT3 (Prop_lut3_I0_O)        0.045     1.960 r  u_control/u_swing_ctrl/command[12]_i_1/O
+                         net (fo=1, routed)           0.000     1.960    u_control/u_swing_ctrl/p_1_in_0[12]
+    SLICE_X53Y131        FDRE                                         r  u_control/u_swing_ctrl/command_reg[12]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_50m rise edge)    0.000     0.000 r  
+    M19                                               0.000     0.000 r  clk_50m (IN)
+                         net (fo=0)                   0.000     0.000    clk_50m
+    M19                  IBUF (Prop_ibuf_I_O)         0.392     0.392 r  clk_50m_IBUF_inst/O
+                         net (fo=1, routed)           0.731     1.123    clk_50m_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     1.152 r  clk_50m_IBUF_BUFG_inst/O
+                         net (fo=898, routed)         0.897     2.049    u_control/u_swing_ctrl/clk_50m_IBUF_BUFG
+    SLICE_X53Y131        FDRE                                         r  u_control/u_swing_ctrl/command_reg[12]/C
+                         clock pessimism             -0.256     1.793    
+    SLICE_X53Y131        FDRE (Hold_fdre_C_D)         0.092     1.885    u_control/u_swing_ctrl/command_reg[12]
+  -------------------------------------------------------------------
+                         required time                         -1.885    
+                         arrival time                           1.960    
+  -------------------------------------------------------------------
+                         slack                                  0.075    
+
+
+
+
+
+Pulse Width Checks
+--------------------------------------------------------------------------------------
+Clock Name:         clk_50m
+Waveform(ns):       { 0.000 10.000 }
+Period(ns):         20.000
+Sources:            { clk_50m }
+
+Check Type        Corner  Lib Pin    Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location       Pin
+Min Period        n/a     XADC/DCLK  n/a            4.000         20.000      16.000     XADC_X0Y0      u_control/g_xadc.u_xadc4/u_xadc/DCLK
+Low Pulse Width   Slow    FDRE/C     n/a            0.500         10.000      9.500      SLICE_X43Y108  u_control/u_encoder/a_last_reg/C
+High Pulse Width  Fast    FDRE/C     n/a            0.500         10.000      9.500      SLICE_X43Y112  u_control/u_encoder/position_last_reg[24]/C
+
+
+

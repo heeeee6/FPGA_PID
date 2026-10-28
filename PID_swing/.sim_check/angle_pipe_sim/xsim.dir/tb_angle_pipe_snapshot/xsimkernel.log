@@ -1,0 +1,7 @@
+Running: xsim.dir/tb_angle_pipe_snapshot/xsimk.exe -runall -simmode gui -wdb tb_angle_pipe_snapshot.wdb -simrunnum 0 -socket 54609
+Design successfully loaded
+Design Loading Memory Usage: 8508 KB (Peak: 8508 KB)
+Design Loading CPU Usage: 46 ms
+Simulation completed
+Simulation Memory Usage: 8972 KB (Peak: 8972 KB)
+Simulation CPU Usage: 62 ms

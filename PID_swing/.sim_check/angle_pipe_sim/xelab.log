@@ -1,0 +1,12 @@
+Vivado Simulator 2018.3
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2018.3/bin/unwrapped/win64.o/xelab.exe work.tb_angle_pipe -s tb_angle_pipe_snapshot 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.angle_from_adc_pipe
+Compiling module work.tb_angle_pipe
+Built simulation snapshot tb_angle_pipe_snapshot

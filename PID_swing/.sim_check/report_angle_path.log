@@ -1,0 +1,53 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Fri Oct 16 12:33:12 2026
+# Process ID: 32068
+# Current directory: D:/FPGA/PID_swing
+# Command line: vivado.exe -mode batch -source D:\FPGA\PID_swing\.sim_check\report_angle_path.tcl -log .sim_check\report_angle_path.log -journal .sim_check\report_angle_path.jou
+# Log file: D:/FPGA/PID_swing/.sim_check/report_angle_path.log
+# Journal file: D:/FPGA/PID_swing\.sim_check\report_angle_path.jou
+#-----------------------------------------------------------
+CRITICAL WARNING: [Common 17-741] No write access right to the local Tcl store at 'C'. XilinxTclStore is reverted to the installation area. If you want to use local Tcl Store, please change the access right and relaunch Vivado.
+source {D:\FPGA\PID_swing\.sim_check\report_angle_path.tcl}
+# open_checkpoint D:/FPGA/PID_swing/.sim_check/route_check.dcp
+Command: open_checkpoint D:/FPGA/PID_swing/.sim_check/route_check.dcp
+
+Starting open_checkpoint Task
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.032 . Memory (MB): peak = 253.250 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 990 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2018.3
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.595 . Memory (MB): peak = 1261.730 ; gain = 2.410
+Restored from archive | CPU: 1.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.596 . Memory (MB): peak = 1261.730 ; gain = 2.410
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1261.777 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 2 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 2 instances
+
+INFO: [Project 1-604] Checkpoint was created with Vivado v2018.3 (64-bit) build 2405991
+open_checkpoint: Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 1261.992 ; gain = 1008.742
+# set src [get_pins -hier -filter {NAME =~ "*g_xadc*u_xadc4/ch0_reg*/C"}]
+WARNING: [Vivado 12-508] No pins matched 'get_pins -hier -filter {NAME =~ "*u_angle_pipe*product_reg*/D"}'.
+# set dst [get_pins -hier -filter {NAME =~ "*u_angle_pipe*product_reg*/D"}]
+# puts "ANGLE_SRC=$src"
+ANGLE_SRC=u_control/g_xadc.u_xadc4/ch0_reg[0]/C u_control/g_xadc.u_xadc4/ch0_reg[10]/C u_control/g_xadc.u_xadc4/ch0_reg[11]/C u_control/g_xadc.u_xadc4/ch0_reg[1]/C u_control/g_xadc.u_xadc4/ch0_reg[2]/C u_control/g_xadc.u_xadc4/ch0_reg[3]/C u_control/g_xadc.u_xadc4/ch0_reg[4]/C u_control/g_xadc.u_xadc4/ch0_reg[5]/C u_control/g_xadc.u_xadc4/ch0_reg[6]/C u_control/g_xadc.u_xadc4/ch0_reg[7]/C u_control/g_xadc.u_xadc4/ch0_reg[8]/C u_control/g_xadc.u_xadc4/ch0_reg[9]/C
+# puts "ANGLE_DST=$dst"
+ANGLE_DST=
+# if {[llength $src] && [llength $dst]} {
+#     report_timing -from $src -to $dst -max_paths 10 -file D:/FPGA/PID_swing/.sim_check/angle_pipe_path.rpt
+# }
+# close_design
+INFO: [Common 17-206] Exiting Vivado at Fri Oct 16 12:33:30 2026...

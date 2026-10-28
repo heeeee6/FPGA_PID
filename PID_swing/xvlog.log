@@ -1,0 +1,5 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/FPGA/PID_swing/rtl/adc_filter_gain.v" into library work
+INFO: [VRFC 10-311] analyzing module adc_filter_12
+INFO: [VRFC 10-311] analyzing module angle_from_adc
+INFO: [VRFC 10-311] analyzing module angle_from_adc_pipe
+INFO: [VRFC 10-311] analyzing module gain_from_adc

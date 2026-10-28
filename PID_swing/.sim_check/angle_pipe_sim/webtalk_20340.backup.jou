@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Fri Oct 16 12:35:51 2026
+# Process ID: 20340
+# Current directory: D:/FPGA/PID_swing/.sim_check/angle_pipe_sim
+# Command line: wbtcv.exe -mode batch -source D:/FPGA/PID_swing/.sim_check/angle_pipe_sim/xsim.dir/tb_angle_pipe_snapshot/webtalk/xsim_webtalk.tcl -notrace
+# Log file: D:/FPGA/PID_swing/.sim_check/angle_pipe_sim/webtalk.log
+# Journal file: D:/FPGA/PID_swing/.sim_check/angle_pipe_sim\webtalk.jou
+#-----------------------------------------------------------
+source D:/FPGA/PID_swing/.sim_check/angle_pipe_sim/xsim.dir/tb_angle_pipe_snapshot/webtalk/xsim_webtalk.tcl -notrace

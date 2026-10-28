@@ -1,0 +1,435 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
+| Date         : Fri Oct 16 12:14:13 2026
+| Host         : Huffs running 64-bit major release  (build 9200)
+| Command      : report_timing_summary -file D:/FPGA/PID_swing/.sim_check/angle_pipe_fix/results/route_timing.rpt
+| Design       : pid_swing_hw_top
+| Device       : 7z020-clg484
+| Speed File   : -1  PRODUCTION 1.11 2014-09-11
+------------------------------------------------------------------------------------------------------------------
+
+Timing Summary Report
+
+------------------------------------------------------------------------------------------------
+| Timer Settings
+| --------------
+------------------------------------------------------------------------------------------------
+
+  Enable Multi Corner Analysis               :  Yes
+  Enable Pessimism Removal                   :  Yes
+  Pessimism Removal Resolution               :  Nearest Common Node
+  Enable Input Delay Default Clock           :  No
+  Enable Preset / Clear Arcs                 :  No
+  Disable Flight Delays                      :  No
+  Ignore I/O Paths                           :  No
+  Timing Early Launch at Borrowing Latches   :  false
+
+  Corner  Analyze    Analyze    
+  Name    Max Paths  Min Paths  
+  ------  ---------  ---------  
+  Slow    Yes        Yes        
+  Fast    Yes        Yes        
+
+
+
+check_timing report
+
+Table of Contents
+-----------------
+1. checking no_clock
+2. checking constant_clock
+3. checking pulse_width_clock
+4. checking unconstrained_internal_endpoints
+5. checking no_input_delay
+6. checking no_output_delay
+7. checking multiple_clock
+8. checking generated_clocks
+9. checking loops
+10. checking partial_input_delay
+11. checking partial_output_delay
+12. checking latch_loops
+
+1. checking no_clock
+--------------------
+ There are 0 register/latch pins with no clock.
+
+
+2. checking constant_clock
+--------------------------
+ There are 0 register/latch pins with constant_clock.
+
+
+3. checking pulse_width_clock
+-----------------------------
+ There are 0 register/latch pins which need pulse_width check
+
+
+4. checking unconstrained_internal_endpoints
+--------------------------------------------
+ There are 0 pins that are not constrained for maximum delay.
+
+ There are 0 pins that are not constrained for maximum delay due to constant clock.
+
+
+5. checking no_input_delay
+--------------------------
+ There are 4 input ports with no input delay specified. (HIGH)
+
+ There are 0 input ports with no input delay but user has a false path constraint.
+
+
+6. checking no_output_delay
+---------------------------
+ There are 6 ports with no output delay specified. (HIGH)
+
+ There are 0 ports with no output delay but user has a false path constraint
+
+ There are 0 ports with no output delay but with a timing clock defined on it or propagating through it
+
+
+7. checking multiple_clock
+--------------------------
+ There are 0 register/latch pins with multiple clocks.
+
+
+8. checking generated_clocks
+----------------------------
+ There are 0 generated clocks that are not connected to a clock source.
+
+
+9. checking loops
+-----------------
+ There are 0 combinational loops in the design.
+
+
+10. checking partial_input_delay
+--------------------------------
+ There are 0 input ports with partial input delay specified.
+
+
+11. checking partial_output_delay
+---------------------------------
+ There are 0 ports with partial output delay specified.
+
+
+12. checking latch_loops
+------------------------
+ There are 0 combinational latch loops in the design through latch input
+
+
+
+------------------------------------------------------------------------------------------------
+| Design Timing Summary
+| ---------------------
+------------------------------------------------------------------------------------------------
+
+    WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+    -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+     -8.033     -617.579                    211                 1611        0.055        0.000                      0                 1611        9.500        0.000                       0                   750  
+
+
+Timing constraints are not met.
+
+
+------------------------------------------------------------------------------------------------
+| Clock Summary
+| -------------
+------------------------------------------------------------------------------------------------
+
+Clock    Waveform(ns)       Period(ns)      Frequency(MHz)
+-----    ------------       ----------      --------------
+clk_50m  {0.000 10.000}     20.000          50.000          
+
+
+------------------------------------------------------------------------------------------------
+| Intra Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+-----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+clk_50m            -8.033     -617.579                    211                 1611        0.055        0.000                      0                 1611        9.500        0.000                       0                   750  
+
+
+------------------------------------------------------------------------------------------------
+| Inter Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Other Path Groups Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    ----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Timing Details
+| --------------
+------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  clk_50m
+  To Clock:  clk_50m
+
+Setup :          211  Failing Endpoints,  Worst Slack       -8.033ns,  Total Violation     -617.579ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.055ns,  Total Violation        0.000ns
+PW    :            0  Failing Endpoints,  Worst Slack        9.500ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (VIOLATED) :        -8.033ns  (required time - arrival time)
+  Source:                 u_control/kd_x100_reg[3]/C
+                            (rising edge-triggered cell FDRE clocked by clk_50m  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            u_control/u_oled/i2c_data2_reg[5]/D
+                            (rising edge-triggered cell FDRE clocked by clk_50m  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             clk_50m
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            20.000ns  (clk_50m rise@20.000ns - clk_50m rise@0.000ns)
+  Data Path Delay:        27.953ns  (logic 12.879ns (46.073%)  route 15.074ns (53.927%))
+  Logic Levels:           45  (CARRY4=22 LUT2=3 LUT3=5 LUT4=6 LUT5=3 LUT6=6)
+  Clock Path Skew:        -0.075ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    5.156ns = ( 25.156 - 20.000 ) 
+    Source Clock Delay      (SCD):    5.642ns
+    Clock Pessimism Removal (CPR):    0.411ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_50m rise edge)    0.000     0.000 r  
+    M19                                               0.000     0.000 r  clk_50m (IN)
+                         net (fo=0)                   0.000     0.000    clk_50m
+    M19                  IBUF (Prop_ibuf_I_O)         1.436     1.436 r  clk_50m_IBUF_inst/O
+                         net (fo=1, routed)           2.205     3.641    clk_50m_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     3.742 r  clk_50m_IBUF_BUFG_inst/O
+                         net (fo=755, routed)         1.900     5.642    u_control/clk_50m_IBUF_BUFG
+    SLICE_X57Y112        FDRE                                         r  u_control/kd_x100_reg[3]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X57Y112        FDRE (Prop_fdre_C_Q)         0.419     6.061 r  u_control/kd_x100_reg[3]/Q
+                         net (fo=27, routed)          0.567     6.629    u_control/kd_x100[3]
+    SLICE_X56Y112        LUT2 (Prop_lut2_I1_O)        0.297     6.926 r  u_control/i2c_data2[6]_i_1572/O
+                         net (fo=1, routed)           0.000     6.926    u_control/i2c_data2[6]_i_1572_n_0
+    SLICE_X56Y112        CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401     7.327 r  u_control/i2c_data2_reg[6]_i_1269/CO[3]
+                         net (fo=1, routed)           0.000     7.327    u_control/i2c_data2_reg[6]_i_1269_n_0
+    SLICE_X56Y113        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     7.441 r  u_control/i2c_data2_reg[6]_i_1270/CO[3]
+                         net (fo=1, routed)           0.000     7.441    u_control/i2c_data2_reg[6]_i_1270_n_0
+    SLICE_X56Y114        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     7.555 r  u_control/i2c_data2_reg[6]_i_831/CO[3]
+                         net (fo=1, routed)           0.000     7.555    u_control/i2c_data2_reg[6]_i_831_n_0
+    SLICE_X56Y115        CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239     7.794 r  u_control/i2c_data2_reg[6]_i_575/O[2]
+                         net (fo=3, routed)           0.462     8.256    u_control/i2c_data2_reg[6]_i_575_n_5
+    SLICE_X59Y113        LUT3 (Prop_lut3_I1_O)        0.302     8.558 f  u_control/i2c_data2[6]_i_578/O
+                         net (fo=2, routed)           0.298     8.855    u_control/i2c_data2[6]_i_578_n_0
+    SLICE_X59Y115        LUT5 (Prop_lut5_I1_O)        0.124     8.979 r  u_control/i2c_data2[6]_i_370/O
+                         net (fo=2, routed)           0.438     9.417    u_control/i2c_data2[6]_i_370_n_0
+    SLICE_X58Y114        LUT6 (Prop_lut6_I0_O)        0.124     9.541 r  u_control/i2c_data2[6]_i_374/O
+                         net (fo=1, routed)           0.000     9.541    u_control/i2c_data2[6]_i_374_n_0
+    SLICE_X58Y114        CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    10.074 r  u_control/i2c_data2_reg[6]_i_256/CO[3]
+                         net (fo=1, routed)           0.000    10.074    u_control/i2c_data2_reg[6]_i_256_n_0
+    SLICE_X58Y115        CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.315    10.389 r  u_control/i2c_data2_reg[6]_i_255/O[3]
+                         net (fo=16, routed)          0.844    11.233    u_control_n_78
+    SLICE_X57Y114        LUT3 (Prop_lut3_I2_O)        0.337    11.570 r  i2c_data2[6]_i_839/O
+                         net (fo=2, routed)           0.690    12.260    i2c_data2[6]_i_839_n_0
+    SLICE_X57Y114        LUT4 (Prop_lut4_I3_O)        0.327    12.587 r  i2c_data2[6]_i_842/O
+                         net (fo=1, routed)           0.000    12.587    i2c_data2[6]_i_842_n_0
+    SLICE_X57Y114        CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401    12.988 r  i2c_data2_reg[6]_i_580/CO[3]
+                         net (fo=1, routed)           0.000    12.988    i2c_data2_reg[6]_i_580_n_0
+    SLICE_X57Y115        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    13.102 r  i2c_data2_reg[6]_i_376/CO[3]
+                         net (fo=1, routed)           0.000    13.102    i2c_data2_reg[6]_i_376_n_0
+    SLICE_X57Y116        CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    13.341 r  i2c_data2_reg[6]_i_257/O[2]
+                         net (fo=32, routed)          0.986    14.327    u_control/i2c_data2_reg[6]_i_614_0[2]
+    SLICE_X57Y120        LUT4 (Prop_lut4_I2_O)        0.302    14.629 r  u_control/i2c_data2[6]_i_385/O
+                         net (fo=1, routed)           0.000    14.629    u_control/i2c_data2[6]_i_385_n_0
+    SLICE_X57Y120        CARRY4 (Prop_carry4_S[1]_CO[1])
+                                                      0.491    15.120 f  u_control/i2c_data2_reg[6]_i_258/CO[1]
+                         net (fo=31, routed)          0.673    15.793    u_control/i2c_data2_reg[6]_i_258_n_2
+    SLICE_X58Y118        LUT3 (Prop_lut3_I0_O)        0.329    16.122 r  u_control/i2c_data2[6]_i_259/O
+                         net (fo=5, routed)           0.327    16.449    u_control/i2c_data2[6]_i_259_n_0
+    SLICE_X58Y117        LUT6 (Prop_lut6_I5_O)        0.124    16.573 f  u_control/i2c_data2[6]_i_262/O
+                         net (fo=27, routed)          1.052    17.625    u_control/i2c_data2[6]_i_262_n_0
+    SLICE_X58Y120        LUT4 (Prop_lut4_I1_O)        0.148    17.773 r  u_control/i2c_data2[6]_i_888/O
+                         net (fo=6, routed)           0.549    18.322    u_control/i2c_data2[6]_i_888_n_0
+    SLICE_X59Y119        CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.711    19.033 r  u_control/i2c_data2_reg[6]_i_1853/CO[3]
+                         net (fo=1, routed)           0.000    19.033    u_control/i2c_data2_reg[6]_i_1853_n_0
+    SLICE_X59Y120        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    19.147 r  u_control/i2c_data2_reg[6]_i_1602/CO[3]
+                         net (fo=1, routed)           0.000    19.147    u_control/i2c_data2_reg[6]_i_1602_n_0
+    SLICE_X59Y121        CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.157    19.304 f  u_control/i2c_data2_reg[6]_i_1309/CO[1]
+                         net (fo=33, routed)          0.933    20.238    u_control_n_91
+    SLICE_X63Y119        LUT3 (Prop_lut3_I1_O)        0.358    20.596 r  i2c_data2[6]_i_1835/O
+                         net (fo=2, routed)           0.690    21.286    i2c_data2[6]_i_1835_n_0
+    SLICE_X63Y119        LUT4 (Prop_lut4_I3_O)        0.327    21.613 r  i2c_data2[6]_i_1839/O
+                         net (fo=1, routed)           0.000    21.613    u_control/i2c_data2_reg[6]_i_1291_1[2]
+    SLICE_X63Y119        CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401    22.014 r  u_control/i2c_data2_reg[6]_i_1582/CO[3]
+                         net (fo=1, routed)           0.000    22.014    u_control/i2c_data2_reg[6]_i_1582_n_0
+    SLICE_X63Y120        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    22.128 r  u_control/i2c_data2_reg[6]_i_1291/CO[3]
+                         net (fo=1, routed)           0.000    22.128    u_control/i2c_data2_reg[6]_i_1291_n_0
+    SLICE_X63Y121        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    22.242 r  u_control/i2c_data2_reg[6]_i_873/CO[3]
+                         net (fo=1, routed)           0.000    22.242    u_control/i2c_data2_reg[6]_i_873_n_0
+    SLICE_X63Y122        CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    22.481 r  u_control/i2c_data2_reg[6]_i_612/O[2]
+                         net (fo=2, routed)           0.789    23.270    u_control_n_133
+    SLICE_X64Y122        LUT3 (Prop_lut3_I0_O)        0.331    23.601 r  i2c_data2[6]_i_601/O
+                         net (fo=2, routed)           0.648    24.250    i2c_data2[6]_i_601_n_0
+    SLICE_X64Y122        LUT4 (Prop_lut4_I3_O)        0.327    24.577 r  i2c_data2[6]_i_605/O
+                         net (fo=1, routed)           0.000    24.577    u_control/i2c_data2_reg[6]_i_261_1[1]
+    SLICE_X64Y122        CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401    24.978 r  u_control/i2c_data2_reg[6]_i_389/CO[3]
+                         net (fo=1, routed)           0.000    24.978    u_control/i2c_data2_reg[6]_i_389_n_0
+    SLICE_X64Y123        CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.313    25.291 r  u_control/i2c_data2_reg[6]_i_261/O[3]
+                         net (fo=2, routed)           0.588    25.879    u_control_n_138
+    SLICE_X65Y124        LUT2 (Prop_lut2_I0_O)        0.306    26.185 r  i2c_data2[6]_i_388/O
+                         net (fo=1, routed)           0.000    26.185    i2c_data2[6]_i_388_n_0
+    SLICE_X65Y124        CARRY4 (Prop_carry4_S[1]_O[2])
+                                                      0.580    26.765 r  i2c_data2_reg[6]_i_260/O[2]
+                         net (fo=1, routed)           0.591    27.355    u_control/i2c_data2_reg[6]_i_70_0[2]
+    SLICE_X61Y125        LUT2 (Prop_lut2_I0_O)        0.302    27.657 r  u_control/i2c_data2[6]_i_150/O
+                         net (fo=1, routed)           0.000    27.657    u_control/i2c_data2[6]_i_150_n_0
+    SLICE_X61Y125        CARRY4 (Prop_carry4_S[0]_O[0])
+                                                      0.247    27.904 r  u_control/i2c_data2_reg[6]_i_70/O[0]
+                         net (fo=7, routed)           0.823    28.728    u_control_n_146
+    SLICE_X58Y123        LUT4 (Prop_lut4_I3_O)        0.299    29.027 r  i2c_data2[6]_i_140/O
+                         net (fo=1, routed)           0.000    29.027    i2c_data2[6]_i_140_n_0
+    SLICE_X58Y123        CARRY4 (Prop_carry4_S[1]_CO[1])
+                                                      0.492    29.519 f  i2c_data2_reg[6]_i_68/CO[1]
+                         net (fo=4, routed)           0.342    29.860    u_control/u_oled/i2c_data2[6]_i_12_0[0]
+    SLICE_X59Y123        LUT5 (Prop_lut5_I1_O)        0.332    30.192 f  u_control/u_oled/i2c_data2[6]_i_92/O
+                         net (fo=1, routed)           0.296    30.488    u_control/u_oled/i2c_data2[6]_i_92_n_0
+    SLICE_X61Y123        LUT6 (Prop_lut6_I1_O)        0.124    30.612 f  u_control/u_oled/i2c_data2[6]_i_38/O
+                         net (fo=1, routed)           0.597    31.210    u_control/u_oled/i2c_data2[6]_i_38_n_0
+    SLICE_X56Y123        LUT6 (Prop_lut6_I0_O)        0.124    31.334 r  u_control/u_oled/i2c_data2[6]_i_18/O
+                         net (fo=32, routed)          0.744    32.077    u_control/u_oled/i2c_data2[6]_i_18_n_0
+    SLICE_X58Y125        LUT5 (Prop_lut5_I0_O)        0.124    32.201 f  u_control/u_oled/i2c_data2[5]_i_7/O
+                         net (fo=1, routed)           0.566    32.767    u_control/u_oled/i2c_data2[5]_i_7_n_0
+    SLICE_X56Y125        LUT6 (Prop_lut6_I3_O)        0.124    32.891 r  u_control/u_oled/i2c_data2[5]_i_2/O
+                         net (fo=1, routed)           0.581    33.472    u_control/u_oled/i2c_data2[5]_i_2_n_0
+    SLICE_X55Y125        LUT6 (Prop_lut6_I1_O)        0.124    33.596 r  u_control/u_oled/i2c_data2[5]_i_1/O
+                         net (fo=1, routed)           0.000    33.596    u_control/u_oled/i2c_data2[5]_i_1_n_0
+    SLICE_X55Y125        FDRE                                         r  u_control/u_oled/i2c_data2_reg[5]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_50m rise edge)   20.000    20.000 r  
+    M19                                               0.000    20.000 r  clk_50m (IN)
+                         net (fo=0)                   0.000    20.000    clk_50m
+    M19                  IBUF (Prop_ibuf_I_O)         1.366    21.366 r  clk_50m_IBUF_inst/O
+                         net (fo=1, routed)           2.006    23.372    clk_50m_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    23.463 r  clk_50m_IBUF_BUFG_inst/O
+                         net (fo=755, routed)         1.693    25.156    u_control/u_oled/clk_50m_IBUF_BUFG
+    SLICE_X55Y125        FDRE                                         r  u_control/u_oled/i2c_data2_reg[5]/C
+                         clock pessimism              0.411    25.567    
+                         clock uncertainty           -0.035    25.532    
+    SLICE_X55Y125        FDRE (Setup_fdre_C_D)        0.031    25.563    u_control/u_oled/i2c_data2_reg[5]
+  -------------------------------------------------------------------
+                         required time                         25.563    
+                         arrival time                         -33.596    
+  -------------------------------------------------------------------
+                         slack                                 -8.033    
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             0.055ns  (arrival time - required time)
+  Source:                 u_control/control_count_reg[10]/C
+                            (rising edge-triggered cell FDRE clocked by clk_50m  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            u_control/control_count_reg[16]/D
+                            (rising edge-triggered cell FDRE clocked by clk_50m  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             clk_50m
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_50m rise@0.000ns - clk_50m rise@0.000ns)
+  Data Path Delay:        0.540ns  (logic 0.413ns (76.545%)  route 0.127ns (23.455%))
+  Logic Levels:           3  (CARRY4=3)
+  Clock Path Skew:        0.350ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.091ns
+    Source Clock Delay      (SCD):    1.488ns
+    Clock Pessimism Removal (CPR):    0.252ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_50m rise edge)    0.000     0.000 r  
+    M19                                               0.000     0.000 r  clk_50m (IN)
+                         net (fo=0)                   0.000     0.000    clk_50m
+    M19                  IBUF (Prop_ibuf_I_O)         0.205     0.205 r  clk_50m_IBUF_inst/O
+                         net (fo=1, routed)           0.674     0.879    clk_50m_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     0.905 r  clk_50m_IBUF_BUFG_inst/O
+                         net (fo=755, routed)         0.584     1.488    u_control/clk_50m_IBUF_BUFG
+    SLICE_X82Y98         FDRE                                         r  u_control/control_count_reg[10]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X82Y98         FDRE (Prop_fdre_C_Q)         0.164     1.652 r  u_control/control_count_reg[10]/Q
+                         net (fo=2, routed)           0.126     1.778    u_control/control_count_reg[10]
+    SLICE_X82Y98         CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.156     1.934 r  u_control/control_count_reg[8]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     1.934    u_control/control_count_reg[8]_i_1_n_0
+    SLICE_X82Y99         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.040     1.974 r  u_control/control_count_reg[12]_i_1/CO[3]
+                         net (fo=1, routed)           0.001     1.975    u_control/control_count_reg[12]_i_1_n_0
+    SLICE_X82Y100        CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.053     2.028 r  u_control/control_count_reg[16]_i_1/O[0]
+                         net (fo=1, routed)           0.000     2.028    u_control/control_count_reg[16]_i_1_n_7
+    SLICE_X82Y100        FDRE                                         r  u_control/control_count_reg[16]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_50m rise edge)    0.000     0.000 r  
+    M19                                               0.000     0.000 r  clk_50m (IN)
+                         net (fo=0)                   0.000     0.000    clk_50m
+    M19                  IBUF (Prop_ibuf_I_O)         0.392     0.392 r  clk_50m_IBUF_inst/O
+                         net (fo=1, routed)           0.731     1.123    clk_50m_IBUF
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     1.152 r  clk_50m_IBUF_BUFG_inst/O
+                         net (fo=755, routed)         0.939     2.091    u_control/clk_50m_IBUF_BUFG
+    SLICE_X82Y100        FDRE                                         r  u_control/control_count_reg[16]/C
+                         clock pessimism             -0.252     1.839    
+    SLICE_X82Y100        FDRE (Hold_fdre_C_D)         0.134     1.973    u_control/control_count_reg[16]
+  -------------------------------------------------------------------
+                         required time                         -1.973    
+                         arrival time                           2.028    
+  -------------------------------------------------------------------
+                         slack                                  0.055    
+
+
+
+
+
+Pulse Width Checks
+--------------------------------------------------------------------------------------
+Clock Name:         clk_50m
+Waveform(ns):       { 0.000 10.000 }
+Period(ns):         20.000
+Sources:            { clk_50m }
+
+Check Type        Corner  Lib Pin    Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location      Pin
+Min Period        n/a     XADC/DCLK  n/a            4.000         20.000      16.000     XADC_X0Y0     u_control/g_xadc.u_xadc4/u_xadc/DCLK
+Low Pulse Width   Slow    FDRE/C     n/a            0.500         10.000      9.500      SLICE_X88Y96  u_control/u_encoder/a_last_reg/C
+High Pulse Width  Fast    FDSE/C     n/a            0.500         10.000      9.500      SLICE_X38Y98  u_control/u_angle_pid/output_value_reg[11]/C
+
+
+

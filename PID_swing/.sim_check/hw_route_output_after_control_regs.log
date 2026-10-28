@@ -1,0 +1,1476 @@
+
+****** Vivado v2018.3 (64-bit)
+  **** SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+CRITICAL WARNING: [Common 17-741] No write access right to the local Tcl store at 'C'. XilinxTclStore is reverted to the installation area. If you want to use local Tcl Store, please change the access right and relaunch Vivado.
+source ../scripts/check_impl_route.tcl -notrace
+Command: synth_design -top pid_swing_hw_top -part xc7z020clg484-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 22100 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 430.305 ; gain = 98.355
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'pid_swing_hw_top' [D:/FPGA/PID_swing/rtl/pid_swing_hw_top.v:9]
+	Parameter ADC_SPAN_COUNTS bound to: 3974 - type: integer 
+	Parameter MOTOR_SIGN bound to: 1 - type: integer 
+	Parameter ANGLE_SIGN bound to: 1 - type: integer 
+	Parameter USE_POSITION_LOOP bound to: 1 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'IOBUF' [D:/Xilinx/Vivado/2018.3/scripts/rt/data/unisim_comp.v:23615]
+	Parameter DRIVE bound to: 12 - type: integer 
+	Parameter IBUF_LOW_PWR bound to: TRUE - type: string 
+	Parameter IOSTANDARD bound to: DEFAULT - type: string 
+	Parameter SLEW bound to: SLOW - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'IOBUF' (1#1) [D:/Xilinx/Vivado/2018.3/scripts/rt/data/unisim_comp.v:23615]
+INFO: [Synth 8-6157] synthesizing module 'pid_swing_top' [D:/FPGA/PID_swing/rtl/pid_swing_top.v:6]
+	Parameter CLK_HZ bound to: 50000000 - type: integer 
+	Parameter USE_XADC bound to: 1 - type: integer 
+	Parameter ADC_SPAN_COUNTS bound to: 3974 - type: integer 
+	Parameter USE_POSITION_LOOP bound to: 1 - type: integer 
+	Parameter MOTOR_SIGN bound to: 1 - type: integer 
+	Parameter ANGLE_SIGN bound to: 1 - type: integer 
+	Parameter ANGLE_TARGET_LIMIT_X10 bound to: 600 - type: integer 
+	Parameter POSITION_ANGLE_SCALE_X10 bound to: 2 - type: integer 
+	Parameter CONTROL_DIV bound to: 50000 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'xadc4_reader' [D:/FPGA/PID_swing/rtl/xadc4_reader.v:6]
+INFO: [Synth 8-6157] synthesizing module 'XADC' [D:/Xilinx/Vivado/2018.3/scripts/rt/data/unisim_comp.v:53521]
+	Parameter INIT_40 bound to: 16'b0000000000000000 
+	Parameter INIT_41 bound to: 16'b0010000111110000 
+	Parameter INIT_42 bound to: 16'b0000010000000000 
+	Parameter INIT_43 bound to: 16'b0000000000000000 
+	Parameter INIT_44 bound to: 16'b0000000000000000 
+	Parameter INIT_45 bound to: 16'b0000000000000000 
+	Parameter INIT_46 bound to: 16'b0000000000000000 
+	Parameter INIT_47 bound to: 16'b0000000000000000 
+	Parameter INIT_48 bound to: 16'b0000000000000000 
+	Parameter INIT_49 bound to: 16'b0000000000011101 
+	Parameter INIT_4A bound to: 16'b0000000000000000 
+	Parameter INIT_4B bound to: 16'b0000000000000000 
+	Parameter INIT_4C bound to: 16'b0000000000000000 
+	Parameter INIT_4D bound to: 16'b0000000000000000 
+	Parameter INIT_4E bound to: 16'b0000000000000000 
+	Parameter INIT_4F bound to: 16'b0000000000000000 
+	Parameter INIT_50 bound to: 16'b0000000000000000 
+	Parameter INIT_51 bound to: 16'b0000000000000000 
+	Parameter INIT_52 bound to: 16'b0000000000000000 
+	Parameter INIT_53 bound to: 16'b0000000000000000 
+	Parameter INIT_54 bound to: 16'b0000000000000000 
+	Parameter INIT_55 bound to: 16'b0000000000000000 
+	Parameter INIT_56 bound to: 16'b0000000000000000 
+	Parameter INIT_57 bound to: 16'b0000000000000000 
+	Parameter INIT_58 bound to: 16'b0000000000000000 
+	Parameter INIT_59 bound to: 16'b0000000000000000 
+	Parameter INIT_5A bound to: 16'b0000000000000000 
+	Parameter INIT_5B bound to: 16'b0000000000000000 
+	Parameter INIT_5C bound to: 16'b0000000000000000 
+	Parameter INIT_5D bound to: 16'b0000000000000000 
+	Parameter INIT_5E bound to: 16'b0000000000000000 
+	Parameter INIT_5F bound to: 16'b0000000000000000 
+	Parameter IS_CONVSTCLK_INVERTED bound to: 1'b0 
+	Parameter IS_DCLK_INVERTED bound to: 1'b0 
+	Parameter SIM_DEVICE bound to: ZYNQ - type: string 
+	Parameter SIM_MONITOR_FILE bound to: design.txt - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'XADC' (2#1) [D:/Xilinx/Vivado/2018.3/scripts/rt/data/unisim_comp.v:53521]
+INFO: [Synth 8-6155] done synthesizing module 'xadc4_reader' (3#1) [D:/FPGA/PID_swing/rtl/xadc4_reader.v:6]
+INFO: [Synth 8-6157] synthesizing module 'adc_filter_12' [D:/FPGA/PID_swing/rtl/adc_filter_gain.v:6]
+	Parameter FILTER_SHIFT bound to: 3 - type: integer 
+WARNING: [Synth 8-6014] Unused sequential element diff_reg was removed.  [D:/FPGA/PID_swing/rtl/adc_filter_gain.v:26]
+WARNING: [Synth 8-6014] Unused sequential element step_reg was removed.  [D:/FPGA/PID_swing/rtl/adc_filter_gain.v:29]
+INFO: [Synth 8-6155] done synthesizing module 'adc_filter_12' (4#1) [D:/FPGA/PID_swing/rtl/adc_filter_gain.v:6]
+INFO: [Synth 8-6157] synthesizing module 'angle_from_adc' [D:/FPGA/PID_swing/rtl/adc_filter_gain.v:43]
+	Parameter ADC_SPAN_COUNTS bound to: 3974 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'angle_from_adc' (5#1) [D:/FPGA/PID_swing/rtl/adc_filter_gain.v:43]
+INFO: [Synth 8-6157] synthesizing module 'gain_from_adc' [D:/FPGA/PID_swing/rtl/adc_filter_gain.v:62]
+	Parameter MAX_Q8 bound to: 2048 - type: integer 
+	Parameter ADC_SPAN_COUNTS bound to: 3974 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'gain_from_adc' (6#1) [D:/FPGA/PID_swing/rtl/adc_filter_gain.v:62]
+INFO: [Synth 8-6157] synthesizing module 'gain_from_adc__parameterized0' [D:/FPGA/PID_swing/rtl/adc_filter_gain.v:62]
+	Parameter MAX_Q8 bound to: 512 - type: integer 
+	Parameter ADC_SPAN_COUNTS bound to: 3974 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'gain_from_adc__parameterized0' (6#1) [D:/FPGA/PID_swing/rtl/adc_filter_gain.v:62]
+INFO: [Synth 8-6157] synthesizing module 'quad_encoder' [D:/FPGA/PID_swing/rtl/quad_encoder.v:6]
+	Parameter SAMPLE_WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'quad_encoder' (7#1) [D:/FPGA/PID_swing/rtl/quad_encoder.v:6]
+INFO: [Synth 8-6157] synthesizing module 'pid_fixed' [D:/FPGA/PID_swing/rtl/pid_fixed.v:7]
+	Parameter OUT_LIMIT bound to: 100 - type: integer 
+	Parameter INTEGRAL_LIMIT bound to: 20000 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'pid_fixed' (8#1) [D:/FPGA/PID_swing/rtl/pid_fixed.v:7]
+INFO: [Synth 8-6157] synthesizing module 'swing_balance_ctrl' [D:/FPGA/PID_swing/rtl/swing_balance_ctrl.v:6]
+	Parameter START_PWM bound to: 35 - type: integer 
+	Parameter START_TIME_MS bound to: 100 - type: integer 
+	Parameter SWING_TRIGGER_X10 bound to: 250 - type: integer 
+	Parameter CAPTURE_ANGLE_X10 bound to: 180 - type: integer 
+	Parameter EXIT_ANGLE_X10 bound to: 450 - type: integer 
+	Parameter CAPTURE_SPEED bound to: 40 - type: integer 
+	Parameter CAPTURE_COUNT bound to: 30 - type: integer 
+	Parameter MODE_IDLE bound to: 2'b00 
+	Parameter MODE_SWING bound to: 2'b01 
+	Parameter MODE_BALANCE bound to: 2'b10 
+	Parameter MODE_FAULT bound to: 2'b11 
+INFO: [Synth 8-6155] done synthesizing module 'swing_balance_ctrl' (9#1) [D:/FPGA/PID_swing/rtl/swing_balance_ctrl.v:6]
+INFO: [Synth 8-6157] synthesizing module 'tb6612_pwm' [D:/FPGA/PID_swing/rtl/tb6612_pwm.v:5]
+	Parameter CLK_HZ bound to: 50000000 - type: integer 
+	Parameter PWM_HZ bound to: 20000 - type: integer 
+	Parameter PWM_PERIOD bound to: 2500 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'tb6612_pwm' (10#1) [D:/FPGA/PID_swing/rtl/tb6612_pwm.v:5]
+INFO: [Synth 8-6157] synthesizing module 'oled_ssd1306' [D:/FPGA/PID_swing/rtl/oled_ssd1306.v:6]
+	Parameter CLK_HZ bound to: 50000000 - type: integer 
+	Parameter I2C_HZ bound to: 400000 - type: integer 
+	Parameter STARTUP_CYCLES bound to: 2500000 - type: integer 
+	Parameter REFRESH_CYCLES bound to: 25000000 - type: integer 
+	Parameter ST_RESET_WAIT bound to: 5'b00000 
+	Parameter ST_INIT_START bound to: 5'b00001 
+	Parameter ST_INIT_WAIT bound to: 5'b00010 
+	Parameter ST_REFRESH_WAIT bound to: 5'b00011 
+	Parameter ST_PAGE_START bound to: 5'b00100 
+	Parameter ST_PAGE_WAIT bound to: 5'b00101 
+	Parameter ST_LOW_START bound to: 5'b00110 
+	Parameter ST_LOW_WAIT bound to: 5'b00111 
+	Parameter ST_HIGH_START bound to: 5'b01000 
+	Parameter ST_HIGH_WAIT bound to: 5'b01001 
+	Parameter ST_DATA_START bound to: 5'b01010 
+	Parameter ST_DATA_WAIT bound to: 5'b01011 
+INFO: [Synth 8-6157] synthesizing module 'i2c_txn_master' [D:/FPGA/PID_swing/rtl/i2c_txn_master.v:4]
+	Parameter CLK_HZ bound to: 50000000 - type: integer 
+	Parameter I2C_HZ bound to: 400000 - type: integer 
+	Parameter HALF_DIV bound to: 62 - type: integer 
+	Parameter ST_IDLE bound to: 4'b0000 
+	Parameter ST_START bound to: 4'b0001 
+	Parameter ST_START_LOW bound to: 4'b0010 
+	Parameter ST_BIT_LOW bound to: 4'b0011 
+	Parameter ST_BIT_HIGH bound to: 4'b0100 
+	Parameter ST_ACK_LOW bound to: 4'b0101 
+	Parameter ST_ACK_HIGH bound to: 4'b0110 
+	Parameter ST_STOP_LOW bound to: 4'b0111 
+	Parameter ST_STOP_HIGH bound to: 4'b1000 
+	Parameter ST_DONE bound to: 4'b1001 
+	Parameter ST_NEXT_BYTE bound to: 4'b1010 
+	Parameter ST_STOP_SCL_HIGH bound to: 4'b1011 
+INFO: [Synth 8-6155] done synthesizing module 'i2c_txn_master' (11#1) [D:/FPGA/PID_swing/rtl/i2c_txn_master.v:4]
+INFO: [Synth 8-6155] done synthesizing module 'oled_ssd1306' (12#1) [D:/FPGA/PID_swing/rtl/oled_ssd1306.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'pid_swing_top' (13#1) [D:/FPGA/PID_swing/rtl/pid_swing_top.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'pid_swing_hw_top' (14#1) [D:/FPGA/PID_swing/rtl/pid_swing_hw_top.v:9]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[11]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[10]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[9]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[8]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[7]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[6]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[5]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[4]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[3]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[2]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[1]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[0]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[11]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[10]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[9]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[8]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[7]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[6]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[5]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[4]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[3]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[2]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[1]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[0]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[11]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[10]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[9]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[8]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[7]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[6]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[5]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[4]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[3]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[2]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[1]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[0]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[11]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[10]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[9]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[8]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[7]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[6]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[5]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[4]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[3]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[2]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[1]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[0]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 488.281 ; gain = 156.332
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 488.281 ; gain = 156.332
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 488.281 ; gain = 156.332
+---------------------------------------------------------------------------------
+INFO: [Netlist 29-17] Analyzing 3 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [D:/FPGA/PID_swing/constr/SmartZynq_V1_3B.xdc]
+Finished Parsing XDC File [D:/FPGA/PID_swing/constr/SmartZynq_V1_3B.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/FPGA/PID_swing/constr/SmartZynq_V1_3B.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/pid_swing_hw_top_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/pid_swing_hw_top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 867.566 ; gain = 0.000
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 867.625 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 2 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 2 instances
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 867.625 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 867.625 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 867.625 ; gain = 535.676
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg484-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 867.625 ; gain = 535.676
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 867.625 ; gain = 535.676
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5546] ROM "ch0" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ch1" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ch2" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ch3" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "sample_valid" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "mask_for_channel" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [D:/FPGA/PID_swing/rtl/adc_filter_gain.v:25]
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [D:/FPGA/PID_swing/rtl/quad_encoder.v:26]
+INFO: [Synth 8-4471] merging register 'error_value_reg[31:0]' into 'error_prev_reg[31:0]' [D:/FPGA/PID_swing/rtl/pid_fixed.v:53]
+INFO: [Synth 8-5546] ROM "integral_value0" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "sda_low" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'oled_ssd1306'
+INFO: [Synth 8-5546] ROM "wait_count" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "init_index" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "line_index" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "char_index" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5587] ROM size for "i2c_start" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5546] ROM "state" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+           ST_RESET_WAIT |                     000000000001 |                            00000
+           ST_INIT_START |                     000000000010 |                            00001
+            ST_INIT_WAIT |                     000000000100 |                            00010
+         ST_REFRESH_WAIT |                     000000001000 |                            00011
+           ST_PAGE_START |                     000000010000 |                            00100
+            ST_PAGE_WAIT |                     000000100000 |                            00101
+            ST_LOW_START |                     000001000000 |                            00110
+             ST_LOW_WAIT |                     000010000000 |                            00111
+           ST_HIGH_START |                     000100000000 |                            01000
+            ST_HIGH_WAIT |                     001000000000 |                            01001
+           ST_DATA_START |                     010000000000 |                            01010
+            ST_DATA_WAIT |                     100000000000 |                            01011
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'oled_ssd1306'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 867.625 ; gain = 535.676
+---------------------------------------------------------------------------------
+INFO: [Synth 8-223] decloning instance 'u_control/u_kp_map' (gain_from_adc) to 'u_control/u_kp_display'
+INFO: [Synth 8-223] decloning instance 'u_control/u_kd_map' (gain_from_adc) to 'u_control/u_kd_display'
+INFO: [Synth 8-223] decloning instance 'u_control/u_ki_map' (gain_from_adc__parameterized0) to 'u_control/u_ki_display'
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     64 Bit       Adders := 2     
+	   3 Input     33 Bit       Adders := 2     
+	   3 Input     32 Bit       Adders := 9     
+	   2 Input     32 Bit       Adders := 32    
+	   2 Input     16 Bit       Adders := 1     
+	   2 Input      8 Bit       Adders := 9     
+	   2 Input      6 Bit       Adders := 2     
+	   2 Input      5 Bit       Adders := 2     
+	   2 Input      4 Bit       Adders := 2     
+	   2 Input      3 Bit       Adders := 3     
+	   2 Input      2 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 9     
+	               16 Bit    Registers := 11    
+	               12 Bit    Registers := 4     
+	                8 Bit    Registers := 8     
+	                6 Bit    Registers := 2     
+	                5 Bit    Registers := 2     
+	                4 Bit    Registers := 4     
+	                3 Bit    Registers := 4     
+	                2 Bit    Registers := 3     
+	                1 Bit    Registers := 24    
++---Multipliers : 
+	                16x33  Multipliers := 2     
+	                16x32  Multipliers := 4     
+	                13x32  Multipliers := 2     
+	                 8x32  Multipliers := 3     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 51    
+	   3 Input     32 Bit        Muxes := 2     
+	   4 Input     32 Bit        Muxes := 1     
+	  12 Input     32 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 21    
+	   4 Input     16 Bit        Muxes := 2     
+	   2 Input     12 Bit        Muxes := 10    
+	  12 Input     12 Bit        Muxes := 1     
+	   2 Input      9 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 23    
+	   4 Input      8 Bit        Muxes := 2     
+	  12 Input      8 Bit        Muxes := 1     
+	   2 Input      7 Bit        Muxes := 28    
+	   4 Input      7 Bit        Muxes := 24    
+	  11 Input      7 Bit        Muxes := 1     
+	   2 Input      6 Bit        Muxes := 7     
+	   4 Input      6 Bit        Muxes := 1     
+	   2 Input      5 Bit        Muxes := 1     
+	  12 Input      5 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 2     
+	   5 Input      4 Bit        Muxes := 1     
+	   3 Input      4 Bit        Muxes := 1     
+	  13 Input      4 Bit        Muxes := 1     
+	  14 Input      4 Bit        Muxes := 1     
+	  12 Input      4 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 4     
+	  13 Input      3 Bit        Muxes := 1     
+	  12 Input      3 Bit        Muxes := 1     
+	   4 Input      2 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 3     
+	   7 Input      2 Bit        Muxes := 1     
+	  12 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 42    
+	   5 Input      1 Bit        Muxes := 4     
+	   4 Input      1 Bit        Muxes := 6     
+	  13 Input      1 Bit        Muxes := 9     
+	   6 Input      1 Bit        Muxes := 1     
+	   3 Input      1 Bit        Muxes := 1     
+	  12 Input      1 Bit        Muxes := 7     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module xadc4_reader 
+Detailed RTL Component Info : 
++---Registers : 
+	               12 Bit    Registers := 4     
+	                5 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      4 Bit        Muxes := 1     
+	   5 Input      4 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 6     
+	   5 Input      1 Bit        Muxes := 4     
+Module adc_filter_12 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     32 Bit       Adders := 2     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 4     
+	   2 Input     12 Bit        Muxes := 2     
+Module angle_from_adc 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 2     
+	   2 Input     16 Bit       Adders := 1     
++---Multipliers : 
+	                13x32  Multipliers := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 3     
+	   2 Input     16 Bit        Muxes := 1     
+Module gain_from_adc 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 3     
++---Multipliers : 
+	                 8x32  Multipliers := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 4     
+	   2 Input     16 Bit        Muxes := 2     
+Module gain_from_adc__parameterized0 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 3     
++---Multipliers : 
+	                 8x32  Multipliers := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 4     
+	   2 Input     16 Bit        Muxes := 2     
+Module quad_encoder 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
+	   3 Input     32 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 3     
+	                1 Bit    Registers := 6     
++---Muxes : 
+	   3 Input     32 Bit        Muxes := 2     
+Module pid_fixed 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     64 Bit       Adders := 1     
+	   3 Input     33 Bit       Adders := 1     
+	   3 Input     32 Bit       Adders := 1     
+	   2 Input     32 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 2     
+	               16 Bit    Registers := 1     
++---Multipliers : 
+	                16x33  Multipliers := 1     
+	                16x32  Multipliers := 2     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 2     
+	   2 Input     16 Bit        Muxes := 4     
+	   2 Input      1 Bit        Muxes := 6     
+Module swing_balance_ctrl 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 2     
+	   2 Input      5 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
+	               16 Bit    Registers := 2     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 2     
+	   4 Input     32 Bit        Muxes := 1     
+	   4 Input     16 Bit        Muxes := 2     
+	   2 Input     16 Bit        Muxes := 4     
+	   2 Input      9 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 1     
+	   2 Input      7 Bit        Muxes := 3     
+	   2 Input      5 Bit        Muxes := 1     
+	   4 Input      2 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 2     
+	   7 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 7     
+	   4 Input      1 Bit        Muxes := 6     
+Module tb6612_pwm 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 3     
++---Registers : 
+	                1 Bit    Registers := 4     
++---Multipliers : 
+	                13x32  Multipliers := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 4     
+	   2 Input      1 Bit        Muxes := 4     
+Module i2c_txn_master 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      6 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 1     
+	   2 Input      3 Bit       Adders := 2     
++---Registers : 
+	                8 Bit    Registers := 4     
+	                6 Bit    Registers := 1     
+	                4 Bit    Registers := 2     
+	                3 Bit    Registers := 2     
+	                1 Bit    Registers := 7     
++---Muxes : 
+	   4 Input      8 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 1     
+	   3 Input      4 Bit        Muxes := 1     
+	  13 Input      4 Bit        Muxes := 1     
+	  14 Input      4 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 3     
+	  13 Input      3 Bit        Muxes := 1     
+	  13 Input      1 Bit        Muxes := 9     
+	   2 Input      1 Bit        Muxes := 7     
+	   6 Input      1 Bit        Muxes := 1     
+Module oled_ssd1306 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 13    
+	   2 Input      8 Bit       Adders := 9     
+	   2 Input      5 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 1     
+	   2 Input      3 Bit       Adders := 1     
+	   2 Input      2 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
+	                8 Bit    Registers := 4     
+	                5 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                3 Bit    Registers := 2     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 14    
+	  12 Input     32 Bit        Muxes := 1     
+	  12 Input     12 Bit        Muxes := 1     
+	   2 Input     12 Bit        Muxes := 4     
+	   2 Input      8 Bit        Muxes := 21    
+	   4 Input      8 Bit        Muxes := 1     
+	  12 Input      8 Bit        Muxes := 1     
+	   4 Input      7 Bit        Muxes := 24    
+	  11 Input      7 Bit        Muxes := 1     
+	   2 Input      7 Bit        Muxes := 25    
+	   2 Input      6 Bit        Muxes := 7     
+	   4 Input      6 Bit        Muxes := 1     
+	  12 Input      5 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 1     
+	  12 Input      4 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 1     
+	  12 Input      3 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 1     
+	  12 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+	   3 Input      1 Bit        Muxes := 1     
+	  12 Input      1 Bit        Muxes := 7     
+Module pid_swing_top 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      6 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 7     
+	                6 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 3     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+DSP Report: Generating DSP scaled5, operation Mode is: A*(B:0xe10).
+DSP Report: operator scaled5 is absorbed into DSP scaled5.
+INFO: [Synth 8-5546] ROM "integral_value0" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 2 [D:/FPGA/PID_swing/rtl/pid_fixed.v:43]
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 2 [D:/FPGA/PID_swing/rtl/pid_fixed.v:45]
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 2 [D:/FPGA/PID_swing/rtl/pid_fixed.v:41]
+DSP Report: Generating DSP output_value5, operation Mode is: A*B.
+DSP Report: operator output_value5 is absorbed into DSP output_value5.
+DSP Report: operator output_value5 is absorbed into DSP output_value5.
+DSP Report: Generating DSP output_value5, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator output_value5 is absorbed into DSP output_value5.
+DSP Report: operator output_value5 is absorbed into DSP output_value5.
+DSP Report: Generating DSP output_value4, operation Mode is: A*B.
+DSP Report: operator output_value4 is absorbed into DSP output_value4.
+DSP Report: operator output_value4 is absorbed into DSP output_value4.
+DSP Report: Generating DSP output_value4, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator output_value4 is absorbed into DSP output_value4.
+DSP Report: operator output_value4 is absorbed into DSP output_value4.
+DSP Report: Generating DSP output_value5, operation Mode is: A*B.
+DSP Report: operator output_value5 is absorbed into DSP output_value5.
+DSP Report: operator output_value5 is absorbed into DSP output_value5.
+DSP Report: Generating DSP output_value5, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator output_value5 is absorbed into DSP output_value5.
+DSP Report: operator output_value5 is absorbed into DSP output_value5.
+INFO: [Synth 8-5546] ROM "integral_value0" won't be mapped to RAM because it is too sparse
+DSP Report: Generating DSP output_value5, operation Mode is: A*B.
+DSP Report: operator output_value5 is absorbed into DSP output_value5.
+DSP Report: operator output_value5 is absorbed into DSP output_value5.
+DSP Report: Generating DSP output_value5, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator output_value5 is absorbed into DSP output_value5.
+DSP Report: operator output_value5 is absorbed into DSP output_value5.
+DSP Report: Generating DSP output_value4, operation Mode is: A*B.
+DSP Report: operator output_value4 is absorbed into DSP output_value4.
+DSP Report: operator output_value4 is absorbed into DSP output_value4.
+DSP Report: Generating DSP output_value4, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator output_value4 is absorbed into DSP output_value4.
+DSP Report: operator output_value4 is absorbed into DSP output_value4.
+DSP Report: Generating DSP output_value5, operation Mode is: A*B.
+DSP Report: operator output_value5 is absorbed into DSP output_value5.
+DSP Report: operator output_value5 is absorbed into DSP output_value5.
+DSP Report: Generating DSP output_value5, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator output_value5 is absorbed into DSP output_value5.
+DSP Report: operator output_value5 is absorbed into DSP output_value5.
+INFO: [Synth 8-5544] ROM "sda_low" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "init_index" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "char_index" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "state" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[11]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[10]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[9]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[8]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[7]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[6]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[5]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[4]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[3]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[2]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[1]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[0]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[11]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[10]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[9]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[8]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[7]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[6]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[5]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[4]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[3]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[2]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[1]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[0]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[11]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[10]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[9]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[8]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[7]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[6]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[5]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[4]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[3]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[2]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[1]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[0]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[11]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[10]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[9]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[8]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[7]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[6]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[5]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[4]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[3]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[2]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[1]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[0]
+INFO: [Synth 8-3886] merging instance 'u_control/u_oled/i2c_data0_reg[7]' (FDRE) to 'u_control/u_oled/i2c_data0_reg[0]'
+INFO: [Synth 8-3886] merging instance 'u_control/u_oled/i2c_data1_reg[7]' (FDRE) to 'u_control/u_oled/i2c_data0_reg[0]'
+INFO: [Synth 8-3886] merging instance 'u_control/u_oled/i2c_data3_reg[7]' (FDRE) to 'u_control/u_oled/i2c_data0_reg[0]'
+INFO: [Synth 8-3886] merging instance 'u_control/u_oled/i2c_data0_reg[6]' (FDRE) to 'u_control/u_oled/i2c_data0_reg[3]'
+INFO: [Synth 8-3886] merging instance 'u_control/u_oled/i2c_data3_reg[6]' (FDRE) to 'u_control/u_oled/i2c_data0_reg[0]'
+INFO: [Synth 8-3886] merging instance 'u_control/u_oled/i2c_data0_reg[5]' (FDRE) to 'u_control/u_oled/i2c_data0_reg[3]'
+INFO: [Synth 8-3886] merging instance 'u_control/u_oled/i2c_data1_reg[5]' (FDRE) to 'u_control/u_oled/i2c_data0_reg[0]'
+INFO: [Synth 8-3886] merging instance 'u_control/u_oled/i2c_data3_reg[5]' (FDRE) to 'u_control/u_oled/i2c_data0_reg[0]'
+INFO: [Synth 8-3886] merging instance 'u_control/u_oled/i2c_data0_reg[4]' (FDRE) to 'u_control/u_oled/i2c_data0_reg[3]'
+INFO: [Synth 8-3886] merging instance 'u_control/u_oled/i2c_data1_reg[4]' (FDRE) to 'u_control/u_oled/i2c_data0_reg[0]'
+INFO: [Synth 8-3886] merging instance 'u_control/u_oled/i2c_data3_reg[4]' (FDRE) to 'u_control/u_oled/i2c_data0_reg[0]'
+INFO: [Synth 8-3886] merging instance 'u_control/u_oled/i2c_data0_reg[3]' (FDRE) to 'u_control/u_oled/i2c_length_reg[1]'
+INFO: [Synth 8-3886] merging instance 'u_control/u_oled/i2c_data1_reg[3]' (FDRE) to 'u_control/u_oled/i2c_data0_reg[0]'
+INFO: [Synth 8-3886] merging instance 'u_control/u_oled/i2c_data3_reg[3]' (FDRE) to 'u_control/u_oled/i2c_data0_reg[0]'
+INFO: [Synth 8-3886] merging instance 'u_control/u_oled/i2c_data0_reg[2]' (FDRE) to 'u_control/u_oled/i2c_data0_reg[0]'
+INFO: [Synth 8-3886] merging instance 'u_control/u_oled/i2c_data1_reg[2]' (FDRE) to 'u_control/u_oled/i2c_data0_reg[0]'
+INFO: [Synth 8-3886] merging instance 'u_control/u_oled/i2c_data3_reg[2]' (FDRE) to 'u_control/u_oled/i2c_data0_reg[0]'
+INFO: [Synth 8-3886] merging instance 'u_control/u_oled/i2c_data0_reg[1]' (FDRE) to 'u_control/u_oled/i2c_data0_reg[0]'
+INFO: [Synth 8-3886] merging instance 'u_control/u_oled/i2c_data1_reg[1]' (FDRE) to 'u_control/u_oled/i2c_data0_reg[0]'
+INFO: [Synth 8-3886] merging instance 'u_control/u_oled/i2c_data3_reg[1]' (FDRE) to 'u_control/u_oled/i2c_data0_reg[0]'
+INFO: [Synth 8-3886] merging instance 'u_control/u_oled/i2c_data0_reg[0]' (FDRE) to 'u_control/u_oled/i2c_length_reg[2]'
+INFO: [Synth 8-3886] merging instance 'u_control/u_oled/i2c_data1_reg[0]' (FDRE) to 'u_control/u_oled/i2c_length_reg[2]'
+INFO: [Synth 8-3886] merging instance 'u_control/u_oled/i2c_data3_reg[0]' (FDRE) to 'u_control/u_oled/i2c_length_reg[2]'
+INFO: [Synth 8-3886] merging instance 'u_control/u_oled/i2c_length_reg[1]' (FDRE) to 'u_control/u_oled/i2c_length_reg[0]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_control/u_oled/\i2c_length_reg[2] )
+INFO: [Synth 8-3886] merging instance 'pid_fixed:/error_prev_reg[16]' (FDRE) to 'pid_fixed:/error_prev_reg[31]'
+INFO: [Synth 8-3886] merging instance 'pid_fixed:/error_prev_reg[17]' (FDRE) to 'pid_fixed:/error_prev_reg[31]'
+INFO: [Synth 8-3886] merging instance 'pid_fixed:/error_prev_reg[18]' (FDRE) to 'pid_fixed:/error_prev_reg[31]'
+INFO: [Synth 8-3886] merging instance 'pid_fixed:/error_prev_reg[19]' (FDRE) to 'pid_fixed:/error_prev_reg[31]'
+INFO: [Synth 8-3886] merging instance 'pid_fixed:/error_prev_reg[20]' (FDRE) to 'pid_fixed:/error_prev_reg[31]'
+INFO: [Synth 8-3886] merging instance 'pid_fixed:/error_prev_reg[21]' (FDRE) to 'pid_fixed:/error_prev_reg[31]'
+INFO: [Synth 8-3886] merging instance 'pid_fixed:/error_prev_reg[22]' (FDRE) to 'pid_fixed:/error_prev_reg[31]'
+INFO: [Synth 8-3886] merging instance 'pid_fixed:/error_prev_reg[23]' (FDRE) to 'pid_fixed:/error_prev_reg[31]'
+INFO: [Synth 8-3886] merging instance 'pid_fixed:/error_prev_reg[24]' (FDRE) to 'pid_fixed:/error_prev_reg[31]'
+INFO: [Synth 8-3886] merging instance 'pid_fixed:/error_prev_reg[25]' (FDRE) to 'pid_fixed:/error_prev_reg[31]'
+INFO: [Synth 8-3886] merging instance 'pid_fixed:/error_prev_reg[26]' (FDRE) to 'pid_fixed:/error_prev_reg[31]'
+INFO: [Synth 8-3886] merging instance 'pid_fixed:/error_prev_reg[27]' (FDRE) to 'pid_fixed:/error_prev_reg[31]'
+INFO: [Synth 8-3886] merging instance 'pid_fixed:/error_prev_reg[28]' (FDRE) to 'pid_fixed:/error_prev_reg[31]'
+INFO: [Synth 8-3886] merging instance 'pid_fixed:/error_prev_reg[29]' (FDRE) to 'pid_fixed:/error_prev_reg[31]'
+INFO: [Synth 8-3886] merging instance 'pid_fixed:/error_prev_reg[30]' (FDRE) to 'pid_fixed:/error_prev_reg[31]'
+INFO: [Synth 8-3886] merging instance 'u_control/u_oled/u_i2c/length_reg_reg[0]' (FDE) to 'u_control/u_oled/u_i2c/length_reg_reg[1]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_control/u_oled/u_i2c/\length_reg_reg[2] )
+INFO: [Synth 8-3886] merging instance 'u_control/u_oled/u_i2c/tx0_reg[6]' (FDRE) to 'u_control/u_oled/u_i2c/tx0_reg[3]'
+INFO: [Synth 8-3886] merging instance 'u_control/u_oled/u_i2c/tx0_reg[5]' (FDRE) to 'u_control/u_oled/u_i2c/tx0_reg[3]'
+INFO: [Synth 8-3886] merging instance 'u_control/u_oled/u_i2c/tx0_reg[4]' (FDRE) to 'u_control/u_oled/u_i2c/tx0_reg[3]'
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:33 ; elapsed = 00:00:35 . Memory (MB): peak = 1054.180 ; gain = 722.230
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+ROM:
++-------------+--------------+---------------+----------------+
+|Module Name  | RTL Object   | Depth x Width | Implemented As | 
++-------------+--------------+---------------+----------------+
+|oled_ssd1306 | init_command | 32x8          | LUT            | 
+|oled_ssd1306 | init_command | 32x8          | LUT            | 
++-------------+--------------+---------------+----------------+
+
+
+DSP: Preliminary Mapping  Report (see note below)
++---------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name    | DSP Mapping    | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++---------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|angle_from_adc | A*(B:0xe10)    | 13     | 13     | -      | -      | 26     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pid_fixed      | A*B            | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pid_fixed      | (PCIN>>17)+A*B | 16     | 15     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pid_fixed      | A*B            | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pid_fixed      | (PCIN>>17)+A*B | 16     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pid_fixed      | A*B            | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pid_fixed      | (PCIN>>17)+A*B | 16     | 15     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pid_fixed      | A*B            | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pid_fixed      | (PCIN>>17)+A*B | 16     | 15     | -      | -      | 31     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pid_fixed      | A*B            | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pid_fixed      | (PCIN>>17)+A*B | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pid_fixed      | A*B            | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pid_fixed      | (PCIN>>17)+A*B | 16     | 15     | -      | -      | 31     | 0    | 0    | -    | -    | -     | 0    | 0    | 
++---------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:43 ; elapsed = 00:00:44 . Memory (MB): peak = 1054.180 ; gain = 722.230
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:46 ; elapsed = 00:00:47 . Memory (MB): peak = 1054.180 ; gain = 722.230
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:50 ; elapsed = 00:00:51 . Memory (MB): peak = 1068.133 ; gain = 736.184
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[1] is being inverted and renamed to u_control/u_position_pid/output_value_reg[1]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[2] is being inverted and renamed to u_control/u_position_pid/output_value_reg[2]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[3] is being inverted and renamed to u_control/u_position_pid/output_value_reg[3]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[4] is being inverted and renamed to u_control/u_position_pid/output_value_reg[4]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[5] is being inverted and renamed to u_control/u_position_pid/output_value_reg[5]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[6] is being inverted and renamed to u_control/u_position_pid/output_value_reg[6]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[7] is being inverted and renamed to u_control/u_position_pid/output_value_reg[7]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[8] is being inverted and renamed to u_control/u_position_pid/output_value_reg[8]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[9] is being inverted and renamed to u_control/u_position_pid/output_value_reg[9]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[10] is being inverted and renamed to u_control/u_position_pid/output_value_reg[10]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[11] is being inverted and renamed to u_control/u_position_pid/output_value_reg[11]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[12] is being inverted and renamed to u_control/u_position_pid/output_value_reg[12]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[13] is being inverted and renamed to u_control/u_position_pid/output_value_reg[13]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[14] is being inverted and renamed to u_control/u_position_pid/output_value_reg[14]_inv.
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:51 ; elapsed = 00:00:52 . Memory (MB): peak = 1068.133 ; gain = 736.184
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:51 ; elapsed = 00:00:52 . Memory (MB): peak = 1068.133 ; gain = 736.184
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:52 ; elapsed = 00:00:54 . Memory (MB): peak = 1068.133 ; gain = 736.184
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:52 ; elapsed = 00:00:54 . Memory (MB): peak = 1068.133 ; gain = 736.184
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:52 ; elapsed = 00:00:54 . Memory (MB): peak = 1068.133 ; gain = 736.184
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:52 ; elapsed = 00:00:54 . Memory (MB): peak = 1068.133 ; gain = 736.184
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+----------+------+
+|      |Cell      |Count |
++------+----------+------+
+|1     |BUFG      |     1|
+|2     |CARRY4    |  1108|
+|3     |DSP48E1   |     7|
+|4     |DSP48E1_1 |     3|
+|5     |DSP48E1_2 |     3|
+|6     |LUT1      |   398|
+|7     |LUT2      |  1733|
+|8     |LUT3      |  1301|
+|9     |LUT4      |  1402|
+|10    |LUT5      |   672|
+|11    |LUT6      |  1400|
+|12    |MUXF7     |     1|
+|13    |XADC      |     1|
+|14    |FDRE      |   612|
+|15    |FDSE      |    29|
+|16    |IBUF      |    13|
+|17    |IOBUF     |     2|
+|18    |OBUF      |     4|
++------+----------+------+
+
+Report Instance Areas: 
++------+---------------------+------------------------------+------+
+|      |Instance             |Module                        |Cells |
++------+---------------------+------------------------------+------+
+|1     |top                  |                              |  8690|
+|2     |  u_control          |pid_swing_top                 |  8030|
+|3     |    \g_xadc.u_xadc4  |xadc4_reader                  |   185|
+|4     |    u_angle_map      |angle_from_adc                |   883|
+|5     |    u_angle_pid      |pid_fixed                     |   544|
+|6     |    u_encoder        |quad_encoder                  |   286|
+|7     |    u_kd_filter      |adc_filter_12                 |   184|
+|8     |    u_kd_map         |gain_from_adc                 |   491|
+|9     |    u_ki_filter      |adc_filter_12_0               |   182|
+|10    |    u_ki_map         |gain_from_adc__parameterized0 |   499|
+|11    |    u_kp_filter      |adc_filter_12_1               |   184|
+|12    |    u_kp_map         |gain_from_adc_2               |   491|
+|13    |    u_motor_pwm      |tb6612_pwm                    |   642|
+|14    |    u_oled           |oled_ssd1306                  |   563|
+|15    |      u_i2c          |i2c_txn_master                |   113|
+|16    |    u_position_pid   |pid_fixed_3                   |   499|
+|17    |    u_swing_ctrl     |swing_balance_ctrl            |   632|
++------+---------------------+------------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:52 ; elapsed = 00:00:54 . Memory (MB): peak = 1068.133 ; gain = 736.184
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 48 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:45 ; elapsed = 00:00:49 . Memory (MB): peak = 1068.133 ; gain = 356.840
+Synthesis Optimization Complete : Time (s): cpu = 00:00:53 ; elapsed = 00:00:54 . Memory (MB): peak = 1068.133 ; gain = 736.184
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 1125 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [D:/FPGA/PID_swing/constr/SmartZynq_V1_3B.xdc]
+Finished Parsing XDC File [D:/FPGA/PID_swing/constr/SmartZynq_V1_3B.xdc]
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1068.133 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 2 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 2 instances
+
+INFO: [Common 17-83] Releasing license: Synthesis
+138 Infos, 98 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:56 ; elapsed = 00:00:57 . Memory (MB): peak = 1068.133 ; gain = 749.258
+Command: opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+Running DRC as a precondition to command opt_design
+
+Starting DRC Task
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Project 1-461] DRC finished with 0 Errors
+INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.507 . Memory (MB): peak = 1068.133 ; gain = 0.000
+
+Starting Cache Timing Information Task
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Ending Cache Timing Information Task | Checksum: 189eaaebc
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 1323.559 ; gain = 255.426
+
+Starting Logic Optimization Task
+
+Phase 1 Retarget
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Opt 31-49] Retargeted 0 cell(s).
+Phase 1 Retarget | Checksum: 178ae8d22
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.514 . Memory (MB): peak = 1408.762 ; gain = 0.000
+INFO: [Opt 31-389] Phase Retarget created 0 cells and removed 72 cells
+
+Phase 2 Constant propagation
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Phase 2 Constant propagation | Checksum: 14696abe2
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.636 . Memory (MB): peak = 1408.762 ; gain = 0.000
+INFO: [Opt 31-389] Phase Constant propagation created 2 cells and removed 6 cells
+
+Phase 3 Sweep
+Phase 3 Sweep | Checksum: 10de79cfe
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.879 . Memory (MB): peak = 1408.762 ; gain = 0.000
+INFO: [Opt 31-389] Phase Sweep created 0 cells and removed 0 cells
+
+Phase 4 BUFG optimization
+Phase 4 BUFG optimization | Checksum: 10de79cfe
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 1408.762 ; gain = 0.000
+INFO: [Opt 31-662] Phase BUFG optimization created 0 cells of which 0 are BUFGs and removed 0 cells.
+
+Phase 5 Shift Register Optimization
+Phase 5 Shift Register Optimization | Checksum: 1442fac77
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 1408.762 ; gain = 0.000
+INFO: [Opt 31-389] Phase Shift Register Optimization created 0 cells and removed 0 cells
+
+Phase 6 Post Processing Netlist
+Phase 6 Post Processing Netlist | Checksum: 1442fac77
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 1408.762 ; gain = 0.000
+INFO: [Opt 31-389] Phase Post Processing Netlist created 0 cells and removed 0 cells
+Opt_design Change Summary
+=========================
+
+
+-------------------------------------------------------------------------------------------------------------------------
+|  Phase                        |  #Cells created  |  #Cells Removed  |  #Constrained objects preventing optimizations  |
+-------------------------------------------------------------------------------------------------------------------------
+|  Retarget                     |               0  |              72  |                                              0  |
+|  Constant propagation         |               2  |               6  |                                              0  |
+|  Sweep                        |               0  |               0  |                                              0  |
+|  BUFG optimization            |               0  |               0  |                                              0  |
+|  Shift Register Optimization  |               0  |               0  |                                              0  |
+|  Post Processing Netlist      |               0  |               0  |                                              0  |
+-------------------------------------------------------------------------------------------------------------------------
+
+
+
+Starting Connectivity Check Task
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.016 . Memory (MB): peak = 1408.762 ; gain = 0.000
+Ending Logic Optimization Task | Checksum: 1442fac77
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 1408.762 ; gain = 0.000
+
+Starting Power Optimization Task
+INFO: [Pwropt 34-132] Skipping clock gating for clocks with a period < 2.00 ns.
+Ending Power Optimization Task | Checksum: 1442fac77
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 1408.762 ; gain = 0.000
+
+Starting Final Cleanup Task
+Ending Final Cleanup Task | Checksum: 1442fac77
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1408.762 ; gain = 0.000
+
+Starting Netlist Obfuscation Task
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1408.762 ; gain = 0.000
+Ending Netlist Obfuscation Task | Checksum: 1442fac77
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1408.762 ; gain = 0.000
+INFO: [Common 17-83] Releasing license: Implementation
+154 Infos, 98 Warnings, 0 Critical Warnings and 0 Errors encountered.
+opt_design completed successfully
+opt_design: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1408.762 ; gain = 340.629
+Command: place_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+Running DRC as a precondition to command place_design
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+
+Starting Placer Task
+INFO: [Place 30-611] Multithreading enabled for place_design using a maximum of 2 CPUs
+
+Phase 1 Placer Initialization
+
+Phase 1.1 Placer Initialization Netlist Sorting
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1408.762 ; gain = 0.000
+Phase 1.1 Placer Initialization Netlist Sorting | Checksum: 10e936515
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1408.762 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1408.762 ; gain = 0.000
+
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: 144c302b6
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 1408.762 ; gain = 0.000
+
+Phase 1.3 Build Placer Netlist Model
+Phase 1.3 Build Placer Netlist Model | Checksum: 2333deace
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:03 . Memory (MB): peak = 1410.359 ; gain = 1.598
+
+Phase 1.4 Constrain Clocks/Macros
+Phase 1.4 Constrain Clocks/Macros | Checksum: 2333deace
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:03 . Memory (MB): peak = 1410.359 ; gain = 1.598
+Phase 1 Placer Initialization | Checksum: 2333deace
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:03 . Memory (MB): peak = 1410.359 ; gain = 1.598
+
+Phase 2 Global Placement
+
+Phase 2.1 Floorplanning
+Phase 2.1 Floorplanning | Checksum: 221978f43
+
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:04 . Memory (MB): peak = 1410.359 ; gain = 1.598
+
+Phase 2.2 Physical Synthesis In Placer
+INFO: [Physopt 32-65] No nets found for high-fanout optimization.
+INFO: [Physopt 32-232] Optimized 0 net. Created 0 new instance.
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-457] Pass 1. Identified 4 candidate cells for DSP register optimization.
+INFO: [Physopt 32-665] Processed cell u_control/u_angle_pid/output_value5__0. 16 registers were pushed out.
+INFO: [Physopt 32-665] Processed cell u_control/u_angle_pid/output_value5. 16 registers were pushed out.
+INFO: [Physopt 32-665] Processed cell u_control/u_angle_pid/output_value4. 16 registers were pushed out.
+INFO: [Physopt 32-665] Processed cell u_control/u_angle_pid/output_value4__0. 16 registers were pushed out.
+INFO: [Physopt 32-775] End 2 Pass. Optimized 4 nets or cells. Created 64 new cells, deleted 0 existing cell and moved 0 existing cell
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.014 . Memory (MB): peak = 1410.359 ; gain = 0.000
+INFO: [Physopt 32-677] No candidate cells for Shift Register optimization found in the design
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-526] No candidate cells for BRAM register optimization found in the design
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-949] No candidate nets found for HD net replication
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1410.359 ; gain = 0.000
+
+Summary of Physical Synthesis Optimizations
+============================================
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+|  Optimization                  |  Added Cells  |  Removed Cells  |  Optimized Cells/Nets  |  Dont Touch  |  Iterations  |  Elapsed   |
+----------------------------------------------------------------------------------------------------------------------------------------
+|  Very High Fanout              |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  DSP Register                  |           64  |              0  |                     4  |           0  |           1  |  00:00:01  |
+|  Shift Register                |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  BRAM Register                 |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  HD Interface Net Replication  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Total                         |           64  |              0  |                     4  |           0  |           5  |  00:00:01  |
+----------------------------------------------------------------------------------------------------------------------------------------
+
+
+Phase 2.2 Physical Synthesis In Placer | Checksum: cfff46a6
+
+Time (s): cpu = 00:00:16 ; elapsed = 00:00:13 . Memory (MB): peak = 1410.359 ; gain = 1.598
+Phase 2 Global Placement | Checksum: 13df67dd4
+
+Time (s): cpu = 00:00:17 ; elapsed = 00:00:13 . Memory (MB): peak = 1410.359 ; gain = 1.598
+
+Phase 3 Detail Placement
+
+Phase 3.1 Commit Multi Column Macros
+Phase 3.1 Commit Multi Column Macros | Checksum: 13df67dd4
+
+Time (s): cpu = 00:00:17 ; elapsed = 00:00:13 . Memory (MB): peak = 1410.359 ; gain = 1.598
+
+Phase 3.2 Commit Most Macros & LUTRAMs
+Phase 3.2 Commit Most Macros & LUTRAMs | Checksum: 182f5ba4b
+
+Time (s): cpu = 00:00:19 ; elapsed = 00:00:15 . Memory (MB): peak = 1410.359 ; gain = 1.598
+
+Phase 3.3 Area Swap Optimization
+Phase 3.3 Area Swap Optimization | Checksum: d4041412
+
+Time (s): cpu = 00:00:19 ; elapsed = 00:00:15 . Memory (MB): peak = 1410.359 ; gain = 1.598
+
+Phase 3.4 Pipeline Register Optimization
+Phase 3.4 Pipeline Register Optimization | Checksum: f98b12c7
+
+Time (s): cpu = 00:00:19 ; elapsed = 00:00:15 . Memory (MB): peak = 1410.359 ; gain = 1.598
+
+Phase 3.5 Fast Optimization
+Phase 3.5 Fast Optimization | Checksum: 15e8754de
+
+Time (s): cpu = 00:00:22 ; elapsed = 00:00:18 . Memory (MB): peak = 1410.359 ; gain = 1.598
+
+Phase 3.6 Small Shape Detail Placement
+Phase 3.6 Small Shape Detail Placement | Checksum: 16cab0399
+
+Time (s): cpu = 00:00:23 ; elapsed = 00:00:19 . Memory (MB): peak = 1410.359 ; gain = 1.598
+
+Phase 3.7 Re-assign LUT pins
+Phase 3.7 Re-assign LUT pins | Checksum: 1575c814f
+
+Time (s): cpu = 00:00:24 ; elapsed = 00:00:20 . Memory (MB): peak = 1410.359 ; gain = 1.598
+
+Phase 3.8 Pipeline Register Optimization
+Phase 3.8 Pipeline Register Optimization | Checksum: 14bba82dc
+
+Time (s): cpu = 00:00:24 ; elapsed = 00:00:20 . Memory (MB): peak = 1410.359 ; gain = 1.598
+
+Phase 3.9 Fast Optimization
+Phase 3.9 Fast Optimization | Checksum: 1f1491b8b
+
+Time (s): cpu = 00:00:28 ; elapsed = 00:00:25 . Memory (MB): peak = 1410.359 ; gain = 1.598
+Phase 3 Detail Placement | Checksum: 1f1491b8b
+
+Time (s): cpu = 00:00:28 ; elapsed = 00:00:25 . Memory (MB): peak = 1410.359 ; gain = 1.598
+
+Phase 4 Post Placement Optimization and Clean-Up
+
+Phase 4.1 Post Commit Optimization
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+
+Phase 4.1.1 Post Placement Optimization
+Post Placement Optimization Initialization | Checksum: 174114d9b
+
+Phase 4.1.1.1 BUFG Insertion
+INFO: [Place 46-46] BUFG insertion identified 0 candidate nets, 0 success, 0 bufg driver replicated, 0 skipped for placement/routing, 0 skipped for timing, 0 skipped for netlist change reason
+Phase 4.1.1.1 BUFG Insertion | Checksum: 174114d9b
+
+Time (s): cpu = 00:00:30 ; elapsed = 00:00:26 . Memory (MB): peak = 1417.457 ; gain = 8.695
+INFO: [Place 30-746] Post Placement Timing Summary WNS=-7.648. For the most accurate timing information please run report_timing.
+Phase 4.1.1 Post Placement Optimization | Checksum: 1a80b7fb9
+
+Time (s): cpu = 00:00:38 ; elapsed = 00:00:34 . Memory (MB): peak = 1417.461 ; gain = 8.699
+Phase 4.1 Post Commit Optimization | Checksum: 1a80b7fb9
+
+Time (s): cpu = 00:00:38 ; elapsed = 00:00:34 . Memory (MB): peak = 1417.461 ; gain = 8.699
+
+Phase 4.2 Post Placement Cleanup
+Phase 4.2 Post Placement Cleanup | Checksum: 1a80b7fb9
+
+Time (s): cpu = 00:00:38 ; elapsed = 00:00:34 . Memory (MB): peak = 1417.461 ; gain = 8.699
+
+Phase 4.3 Placer Reporting
+Phase 4.3 Placer Reporting | Checksum: 1a80b7fb9
+
+Time (s): cpu = 00:00:38 ; elapsed = 00:00:34 . Memory (MB): peak = 1417.461 ; gain = 8.699
+
+Phase 4.4 Final Placement Cleanup
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1417.461 ; gain = 0.000
+Phase 4.4 Final Placement Cleanup | Checksum: 1fb85f5c7
+
+Time (s): cpu = 00:00:38 ; elapsed = 00:00:34 . Memory (MB): peak = 1417.461 ; gain = 8.699
+Phase 4 Post Placement Optimization and Clean-Up | Checksum: 1fb85f5c7
+
+Time (s): cpu = 00:00:38 ; elapsed = 00:00:34 . Memory (MB): peak = 1417.461 ; gain = 8.699
+Ending Placer Task | Checksum: fd3e8cfe
+
+Time (s): cpu = 00:00:38 ; elapsed = 00:00:34 . Memory (MB): peak = 1417.461 ; gain = 8.699
+INFO: [Common 17-83] Releasing license: Implementation
+182 Infos, 98 Warnings, 0 Critical Warnings and 0 Errors encountered.
+place_design completed successfully
+place_design: Time (s): cpu = 00:00:39 ; elapsed = 00:00:35 . Memory (MB): peak = 1417.461 ; gain = 8.699
+Command: route_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+Running DRC as a precondition to command route_design
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+
+
+Starting Routing Task
+INFO: [Route 35-254] Multithreading enabled for route_design using a maximum of 2 CPUs
+Checksum: PlaceDB: 9dd63ba1 ConstDB: 0 ShapeSum: 5f68515d RouteDB: 0
+
+Phase 1 Build RT Design
+Phase 1 Build RT Design | Checksum: c25e79c7
+
+Time (s): cpu = 00:00:23 ; elapsed = 00:00:20 . Memory (MB): peak = 1555.965 ; gain = 134.359
+Post Restoration Checksum: NetGraph: 29a44d21 NumContArr: 98ba2ca6 Constraints: 0 Timing: 0
+
+Phase 2 Router Initialization
+
+Phase 2.1 Create Timer
+Phase 2.1 Create Timer | Checksum: c25e79c7
+
+Time (s): cpu = 00:00:23 ; elapsed = 00:00:20 . Memory (MB): peak = 1586.422 ; gain = 164.816
+
+Phase 2.2 Fix Topology Constraints
+Phase 2.2 Fix Topology Constraints | Checksum: c25e79c7
+
+Time (s): cpu = 00:00:23 ; elapsed = 00:00:20 . Memory (MB): peak = 1594.699 ; gain = 173.094
+
+Phase 2.3 Pre Route Cleanup
+Phase 2.3 Pre Route Cleanup | Checksum: c25e79c7
+
+Time (s): cpu = 00:00:23 ; elapsed = 00:00:20 . Memory (MB): peak = 1594.699 ; gain = 173.094
+ Number of Nodes with overlaps = 0
+
+Phase 2.4 Update Timing
+Phase 2.4 Update Timing | Checksum: 1882f80fd
+
+Time (s): cpu = 00:00:25 ; elapsed = 00:00:22 . Memory (MB): peak = 1617.445 ; gain = 195.840
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-7.148 | TNS=-584.184| WHS=-0.135 | THS=-4.959 |
+
+Phase 2 Router Initialization | Checksum: 18390ada5
+
+Time (s): cpu = 00:00:26 ; elapsed = 00:00:22 . Memory (MB): peak = 1651.137 ; gain = 229.531
+
+Phase 3 Initial Routing
+Phase 3 Initial Routing | Checksum: 1a00c29a2
+
+Time (s): cpu = 00:00:28 ; elapsed = 00:00:24 . Memory (MB): peak = 1651.137 ; gain = 229.531
+
+Phase 4 Rip-up And Reroute
+
+Phase 4.1 Global Iteration 0
+ Number of Nodes with overlaps = 2648
+ Number of Nodes with overlaps = 1195
+ Number of Nodes with overlaps = 571
+ Number of Nodes with overlaps = 331
+ Number of Nodes with overlaps = 174
+ Number of Nodes with overlaps = 63
+ Number of Nodes with overlaps = 30
+ Number of Nodes with overlaps = 17
+ Number of Nodes with overlaps = 9
+ Number of Nodes with overlaps = 8
+ Number of Nodes with overlaps = 1
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-9.385 | TNS=-940.195| WHS=N/A    | THS=N/A    |
+
+Phase 4.1 Global Iteration 0 | Checksum: 23ae7f7d5
+
+Time (s): cpu = 00:00:52 ; elapsed = 00:00:38 . Memory (MB): peak = 1651.137 ; gain = 229.531
+
+Phase 4.2 Global Iteration 1
+ Number of Nodes with overlaps = 1510
+ Number of Nodes with overlaps = 807
+ Number of Nodes with overlaps = 412
+ Number of Nodes with overlaps = 182
+ Number of Nodes with overlaps = 99
+ Number of Nodes with overlaps = 63
+ Number of Nodes with overlaps = 36
+ Number of Nodes with overlaps = 22
+ Number of Nodes with overlaps = 9
+ Number of Nodes with overlaps = 3
+ Number of Nodes with overlaps = 5
+ Number of Nodes with overlaps = 2
+ Number of Nodes with overlaps = 1
+ Number of Nodes with overlaps = 1
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-9.773 | TNS=-945.537| WHS=N/A    | THS=N/A    |
+
+Phase 4.2 Global Iteration 1 | Checksum: 18a26c0ac
+
+Time (s): cpu = 00:01:07 ; elapsed = 00:00:47 . Memory (MB): peak = 1651.137 ; gain = 229.531
+Phase 4 Rip-up And Reroute | Checksum: 18a26c0ac
+
+Time (s): cpu = 00:01:07 ; elapsed = 00:00:47 . Memory (MB): peak = 1651.137 ; gain = 229.531
+
+Phase 5 Delay and Skew Optimization
+
+Phase 5.1 Delay CleanUp
+
+Phase 5.1.1 Update Timing
+Phase 5.1.1 Update Timing | Checksum: 1974b04f5
+
+Time (s): cpu = 00:01:07 ; elapsed = 00:00:48 . Memory (MB): peak = 1651.137 ; gain = 229.531
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-9.270 | TNS=-920.895| WHS=N/A    | THS=N/A    |
+
+ Number of Nodes with overlaps = 0
+Phase 5.1 Delay CleanUp | Checksum: 27c9dd408
+
+Time (s): cpu = 00:01:08 ; elapsed = 00:00:48 . Memory (MB): peak = 1651.137 ; gain = 229.531
+
+Phase 5.2 Clock Skew Optimization
+Phase 5.2 Clock Skew Optimization | Checksum: 27c9dd408
+
+Time (s): cpu = 00:01:08 ; elapsed = 00:00:48 . Memory (MB): peak = 1651.137 ; gain = 229.531
+Phase 5 Delay and Skew Optimization | Checksum: 27c9dd408
+
+Time (s): cpu = 00:01:08 ; elapsed = 00:00:48 . Memory (MB): peak = 1651.137 ; gain = 229.531
+
+Phase 6 Post Hold Fix
+
+Phase 6.1 Hold Fix Iter
+
+Phase 6.1.1 Update Timing
+Phase 6.1.1 Update Timing | Checksum: 22e9da051
+
+Time (s): cpu = 00:01:08 ; elapsed = 00:00:48 . Memory (MB): peak = 1651.137 ; gain = 229.531
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-9.185 | TNS=-888.897| WHS=0.101  | THS=0.000  |
+
+Phase 6.1 Hold Fix Iter | Checksum: 22e9da051
+
+Time (s): cpu = 00:01:08 ; elapsed = 00:00:48 . Memory (MB): peak = 1651.137 ; gain = 229.531
+Phase 6 Post Hold Fix | Checksum: 22e9da051
+
+Time (s): cpu = 00:01:08 ; elapsed = 00:00:48 . Memory (MB): peak = 1651.137 ; gain = 229.531
+
+Phase 7 Route finalize
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 1.55789 %
+  Global Horizontal Routing Utilization  = 1.98817 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 0
+  Number of Unrouted Nets             = 0
+  Number of Partially Routed Nets     = 0
+  Number of Node Overlaps             = 0
+
+Congestion Report
+North Dir 1x1 Area, Max Cong = 43.2432%, No Congested Regions.
+South Dir 1x1 Area, Max Cong = 66.6667%, No Congested Regions.
+East Dir 1x1 Area, Max Cong = 72.0588%, No Congested Regions.
+West Dir 1x1 Area, Max Cong = 61.7647%, No Congested Regions.
+
+------------------------------
+Reporting congestion hotspots
+------------------------------
+Direction: North
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 0
+Direction: South
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 0
+Direction: East
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 0
+Direction: West
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 0
+
+Phase 7 Route finalize | Checksum: 1d6cdaca8
+
+Time (s): cpu = 00:01:08 ; elapsed = 00:00:48 . Memory (MB): peak = 1651.137 ; gain = 229.531
+
+Phase 8 Verifying routed nets
+
+ Verification completed successfully
+Phase 8 Verifying routed nets | Checksum: 1d6cdaca8
+
+Time (s): cpu = 00:01:08 ; elapsed = 00:00:48 . Memory (MB): peak = 1651.137 ; gain = 229.531
+
+Phase 9 Depositing Routes
+Phase 9 Depositing Routes | Checksum: 190e92d05
+
+Time (s): cpu = 00:01:09 ; elapsed = 00:00:49 . Memory (MB): peak = 1651.137 ; gain = 229.531
+
+Phase 10 Post Router Timing
+INFO: [Route 35-57] Estimated Timing Summary | WNS=-9.185 | TNS=-888.897| WHS=0.101  | THS=0.000  |
+
+WARNING: [Route 35-328] Router estimated timing not met.
+Resolution: For a complete and accurate timing signoff, report_timing_summary must be run after route_design. Alternatively, route_design can be run with the -timing_summary option to enable a complete timing signoff at the end of route_design.
+Phase 10 Post Router Timing | Checksum: 190e92d05
+
+Time (s): cpu = 00:01:09 ; elapsed = 00:00:49 . Memory (MB): peak = 1651.137 ; gain = 229.531
+INFO: [Route 35-16] Router Completed Successfully
+
+Time (s): cpu = 00:01:09 ; elapsed = 00:00:49 . Memory (MB): peak = 1651.137 ; gain = 229.531
+
+Routing Is Done.
+INFO: [Common 17-83] Releasing license: Implementation
+195 Infos, 99 Warnings, 0 Critical Warnings and 0 Errors encountered.
+route_design completed successfully
+route_design: Time (s): cpu = 00:01:11 ; elapsed = 00:00:50 . Memory (MB): peak = 1651.137 ; gain = 233.676
+Command: report_drc -file route_drc.rpt
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx/Vivado/2018.3/data/ip'.
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Coretcl 2-168] The results of DRC are in file D:/FPGA/PID_swing/.sim_check/route_drc.rpt.
+report_drc completed successfully
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1651.137 ; gain = 0.000
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Writing placer database...
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1655.133 ; gain = 0.000
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.759 . Memory (MB): peak = 1660.395 ; gain = 9.258
+INFO: [Common 17-1381] The checkpoint 'D:/FPGA/PID_swing/.sim_check/route_check.dcp' has been generated.
+ROUTE_CHECK_PASS
+INFO: [Common 17-206] Exiting Vivado at Fri Oct 16 11:32:17 2026...

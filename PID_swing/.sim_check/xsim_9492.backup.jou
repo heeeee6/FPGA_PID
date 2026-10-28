@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# xsim v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Fri Oct 23 00:00:30 2026
+# Process ID: 9492
+# Current directory: D:/FPGA/PID_swing/.sim_check
+# Command line: xsim.exe -nolog -mode tcl -source {xsim.dir/tb_pid_swing_top_snapshot/xsim_script.tcl}
+# Log file: 
+# Journal file: D:/FPGA/PID_swing/.sim_check\xsim.jou
+#-----------------------------------------------------------
+source xsim.dir/tb_pid_swing_top_snapshot/xsim_script.tcl
+run -all

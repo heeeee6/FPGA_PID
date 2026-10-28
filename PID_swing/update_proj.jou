@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Wed Oct 28 13:24:09 2026
+# Process ID: 37476
+# Current directory: D:/FPGA/PID_swing
+# Command line: vivado.exe -mode batch -source scripts/update_project.tcl -journal update_proj.jou -log update_proj.log
+# Log file: D:/FPGA/PID_swing/update_proj.log
+# Journal file: D:/FPGA/PID_swing\update_proj.jou
+#-----------------------------------------------------------
+source scripts/update_project.tcl

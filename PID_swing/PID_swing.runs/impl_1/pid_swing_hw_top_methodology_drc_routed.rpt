@@ -1,0 +1,157 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
+| Date         : Wed Oct 28 13:30:10 2026
+| Host         : Huffs running 64-bit major release  (build 9200)
+| Command      : report_methodology -file pid_swing_hw_top_methodology_drc_routed.rpt -pb pid_swing_hw_top_methodology_drc_routed.pb -rpx pid_swing_hw_top_methodology_drc_routed.rpx
+| Design       : pid_swing_hw_top
+| Device       : xc7z020clg484-1
+| Speed File   : -1
+| Design State : Fully Routed
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Report Methodology
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+             Max violations: <unlimited>
+             Violations found: 24
++-----------+----------+-------------------------------+------------+
+| Rule      | Severity | Description                   | Violations |
++-----------+----------+-------------------------------+------------+
+| SYNTH-11  | Warning  | DSP output not registered     | 6          |
+| SYNTH-13  | Warning  | combinational multiplier      | 4          |
+| TIMING-18 | Warning  | Missing input or output delay | 14         |
++-----------+----------+-------------------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+SYNTH-11#1 Warning
+DSP output not registered  
+DSP instance u_control/g_oled_ui.u_oled_ui/q8_to_x10011_return0 is not fully pipelined on the output side. MREG/PREG are not used.
+Related violations: <none>
+
+SYNTH-11#2 Warning
+DSP output not registered  
+DSP instance u_control/g_oled_ui.u_oled_ui/q8_to_x10014_return0 is not fully pipelined on the output side. MREG/PREG are not used.
+Related violations: <none>
+
+SYNTH-11#3 Warning
+DSP output not registered  
+DSP instance u_control/g_oled_ui.u_oled_ui/q8_to_x1002_return0 is not fully pipelined on the output side. MREG/PREG are not used.
+Related violations: <none>
+
+SYNTH-11#4 Warning
+DSP output not registered  
+DSP instance u_control/g_oled_ui.u_oled_ui/q8_to_x1005_return0 is not fully pipelined on the output side. MREG/PREG are not used.
+Related violations: <none>
+
+SYNTH-11#5 Warning
+DSP output not registered  
+DSP instance u_control/g_oled_ui.u_oled_ui/q8_to_x1008_return0 is not fully pipelined on the output side. MREG/PREG are not used.
+Related violations: <none>
+
+SYNTH-11#6 Warning
+DSP output not registered  
+DSP instance u_control/g_oled_ui.u_oled_ui/q8_to_x100_return0 is not fully pipelined on the output side. MREG/PREG are not used.
+Related violations: <none>
+
+SYNTH-13#1 Warning
+combinational multiplier  
+Detected combinational multiplier in DSP instance u_control/u_angle_pid/output_value5.
+Related violations: <none>
+
+SYNTH-13#2 Warning
+combinational multiplier  
+Detected combinational multiplier in DSP instance u_control/u_angle_pid/output_value5__0.
+Related violations: <none>
+
+SYNTH-13#3 Warning
+combinational multiplier  
+Detected combinational multiplier in DSP instance u_control/u_position_pid/output_value5.
+Related violations: <none>
+
+SYNTH-13#4 Warning
+combinational multiplier  
+Detected combinational multiplier in DSP instance u_control/u_position_pid/output_value5__0.
+Related violations: <none>
+
+TIMING-18#1 Warning
+Missing input or output delay  
+An input delay is missing on key_n[0] relative to clock(s) clk_50m
+Related violations: <none>
+
+TIMING-18#2 Warning
+Missing input or output delay  
+An input delay is missing on key_n[1] relative to clock(s) clk_50m
+Related violations: <none>
+
+TIMING-18#3 Warning
+Missing input or output delay  
+An input delay is missing on key_n[2] relative to clock(s) clk_50m
+Related violations: <none>
+
+TIMING-18#4 Warning
+Missing input or output delay  
+An input delay is missing on key_n[3] relative to clock(s) clk_50m
+Related violations: <none>
+
+TIMING-18#5 Warning
+Missing input or output delay  
+An input delay is missing on motor_enc_a relative to clock(s) clk_50m
+Related violations: <none>
+
+TIMING-18#6 Warning
+Missing input or output delay  
+An input delay is missing on motor_enc_b relative to clock(s) clk_50m
+Related violations: <none>
+
+TIMING-18#7 Warning
+Missing input or output delay  
+An input delay is missing on oled_scl relative to clock(s) clk_50m
+Related violations: <none>
+
+TIMING-18#8 Warning
+Missing input or output delay  
+An input delay is missing on oled_sda relative to clock(s) clk_50m
+Related violations: <none>
+
+TIMING-18#9 Warning
+Missing input or output delay  
+An input delay is missing on rst_n relative to clock(s) clk_50m
+Related violations: <none>
+
+TIMING-18#10 Warning
+Missing input or output delay  
+An input delay is missing on run_enable relative to clock(s) clk_50m
+Related violations: <none>
+
+TIMING-18#11 Warning
+Missing input or output delay  
+An output delay is missing on motor_in1 relative to clock(s) clk_50m
+Related violations: <none>
+
+TIMING-18#12 Warning
+Missing input or output delay  
+An output delay is missing on motor_in2 relative to clock(s) clk_50m
+Related violations: <none>
+
+TIMING-18#13 Warning
+Missing input or output delay  
+An output delay is missing on motor_pwm relative to clock(s) clk_50m
+Related violations: <none>
+
+TIMING-18#14 Warning
+Missing input or output delay  
+An output delay is missing on motor_stby relative to clock(s) clk_50m
+Related violations: <none>
+
+

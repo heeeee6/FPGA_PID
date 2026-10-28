@@ -1,0 +1,1 @@
+--nolog "work.tb_oled_ssd1306" -s "tb_oled_ssd1306_snapshot" 

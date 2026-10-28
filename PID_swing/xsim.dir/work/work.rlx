@@ -1,0 +1,13 @@
+0.6
+2018.3
+Dec  7 2018
+00:33:28
+D:/FPGA/PID_swing/rtl/adc_filter_gain.v,1792124160,systemVerilog,,D:/FPGA/PID_swing/rtl/i2c_txn_master.v,,adc_filter_12;angle_from_adc;angle_from_adc_pipe;gain_from_adc,,,,,,,,
+D:/FPGA/PID_swing/rtl/i2c_txn_master.v,1792074404,systemVerilog,,D:/FPGA/PID_swing/rtl/oled_ssd1306.v,,i2c_txn_master,,,,,,,,
+D:/FPGA/PID_swing/rtl/oled_ssd1306.v,1792074769,systemVerilog,,D:/FPGA/PID_swing/rtl/pid_fixed.v,,oled_ssd1306,,,,,,,,
+D:/FPGA/PID_swing/rtl/pid_fixed.v,1792073328,systemVerilog,,D:/FPGA/PID_swing/rtl/pid_swing_top.v,,pid_fixed,,,,,,,,
+D:/FPGA/PID_swing/rtl/pid_swing_top.v,1792074931,systemVerilog,,D:/FPGA/PID_swing/rtl/quad_encoder.v,,pid_swing_top,,,,,,,,
+D:/FPGA/PID_swing/rtl/quad_encoder.v,1792073114,systemVerilog,,D:/FPGA/PID_swing/rtl/swing_balance_ctrl.v,,quad_encoder,,,,,,,,
+D:/FPGA/PID_swing/rtl/swing_balance_ctrl.v,1792073492,systemVerilog,,D:/FPGA/PID_swing/rtl/tb6612_pwm.v,,swing_balance_ctrl,,,,,,,,
+D:/FPGA/PID_swing/rtl/tb6612_pwm.v,1792073626,systemVerilog,,D:/FPGA/PID_swing/rtl/xadc4_reader.v,,tb6612_pwm,,,,,,,,
+D:/FPGA/PID_swing/rtl/xadc4_reader.v,1792073732,systemVerilog,,,,xadc4_reader,,,,,,,,

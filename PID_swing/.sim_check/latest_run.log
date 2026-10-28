@@ -1,0 +1,125 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/FPGA/PID_swing/rtl/adc_filter_gain.v" into library work
+INFO: [VRFC 10-311] analyzing module adc_filter_12
+INFO: [VRFC 10-311] analyzing module angle_from_adc
+INFO: [VRFC 10-311] analyzing module angle_from_adc_pipe
+INFO: [VRFC 10-311] analyzing module gain_from_adc
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/FPGA/PID_swing/rtl/i2c_txn_master.v" into library work
+INFO: [VRFC 10-311] analyzing module i2c_txn_master
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/FPGA/PID_swing/rtl/oled_ssd1306.v" into library work
+INFO: [VRFC 10-311] analyzing module oled_ssd1306
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/FPGA/PID_swing/rtl/pid_fixed.v" into library work
+INFO: [VRFC 10-311] analyzing module pid_fixed
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/FPGA/PID_swing/rtl/pid_swing_hw_top.v" into library work
+INFO: [VRFC 10-311] analyzing module pid_swing_hw_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/FPGA/PID_swing/rtl/pid_swing_top.v" into library work
+INFO: [VRFC 10-311] analyzing module pid_swing_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/FPGA/PID_swing/rtl/quad_encoder.v" into library work
+INFO: [VRFC 10-311] analyzing module quad_encoder
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/FPGA/PID_swing/rtl/swing_balance_ctrl.v" into library work
+INFO: [VRFC 10-311] analyzing module swing_balance_ctrl
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/FPGA/PID_swing/rtl/tb6612_pwm.v" into library work
+INFO: [VRFC 10-311] analyzing module tb6612_pwm
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/FPGA/PID_swing/rtl/xadc4_reader.v" into library work
+INFO: [VRFC 10-311] analyzing module xadc4_reader
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/FPGA/PID_swing/sim/tb_i2c_txn_master.sv" into library work
+INFO: [VRFC 10-311] analyzing module tb_i2c_txn_master
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/FPGA/PID_swing/sim/tb_oled_ssd1306.sv" into library work
+INFO: [VRFC 10-311] analyzing module tb_oled_ssd1306
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/FPGA/PID_swing/sim/tb_pid_swing_top.sv" into library work
+INFO: [VRFC 10-311] analyzing module tb_pid_swing_top
+Vivado Simulator 2018.3
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2018.3/bin/unwrapped/win64.o/xelab.exe --nolog work.tb_i2c_txn_master -s tb_i2c_txn_master_snapshot 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.i2c_txn_master(CLK_HZ=1000000,I2...
+Compiling module work.tb_i2c_txn_master
+Built simulation snapshot tb_i2c_txn_master_snapshot
+
+****** xsim v2018.3 (64-bit)
+  **** SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source xsim.dir/tb_i2c_txn_master_snapshot/xsim_script.tcl
+# xsim {tb_i2c_txn_master_snapshot} -autoloadwcfg -runall -onfinish quit -onerror quit
+Vivado Simulator 2018.3
+Time resolution is 1 ps
+run -all
+tb_i2c_txn_master: PASS
+$finish called at time : 6326 ns : File "D:/FPGA/PID_swing/sim/tb_i2c_txn_master.sv" Line 102
+exit 0
+INFO: [Common 17-206] Exiting xsim at Wed Oct 21 22:49:40 2026...
+Vivado Simulator 2018.3
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2018.3/bin/unwrapped/win64.o/xelab.exe --nolog work.tb_oled_ssd1306 -s tb_oled_ssd1306_snapshot 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.i2c_txn_master(CLK_HZ=1000000,I2...
+Compiling module work.oled_ssd1306(CLK_HZ=1000000,I2C_...
+Compiling module work.tb_oled_ssd1306
+Built simulation snapshot tb_oled_ssd1306_snapshot
+
+****** xsim v2018.3 (64-bit)
+  **** SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source xsim.dir/tb_oled_ssd1306_snapshot/xsim_script.tcl
+# xsim {tb_oled_ssd1306_snapshot} -autoloadwcfg -runall -onfinish quit -onerror quit
+Vivado Simulator 2018.3
+Time resolution is 1 ps
+run -all
+tb_oled_ssd1306: PASS (17 initialization commands, four pages, KP:12.34)
+$finish called at time : 280925 ns : File "D:/FPGA/PID_swing/sim/tb_oled_ssd1306.sv" Line 193
+exit 0
+INFO: [Common 17-206] Exiting xsim at Wed Oct 21 22:49:46 2026...
+Vivado Simulator 2018.3
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2018.3/bin/unwrapped/win64.o/xelab.exe --nolog work.tb_pid_swing_top -s tb_pid_swing_top_snapshot 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.adc_filter_12
+Compiling module work.angle_from_adc
+Compiling module work.angle_from_adc_pipe
+Compiling module work.gain_from_adc_default
+Compiling module work.gain_from_adc(MAX_Q8=512)
+Compiling module work.quad_encoder
+Compiling module work.pid_fixed(PIPELINE_ERROR=1)
+Compiling module work.swing_balance_ctrl
+Compiling module work.tb6612_pwm(CLK_HZ=1000000)
+Compiling module work.i2c_txn_master_default
+Compiling module work.oled_ssd1306(STARTUP_CYCLES=1000...
+Compiling module work.pid_swing_top(CLK_HZ=1000000,USE...
+Compiling module work.adc_filter_12(FILTER_SHIFT=1)
+Compiling module work.pid_fixed(INTEGRAL_LIMIT=1000)
+Compiling module work.swing_balance_ctrl(START_TIME_MS...
+Compiling module work.tb_pid_swing_top
+Built simulation snapshot tb_pid_swing_top_snapshot
+
+****** xsim v2018.3 (64-bit)
+  **** SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source xsim.dir/tb_pid_swing_top_snapshot/xsim_script.tcl
+# xsim {tb_pid_swing_top_snapshot} -autoloadwcfg -runall -onfinish quit -onerror quit
+Vivado Simulator 2018.3
+Time resolution is 1 ps
+run -all
+tb_pid_swing_top: PASS
+$finish called at time : 37275501 ns : File "D:/FPGA/PID_swing/sim/tb_pid_swing_top.sv" Line 421
+exit 0
+INFO: [Common 17-206] Exiting xsim at Wed Oct 21 22:49:52 2026...

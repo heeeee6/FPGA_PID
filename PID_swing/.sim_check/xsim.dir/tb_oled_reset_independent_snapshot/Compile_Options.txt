@@ -1,0 +1,1 @@
+--nolog "work.tb_oled_reset_independent" -s "tb_oled_reset_independent_snapshot" 

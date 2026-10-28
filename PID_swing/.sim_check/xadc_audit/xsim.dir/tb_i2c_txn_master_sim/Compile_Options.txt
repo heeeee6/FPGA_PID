@@ -1,0 +1,1 @@
+-nolog -debug "typical" -s "tb_i2c_txn_master_sim" "xil_defaultlib.tb_i2c_txn_master" 

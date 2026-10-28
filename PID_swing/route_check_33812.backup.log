@@ -1,0 +1,22 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Wed Oct 28 12:28:14 2026
+# Process ID: 33812
+# Current directory: D:/FPGA/PID_swing
+# Command line: vivado.exe -mode batch -source scripts/check_impl_route.tcl -journal route_check.jou -log route_check.log
+# Log file: D:/FPGA/PID_swing/route_check.log
+# Journal file: D:/FPGA/PID_swing\route_check.jou
+#-----------------------------------------------------------
+CRITICAL WARNING: [Common 17-741] No write access right to the local Tcl store at 'C'. XilinxTclStore is reverted to the installation area. If you want to use local Tcl Store, please change the access right and relaunch Vivado.
+source scripts/check_impl_route.tcl
+# set script_dir [file dirname [file normalize [info script]]]
+# set project_root [file normalize [file join $script_dir ..]]
+# set rtl_files [glob -nocomplain -directory [file join $project_root rtl] *.v]
+# set xdc_file [file join $project_root constr SmartZynq_V1_3B.xdc]
+# if {[llength $rtl_files] == 0} {error "No RTL files found"}
+# if {![file exists $xdc_file]} {error "Missing XDC file: $xdc_file"}
+# read_verilog -sv $rtl_files
+ERROR: [Common 17-1294] Unable to create directory [D:/FPGA/PID_swing/.Xil/Vivado-33812-Huffs].
+INFO: [Common 17-206] Exiting Vivado at Wed Oct 28 12:28:16 2026...

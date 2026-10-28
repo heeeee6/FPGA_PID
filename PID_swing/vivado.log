@@ -1,0 +1,53 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Wed Oct 28 19:37:09 2026
+# Process ID: 23524
+# Current directory: D:/FPGA/PID_swing
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent22860 D:\FPGA\PID_swing\PID_swing.xpr
+# Log file: D:/FPGA/PID_swing/vivado.log
+# Journal file: D:/FPGA/PID_swing\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project D:/FPGA/PID_swing/PID_swing.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx/Vivado/2018.3/data/ip'.
+open_project: Time (s): cpu = 00:00:17 ; elapsed = 00:00:07 . Memory (MB): peak = 808.957 ; gain = 143.875
+update_compile_order -fileset sources_1
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Couldn't access process for termination
+
+exit
+INFO: [Common 17-206] Exiting Vivado at Wed Oct 28 19:38:46 2026...
+-jobs 16
+[Wed Oct 28 19:37:31 2026] Launched synth_1...
+Run output will be captured here: D:/FPGA/PID_swing/PID_swing.runs/synth_1/runme.log
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory D:/FPGA/PID_swing/PID_swing.runs/synth_1
+
+launch_runs synth_1 -jobs 16
+[Wed Oct 28 19:38:51 2026] Launched synth_1...
+Run output will be captured here: D:/FPGA/PID_swing/PID_swing.runs/synth_1/runme.log
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory D:/FPGA/PID_swing/PID_swing.runs/synth_1
+
+launch_runs synth_1 -jobs 16
+[Wed Oct 28 19:39:03 2026] Launched synth_1...
+Run output will be captured here: D:/FPGA/PID_swing/PID_swing.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 16
+[Wed Oct 28 19:40:22 2026] Launched impl_1...
+Run output will be captured here: D:/FPGA/PID_swing/PID_swing.runs/impl_1/runme.log
+reset_run impl_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. PID not specified
+
+launch_runs impl_1 -jobs 16
+[Wed Oct 28 19:40:26 2026] Launched impl_1...
+Run output will be captured here: D:/FPGA/PID_swing/PID_swing.runs/impl_1/runme.log
