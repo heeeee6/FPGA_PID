@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-| Date         : Wed Oct 28 19:41:23 2026
+| Date         : Sat Oct 31 15:18:10 2026
 | Host         : Huffs running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file pid_swing_hw_top_control_sets_placed.rpt
 | Design       : pid_swing_hw_top
@@ -56,12 +56,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              37 |           27 |
+| No           | No                    | No                     |              37 |           24 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |             264 |          103 |
+| No           | Yes                   | No                     |             264 |          109 |
 | Yes          | No                    | No                     |              23 |            6 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |             879 |          322 |
+| Yes          | Yes                   | No                     |             879 |          317 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -73,82 +73,82 @@ Table of Contents
 +--------------------+--------------------------------------------------------------+-----------------------------------------------------------+------------------+----------------+
 |  clk_50m_IBUF_BUFG |                                                              | u_control/u_swing_ctrl/command_reg[15]_23                 |                1 |              1 |
 |  clk_50m_IBUF_BUFG |                                                              | u_control/u_swing_ctrl/run_request_reg                    |                2 |              2 |
-|  clk_50m_IBUF_BUFG | u_control/angle_setpoint[15]_i_2_n_0                         | u_control/angle_setpoint[9]_i_1_n_0                       |                1 |              4 |
-|  clk_50m_IBUF_BUFG |                                                              | u_control/g_ads.u_ads/u_i2c/q[1]_i_1_n_0                  |                3 |              4 |
-|  clk_50m_IBUF_BUFG |                                                              | u_control/u_ui/run_request_reg_1                          |                3 |              4 |
-|  clk_50m_IBUF_BUFG | u_control/u_keys/key_click[3]                                | u_control/u_ui/clear                                      |                3 |              4 |
+|  clk_50m_IBUF_BUFG |                                                              | u_control/g_ads.u_ads/u_i2c/q[1]_i_1_n_0                  |                2 |              4 |
 |  clk_50m_IBUF_BUFG |                                                              | u_control/u_keys/click[3]_i_1_n_0                         |                4 |              4 |
-|  clk_50m_IBUF_BUFG | u_control/g_oled_ui.u_oled_ui/u_i2c/E[0]                     | u_control/g_oled_ui.u_oled_ui/u_i2c/por_rst_n_reg         |                2 |              4 |
-|  clk_50m_IBUF_BUFG | u_control/g_oled_ui.u_oled_ui/u_i2c/bit_index[3]_i_1_n_0     | u_control/g_oled_ui.u_oled_ui/u_i2c/byte_index[2]_i_1_n_0 |                3 |              4 |
+|  clk_50m_IBUF_BUFG | u_control/g_oled_ui.u_oled_ui/u_i2c/state_reg[0]_0[0]        | u_control/g_oled_ui.u_oled_ui/u_i2c/por_rst_n_reg         |                2 |              4 |
 |  clk_50m_IBUF_BUFG | u_control/u_keys/FSM_onehot_page_reg[3]                      | u_control/u_ui/location_target[8]_i_1_n_0                 |                1 |              4 |
-|  clk_50m_IBUF_BUFG | u_control/u_keys/db_count[1][4]_i_2_n_0                      | u_control/u_keys/db_count[1][4]_i_1_n_0                   |                2 |              5 |
+|  clk_50m_IBUF_BUFG |                                                              | u_control/u_ui/run_request_reg_1                          |                3 |              4 |
+|  clk_50m_IBUF_BUFG | u_control/angle_setpoint[15]_i_2_n_0                         | u_control/angle_setpoint[9]_i_1_n_0                       |                1 |              4 |
+|  clk_50m_IBUF_BUFG | u_control/u_keys/key_click[3]                                | u_control/u_ui/clear                                      |                1 |              4 |
+|  clk_50m_IBUF_BUFG | u_control/g_oled_ui.u_oled_ui/u_i2c/bit_index[3]_i_1_n_0     | u_control/g_oled_ui.u_oled_ui/u_i2c/byte_index[2]_i_1_n_0 |                2 |              4 |
+|  clk_50m_IBUF_BUFG | u_control/g_oled_ui.u_oled_ui/u_i2c/state_reg[3]_0[0]        | u_control/g_oled_ui.u_oled_ui/u_i2c/por_rst_n_reg         |                1 |              5 |
+|  clk_50m_IBUF_BUFG | u_control/g_oled_ui.u_oled_ui/u_i2c/E[0]                     | u_control/g_oled_ui.u_oled_ui/u_i2c/por_rst_n_reg         |                2 |              5 |
 |  clk_50m_IBUF_BUFG | u_control/u_keys/db_count[0][4]_i_2_n_0                      | u_control/u_keys/db_count[0][4]_i_1_n_0                   |                2 |              5 |
-|  clk_50m_IBUF_BUFG | u_control/u_keys/db_count[2][4]_i_2_n_0                      | u_control/u_keys/db_count[2][4]_i_1_n_0                   |                2 |              5 |
 |  clk_50m_IBUF_BUFG | u_control/u_swing_ctrl/outer_tick_reg_1                      | u_control/u_swing_ctrl/capture_clear_reg_2                |                1 |              5 |
-|  clk_50m_IBUF_BUFG | u_control/g_oled_ui.u_oled_ui/u_i2c/state_reg[1]_0[0]        | u_control/g_oled_ui.u_oled_ui/u_i2c/por_rst_n_reg         |                2 |              5 |
-|  clk_50m_IBUF_BUFG | u_control/g_oled_ui.u_oled_ui/u_i2c/state_reg[0]_0[0]        | u_control/g_oled_ui.u_oled_ui/u_i2c/por_rst_n_reg         |                2 |              5 |
-|  clk_50m_IBUF_BUFG | u_control/u_swing_ctrl/inner_tick_reg_0                      | u_control/u_swing_ctrl/capture_clear_reg_2                |                1 |              5 |
 |  clk_50m_IBUF_BUFG | u_control/u_keys/db_count                                    | u_control/u_keys/db_count[3][4]_i_1_n_0                   |                2 |              5 |
+|  clk_50m_IBUF_BUFG | u_control/u_swing_ctrl/inner_tick_reg_0                      | u_control/u_swing_ctrl/capture_clear_reg_2                |                1 |              5 |
+|  clk_50m_IBUF_BUFG | u_control/u_keys/db_count[1][4]_i_2_n_0                      | u_control/u_keys/db_count[1][4]_i_1_n_0                   |                2 |              5 |
+|  clk_50m_IBUF_BUFG | u_control/u_keys/db_count[2][4]_i_2_n_0                      | u_control/u_keys/db_count[2][4]_i_1_n_0                   |                2 |              5 |
+|  clk_50m_IBUF_BUFG |                                                              | u_control/g_oled_ui.u_oled_ui/u_i2c/div_count[5]_i_1_n_0  |                2 |              6 |
+|  clk_50m_IBUF_BUFG |                                                              | u_control/g_oled_ui.u_oled_ui/u_i2c/byte_index[2]_i_1_n_0 |                4 |              6 |
 |  clk_50m_IBUF_BUFG |                                                              | u_control/g_ads.u_ads/u_i2c/por_rst_n_reg                 |                3 |              6 |
 |  clk_50m_IBUF_BUFG |                                                              | u_control/g_ads.u_ads/u_i2c/qcnt[5]_i_1_n_0               |                2 |              6 |
-|  clk_50m_IBUF_BUFG |                                                              | u_control/g_oled_ui.u_oled_ui/u_i2c/byte_index[2]_i_1_n_0 |                3 |              6 |
-|  clk_50m_IBUF_BUFG |                                                              | u_control/g_oled_ui.u_oled_ui/u_i2c/div_count[5]_i_1_n_0  |                2 |              6 |
 |  clk_50m_IBUF_BUFG | u_control/outer_count[5]_i_2_n_0                             | u_control/outer_count[5]_i_1_n_0                          |                2 |              6 |
-|  clk_50m_IBUF_BUFG | u_control/g_oled_ui.u_oled_ui/char_r[6]_i_1_n_0              | u_control/g_oled_ui.u_oled_ui/u_i2c/por_rst_n_reg         |                6 |              7 |
-|  clk_50m_IBUF_BUFG | u_control/g_oled_ui.u_oled_ui/glyph_data_r[6]_i_1_n_0        | u_control/g_oled_ui.u_oled_ui/u_i2c/por_rst_n_reg         |                6 |              7 |
-|  clk_50m_IBUF_BUFG | u_control/u_ui/angle_ki_q8[7]_i_1_n_0                        | u_control/u_ui/clear                                      |                2 |              8 |
-|  clk_50m_IBUF_BUFG | u_control/u_ui/pwm_offset[7]_i_1_n_0                         | u_control/u_ui/clear                                      |                2 |              8 |
-|  clk_50m_IBUF_BUFG | u_control/u_ui/start_pwm[7]_i_1_n_0                          | u_control/u_ui/clear                                      |                3 |              8 |
+|  clk_50m_IBUF_BUFG | u_control/g_oled_ui.u_oled_ui/char_r[6]_i_1_n_0              | u_control/g_oled_ui.u_oled_ui/u_i2c/por_rst_n_reg         |                7 |              7 |
+|  clk_50m_IBUF_BUFG | u_control/g_oled_ui.u_oled_ui/glyph_data_r[6]_i_1_n_0        | u_control/g_oled_ui.u_oled_ui/u_i2c/por_rst_n_reg         |                7 |              7 |
+|  clk_50m_IBUF_BUFG | u_control/u_ui/pwm_offset[7]_i_1_n_0                         | u_control/u_ui/clear                                      |                3 |              8 |
+|  clk_50m_IBUF_BUFG | u_control/u_ui/start_pwm[7]_i_1_n_0                          | u_control/u_ui/clear                                      |                4 |              8 |
+|  clk_50m_IBUF_BUFG | u_control/u_ui/angle_ki_q8[7]_i_1_n_0                        | u_control/u_ui/clear                                      |                3 |              8 |
 |  clk_50m_IBUF_BUFG | u_control/u_ui/angle_kp_q8[8]_i_1_n_0                        | u_control/u_ui/clear                                      |                3 |              9 |
-|  clk_50m_IBUF_BUFG | u_control/u_ui/angle_kd_q8[8]_i_1_n_0                        | u_control/u_ui/clear                                      |                4 |              9 |
-|  clk_50m_IBUF_BUFG | u_control/g_ads.u_ads/u_i2c/t3[0]_i_1_n_0                    | u_control/u_ui/clear                                      |                3 |              9 |
-|  clk_50m_IBUF_BUFG | u_control/u_ui/location_ki_q8[8]_i_1_n_0                     | u_control/u_ui/clear                                      |                4 |              9 |
+|  clk_50m_IBUF_BUFG | u_control/u_ui/location_ki_q8[8]_i_1_n_0                     | u_control/u_ui/clear                                      |                3 |              9 |
 |  clk_50m_IBUF_BUFG | u_control/angle_setpoint[15]_i_2_n_0                         | u_control/u_position_pid/outer_tick_reg                   |                2 |              9 |
-|  clk_50m_IBUF_BUFG | u_control/u_keys/hold_count[3][9]_i_2_n_0                    | u_control/u_keys/hold_count[3][9]_i_1_n_0                 |                3 |             10 |
-|  clk_50m_IBUF_BUFG | u_control/g_oled_ui.u_oled_ui/u_i2c/state1                   | u_control/g_oled_ui.u_oled_ui/u_i2c/por_rst_n_reg         |                3 |             10 |
-|  clk_50m_IBUF_BUFG | u_control/u_keys/hold_count                                  | u_control/u_keys/hold_count[0][9]_i_1_n_0                 |                4 |             10 |
-|  clk_50m_IBUF_BUFG | u_control/u_keys/hold_count[1][9]_i_2_n_0                    | u_control/u_keys/hold_count[1][9]_i_1_n_0                 |                3 |             10 |
-|  clk_50m_IBUF_BUFG | u_control/g_oled_ui.u_oled_ui/i2c_data1[6]_i_1_n_0           | u_control/g_oled_ui.u_oled_ui/u_i2c/por_rst_n_reg         |                5 |             10 |
+|  clk_50m_IBUF_BUFG | u_control/u_ui/angle_kd_q8[8]_i_1_n_0                        | u_control/u_ui/clear                                      |                3 |              9 |
+|  clk_50m_IBUF_BUFG | u_control/g_ads.u_ads/u_i2c/t3[0]_i_1_n_0                    | u_control/u_ui/clear                                      |                3 |              9 |
+|  clk_50m_IBUF_BUFG | u_control/g_oled_ui.u_oled_ui/i2c_data1[6]_i_1_n_0           | u_control/g_oled_ui.u_oled_ui/u_i2c/por_rst_n_reg         |                3 |             10 |
+|  clk_50m_IBUF_BUFG | u_control/g_oled_ui.u_oled_ui/u_i2c/state1                   | u_control/g_oled_ui.u_oled_ui/u_i2c/por_rst_n_reg         |                4 |             10 |
 |  clk_50m_IBUF_BUFG | u_control/u_keys/hold_count[2][9]_i_2_n_0                    | u_control/u_keys/hold_count[2][9]_i_1_n_0                 |                3 |             10 |
-|  clk_50m_IBUF_BUFG | u_control/u_ui/location_kp_q8[10]_i_1_n_0                    | u_control/u_ui/clear                                      |                4 |             11 |
+|  clk_50m_IBUF_BUFG | u_control/u_keys/hold_count                                  | u_control/u_keys/hold_count[0][9]_i_1_n_0                 |                3 |             10 |
+|  clk_50m_IBUF_BUFG | u_control/u_keys/hold_count[3][9]_i_2_n_0                    | u_control/u_keys/hold_count[3][9]_i_1_n_0                 |                3 |             10 |
+|  clk_50m_IBUF_BUFG | u_control/u_keys/hold_count[1][9]_i_2_n_0                    | u_control/u_keys/hold_count[1][9]_i_1_n_0                 |                4 |             10 |
 |  clk_50m_IBUF_BUFG | u_control/u_swing_ctrl/inner_tick_reg_0                      | u_control/u_swing_ctrl/inner_tick_reg                     |                2 |             11 |
-|  clk_50m_IBUF_BUFG | u_control/u_swing_ctrl/outer_tick_reg_1                      | u_control/u_swing_ctrl/outer_tick_reg                     |                3 |             11 |
-|  clk_50m_IBUF_BUFG | u_control/g_ads.u_ads/u_i2c/E[0]                             | u_control/u_ui/clear                                      |                6 |             12 |
-|  clk_50m_IBUF_BUFG | u_control/u_ui/location_kd_q8[11]_i_1_n_0                    | u_control/u_ui/clear                                      |                4 |             12 |
-|  clk_50m_IBUF_BUFG | u_control/g_ads.u_ads/u_i2c/b_ch_reg[0]_1[0]                 | u_control/u_ui/clear                                      |                5 |             12 |
-|  clk_50m_IBUF_BUFG | u_control/g_ads.u_ads/u_i2c/b_ch_reg[0]_0[0]                 | u_control/u_ui/clear                                      |                5 |             12 |
-|  clk_50m_IBUF_BUFG | u_control/g_ads.u_ads/u_i2c/after_reg[1]_0[0]                | u_control/u_ui/clear                                      |                3 |             12 |
+|  clk_50m_IBUF_BUFG | u_control/u_ui/location_kp_q8[10]_i_1_n_0                    | u_control/u_ui/clear                                      |                4 |             11 |
+|  clk_50m_IBUF_BUFG | u_control/u_swing_ctrl/outer_tick_reg_1                      | u_control/u_swing_ctrl/outer_tick_reg                     |                2 |             11 |
+|  clk_50m_IBUF_BUFG | u_control/g_ads.u_ads/u_i2c/after_reg[1]_0[0]                | u_control/u_ui/clear                                      |                4 |             12 |
+|  clk_50m_IBUF_BUFG | u_control/g_ads.u_ads/u_i2c/b_ch_reg[0]_1[0]                 | u_control/u_ui/clear                                      |                4 |             12 |
+|  clk_50m_IBUF_BUFG | u_control/g_ads.u_ads/u_i2c/b_ch_reg[0]_0[0]                 | u_control/u_ui/clear                                      |                4 |             12 |
+|  clk_50m_IBUF_BUFG | u_control/g_ads.u_ads/u_i2c/E[0]                             | u_control/u_ui/clear                                      |                3 |             12 |
 |  clk_50m_IBUF_BUFG | u_control/u_ui/center_angle[0]_i_1_n_0                       | u_control/u_ui/clear                                      |                3 |             12 |
+|  clk_50m_IBUF_BUFG | u_control/u_ui/location_kd_q8[11]_i_1_n_0                    | u_control/u_ui/clear                                      |                4 |             12 |
 |  clk_50m_IBUF_BUFG | u_control/u_swing_ctrl/startup_count                         | u_control/u_ui/run_request_reg_1                          |                3 |             12 |
-|  clk_50m_IBUF_BUFG |                                                              | u_control/g_oled_ui.u_oled_ui/u_i2c/por_rst_n_reg         |                7 |             13 |
-|  clk_50m_IBUF_BUFG | u_control/g_ads.u_ads/u_i2c/state_reg[0]                     | u_control/u_ui/clear                                      |                5 |             13 |
-|  clk_50m_IBUF_BUFG | u_control/g_ads.u_ads/u_i2c/nack_reg_3[0]                    | u_control/u_ui/clear                                      |                3 |             16 |
+|  clk_50m_IBUF_BUFG | u_control/g_ads.u_ads/u_i2c/state_reg[0]                     | u_control/u_ui/clear                                      |                3 |             13 |
+|  clk_50m_IBUF_BUFG |                                                              | u_control/g_oled_ui.u_oled_ui/u_i2c/por_rst_n_reg         |                8 |             13 |
+|  clk_50m_IBUF_BUFG | u_control/g_ads.u_ads/u_i2c/nack_reg_3[0]                    | u_control/u_ui/clear                                      |                4 |             16 |
+|  clk_50m_IBUF_BUFG | u_control/g_ads.u_ads/u_i2c/FSM_sequential_state_reg[0]_2[0] | u_control/u_ui/clear                                      |                6 |             16 |
+|  clk_50m_IBUF_BUFG | u_control/control_tick                                       | u_control/u_ui/run_request_reg_1                          |                8 |             16 |
+|  clk_50m_IBUF_BUFG | u_control/u_swing_ctrl/target_command[15]_i_2_n_0            | u_control/g_ads.u_ads/por_rst_n_reg_0                     |               10 |             16 |
+|  clk_50m_IBUF_BUFG |                                                              | u_control/u_swing_ctrl/capture_clear_reg_3[0]             |                9 |             16 |
 |  clk_50m_IBUF_BUFG | u_control/u_ui/start_time_ms[0]_i_1_n_0                      | u_control/u_ui/clear                                      |                4 |             16 |
-|  clk_50m_IBUF_BUFG | u_control/g_ads.u_ads/u_i2c/FSM_sequential_state_reg[0]_2[0] | u_control/u_ui/clear                                      |                2 |             16 |
-|  clk_50m_IBUF_BUFG |                                                              | u_control/u_swing_ctrl/capture_clear_reg_3[0]             |                8 |             16 |
-|  clk_50m_IBUF_BUFG | u_control/u_swing_ctrl/target_command[15]_i_2_n_0            | u_control/g_ads.u_ads/por_rst_n_reg_0                     |               11 |             16 |
-|  clk_50m_IBUF_BUFG | u_control/u_swing_ctrl/judge_count[15]_i_1_n_0               | u_control/u_swing_ctrl/judge_count                        |                3 |             16 |
-|  clk_50m_IBUF_BUFG | u_control/control_tick                                       | u_control/u_ui/run_request_reg_1                          |                9 |             16 |
-|  clk_50m_IBUF_BUFG | u_control/inner_tick_reg_n_0                                 | u_control/u_swing_ctrl/capture_clear_reg_0[0]             |                7 |             17 |
+|  clk_50m_IBUF_BUFG | u_control/u_swing_ctrl/judge_count[15]_i_1_n_0               | u_control/u_swing_ctrl/judge_count                        |                4 |             16 |
 |  clk_50m_IBUF_BUFG | u_control/outer_tick_reg_n_0                                 | u_control/u_swing_ctrl/capture_clear_reg_0[0]             |                5 |             17 |
+|  clk_50m_IBUF_BUFG | u_control/inner_tick_reg_n_0                                 | u_control/u_swing_ctrl/capture_clear_reg_0[0]             |                5 |             17 |
 |  clk_50m_IBUF_BUFG | sel                                                          |                                                           |                6 |             23 |
 |  clk_50m_IBUF_BUFG | u_control/u_keys/FSM_onehot_page_reg[3]                      | u_control/u_swing_ctrl/capture_clear_reg_1                |               10 |             27 |
-|  clk_50m_IBUF_BUFG |                                                              | u_control/u_keys/sample_count[0]_i_1_n_0                  |                8 |             32 |
-|  clk_50m_IBUF_BUFG |                                                              | u_control/g_ads.u_ads/pcnt[0]_i_1_n_0                     |                8 |             32 |
-|  clk_50m_IBUF_BUFG | u_control/g_oled_ui.u_oled_ui/u_i2c/state_reg[2]_0[0]        | u_control/g_oled_ui.u_oled_ui/u_i2c/por_rst_n_reg         |                7 |             32 |
-|  clk_50m_IBUF_BUFG |                                                              | u_control/control_count[0]_i_1_n_0                        |                8 |             32 |
 |  clk_50m_IBUF_BUFG |                                                              | u_control/u_motor_pwm/pwm_count[0]_i_1_n_0                |                8 |             32 |
 |  clk_50m_IBUF_BUFG | u_control/u_swing_ctrl/phase_count[31]_i_2_n_0               | u_control/u_swing_ctrl/judge_count                        |               10 |             32 |
-|  clk_50m_IBUF_BUFG |                                                              | u_control/u_swing_ctrl/armed_reg_1[0]                     |               12 |             32 |
-|  clk_50m_IBUF_BUFG | u_control/control_tick                                       | u_control/u_swing_ctrl/capture_clear_reg_3[0]             |                8 |             32 |
-|  clk_50m_IBUF_BUFG | u_control/inner_tick_reg_n_0                                 | u_control/u_swing_ctrl/control_ki_q8_reg[3][0]            |               12 |             32 |
-|  clk_50m_IBUF_BUFG | u_control/outer_tick_reg_n_0                                 | u_control/u_swing_ctrl/outer_tick_reg_0[0]                |               14 |             32 |
-|  clk_50m_IBUF_BUFG | u_control/u_swing_ctrl/mode_reg[1]_0                         | u_control/u_swing_ctrl/SR[0]                              |               12 |             34 |
-|  clk_50m_IBUF_BUFG | u_control/u_swing_ctrl/ad0                                   | u_control/u_ui/clear                                      |               18 |             36 |
-|  clk_50m_IBUF_BUFG |                                                              | u_control/u_ui/clear                                      |               21 |             36 |
-|  clk_50m_IBUF_BUFG |                                                              |                                                           |               27 |             37 |
-|  clk_50m_IBUF_BUFG | u_control/g_oled_ui.u_oled_ui/angle_error_s[15]_i_1_n_0      | u_control/g_oled_ui.u_oled_ui/u_i2c/por_rst_n_reg         |               32 |             62 |
-|  clk_50m_IBUF_BUFG | u_control/control_tick                                       | u_control/u_ui/clear                                      |               30 |             91 |
+|  clk_50m_IBUF_BUFG |                                                              | u_control/u_swing_ctrl/armed_reg_1[0]                     |               11 |             32 |
+|  clk_50m_IBUF_BUFG |                                                              | u_control/u_keys/sample_count[0]_i_1_n_0                  |                8 |             32 |
+|  clk_50m_IBUF_BUFG | u_control/g_oled_ui.u_oled_ui/u_i2c/state_reg[2]_0[0]        | u_control/g_oled_ui.u_oled_ui/u_i2c/por_rst_n_reg         |                7 |             32 |
+|  clk_50m_IBUF_BUFG |                                                              | u_control/control_count[0]_i_1_n_0                        |                8 |             32 |
+|  clk_50m_IBUF_BUFG | u_control/control_tick                                       | u_control/u_swing_ctrl/capture_clear_reg_3[0]             |                6 |             32 |
+|  clk_50m_IBUF_BUFG | u_control/inner_tick_reg_n_0                                 | u_control/u_swing_ctrl/control_ki_q8_reg[3][0]            |               13 |             32 |
+|  clk_50m_IBUF_BUFG | u_control/outer_tick_reg_n_0                                 | u_control/u_swing_ctrl/outer_tick_reg_0[0]                |               15 |             32 |
+|  clk_50m_IBUF_BUFG |                                                              | u_control/g_ads.u_ads/pcnt[0]_i_1_n_0                     |                8 |             32 |
+|  clk_50m_IBUF_BUFG | u_control/u_swing_ctrl/mode_reg[1]_0                         | u_control/u_swing_ctrl/SR[0]                              |               13 |             34 |
+|  clk_50m_IBUF_BUFG | u_control/u_swing_ctrl/ad0                                   | u_control/u_ui/clear                                      |               15 |             36 |
+|  clk_50m_IBUF_BUFG |                                                              | u_control/u_ui/clear                                      |               26 |             36 |
+|  clk_50m_IBUF_BUFG |                                                              |                                                           |               24 |             37 |
+|  clk_50m_IBUF_BUFG | u_control/g_oled_ui.u_oled_ui/angle_error_s[15]_i_1_n_0      | u_control/g_oled_ui.u_oled_ui/u_i2c/por_rst_n_reg         |               34 |             62 |
+|  clk_50m_IBUF_BUFG | u_control/control_tick                                       | u_control/u_ui/clear                                      |               32 |             91 |
 +--------------------+--------------------------------------------------------------+-----------------------------------------------------------+------------------+----------------+
 
 

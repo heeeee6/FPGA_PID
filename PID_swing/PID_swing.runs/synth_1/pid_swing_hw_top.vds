@@ -2,8 +2,8 @@
 # Vivado v2018.3 (64-bit)
 # SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 # IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
-# Start of session at: Wed Oct 28 19:38:58 2026
-# Process ID: 19100
+# Start of session at: Sat Oct 31 15:14:09 2026
+# Process ID: 31520
 # Current directory: D:/FPGA/PID_swing/PID_swing.runs/synth_1
 # Command line: vivado.exe -log pid_swing_hw_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source pid_swing_hw_top.tcl
 # Log file: D:/FPGA/PID_swing/PID_swing.runs/synth_1/pid_swing_hw_top.vds
@@ -15,13 +15,13 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 19648 
+INFO: Helper process launched with PID 23760 
 WARNING: [Synth 8-2292] literal value truncated to fit in 4 bits [D:/FPGA/PID_swing/rtl/swing_balance_ctrl.v:51]
 WARNING: [Synth 8-2292] literal value truncated to fit in 4 bits [D:/FPGA/PID_swing/rtl/swing_balance_ctrl.v:52]
 WARNING: [Synth 8-2292] literal value truncated to fit in 4 bits [D:/FPGA/PID_swing/rtl/swing_balance_ctrl.v:53]
 WARNING: [Synth 8-2292] literal value truncated to fit in 4 bits [D:/FPGA/PID_swing/rtl/swing_balance_ctrl.v:54]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 444.852 ; gain = 111.145
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 444.164 ; gain = 110.980
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'pid_swing_hw_top' [D:/FPGA/PID_swing/rtl/pid_swing_hw_top.v:12]
 	Parameter ADC_SPAN_COUNTS bound to: 4095 - type: integer 
@@ -107,9 +107,9 @@ INFO: [Synth 8-6157] synthesizing module 'oled_ssd1306_ui' [D:/FPGA/PID_swing/rt
 	Parameter CLK_HZ bound to: 50000000 - type: integer 
 	Parameter I2C_HZ bound to: 400000 - type: integer 
 	Parameter STARTUP_CYCLES bound to: 5000000 - type: integer 
-	Parameter REFRESH_CYCLES bound to: 25000000 - type: integer 
+	Parameter REFRESH_CYCLES bound to: 2500000 - type: integer 
 	Parameter SAFE_STARTUP bound to: 5000000 - type: integer 
-	Parameter SAFE_REFRESH bound to: 25000000 - type: integer 
+	Parameter SAFE_REFRESH bound to: 2500000 - type: integer 
 	Parameter ST_RESET_WAIT bound to: 5'b00000 
 	Parameter ST_INIT_START bound to: 5'b00001 
 	Parameter ST_INIT_WAIT bound to: 5'b00010 
@@ -356,7 +356,7 @@ WARNING: [Synth 8-3331] design pid_swing_top has unconnected port rp4_adc_raw[0]
 WARNING: [Synth 8-3331] design pid_swing_top has unconnected port vauxp[6]
 INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 511.496 ; gain = 177.789
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 511.500 ; gain = 178.316
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -369,10 +369,10 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 511.496 ; gain = 177.789
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 511.500 ; gain = 178.316
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 511.496 ; gain = 177.789
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 511.500 ; gain = 178.316
 ---------------------------------------------------------------------------------
 INFO: [Netlist 29-17] Analyzing 4 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
@@ -385,31 +385,31 @@ Parsing XDC File [D:/FPGA/PID_swing/constr/SmartZynq_V1_3B.xdc]
 Finished Parsing XDC File [D:/FPGA/PID_swing/constr/SmartZynq_V1_3B.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/FPGA/PID_swing/constr/SmartZynq_V1_3B.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/pid_swing_hw_top_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/pid_swing_hw_top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 891.883 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 890.395 ; gain = 0.000
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 891.895 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 890.426 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 4 instances were transformed.
   IOBUF => IOBUF (IBUF, OBUFT): 4 instances
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 891.895 ; gain = 0.000
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 891.895 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 890.426 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 890.426 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 891.895 ; gain = 558.188
+Finished Constraint Validation : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 890.426 ; gain = 557.242
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg484-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 891.895 ; gain = 558.188
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 890.426 ; gain = 557.242
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 891.895 ; gain = 558.188
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 890.426 ; gain = 557.242
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'i2c_ads_master'
 INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
@@ -428,13 +428,11 @@ INFO: [Synth 8-5546] ROM "state" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "wait_count" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "init_index" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "n_line" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5544] ROM "n_char" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
 INFO: [Synth 8-5587] ROM size for "i2c_start" is below threshold of ROM address width. It will be mapped to LUTs
 INFO: [Synth 8-5546] ROM "angle_adc_s" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "angle_error_s" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "glyph_data_r" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "char_r" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5544] ROM "wrap_refresh" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
 INFO: [Synth 8-5587] ROM size for "text_char" is below threshold of ROM address width. It will be mapped to LUTs
 INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [D:/FPGA/PID_swing/rtl/adc_filter_gain.v:25]
 INFO: [Synth 8-4471] merging register 'pressed_reg[3:0]' into 'stable_pressed_reg[3:0]' [D:/FPGA/PID_swing/rtl/key_events.v:45]
@@ -472,7 +470,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'page_reg' using encoding 'one-hot' in module 'pendulum_ui'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 891.895 ; gain = 558.188
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 890.426 ; gain = 557.242
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-223] decloning instance 'u_control/u_kp_map' (gain_from_adc) to 'u_control/u_kp_display'
 INFO: [Synth 8-223] decloning instance 'u_control/u_kd_map' (gain_from_adc) to 'u_control/u_kd_display'
@@ -482,7 +480,7 @@ Report RTL Partitions:
 +------+----------------------+------------+----------+
 |      |RTL Partition         |Replication |Instances |
 +------+----------------------+------------+----------+
-|1     |pid_swing_top__GB0    |           1|     27545|
+|1     |pid_swing_top__GB0    |           1|     27609|
 |2     |pid_swing_top__GB1    |           1|      8852|
 |3     |pid_swing_top__GB2    |           1|      7936|
 |4     |pid_swing_top__GB3    |           1|     10946|
@@ -546,9 +544,9 @@ Detailed RTL Component Info :
 	  16 Input      8 Bit        Muxes := 1     
 	  11 Input      8 Bit        Muxes := 2     
 	   6 Input      8 Bit        Muxes := 2     
-	   2 Input      7 Bit        Muxes := 31    
+	   2 Input      7 Bit        Muxes := 33    
 	  17 Input      7 Bit        Muxes := 2     
-	   4 Input      7 Bit        Muxes := 27    
+	   4 Input      7 Bit        Muxes := 29    
 	  16 Input      7 Bit        Muxes := 1     
 	   2 Input      6 Bit        Muxes := 5     
 	   4 Input      6 Bit        Muxes := 2     
@@ -574,9 +572,9 @@ Detailed RTL Component Info :
 	   9 Input      2 Bit        Muxes := 1     
 	  10 Input      2 Bit        Muxes := 1     
 	  13 Input      1 Bit        Muxes := 10    
-	   2 Input      1 Bit        Muxes := 207   
+	   2 Input      1 Bit        Muxes := 204   
 	   6 Input      1 Bit        Muxes := 5     
-	  16 Input      1 Bit        Muxes := 12    
+	  16 Input      1 Bit        Muxes := 14    
 	   4 Input      1 Bit        Muxes := 46    
 	   3 Input      1 Bit        Muxes := 9     
 	  12 Input      1 Bit        Muxes := 7     
@@ -640,9 +638,9 @@ Detailed RTL Component Info :
 	   2 Input     16 Bit        Muxes := 3     
 	   2 Input      8 Bit        Muxes := 1     
 	  16 Input      8 Bit        Muxes := 1     
-	   2 Input      7 Bit        Muxes := 31    
+	   2 Input      7 Bit        Muxes := 33    
 	  17 Input      7 Bit        Muxes := 2     
-	   4 Input      7 Bit        Muxes := 27    
+	   4 Input      7 Bit        Muxes := 29    
 	  16 Input      7 Bit        Muxes := 1     
 	   2 Input      6 Bit        Muxes := 5     
 	   4 Input      6 Bit        Muxes := 2     
@@ -652,8 +650,8 @@ Detailed RTL Component Info :
 	   2 Input      3 Bit        Muxes := 4     
 	  16 Input      3 Bit        Muxes := 2     
 	   2 Input      2 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 20    
-	  16 Input      1 Bit        Muxes := 12    
+	   2 Input      1 Bit        Muxes := 17    
+	  16 Input      1 Bit        Muxes := 14    
 Module pid_fixed 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -932,6 +930,7 @@ INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address si
 INFO: [Synth 8-5546] ROM "init_index" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "wait_count" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "state" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "n_line" won't be mapped to RAM because it is too sparse
 DSP Report: Generating DSP q8_to_x100_return0, operation Mode is: A2*(B:0x64).
 DSP Report: register angle_kp_s_reg is absorbed into DSP q8_to_x100_return0.
 DSP Report: operator q8_to_x100_return0 is absorbed into DSP q8_to_x100_return0.
@@ -1136,7 +1135,7 @@ INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_control
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_4/\g_ads.u_ads /\state_reg[2] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_2/\control_kd_q8_reg[15] )
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:30 ; elapsed = 00:00:32 . Memory (MB): peak = 990.875 ; gain = 657.168
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:59 ; elapsed = 00:01:02 . Memory (MB): peak = 1006.723 ; gain = 673.539
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -1148,8 +1147,8 @@ ROM:
 +----------------+--------------+---------------+----------------+
 |oled_ssd1306_ui | init_command | 32x8          | LUT            | 
 |oled_ssd1306_ui | text_char    | 32x7          | LUT            | 
-|oled_ssd1306_ui | text_char    | 32x7          | LUT            | 
 |oled_ssd1306_ui | init_command | 32x8          | LUT            | 
+|oled_ssd1306_ui | text_char    | 32x7          | LUT            | 
 +----------------+--------------+---------------+----------------+
 
 
@@ -1194,7 +1193,7 @@ Report RTL Partitions:
 +------+----------------------+------------+----------+
 |      |RTL Partition         |Replication |Instances |
 +------+----------------------+------------+----------+
-|1     |pid_swing_top__GB0    |           1|     11610|
+|1     |pid_swing_top__GB0    |           1|     11636|
 |2     |pid_swing_top__GB1    |           1|      3035|
 |3     |pid_swing_top__GB3    |           1|      2265|
 |4     |pid_swing_hw_top__GC0 |           1|        53|
@@ -1203,20 +1202,20 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:38 ; elapsed = 00:00:40 . Memory (MB): peak = 990.875 ; gain = 657.168
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:11 ; elapsed = 00:01:15 . Memory (MB): peak = 1006.723 ; gain = 673.539
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:00 ; elapsed = 00:01:03 . Memory (MB): peak = 1340.789 ; gain = 1007.082
+Finished Timing Optimization : Time (s): cpu = 00:01:51 ; elapsed = 00:01:55 . Memory (MB): peak = 1341.336 ; gain = 1008.152
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
 +------+----------------------+------------+----------+
 |      |RTL Partition         |Replication |Instances |
 +------+----------------------+------------+----------+
-|1     |pid_swing_top__GB0    |           1|     11610|
+|1     |pid_swing_top__GB0    |           1|     11554|
 |2     |pid_swing_top__GB1    |           1|      3035|
 |3     |pid_swing_top__GB3    |           1|      2265|
 |4     |pid_swing_hw_top__GC0 |           1|        53|
@@ -1225,7 +1224,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:05 ; elapsed = 00:01:08 . Memory (MB): peak = 1340.789 ; gain = 1007.082
+Finished Technology Mapping : Time (s): cpu = 00:02:01 ; elapsed = 00:02:06 . Memory (MB): peak = 1341.336 ; gain = 1008.152
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1264,7 +1263,7 @@ INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[15] is being
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:06 ; elapsed = 00:01:08 . Memory (MB): peak = 1340.789 ; gain = 1007.082
+Finished IO Insertion : Time (s): cpu = 00:02:03 ; elapsed = 00:02:07 . Memory (MB): peak = 1341.336 ; gain = 1008.152
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -1277,7 +1276,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:06 ; elapsed = 00:01:08 . Memory (MB): peak = 1340.789 ; gain = 1007.082
+Finished Renaming Generated Instances : Time (s): cpu = 00:02:03 ; elapsed = 00:02:08 . Memory (MB): peak = 1341.336 ; gain = 1008.152
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1289,25 +1288,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:07 ; elapsed = 00:01:10 . Memory (MB): peak = 1340.789 ; gain = 1007.082
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:05 ; elapsed = 00:02:10 . Memory (MB): peak = 1341.336 ; gain = 1008.152
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:07 ; elapsed = 00:01:10 . Memory (MB): peak = 1340.789 ; gain = 1007.082
+Finished Renaming Generated Ports : Time (s): cpu = 00:02:05 ; elapsed = 00:02:10 . Memory (MB): peak = 1341.336 ; gain = 1008.152
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:07 ; elapsed = 00:01:10 . Memory (MB): peak = 1340.789 ; gain = 1007.082
+Finished Handling Custom Attributes : Time (s): cpu = 00:02:05 ; elapsed = 00:02:10 . Memory (MB): peak = 1341.336 ; gain = 1008.152
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:07 ; elapsed = 00:01:10 . Memory (MB): peak = 1340.789 ; gain = 1007.082
+Finished Renaming Generated Nets : Time (s): cpu = 00:02:05 ; elapsed = 00:02:10 . Memory (MB): peak = 1341.336 ; gain = 1008.152
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -1330,12 +1329,12 @@ Report Cell Usage:
 |5     |DSP48E1_2 |     8|
 |6     |DSP48E1_3 |     1|
 |7     |LUT1      |   416|
-|8     |LUT2      |  1489|
-|9     |LUT3      |   922|
-|10    |LUT4      |   887|
-|11    |LUT5      |   707|
-|12    |LUT6      |  1277|
-|13    |MUXF7     |     6|
+|8     |LUT2      |  1502|
+|9     |LUT3      |   903|
+|10    |LUT4      |   928|
+|11    |LUT5      |   702|
+|12    |LUT6      |  1323|
+|13    |MUXF7     |     9|
 |14    |FDRE      |  1139|
 |15    |FDSE      |    64|
 |16    |IBUF      |     9|
@@ -1347,11 +1346,11 @@ Report Instance Areas:
 +------+--------------------------+--------------------------+------+
 |      |Instance                  |Module                    |Cells |
 +------+--------------------------+--------------------------+------+
-|1     |top                       |                          |  7716|
-|2     |  u_control               |pid_swing_top             |  7330|
+|1     |top                       |                          |  7795|
+|2     |  u_control               |pid_swing_top             |  7409|
 |3     |    \g_ads.u_ads          |ads1115_reader            |   444|
 |4     |      u_i2c               |i2c_ads_master            |   143|
-|5     |    \g_oled_ui.u_oled_ui  |oled_ssd1306_ui           |  2653|
+|5     |    \g_oled_ui.u_oled_ui  |oled_ssd1306_ui           |  2732|
 |6     |      u_i2c               |i2c_txn_master            |   114|
 |7     |    u_angle_pid           |pid_fixed__parameterized0 |   636|
 |8     |    u_encoder             |quad_encoder              |   110|
@@ -1365,28 +1364,28 @@ Report Instance Areas:
 |16    |    u_ui                  |pendulum_ui               |   776|
 +------+--------------------------+--------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:07 ; elapsed = 00:01:10 . Memory (MB): peak = 1340.789 ; gain = 1007.082
+Finished Writing Synthesis Report : Time (s): cpu = 00:02:05 ; elapsed = 00:02:10 . Memory (MB): peak = 1341.336 ; gain = 1008.152
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:59 ; elapsed = 00:01:04 . Memory (MB): peak = 1340.789 ; gain = 626.684
-Synthesis Optimization Complete : Time (s): cpu = 00:01:07 ; elapsed = 00:01:10 . Memory (MB): peak = 1340.789 ; gain = 1007.082
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:53 ; elapsed = 00:02:02 . Memory (MB): peak = 1341.336 ; gain = 629.227
+Synthesis Optimization Complete : Time (s): cpu = 00:02:06 ; elapsed = 00:02:11 . Memory (MB): peak = 1341.336 ; gain = 1008.152
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 801 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 804 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1340.789 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1341.336 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 4 instances were transformed.
   IOBUF => IOBUF (IBUF, OBUFT): 4 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-244 Infos, 110 Warnings, 0 Critical Warnings and 0 Errors encountered.
+243 Infos, 110 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:10 ; elapsed = 00:01:13 . Memory (MB): peak = 1340.789 ; gain = 1019.723
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1340.789 ; gain = 0.000
+synth_design: Time (s): cpu = 00:02:10 ; elapsed = 00:02:15 . Memory (MB): peak = 1341.336 ; gain = 1021.164
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1341.336 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'D:/FPGA/PID_swing/PID_swing.runs/synth_1/pid_swing_hw_top.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file pid_swing_hw_top_utilization_synth.rpt -pb pid_swing_hw_top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Wed Oct 28 19:40:16 2026...
+INFO: [Common 17-206] Exiting Vivado at Sat Oct 31 15:16:32 2026...

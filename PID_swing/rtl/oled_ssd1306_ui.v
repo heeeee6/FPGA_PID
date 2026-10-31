@@ -10,7 +10,10 @@ module oled_ssd1306_ui #(
     parameter integer CLK_HZ = 50000000,
     parameter integer I2C_HZ = 400000,
     parameter integer STARTUP_CYCLES = 2500000,
-    parameter integer REFRESH_CYCLES = 25000000
+    // A complete frame takes roughly 85 ms at 400 kHz.  Fifty milliseconds
+    // of additional delay gives about seven updates per second while leaving
+    // enough idle time between frames for the display controller.
+    parameter integer REFRESH_CYCLES = 2500000
 ) (
     input  wire                  clk,
     input  wire                  rst_n,
@@ -77,6 +80,11 @@ module oled_ssd1306_ui #(
     reg [4:0] n_char;
     reg [2:0] n_line;
     reg       wrap_refresh;
+    // Twenty full character cells plus two extra blank columns fill exactly
+    // 128 pixels, so every refresh also erases stale pixels at the right edge.
+    wire      row_last_glyph = (char_index == 5'd21) ?
+                               (glyph_index == 3'd1) :
+                               (glyph_index == 3'd5);
 
     i2c_txn_master #(.CLK_HZ(CLK_HZ), .I2C_HZ(I2C_HZ)) u_i2c (
         .clk(clk), .rst_n(rst_n), .start(i2c_start), .length(i2c_length),
@@ -284,9 +292,11 @@ module oled_ssd1306_ui #(
                     "8": case(column)0:glyph_column=8'h36;1:glyph_column=8'h49;2:glyph_column=8'h49;3:glyph_column=8'h49;default:glyph_column=8'h36;endcase
                     "9": case(column)0:glyph_column=8'h06;1:glyph_column=8'h49;2:glyph_column=8'h49;3:glyph_column=8'h29;default:glyph_column=8'h1E;endcase
                     "A": case(column)0:glyph_column=8'h7E;1:glyph_column=8'h11;2:glyph_column=8'h11;3:glyph_column=8'h11;default:glyph_column=8'h7E;endcase
+                    "B": case(column)0:glyph_column=8'h7F;1:glyph_column=8'h49;2:glyph_column=8'h49;3:glyph_column=8'h49;default:glyph_column=8'h36;endcase
                     "C": case(column)0:glyph_column=8'h3E;1:glyph_column=8'h41;2:glyph_column=8'h41;3:glyph_column=8'h41;default:glyph_column=8'h22;endcase
                     "D": case(column)0:glyph_column=8'h7F;1:glyph_column=8'h41;2:glyph_column=8'h41;3:glyph_column=8'h22;default:glyph_column=8'h1C;endcase
                     "E": case(column)0:glyph_column=8'h7F;1:glyph_column=8'h49;2:glyph_column=8'h49;3:glyph_column=8'h49;default:glyph_column=8'h41;endcase
+                    "F": case(column)0:glyph_column=8'h7F;1:glyph_column=8'h09;2:glyph_column=8'h09;3:glyph_column=8'h09;default:glyph_column=8'h01;endcase
                     "G": case(column)0:glyph_column=8'h3E;1:glyph_column=8'h41;2:glyph_column=8'h49;3:glyph_column=8'h49;default:glyph_column=8'h7A;endcase
                     "I": case(column)0:glyph_column=8'h00;1:glyph_column=8'h41;2:glyph_column=8'h7F;3:glyph_column=8'h41;default:glyph_column=8'h00;endcase
                     "K": case(column)0:glyph_column=8'h7F;1:glyph_column=8'h08;2:glyph_column=8'h14;3:glyph_column=8'h22;default:glyph_column=8'h41;endcase
@@ -312,9 +322,9 @@ module oled_ssd1306_ui #(
     // ahead so the long decimal-formatter path does not sit directly in the
     // 50 MHz data-launch path.
     always @* begin
-        if (glyph_index == 3'd5) begin
+        if (row_last_glyph) begin
             n_glyph = 3'd0;
-            if (char_index == 5'd19) begin
+            if (char_index == 5'd21) begin
                 n_char = 5'd0;
                 if (line_index == 3'd7) begin
                     n_line = 3'd0;
@@ -383,6 +393,10 @@ module oled_ssd1306_ui #(
                     else begin init_index <= init_index + 1'b1; state <= ST_INIT_START; end
                 end
                 ST_REFRESH_WAIT: begin
+                    // Consume the frame-complete pulse before capturing the
+                    // next snapshot so it cannot force repeated refresh waits.
+                    next_is_refresh <= 1'b0;
+                    next_is_page    <= 1'b0;
                     if (wait_count >= SAFE_REFRESH-1) begin wait_count <= 0; state <= ST_CAPTURE; end
                     else wait_count <= wait_count + 1'b1;
                 end
@@ -394,6 +408,11 @@ module oled_ssd1306_ui #(
                     mode_s <= mode; page_s <= page; line_index <= 0; state <= ST_PAGE_START;
                 end
                 ST_PAGE_START: begin
+                    // This request is one-shot.  Leaving it asserted sends the
+                    // state machine back here after every glyph and prevents
+                    // pages 1..7 from receiving any pixel data.
+                    next_is_page    <= 1'b0;
+                    next_is_refresh <= 1'b0;
                     prepare_command(8'hB0 + line_index); i2c_start <= 1'b1;
                     if (i2c_busy) state <= ST_PAGE_WAIT;
                 end
@@ -407,8 +426,12 @@ module oled_ssd1306_ui #(
                     glyph_index <= n_glyph;
                     char_index <= n_char;
                     line_index <= n_line;
-                    next_is_refresh <= wrap_refresh;
-                    next_is_page <= (glyph_index == 3'd5 && char_index == 5'd19);
+                    next_is_refresh <= row_last_glyph &&
+                                       (char_index == 5'd21) &&
+                                       (line_index == 3'd7);
+                    next_is_page <= row_last_glyph &&
+                                    (char_index == 5'd21) &&
+                                    (line_index != 3'd7);
                     state <= ST_CHAR;
                 end
                 ST_CHAR: begin
