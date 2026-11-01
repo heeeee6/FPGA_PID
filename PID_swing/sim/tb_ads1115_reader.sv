@@ -32,7 +32,7 @@ module tb_ads1115_reader;
 
     wire [11:0] angle1, rp1, rp2, rp3, rp4;
     wire sample_valid, online;
-    ads1115_reader #(.CLK_HZ(10_000_000), .I2C_HZ(200_000), .PERIOD_US(1000),
+    ads1115_reader #(.CLK_HZ(10_000_000), .I2C_HZ(400_000), .PERIOD_US(1000),
                      .STARTUP_MS(1), .RETRY_MS(2)) dut (
         .clk(clk), .rst_n(rst_n), .angle1(angle1), .rp1(rp1), .rp2(rp2),
         .rp3(rp3), .rp4(rp4), .sample_valid(sample_valid), .online(online),
@@ -61,7 +61,8 @@ module tb_ads1115_reader;
         rst_n = 1'b1;
 
         wait (online === 1'b1);
-        repeat (2000) @(posedge clk);
+        wait (sample_valid === 1'b1);
+        repeat (10) @(posedge clk);
         // Expected 12-bit code = raw * 4095 / 26400.
         check_near("angle", angle1, 2047);
         check_near("rp1", rp1, 1023);
@@ -75,24 +76,38 @@ module tb_ads1115_reader;
             $display("FAIL reads a=%0d b=%0d", reads_a, reads_b); errors = errors + 1;
         end
 
+        // Angle data must advance on every 1 ms scheduling tick, independently
+        // of the four-channel potentiometer scan.
+        begin : angle_rate_check
+            integer reads_before;
+            reads_before = reads_a;
+            repeat (200000) @(posedge clk); // 20 ms at 10 MHz
+            if ((reads_a - reads_before) < 18) begin
+                $display("FAIL angle reads advanced only %0d in 20 ms",
+                         reads_a - reads_before);
+                errors = errors + 1;
+            end
+        end
+
         // Values must track input changes; out-of-range inputs clamp.
         angle_raw = 16'd7000;          // 1085.8
         rp4_raw   = 16'd30000;         // above full scale -> clamp
         rp1_raw   = 16'h8000;          // negative -> 0
-        repeat (60000) @(posedge clk);
+        repeat (100000) @(posedge clk);
         check_near("angle2", angle1, 1086);
         check_near("rp4 clamp", rp4, 4095);
         check_near("rp1 negative", rp1, 0);
 
         // A missing pot module must drop online; recovery must restore it.
         present_b = 1'b0;
-        repeat (40000) @(posedge clk);
+        repeat (400000) @(posedge clk); // cover one 20 ms pot scan period
         if (online !== 1'b0) begin
             $display("FAIL online stayed high with ADS#2 absent"); errors = errors + 1;
         end
         present_b = 1'b1;
         wait (online === 1'b1);
-        repeat (2000) @(posedge clk);
+        wait (sample_valid === 1'b1);
+        repeat (10) @(posedge clk);
         check_near("angle after recovery", angle1, 1086);
 
         if (errors == 0) $display("tb_ads1115_reader: PASS");

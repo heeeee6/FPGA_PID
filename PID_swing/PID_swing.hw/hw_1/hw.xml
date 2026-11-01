@@ -9,7 +9,7 @@
     <Object name="xc7z020_1" gui_info="">
       <Properties Property="FULL_PROBES.FILE" value=""/>
       <Properties Property="PROBES.FILE" value=""/>
-      <Properties Property="PROGRAM.HW_BITSTREAM" value="pid_swing_hw_top_page4_k1.bit"/>
+      <Properties Property="PROGRAM.HW_BITSTREAM" value="pid_swing_hw_top_upright_autocenter.bit"/>
       <Properties Property="SLR.COUNT" value="1"/>
     </Object>
   </ObjectList>

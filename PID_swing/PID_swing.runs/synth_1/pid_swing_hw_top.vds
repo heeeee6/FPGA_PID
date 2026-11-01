@@ -2,8 +2,8 @@
 # Vivado v2018.3 (64-bit)
 # SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 # IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
-# Start of session at: Sun Nov  1 20:04:12 2026
-# Process ID: 4708
+# Start of session at: Sun Nov  1 23:34:48 2026
+# Process ID: 12020
 # Current directory: D:/FPGA/FPGA_PID/PID_swing/PID_swing.runs/synth_1
 # Command line: vivado.exe -log pid_swing_hw_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source pid_swing_hw_top.tcl
 # Log file: D:/FPGA/FPGA_PID/PID_swing/PID_swing.runs/synth_1/pid_swing_hw_top.vds
@@ -15,13 +15,13 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 12760 
-WARNING: [Synth 8-2292] literal value truncated to fit in 4 bits [D:/FPGA/FPGA_PID/PID_swing/rtl/swing_balance_ctrl.v:51]
-WARNING: [Synth 8-2292] literal value truncated to fit in 4 bits [D:/FPGA/FPGA_PID/PID_swing/rtl/swing_balance_ctrl.v:52]
-WARNING: [Synth 8-2292] literal value truncated to fit in 4 bits [D:/FPGA/FPGA_PID/PID_swing/rtl/swing_balance_ctrl.v:53]
-WARNING: [Synth 8-2292] literal value truncated to fit in 4 bits [D:/FPGA/FPGA_PID/PID_swing/rtl/swing_balance_ctrl.v:54]
+INFO: Helper process launched with PID 29712 
+WARNING: [Synth 8-2292] literal value truncated to fit in 4 bits [D:/FPGA/FPGA_PID/PID_swing/rtl/swing_balance_ctrl.v:56]
+WARNING: [Synth 8-2292] literal value truncated to fit in 4 bits [D:/FPGA/FPGA_PID/PID_swing/rtl/swing_balance_ctrl.v:57]
+WARNING: [Synth 8-2292] literal value truncated to fit in 4 bits [D:/FPGA/FPGA_PID/PID_swing/rtl/swing_balance_ctrl.v:58]
+WARNING: [Synth 8-2292] literal value truncated to fit in 4 bits [D:/FPGA/FPGA_PID/PID_swing/rtl/swing_balance_ctrl.v:59]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:02 . Memory (MB): peak = 444.457 ; gain = 111.082
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 444.930 ; gain = 111.527
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'pid_swing_hw_top' [D:/FPGA/FPGA_PID/PID_swing/rtl/pid_swing_hw_top.v:12]
 	Parameter ADC_SPAN_COUNTS bound to: 4095 - type: integer 
@@ -62,34 +62,42 @@ INFO: [Synth 8-6157] synthesizing module 'pid_swing_top' [D:/FPGA/FPGA_PID/PID_s
 	Parameter USE_ADS1115 bound to: 1 - type: integer 
 	Parameter CONTROL_DIV bound to: 50000 - type: integer 
 	Parameter OLED_STARTUP_DELAY bound to: 5000000 - type: integer 
-INFO: [Synth 8-6157] synthesizing module 'ads1115_reader' [D:/FPGA/FPGA_PID/PID_swing/rtl/ads1115_reader.v:19]
+INFO: [Synth 8-6157] synthesizing module 'ads1115_reader' [D:/FPGA/FPGA_PID/PID_swing/rtl/ads1115_reader.v:13]
 	Parameter CLK_HZ bound to: 50000000 - type: integer 
-	Parameter I2C_HZ bound to: 200000 - type: integer 
+	Parameter I2C_HZ bound to: 400000 - type: integer 
 	Parameter PERIOD_US bound to: 1000 - type: integer 
 	Parameter STARTUP_MS bound to: 20 - type: integer 
 	Parameter RETRY_MS bound to: 20 - type: integer 
+	Parameter POT_PERIOD_MS bound to: 20 - type: integer 
 	Parameter FS_COUNTS bound to: 26400 - type: integer 
 	Parameter ADDR_ANGLE bound to: 7'b1001000 
 	Parameter ADDR_POT bound to: 7'b1001001 
 	Parameter PERIOD_CYCLES bound to: 50000 - type: integer 
 	Parameter STARTUP_TICKS bound to: 20 - type: integer 
 	Parameter RETRY_TICKS bound to: 20 - type: integer 
+	Parameter POT_PERIOD_TICKS bound to: 20 - type: integer 
+	Parameter POT_WAIT_TICKS bound to: 2 - type: integer 
 	Parameter RECIP_Q16 bound to: 10166 - type: integer 
-	Parameter S_WAIT bound to: 3'b000 
-	Parameter S_LAUNCH bound to: 3'b001 
-	Parameter S_BUSY bound to: 3'b010 
-	Parameter S_PERIOD bound to: 3'b011 
-	Parameter A_CFG bound to: 3'b000 
-	Parameter A_PTR bound to: 3'b001 
-	Parameter A_READ bound to: 3'b010 
-	Parameter B_CFG bound to: 3'b011 
-	Parameter B_PTR bound to: 3'b100 
-	Parameter B_READ bound to: 3'b101 
+	Parameter S_WAIT bound to: 2'b00 
+	Parameter S_LAUNCH bound to: 2'b01 
+	Parameter S_BUSY bound to: 2'b10 
+	Parameter S_POT_SERVICE bound to: 2'b11 
+	Parameter J_ANGLE_CONFIG bound to: 3'b000 
+	Parameter J_ANGLE_PTR bound to: 3'b001 
+	Parameter J_ANGLE_READ bound to: 3'b010 
+	Parameter J_POT_CONFIG bound to: 3'b011 
+	Parameter J_POT_PTR bound to: 3'b100 
+	Parameter J_POT_READ bound to: 3'b101 
+	Parameter P_NONE bound to: 3'b000 
+	Parameter P_WAIT bound to: 3'b001 
+	Parameter P_CONFIG bound to: 3'b010 
+	Parameter P_PTR bound to: 3'b011 
+	Parameter P_READ bound to: 3'b100 
 INFO: [Synth 8-6157] synthesizing module 'i2c_ads_master' [D:/FPGA/FPGA_PID/PID_swing/rtl/i2c_ads_master.v:11]
 	Parameter CLK_HZ bound to: 50000000 - type: integer 
-	Parameter I2C_HZ bound to: 200000 - type: integer 
-	Parameter QDIV_RAW bound to: 62 - type: integer 
-	Parameter QDIV bound to: 62 - type: integer 
+	Parameter I2C_HZ bound to: 400000 - type: integer 
+	Parameter QDIV_RAW bound to: 31 - type: integer 
+	Parameter QDIV bound to: 31 - type: integer 
 	Parameter ST_IDLE bound to: 3'b000 
 	Parameter ST_START bound to: 3'b001 
 	Parameter ST_TX bound to: 3'b010 
@@ -102,7 +110,8 @@ INFO: [Synth 8-226] default block is never used [D:/FPGA/FPGA_PID/PID_swing/rtl/
 INFO: [Synth 8-226] default block is never used [D:/FPGA/FPGA_PID/PID_swing/rtl/i2c_ads_master.v:153]
 INFO: [Synth 8-226] default block is never used [D:/FPGA/FPGA_PID/PID_swing/rtl/i2c_ads_master.v:183]
 INFO: [Synth 8-6155] done synthesizing module 'i2c_ads_master' (2#1) [D:/FPGA/FPGA_PID/PID_swing/rtl/i2c_ads_master.v:11]
-INFO: [Synth 8-6155] done synthesizing module 'ads1115_reader' (3#1) [D:/FPGA/FPGA_PID/PID_swing/rtl/ads1115_reader.v:19]
+INFO: [Synth 8-226] default block is never used [D:/FPGA/FPGA_PID/PID_swing/rtl/ads1115_reader.v:154]
+INFO: [Synth 8-6155] done synthesizing module 'ads1115_reader' (3#1) [D:/FPGA/FPGA_PID/PID_swing/rtl/ads1115_reader.v:13]
 INFO: [Synth 8-6157] synthesizing module 'oled_ssd1306_ui' [D:/FPGA/FPGA_PID/PID_swing/rtl/oled_ssd1306_ui.v:9]
 	Parameter CLK_HZ bound to: 50000000 - type: integer 
 	Parameter I2C_HZ bound to: 400000 - type: integer 
@@ -142,21 +151,21 @@ INFO: [Synth 8-6157] synthesizing module 'i2c_txn_master' [D:/FPGA/FPGA_PID/PID_
 	Parameter ST_NEXT_BYTE bound to: 4'b1010 
 	Parameter ST_STOP_SCL_HIGH bound to: 4'b1011 
 INFO: [Synth 8-6155] done synthesizing module 'i2c_txn_master' (4#1) [D:/FPGA/FPGA_PID/PID_swing/rtl/i2c_txn_master.v:4]
-WARNING: [Synth 8-6014] Unused sequential element angle_adc_s_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/oled_ssd1306_ui.v:540]
-WARNING: [Synth 8-6014] Unused sequential element angle_error_s_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/oled_ssd1306_ui.v:540]
-WARNING: [Synth 8-6014] Unused sequential element encoder_position_s_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/oled_ssd1306_ui.v:540]
-WARNING: [Synth 8-6014] Unused sequential element encoder_velocity_s_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/oled_ssd1306_ui.v:541]
-WARNING: [Synth 8-6014] Unused sequential element angle_kp_s_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/oled_ssd1306_ui.v:541]
-WARNING: [Synth 8-6014] Unused sequential element angle_ki_s_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/oled_ssd1306_ui.v:541]
-WARNING: [Synth 8-6014] Unused sequential element angle_kd_s_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/oled_ssd1306_ui.v:551]
-WARNING: [Synth 8-6014] Unused sequential element location_kp_s_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/oled_ssd1306_ui.v:551]
-WARNING: [Synth 8-6014] Unused sequential element location_ki_s_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/oled_ssd1306_ui.v:551]
-WARNING: [Synth 8-6014] Unused sequential element location_kd_s_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/oled_ssd1306_ui.v:558]
-WARNING: [Synth 8-6014] Unused sequential element location_target_s_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/oled_ssd1306_ui.v:558]
-WARNING: [Synth 8-6014] Unused sequential element center_angle_s_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/oled_ssd1306_ui.v:560]
-WARNING: [Synth 8-6014] Unused sequential element start_pwm_s_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/oled_ssd1306_ui.v:560]
-WARNING: [Synth 8-6014] Unused sequential element start_time_ms_s_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/oled_ssd1306_ui.v:560]
-WARNING: [Synth 8-6014] Unused sequential element pwm_offset_s_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/oled_ssd1306_ui.v:561]
+WARNING: [Synth 8-6014] Unused sequential element angle_adc_s_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/oled_ssd1306_ui.v:541]
+WARNING: [Synth 8-6014] Unused sequential element angle_error_s_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/oled_ssd1306_ui.v:541]
+WARNING: [Synth 8-6014] Unused sequential element encoder_position_s_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/oled_ssd1306_ui.v:541]
+WARNING: [Synth 8-6014] Unused sequential element encoder_velocity_s_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/oled_ssd1306_ui.v:542]
+WARNING: [Synth 8-6014] Unused sequential element angle_kp_s_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/oled_ssd1306_ui.v:542]
+WARNING: [Synth 8-6014] Unused sequential element angle_ki_s_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/oled_ssd1306_ui.v:542]
+WARNING: [Synth 8-6014] Unused sequential element angle_kd_s_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/oled_ssd1306_ui.v:552]
+WARNING: [Synth 8-6014] Unused sequential element location_kp_s_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/oled_ssd1306_ui.v:552]
+WARNING: [Synth 8-6014] Unused sequential element location_ki_s_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/oled_ssd1306_ui.v:552]
+WARNING: [Synth 8-6014] Unused sequential element location_kd_s_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/oled_ssd1306_ui.v:559]
+WARNING: [Synth 8-6014] Unused sequential element location_target_s_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/oled_ssd1306_ui.v:559]
+WARNING: [Synth 8-6014] Unused sequential element center_angle_s_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/oled_ssd1306_ui.v:561]
+WARNING: [Synth 8-6014] Unused sequential element start_pwm_s_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/oled_ssd1306_ui.v:561]
+WARNING: [Synth 8-6014] Unused sequential element start_time_ms_s_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/oled_ssd1306_ui.v:561]
+WARNING: [Synth 8-6014] Unused sequential element pwm_offset_s_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/oled_ssd1306_ui.v:562]
 INFO: [Synth 8-6155] done synthesizing module 'oled_ssd1306_ui' (5#1) [D:/FPGA/FPGA_PID/PID_swing/rtl/oled_ssd1306_ui.v:9]
 INFO: [Synth 8-6157] synthesizing module 'adc_filter_12' [D:/FPGA/FPGA_PID/PID_swing/rtl/adc_filter_gain.v:6]
 	Parameter FILTER_SHIFT bound to: 3 - type: integer 
@@ -195,15 +204,15 @@ INFO: [Synth 8-6157] synthesizing module 'key_events' [D:/FPGA/FPGA_PID/PID_swin
 INFO: [Synth 8-6155] done synthesizing module 'key_events' (10#1) [D:/FPGA/FPGA_PID/PID_swing/rtl/key_events.v:10]
 INFO: [Synth 8-6157] synthesizing module 'pendulum_ui' [D:/FPGA/FPGA_PID/PID_swing/rtl/pendulum_ui.v:12]
 	Parameter ADC_SPAN_COUNTS bound to: 4095 - type: integer 
-	Parameter DEFAULT_ANGLE_KP_Q8 bound to: 82 - type: integer 
-	Parameter DEFAULT_ANGLE_KI_Q8 bound to: 3 - type: integer 
-	Parameter DEFAULT_ANGLE_KD_Q8 bound to: 108 - type: integer 
-	Parameter DEFAULT_LOCATION_KP_Q8 bound to: 102 - type: integer 
+	Parameter DEFAULT_ANGLE_KP_Q8 bound to: 64 - type: integer 
+	Parameter DEFAULT_ANGLE_KI_Q8 bound to: 0 - type: integer 
+	Parameter DEFAULT_ANGLE_KD_Q8 bound to: 0 - type: integer 
+	Parameter DEFAULT_LOCATION_KP_Q8 bound to: 0 - type: integer 
 	Parameter DEFAULT_LOCATION_KI_Q8 bound to: 0 - type: integer 
-	Parameter DEFAULT_LOCATION_KD_Q8 bound to: 1024 - type: integer 
-	Parameter DEFAULT_CENTER_ANGLE bound to: 2094 - type: integer 
+	Parameter DEFAULT_LOCATION_KD_Q8 bound to: 0 - type: integer 
+	Parameter DEFAULT_CENTER_ANGLE bound to: 2067 - type: integer 
 	Parameter DEFAULT_START_PWM bound to: 45 - type: integer 
-	Parameter DEFAULT_START_TIME_MS bound to: 186 - type: integer 
+	Parameter DEFAULT_START_TIME_MS bound to: 100 - type: integer 
 	Parameter DEFAULT_PWM_OFFSET bound to: 0 - type: integer 
 	Parameter USE_RP4_TARGET bound to: 0 - type: integer 
 	Parameter PAGE_RUN bound to: 2'b00 
@@ -225,23 +234,26 @@ INFO: [Synth 8-6155] done synthesizing module 'pendulum_ui' (11#1) [D:/FPGA/FPGA
 INFO: [Synth 8-6157] synthesizing module 'quad_encoder' [D:/FPGA/FPGA_PID/PID_swing/rtl/quad_encoder.v:6]
 	Parameter SAMPLE_WIDTH bound to: 32 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'quad_encoder' (12#1) [D:/FPGA/FPGA_PID/PID_swing/rtl/quad_encoder.v:6]
-INFO: [Synth 8-6157] synthesizing module 'pid_fixed' [D:/FPGA/FPGA_PID/PID_swing/rtl/pid_fixed.v:7]
+INFO: [Synth 8-6157] synthesizing module 'pid_fixed' [D:/FPGA/FPGA_PID/PID_swing/rtl/pid_fixed.v:9]
 	Parameter OUT_LIMIT bound to: 100 - type: integer 
 	Parameter INTEGRAL_LIMIT bound to: 20000 - type: integer 
 	Parameter INTEGRAL_THRESHOLD bound to: 100 - type: integer 
 	Parameter PIPELINE_ERROR bound to: 1 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'pid_fixed' (13#1) [D:/FPGA/FPGA_PID/PID_swing/rtl/pid_fixed.v:7]
-INFO: [Synth 8-6157] synthesizing module 'pid_fixed__parameterized0' [D:/FPGA/FPGA_PID/PID_swing/rtl/pid_fixed.v:7]
-	Parameter OUT_LIMIT bound to: 100 - type: integer 
+WARNING: [Synth 8-3936] Found unconnected internal register 'out_mag_reg' and it is trimmed from '64' to '16' bits. [D:/FPGA/FPGA_PID/PID_swing/rtl/pid_fixed.v:58]
+INFO: [Synth 8-6155] done synthesizing module 'pid_fixed' (13#1) [D:/FPGA/FPGA_PID/PID_swing/rtl/pid_fixed.v:9]
+INFO: [Synth 8-6157] synthesizing module 'pid_fixed__parameterized0' [D:/FPGA/FPGA_PID/PID_swing/rtl/pid_fixed.v:9]
+	Parameter OUT_LIMIT bound to: 35 - type: integer 
 	Parameter INTEGRAL_LIMIT bound to: 20000 - type: integer 
 	Parameter INTEGRAL_THRESHOLD bound to: 0 - type: integer 
 	Parameter PIPELINE_ERROR bound to: 1 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'pid_fixed__parameterized0' (13#1) [D:/FPGA/FPGA_PID/PID_swing/rtl/pid_fixed.v:7]
+WARNING: [Synth 8-3936] Found unconnected internal register 'out_mag_reg' and it is trimmed from '64' to '16' bits. [D:/FPGA/FPGA_PID/PID_swing/rtl/pid_fixed.v:58]
+INFO: [Synth 8-6155] done synthesizing module 'pid_fixed__parameterized0' (13#1) [D:/FPGA/FPGA_PID/PID_swing/rtl/pid_fixed.v:9]
 INFO: [Synth 8-6157] synthesizing module 'swing_balance_ctrl' [D:/FPGA/FPGA_PID/PID_swing/rtl/swing_balance_ctrl.v:14]
 	Parameter START_PWM bound to: 20 - type: integer 
 	Parameter START_TIME_MS bound to: 90 - type: integer 
 	Parameter STARTUP_HOLD_MS bound to: 3000 - type: integer 
 	Parameter COMMAND_SLEW_STEP bound to: 1 - type: integer 
+	Parameter DIRECT_BALANCE_COMMAND bound to: 1 - type: integer 
 	Parameter ANGLE_A bound to: 1700 - type: integer 
 	Parameter ANGLE_B bound to: 2300 - type: integer 
 	Parameter FALL_LOW bound to: 1000 - type: integer 
@@ -251,6 +263,7 @@ INFO: [Synth 8-6157] synthesizing module 'swing_balance_ctrl' [D:/FPGA/FPGA_PID/
 	Parameter RUNTIME_PARAMS bound to: 1 - type: integer 
 	Parameter S_IDLE bound to: 4'b0000 
 	Parameter S_JUDGE bound to: 4'b0001 
+	Parameter S_START_CHECK bound to: 4'b0011 
 	Parameter S_L1 bound to: 4'b1011 
 	Parameter S_L2 bound to: 4'b1100 
 	Parameter S_L3 bound to: 4'b1101 
@@ -271,9 +284,9 @@ INFO: [Synth 8-6157] synthesizing module 'tb6612_pwm' [D:/FPGA/FPGA_PID/PID_swin
 	Parameter PWM_PERIOD bound to: 2500 - type: integer 
 	Parameter PWM_COUNTS_PER_PERCENT bound to: 25 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'tb6612_pwm' (15#1) [D:/FPGA/FPGA_PID/PID_swing/rtl/tb6612_pwm.v:5]
-WARNING: [Synth 8-6014] Unused sequential element kp_x100_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/pid_swing_top.v:497]
-WARNING: [Synth 8-6014] Unused sequential element ki_x100_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/pid_swing_top.v:498]
-WARNING: [Synth 8-6014] Unused sequential element kd_x100_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/pid_swing_top.v:499]
+WARNING: [Synth 8-6014] Unused sequential element kp_x100_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/pid_swing_top.v:500]
+WARNING: [Synth 8-6014] Unused sequential element ki_x100_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/pid_swing_top.v:501]
+WARNING: [Synth 8-6014] Unused sequential element kd_x100_reg was removed.  [D:/FPGA/FPGA_PID/PID_swing/rtl/pid_swing_top.v:502]
 INFO: [Synth 8-6155] done synthesizing module 'pid_swing_top' (16#1) [D:/FPGA/FPGA_PID/PID_swing/rtl/pid_swing_top.v:9]
 INFO: [Synth 8-6155] done synthesizing module 'pid_swing_hw_top' (17#1) [D:/FPGA/FPGA_PID/PID_swing/rtl/pid_swing_hw_top.v:12]
 WARNING: [Synth 8-3331] design swing_balance_ctrl has unconnected port angle2_adc_raw[11]
@@ -378,7 +391,7 @@ WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle2_adc_raw
 WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle2_adc_raw[1]
 INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 519.688 ; gain = 186.312
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 522.105 ; gain = 188.703
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -391,10 +404,10 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 519.688 ; gain = 186.312
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 522.105 ; gain = 188.703
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 519.688 ; gain = 186.312
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 522.105 ; gain = 188.703
 ---------------------------------------------------------------------------------
 INFO: [Netlist 29-17] Analyzing 4 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
@@ -407,31 +420,31 @@ Parsing XDC File [D:/FPGA/FPGA_PID/PID_swing/constr/SmartZynq_V1_3B.xdc]
 Finished Parsing XDC File [D:/FPGA/FPGA_PID/PID_swing/constr/SmartZynq_V1_3B.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/FPGA/FPGA_PID/PID_swing/constr/SmartZynq_V1_3B.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/pid_swing_hw_top_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/pid_swing_hw_top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 898.930 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 902.129 ; gain = 0.000
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 899.094 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 902.223 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 4 instances were transformed.
   IOBUF => IOBUF (IBUF, OBUFT): 4 instances
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 899.094 ; gain = 0.000
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 899.094 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 902.223 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 902.223 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 899.094 ; gain = 565.719
+Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 902.223 ; gain = 568.820
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg484-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 899.094 ; gain = 565.719
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 902.223 ; gain = 568.820
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 899.094 ; gain = 565.719
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 902.223 ; gain = 568.820
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'i2c_ads_master'
 INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
@@ -440,13 +453,13 @@ INFO: [Synth 8-5544] ROM "done" won't be mapped to Block RAM because address siz
 INFO: [Synth 8-5544] ROM "q" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "m_start" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "sample_valid" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
-INFO: [Synth 8-5546] ROM "state" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "wait_ticks" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "pot_action" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "pot_scan_request" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "sda_low" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-4471] merging register 'pos_d1_s_reg[7:0]' into 'pos_d0_s_reg[7:0]' [D:/FPGA/FPGA_PID/PID_swing/rtl/oled_ssd1306_ui.v:349]
+INFO: [Synth 8-4471] merging register 'pos_d1_s_reg[7:0]' into 'pos_d0_s_reg[7:0]' [D:/FPGA/FPGA_PID/PID_swing/rtl/oled_ssd1306_ui.v:350]
 INFO: [Synth 8-5546] ROM "state" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "wait_count" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "init_index" won't be mapped to RAM because it is too sparse
@@ -466,8 +479,9 @@ INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To p
 INFO: [Synth 8-5544] ROM "menu_index" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
 INFO: [Synth 8-802] inferred FSM for state register 'page_reg' in module 'pendulum_ui'
 INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [D:/FPGA/FPGA_PID/PID_swing/rtl/quad_encoder.v:27]
-INFO: [Synth 8-4471] merging register 'error_value_reg[31:0]' into 'error_prev_reg[31:0]' [D:/FPGA/FPGA_PID/PID_swing/rtl/pid_fixed.v:61]
-INFO: [Synth 8-4471] merging register 'error_value_reg[31:0]' into 'error_prev_reg[31:0]' [D:/FPGA/FPGA_PID/PID_swing/rtl/pid_fixed.v:61]
+INFO: [Synth 8-4471] merging register 'error_value_reg[31:0]' into 'error_prev_reg[31:0]' [D:/FPGA/FPGA_PID/PID_swing/rtl/pid_fixed.v:65]
+INFO: [Synth 8-4471] merging register 'error_value_reg[31:0]' into 'error_prev_reg[31:0]' [D:/FPGA/FPGA_PID/PID_swing/rtl/pid_fixed.v:65]
+INFO: [Synth 8-5546] ROM "integral_value" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "integral_value" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "state" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "phase_count" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
@@ -497,7 +511,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'page_reg' using encoding 'one-hot' in module 'pendulum_ui'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 899.094 ; gain = 565.719
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 902.223 ; gain = 568.820
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-223] decloning instance 'u_control/u_kp_map' (gain_from_adc) to 'u_control/u_kp_display'
 INFO: [Synth 8-223] decloning instance 'u_control/u_kd_map' (gain_from_adc) to 'u_control/u_kd_display'
@@ -507,11 +521,12 @@ Report RTL Partitions:
 +------+----------------------+------------+----------+
 |      |RTL Partition         |Replication |Instances |
 +------+----------------------+------------+----------+
-|1     |pid_swing_top__GB0    |           1|     33817|
-|2     |pid_swing_top__GB1    |           1|     11470|
-|3     |pid_swing_top__GB2    |           1|      8224|
-|4     |pid_swing_top__GB3    |           1|     10355|
-|5     |pid_swing_hw_top__GC0 |           1|       121|
+|1     |pid_swing_top__GB0    |           1|     28028|
+|2     |pid_swing_top__GB1    |           1|      9406|
+|3     |pid_swing_top__GB2    |           1|      9543|
+|4     |pid_swing_top__GB3    |           1|      8224|
+|5     |pid_swing_top__GB4    |           1|     10917|
+|6     |pid_swing_hw_top__GC0 |           1|       121|
 +------+----------------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -519,11 +534,12 @@ Start RTL Component Statistics
 Detailed RTL Component Info : 
 +---Adders : 
 	   3 Input     64 Bit       Adders := 2     
+	   2 Input     64 Bit       Adders := 2     
 	   3 Input     33 Bit       Adders := 4     
-	   2 Input     32 Bit       Adders := 20    
+	   2 Input     32 Bit       Adders := 21    
 	   3 Input     32 Bit       Adders := 18    
 	   3 Input     17 Bit       Adders := 8     
-	   2 Input     16 Bit       Adders := 15    
+	   2 Input     16 Bit       Adders := 18    
 	   2 Input     14 Bit       Adders := 2     
 	   2 Input     13 Bit       Adders := 3     
 	   3 Input     13 Bit       Adders := 1     
@@ -531,83 +547,82 @@ Detailed RTL Component Info :
 	   2 Input     10 Bit       Adders := 4     
 	   2 Input      8 Bit       Adders := 5     
 	   2 Input      7 Bit       Adders := 1     
-	   2 Input      6 Bit       Adders := 4     
-	   2 Input      5 Bit       Adders := 6     
+	   2 Input      6 Bit       Adders := 3     
+	   2 Input      5 Bit       Adders := 7     
 	   2 Input      4 Bit       Adders := 1     
 	   2 Input      3 Bit       Adders := 7     
 	   2 Input      2 Bit       Adders := 3     
 +---Registers : 
-	               32 Bit    Registers := 13    
-	               16 Bit    Registers := 21    
+	               32 Bit    Registers := 14    
+	               16 Bit    Registers := 22    
 	               12 Bit    Registers := 9     
 	               10 Bit    Registers := 4     
 	                8 Bit    Registers := 23    
-	                6 Bit    Registers := 56    
-	                5 Bit    Registers := 7     
+	                6 Bit    Registers := 55    
+	                5 Bit    Registers := 8     
 	                4 Bit    Registers := 9     
 	                3 Bit    Registers := 12    
 	                2 Bit    Registers := 8     
-	                1 Bit    Registers := 61    
+	                1 Bit    Registers := 65    
 +---Multipliers : 
 	                16x33  Multipliers := 2     
 	                16x32  Multipliers := 4     
 	                 6x32  Multipliers := 1     
 	                13x32  Multipliers := 2     
 +---Muxes : 
-	   3 Input     32 Bit        Muxes := 2     
+	   2 Input     64 Bit        Muxes := 2     
 	   2 Input     32 Bit        Muxes := 56    
 	  16 Input     32 Bit        Muxes := 1     
-	  12 Input     32 Bit        Muxes := 1     
-	   2 Input     16 Bit        Muxes := 39    
-	   4 Input     16 Bit        Muxes := 3     
-	  12 Input     16 Bit        Muxes := 1     
+	   3 Input     32 Bit        Muxes := 2     
+	  13 Input     32 Bit        Muxes := 1     
+	   4 Input     32 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 37    
+	   4 Input     16 Bit        Muxes := 6     
+	  13 Input     16 Bit        Muxes := 1     
 	   6 Input     16 Bit        Muxes := 1     
 	   2 Input     15 Bit        Muxes := 1     
 	   2 Input     12 Bit        Muxes := 22    
 	   4 Input     12 Bit        Muxes := 2     
 	   4 Input      8 Bit        Muxes := 6     
-	   2 Input      8 Bit        Muxes := 20    
+	   2 Input      8 Bit        Muxes := 16    
 	  16 Input      8 Bit        Muxes := 3     
 	  17 Input      8 Bit        Muxes := 2     
-	  11 Input      8 Bit        Muxes := 2     
-	   6 Input      8 Bit        Muxes := 2     
+	   8 Input      8 Bit        Muxes := 2     
+	   7 Input      8 Bit        Muxes := 1     
 	   4 Input      7 Bit        Muxes := 34    
-	   2 Input      7 Bit        Muxes := 56    
+	   2 Input      7 Bit        Muxes := 57    
 	  19 Input      7 Bit        Muxes := 1     
 	  16 Input      7 Bit        Muxes := 1     
 	   2 Input      6 Bit        Muxes := 9     
 	   4 Input      6 Bit        Muxes := 2     
 	   2 Input      5 Bit        Muxes := 3     
 	  16 Input      5 Bit        Muxes := 2     
-	   3 Input      4 Bit        Muxes := 2     
+	   3 Input      4 Bit        Muxes := 1     
 	  13 Input      4 Bit        Muxes := 1     
-	  14 Input      4 Bit        Muxes := 1     
-	   2 Input      4 Bit        Muxes := 19    
+	  14 Input      4 Bit        Muxes := 2     
+	   2 Input      4 Bit        Muxes := 20    
 	   4 Input      4 Bit        Muxes := 1     
-	   7 Input      4 Bit        Muxes := 1     
-	   2 Input      3 Bit        Muxes := 14    
-	  13 Input      3 Bit        Muxes := 1     
+	   6 Input      4 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 15    
+	  13 Input      3 Bit        Muxes := 2     
 	  16 Input      3 Bit        Muxes := 2     
-	  12 Input      3 Bit        Muxes := 1     
-	   7 Input      3 Bit        Muxes := 1     
-	   8 Input      3 Bit        Muxes := 1     
-	  11 Input      3 Bit        Muxes := 2     
-	   2 Input      2 Bit        Muxes := 4     
+	   7 Input      3 Bit        Muxes := 3     
+	   8 Input      3 Bit        Muxes := 2     
+	   4 Input      3 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 9     
 	   4 Input      2 Bit        Muxes := 2     
-	  12 Input      2 Bit        Muxes := 1     
-	  15 Input      2 Bit        Muxes := 1     
-	   9 Input      2 Bit        Muxes := 1     
-	  10 Input      2 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 235   
-	  13 Input      1 Bit        Muxes := 10    
-	   6 Input      1 Bit        Muxes := 5     
+	   3 Input      2 Bit        Muxes := 1     
+	  14 Input      2 Bit        Muxes := 1     
+	  11 Input      2 Bit        Muxes := 1     
+	  13 Input      1 Bit        Muxes := 19    
+	   2 Input      1 Bit        Muxes := 223   
+	   6 Input      1 Bit        Muxes := 1     
 	  16 Input      1 Bit        Muxes := 13    
-	   4 Input      1 Bit        Muxes := 46    
-	   3 Input      1 Bit        Muxes := 9     
-	  12 Input      1 Bit        Muxes := 7     
-	   7 Input      1 Bit        Muxes := 12    
-	   9 Input      1 Bit        Muxes := 4     
-	  11 Input      1 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 52    
+	   3 Input      1 Bit        Muxes := 10    
+	   7 Input      1 Bit        Muxes := 19    
+	   8 Input      1 Bit        Muxes := 2     
+	  10 Input      1 Bit        Muxes := 4     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -619,17 +634,6 @@ Module pid_swing_hw_top
 Detailed RTL Component Info : 
 +---Registers : 
 	                1 Bit    Registers := 1     
-Module quad_encoder 
-Detailed RTL Component Info : 
-+---Adders : 
-	   2 Input     32 Bit       Adders := 1     
-	   3 Input     32 Bit       Adders := 1     
-+---Registers : 
-	               32 Bit    Registers := 3     
-	                1 Bit    Registers := 6     
-+---Muxes : 
-	   3 Input     32 Bit        Muxes := 2     
-	   2 Input      1 Bit        Muxes := 1     
 Module i2c_txn_master 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -689,6 +693,27 @@ Detailed RTL Component Info :
 	   2 Input      2 Bit        Muxes := 1     
 	   2 Input      1 Bit        Muxes := 16    
 	  16 Input      1 Bit        Muxes := 13    
+Module pid_fixed 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     64 Bit       Adders := 1     
+	   2 Input     64 Bit       Adders := 1     
+	   3 Input     33 Bit       Adders := 1     
+	   3 Input     32 Bit       Adders := 1     
+	   2 Input     32 Bit       Adders := 1     
+	   2 Input     16 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 3     
+	               16 Bit    Registers := 1     
++---Multipliers : 
+	                16x33  Multipliers := 1     
+	                16x32  Multipliers := 2     
++---Muxes : 
+	   2 Input     64 Bit        Muxes := 1     
+	   2 Input     32 Bit        Muxes := 2     
+	   2 Input     16 Bit        Muxes := 2     
+	   4 Input     16 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 6     
 Module pendulum_ui 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -734,30 +759,26 @@ Detailed RTL Component Info :
 +---Muxes : 
 	   2 Input      4 Bit        Muxes := 14    
 	   2 Input      1 Bit        Muxes := 33    
-Module pid_fixed 
+Module quad_encoder 
 Detailed RTL Component Info : 
 +---Adders : 
-	   3 Input     64 Bit       Adders := 1     
-	   3 Input     33 Bit       Adders := 1     
-	   3 Input     32 Bit       Adders := 1     
 	   2 Input     32 Bit       Adders := 1     
+	   3 Input     32 Bit       Adders := 1     
 +---Registers : 
 	               32 Bit    Registers := 3     
-	               16 Bit    Registers := 1     
-+---Multipliers : 
-	                16x33  Multipliers := 1     
-	                16x32  Multipliers := 2     
+	                1 Bit    Registers := 6     
 +---Muxes : 
-	   2 Input     32 Bit        Muxes := 2     
-	   2 Input     16 Bit        Muxes := 4     
-	   2 Input      1 Bit        Muxes := 6     
+	   3 Input     32 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 1     
 Module pid_fixed__parameterized0 
 Detailed RTL Component Info : 
 +---Adders : 
 	   3 Input     64 Bit       Adders := 1     
+	   2 Input     64 Bit       Adders := 1     
 	   3 Input     33 Bit       Adders := 1     
 	   3 Input     32 Bit       Adders := 1     
 	   2 Input     32 Bit       Adders := 1     
+	   2 Input     16 Bit       Adders := 1     
 +---Registers : 
 	               32 Bit    Registers := 3     
 	               16 Bit    Registers := 1     
@@ -765,8 +786,10 @@ Detailed RTL Component Info :
 	                16x33  Multipliers := 1     
 	                16x32  Multipliers := 2     
 +---Muxes : 
+	   2 Input     64 Bit        Muxes := 1     
 	   2 Input     32 Bit        Muxes := 2     
-	   2 Input     16 Bit        Muxes := 4     
+	   2 Input     16 Bit        Muxes := 2     
+	   4 Input     16 Bit        Muxes := 1     
 	   2 Input      1 Bit        Muxes := 6     
 Module swing_balance_ctrl 
 Detailed RTL Component Info : 
@@ -786,29 +809,28 @@ Detailed RTL Component Info :
 	                2 Bit    Registers := 1     
 	                1 Bit    Registers := 5     
 +---Muxes : 
-	  12 Input     32 Bit        Muxes := 1     
+	  13 Input     32 Bit        Muxes := 1     
 	   2 Input     32 Bit        Muxes := 4     
-	  12 Input     16 Bit        Muxes := 1     
-	   2 Input     16 Bit        Muxes := 8     
+	  13 Input     16 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 9     
 	   6 Input     16 Bit        Muxes := 1     
 	   2 Input     12 Bit        Muxes := 6     
-	   3 Input      4 Bit        Muxes := 1     
-	   7 Input      4 Bit        Muxes := 1     
-	   2 Input      4 Bit        Muxes := 2     
-	  12 Input      3 Bit        Muxes := 1     
-	  12 Input      2 Bit        Muxes := 1     
-	  15 Input      2 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 31    
-	  12 Input      1 Bit        Muxes := 7     
-	   4 Input      1 Bit        Muxes := 1     
-	  13 Input      1 Bit        Muxes := 1     
+	   6 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 3     
+	  14 Input      4 Bit        Muxes := 1     
+	  13 Input      3 Bit        Muxes := 1     
+	   3 Input      2 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 2     
+	  14 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 36    
+	  13 Input      1 Bit        Muxes := 10    
 Module tb6612_pwm 
 Detailed RTL Component Info : 
 +---Adders : 
 	   2 Input     32 Bit       Adders := 1     
 +---Registers : 
 	               32 Bit    Registers := 1     
-	                1 Bit    Registers := 4     
+	                1 Bit    Registers := 5     
 +---Multipliers : 
 	                 6x32  Multipliers := 1     
 +---Muxes : 
@@ -871,13 +893,13 @@ Detailed RTL Component Info :
 Module i2c_ads_master 
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input      6 Bit       Adders := 1     
+	   2 Input      5 Bit       Adders := 1     
 	   2 Input      3 Bit       Adders := 2     
 	   2 Input      2 Bit       Adders := 1     
 +---Registers : 
 	               16 Bit    Registers := 2     
 	                8 Bit    Registers := 4     
-	                6 Bit    Registers := 1     
+	                5 Bit    Registers := 1     
 	                3 Bit    Registers := 3     
 	                2 Bit    Registers := 1     
 	                1 Bit    Registers := 9     
@@ -893,34 +915,39 @@ Detailed RTL Component Info :
 Module ads1115_reader 
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input     16 Bit       Adders := 1     
+	   2 Input     32 Bit       Adders := 1     
+	   2 Input     16 Bit       Adders := 2     
 	   2 Input      2 Bit       Adders := 1     
 +---Registers : 
-	               16 Bit    Registers := 1     
+	               32 Bit    Registers := 1     
+	               16 Bit    Registers := 2     
 	               12 Bit    Registers := 5     
 	                8 Bit    Registers := 4     
 	                3 Bit    Registers := 3     
 	                2 Bit    Registers := 2     
-	                1 Bit    Registers := 5     
+	                1 Bit    Registers := 8     
 +---Muxes : 
-	   2 Input     16 Bit        Muxes := 1     
-	   4 Input     16 Bit        Muxes := 1     
+	   4 Input     32 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 2     
+	   4 Input     16 Bit        Muxes := 2     
 	   2 Input     12 Bit        Muxes := 1     
-	  11 Input      8 Bit        Muxes := 2     
-	   2 Input      8 Bit        Muxes := 4     
+	   8 Input      8 Bit        Muxes := 2     
+	   7 Input      8 Bit        Muxes := 1     
 	   4 Input      8 Bit        Muxes := 2     
-	   6 Input      8 Bit        Muxes := 2     
-	  11 Input      3 Bit        Muxes := 2     
-	   9 Input      2 Bit        Muxes := 1     
-	  10 Input      2 Bit        Muxes := 1     
-	   2 Input      2 Bit        Muxes := 1     
+	   2 Input      7 Bit        Muxes := 1     
+	   4 Input      3 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 1     
+	   7 Input      3 Bit        Muxes := 2     
+	   8 Input      3 Bit        Muxes := 1     
 	   4 Input      2 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 23    
-	   4 Input      1 Bit        Muxes := 16    
-	   6 Input      1 Bit        Muxes := 4     
-	   9 Input      1 Bit        Muxes := 4     
-	   7 Input      1 Bit        Muxes := 1     
-	  11 Input      1 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 4     
+	  11 Input      2 Bit        Muxes := 1     
+	   8 Input      1 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 6     
+	   4 Input      1 Bit        Muxes := 23    
+	   3 Input      1 Bit        Muxes := 1     
+	   7 Input      1 Bit        Muxes := 8     
+	  10 Input      1 Bit        Muxes := 4     
 Module pid_swing_top 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -989,61 +1016,61 @@ DSP Report: Generating DSP rp_angle_kp_p, operation Mode is: (A:0x100101)*B.
 DSP Report: operator rp_angle_kp_p is absorbed into DSP rp_angle_kp_p.
 DSP Report: Generating DSP rp_angle_kd_p, operation Mode is: (A:0x100101)*B.
 DSP Report: operator rp_angle_kd_p is absorbed into DSP rp_angle_kd_p.
-INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 2 [D:/FPGA/FPGA_PID/PID_swing/rtl/pid_fixed.v:50]
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 2 [D:/FPGA/FPGA_PID/PID_swing/rtl/pid_fixed.v:53]
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 2 [D:/FPGA/FPGA_PID/PID_swing/rtl/pid_fixed.v:54]
 INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 2 [D:/FPGA/FPGA_PID/PID_swing/rtl/pid_fixed.v:52]
-INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 2 [D:/FPGA/FPGA_PID/PID_swing/rtl/pid_fixed.v:48]
-DSP Report: Generating DSP output_value5, operation Mode is: A*B.
-DSP Report: operator output_value5 is absorbed into DSP output_value5.
-DSP Report: operator output_value5 is absorbed into DSP output_value5.
-DSP Report: Generating DSP output_value5, operation Mode is: (PCIN>>17)+A*B.
-DSP Report: operator output_value5 is absorbed into DSP output_value5.
-DSP Report: operator output_value5 is absorbed into DSP output_value5.
-DSP Report: Generating DSP output_value4, operation Mode is: A*B.
-DSP Report: operator output_value4 is absorbed into DSP output_value4.
-DSP Report: operator output_value4 is absorbed into DSP output_value4.
-DSP Report: Generating DSP output_value4, operation Mode is: (PCIN>>17)+A*B.
-DSP Report: operator output_value4 is absorbed into DSP output_value4.
-DSP Report: operator output_value4 is absorbed into DSP output_value4.
-DSP Report: Generating DSP output_value5, operation Mode is: A2*B.
-DSP Report: register A is absorbed into DSP output_value5.
-DSP Report: operator output_value5 is absorbed into DSP output_value5.
-DSP Report: operator output_value5 is absorbed into DSP output_value5.
-DSP Report: Generating DSP output_value5, operation Mode is: (PCIN>>17)+A*B2.
-DSP Report: register B is absorbed into DSP output_value5.
-DSP Report: operator output_value5 is absorbed into DSP output_value5.
-DSP Report: operator output_value5 is absorbed into DSP output_value5.
+DSP Report: Generating DSP u_position_pid/integral_value6, operation Mode is: A*B.
+DSP Report: operator u_position_pid/integral_value6 is absorbed into DSP u_position_pid/integral_value6.
+DSP Report: operator u_position_pid/integral_value6 is absorbed into DSP u_position_pid/integral_value6.
+DSP Report: Generating DSP u_position_pid/integral_value6, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator u_position_pid/integral_value6 is absorbed into DSP u_position_pid/integral_value6.
+DSP Report: operator u_position_pid/integral_value6 is absorbed into DSP u_position_pid/integral_value6.
+DSP Report: Generating DSP u_position_pid/integral_value5, operation Mode is: A*B.
+DSP Report: operator u_position_pid/integral_value5 is absorbed into DSP u_position_pid/integral_value5.
+DSP Report: operator u_position_pid/integral_value5 is absorbed into DSP u_position_pid/integral_value5.
+DSP Report: Generating DSP u_position_pid/integral_value5, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator u_position_pid/integral_value5 is absorbed into DSP u_position_pid/integral_value5.
+DSP Report: operator u_position_pid/integral_value5 is absorbed into DSP u_position_pid/integral_value5.
+DSP Report: Generating DSP u_position_pid/integral_value6, operation Mode is: A2*B.
+DSP Report: register A is absorbed into DSP u_position_pid/integral_value6.
+DSP Report: operator u_position_pid/integral_value6 is absorbed into DSP u_position_pid/integral_value6.
+DSP Report: operator u_position_pid/integral_value6 is absorbed into DSP u_position_pid/integral_value6.
+DSP Report: Generating DSP u_position_pid/integral_value6, operation Mode is: (PCIN>>17)+A*B2.
+DSP Report: register B is absorbed into DSP u_position_pid/integral_value6.
+DSP Report: operator u_position_pid/integral_value6 is absorbed into DSP u_position_pid/integral_value6.
+DSP Report: operator u_position_pid/integral_value6 is absorbed into DSP u_position_pid/integral_value6.
 INFO: [Synth 8-5546] ROM "integral_value" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 2 [D:/FPGA/FPGA_PID/PID_swing/rtl/pid_fixed.v:50]
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 2 [D:/FPGA/FPGA_PID/PID_swing/rtl/pid_fixed.v:53]
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 2 [D:/FPGA/FPGA_PID/PID_swing/rtl/pid_fixed.v:54]
 INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 2 [D:/FPGA/FPGA_PID/PID_swing/rtl/pid_fixed.v:52]
-INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 2 [D:/FPGA/FPGA_PID/PID_swing/rtl/pid_fixed.v:48]
-DSP Report: Generating DSP output_value5, operation Mode is: A*B.
-DSP Report: operator output_value5 is absorbed into DSP output_value5.
-DSP Report: operator output_value5 is absorbed into DSP output_value5.
-DSP Report: Generating DSP output_value5, operation Mode is: (PCIN>>17)+A*B.
-DSP Report: operator output_value5 is absorbed into DSP output_value5.
-DSP Report: operator output_value5 is absorbed into DSP output_value5.
-DSP Report: Generating DSP output_value4, operation Mode is: A*B.
-DSP Report: operator output_value4 is absorbed into DSP output_value4.
-DSP Report: operator output_value4 is absorbed into DSP output_value4.
-DSP Report: Generating DSP output_value4, operation Mode is: (PCIN>>17)+A*B.
-DSP Report: operator output_value4 is absorbed into DSP output_value4.
-DSP Report: operator output_value4 is absorbed into DSP output_value4.
-DSP Report: Generating DSP output_value5, operation Mode is: A2*B.
-DSP Report: register A is absorbed into DSP output_value5.
-DSP Report: operator output_value5 is absorbed into DSP output_value5.
-DSP Report: operator output_value5 is absorbed into DSP output_value5.
-DSP Report: Generating DSP output_value5, operation Mode is: (PCIN>>17)+A*B2.
-DSP Report: register B is absorbed into DSP output_value5.
-DSP Report: operator output_value5 is absorbed into DSP output_value5.
-DSP Report: operator output_value5 is absorbed into DSP output_value5.
+DSP Report: Generating DSP integral_value6, operation Mode is: A*B.
+DSP Report: operator integral_value6 is absorbed into DSP integral_value6.
+DSP Report: operator integral_value6 is absorbed into DSP integral_value6.
+DSP Report: Generating DSP integral_value6, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator integral_value6 is absorbed into DSP integral_value6.
+DSP Report: operator integral_value6 is absorbed into DSP integral_value6.
+DSP Report: Generating DSP integral_value5, operation Mode is: A*B.
+DSP Report: operator integral_value5 is absorbed into DSP integral_value5.
+DSP Report: operator integral_value5 is absorbed into DSP integral_value5.
+DSP Report: Generating DSP integral_value5, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator integral_value5 is absorbed into DSP integral_value5.
+DSP Report: operator integral_value5 is absorbed into DSP integral_value5.
+DSP Report: Generating DSP integral_value6, operation Mode is: A2*B.
+DSP Report: register A is absorbed into DSP integral_value6.
+DSP Report: operator integral_value6 is absorbed into DSP integral_value6.
+DSP Report: operator integral_value6 is absorbed into DSP integral_value6.
+DSP Report: Generating DSP integral_value6, operation Mode is: (PCIN>>17)+A*B2.
+DSP Report: register B is absorbed into DSP integral_value6.
+DSP Report: operator integral_value6 is absorbed into DSP integral_value6.
+DSP Report: operator integral_value6 is absorbed into DSP integral_value6.
 INFO: [Synth 8-5545] ROM "phase_count" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "state" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "target_command" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 DSP Report: Generating DSP angle_deg_x103, operation Mode is: A*(B:0xe10).
 DSP Report: operator angle_deg_x103 is absorbed into DSP angle_deg_x103.
 INFO: [Synth 8-5544] ROM "u_i2c/state" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
-INFO: [Synth 8-5546] ROM "wait_ticks" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "state" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "pot_action" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "sample_valid" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
 DSP Report: Generating DSP angle14, operation Mode is: A''*(B:0x27b6).
 DSP Report: register u_i2c/shift_reg is absorbed into DSP angle14.
 DSP Report: register u_i2c/rx_data_reg is absorbed into DSP angle14.
@@ -1153,19 +1180,18 @@ INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_control
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_1/\g_oled_ui.u_oled_ui /\glyph_data_r_reg[7] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_1/\g_oled_ui.u_oled_ui /\state_reg[4] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_1/\g_oled_ui.u_oled_ui /\i2c_length_reg[2] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_1/\u_ui/location_kd_q8_reg[15] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_1/\u_ui/location_ki_q8_reg[15] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_1/\u_ui/location_kp_q8_reg[15] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_1/\u_ui/angle_kd_q8_reg[15] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_1/\u_ui/angle_ki_q8_reg[15] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_1/\u_ui/angle_kp_q8_reg[15] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_1/\g_oled_ui.u_oled_ui /u_i2c/\length_reg_reg[2] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_4/\g_ads.u_ads /\m_t1_reg[1] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_4/\g_ads.u_ads /\state_reg[2] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_2/\control_kd_q8_reg[15] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_3/\control_kp_q8_reg[15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_2/\u_ui/angle_kd_q8_reg[15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_2/\u_ui/angle_ki_q8_reg[15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_2/\u_ui/angle_kp_q8_reg[15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_2/\u_ui/location_kd_q8_reg[15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_2/\u_ui/location_ki_q8_reg[15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_2/\u_ui/location_kp_q8_reg[15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_5/\g_ads.u_ads /\m_t1_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_1/\control_kd_q8_reg[15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_4/\control_kp_q8_reg[15] )
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:30 ; elapsed = 00:01:33 . Memory (MB): peak = 1038.949 ; gain = 705.574
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:05 ; elapsed = 00:02:08 . Memory (MB): peak = 1085.801 ; gain = 752.398
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -1181,36 +1207,36 @@ ROM:
 
 
 DSP: Preliminary Mapping  Report (see note below)
-+----------------+---------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-|Module Name     | DSP Mapping         | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
-+----------------+---------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-|oled_ssd1306_ui | (C:0x80)+A*(B:0x64) | 16     | 7      | 8      | -      | 23     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
-|oled_ssd1306_ui | (C:0x80)+A*(B:0x64) | 16     | 7      | 8      | -      | 23     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
-|oled_ssd1306_ui | (C:0x80)+A*(B:0x64) | 16     | 7      | 8      | -      | 23     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
-|oled_ssd1306_ui | (C:0x80)+A*(B:0x64) | 16     | 7      | 8      | -      | 23     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
-|oled_ssd1306_ui | (C:0x80)+A*(B:0x64) | 16     | 7      | 8      | -      | 23     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
-|oled_ssd1306_ui | (C:0x80)+A*(B:0x64) | 16     | 7      | 8      | -      | 23     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
-|pendulum_ui     | (A:0xa00a01)*B      | 24     | 12     | -      | -      | 36     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|pendulum_ui     | (A:0x100101)*B      | 21     | 12     | -      | -      | 33     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|pendulum_ui     | (A:0x500501)*B      | 23     | 12     | -      | -      | 35     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|pendulum_ui     | (A:0x80081)*B       | 20     | 12     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|pendulum_ui     | (A:0x100101)*B      | 21     | 12     | -      | -      | 33     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|pendulum_ui     | (A:0x100101)*B      | 21     | 12     | -      | -      | 33     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|pid_fixed       | A*B                 | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|pid_fixed       | (PCIN>>17)+A*B      | 16     | 15     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|pid_fixed       | A*B                 | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|pid_fixed       | (PCIN>>17)+A*B      | 16     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|pid_fixed       | A2*B                | 18     | 16     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|pid_fixed       | (PCIN>>17)+A*B2     | 16     | 15     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
-|pid_fixed       | A*B                 | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|pid_fixed       | (PCIN>>17)+A*B      | 16     | 15     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|pid_fixed       | A*B                 | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|pid_fixed       | (PCIN>>17)+A*B      | 16     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|pid_fixed       | A2*B                | 18     | 16     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|pid_fixed       | (PCIN>>17)+A*B2     | 16     | 15     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
-|angle_from_adc  | A*(B:0xe10)         | 12     | 12     | -      | -      | 24     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|ads1115_reader  | A''*(B:0x27b6)      | 15     | 14     | -      | -      | 29     | 2    | 0    | -    | -    | -     | 0    | 0    | 
-+----------------+---------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
++-----------------+---------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name      | DSP Mapping         | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++-----------------+---------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|oled_ssd1306_ui  | (C:0x80)+A*(B:0x64) | 16     | 7      | 8      | -      | 23     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|oled_ssd1306_ui  | (C:0x80)+A*(B:0x64) | 16     | 7      | 8      | -      | 23     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|oled_ssd1306_ui  | (C:0x80)+A*(B:0x64) | 16     | 7      | 8      | -      | 23     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|oled_ssd1306_ui  | (C:0x80)+A*(B:0x64) | 16     | 7      | 8      | -      | 23     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|oled_ssd1306_ui  | (C:0x80)+A*(B:0x64) | 16     | 7      | 8      | -      | 23     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|oled_ssd1306_ui  | (C:0x80)+A*(B:0x64) | 16     | 7      | 8      | -      | 23     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|pendulum_ui      | (A:0xa00a01)*B      | 24     | 12     | -      | -      | 36     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pendulum_ui      | (A:0x100101)*B      | 21     | 12     | -      | -      | 33     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pendulum_ui      | (A:0x500501)*B      | 23     | 12     | -      | -      | 35     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pendulum_ui      | (A:0x80081)*B       | 20     | 12     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pendulum_ui      | (A:0x100101)*B      | 21     | 12     | -      | -      | 33     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pendulum_ui      | (A:0x100101)*B      | 21     | 12     | -      | -      | 33     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pid_swing_hw_top | A*B                 | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pid_swing_hw_top | (PCIN>>17)+A*B      | 16     | 15     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pid_swing_hw_top | A*B                 | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pid_swing_hw_top | (PCIN>>17)+A*B      | 16     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pid_swing_hw_top | A2*B                | 18     | 16     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|pid_swing_hw_top | (PCIN>>17)+A*B2     | 16     | 15     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|pid_fixed        | A*B                 | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pid_fixed        | (PCIN>>17)+A*B      | 16     | 15     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pid_fixed        | A*B                 | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pid_fixed        | (PCIN>>17)+A*B      | 16     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pid_fixed        | A2*B                | 18     | 16     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|pid_fixed        | (PCIN>>17)+A*B2     | 16     | 15     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|angle_from_adc   | A*(B:0xe10)         | 12     | 12     | -      | -      | 24     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|ads1115_reader   | A''*(B:0x27b6)      | 15     | 14     | -      | -      | 29     | 2    | 0    | -    | -    | -     | 0    | 0    | 
++-----------------+---------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
 
 Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
 ---------------------------------------------------------------------------------
@@ -1221,38 +1247,39 @@ Report RTL Partitions:
 +------+----------------------+------------+----------+
 |      |RTL Partition         |Replication |Instances |
 +------+----------------------+------------+----------+
-|1     |pid_swing_top__GB0    |           1|     19691|
-|2     |pid_swing_top__GB1    |           1|      4907|
-|3     |pid_swing_top__GB2    |           1|        58|
-|4     |pid_swing_top__GB3    |           1|      1833|
-|5     |pid_swing_hw_top__GC0 |           1|        53|
+|1     |pid_swing_top__GB0    |           1|     18132|
+|2     |pid_swing_top__GB1    |           1|      3041|
+|3     |pid_swing_top__GB2    |           1|      3257|
+|4     |pid_swing_top__GB3    |           1|        58|
+|5     |pid_swing_top__GB4    |           1|      2072|
+|6     |pid_swing_hw_top__GC0 |           1|        53|
 +------+----------------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:39 ; elapsed = 00:01:42 . Memory (MB): peak = 1038.949 ; gain = 705.574
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:02:14 ; elapsed = 00:02:18 . Memory (MB): peak = 1085.801 ; gain = 752.398
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:56 ; elapsed = 00:02:00 . Memory (MB): peak = 1115.340 ; gain = 781.965
+Finished Timing Optimization : Time (s): cpu = 00:02:35 ; elapsed = 00:02:39 . Memory (MB): peak = 1129.055 ; gain = 795.652
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
 +------+----------------------+------------+----------+
 |      |RTL Partition         |Replication |Instances |
 +------+----------------------+------------+----------+
-|1     |pid_swing_top__GB1    |           1|      4907|
+|1     |pid_swing_top__GB2    |           1|      3257|
 |2     |pid_swing_hw_top__GC0 |           1|        53|
-|3     |pid_swing_hw_top_GT0  |           1|     21582|
+|3     |pid_swing_hw_top_GT0  |           1|     23303|
 +------+----------------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:02:03 ; elapsed = 00:02:07 . Memory (MB): peak = 1553.305 ; gain = 1219.930
+Finished Technology Mapping : Time (s): cpu = 00:02:42 ; elapsed = 00:02:46 . Memory (MB): peak = 1558.633 ; gain = 1225.230
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1272,26 +1299,26 @@ Finished Flattening Before IO Insertion
 ---------------------------------------------------------------------------------
 Start Final Netlist Cleanup
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[1] is being inverted and renamed to u_control/u_position_pid/output_value_reg[1]_inv.
-INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[2] is being inverted and renamed to u_control/u_position_pid/output_value_reg[2]_inv.
-INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[3] is being inverted and renamed to u_control/u_position_pid/output_value_reg[3]_inv.
-INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[4] is being inverted and renamed to u_control/u_position_pid/output_value_reg[4]_inv.
-INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[5] is being inverted and renamed to u_control/u_position_pid/output_value_reg[5]_inv.
-INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[6] is being inverted and renamed to u_control/u_position_pid/output_value_reg[6]_inv.
-INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[7] is being inverted and renamed to u_control/u_position_pid/output_value_reg[7]_inv.
-INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[8] is being inverted and renamed to u_control/u_position_pid/output_value_reg[8]_inv.
-INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[9] is being inverted and renamed to u_control/u_position_pid/output_value_reg[9]_inv.
-INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[10] is being inverted and renamed to u_control/u_position_pid/output_value_reg[10]_inv.
-INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[11] is being inverted and renamed to u_control/u_position_pid/output_value_reg[11]_inv.
-INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[12] is being inverted and renamed to u_control/u_position_pid/output_value_reg[12]_inv.
-INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[13] is being inverted and renamed to u_control/u_position_pid/output_value_reg[13]_inv.
-INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[14] is being inverted and renamed to u_control/u_position_pid/output_value_reg[14]_inv.
 INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[15] is being inverted and renamed to u_control/u_position_pid/output_value_reg[15]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[14] is being inverted and renamed to u_control/u_position_pid/output_value_reg[14]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[13] is being inverted and renamed to u_control/u_position_pid/output_value_reg[13]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[12] is being inverted and renamed to u_control/u_position_pid/output_value_reg[12]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[11] is being inverted and renamed to u_control/u_position_pid/output_value_reg[11]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[10] is being inverted and renamed to u_control/u_position_pid/output_value_reg[10]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[9] is being inverted and renamed to u_control/u_position_pid/output_value_reg[9]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[8] is being inverted and renamed to u_control/u_position_pid/output_value_reg[8]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[7] is being inverted and renamed to u_control/u_position_pid/output_value_reg[7]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[6] is being inverted and renamed to u_control/u_position_pid/output_value_reg[6]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[5] is being inverted and renamed to u_control/u_position_pid/output_value_reg[5]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[4] is being inverted and renamed to u_control/u_position_pid/output_value_reg[4]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[3] is being inverted and renamed to u_control/u_position_pid/output_value_reg[3]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[2] is being inverted and renamed to u_control/u_position_pid/output_value_reg[2]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[1] is being inverted and renamed to u_control/u_position_pid/output_value_reg[1]_inv.
 ---------------------------------------------------------------------------------
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:02:04 ; elapsed = 00:02:08 . Memory (MB): peak = 1553.305 ; gain = 1219.930
+Finished IO Insertion : Time (s): cpu = 00:02:44 ; elapsed = 00:02:47 . Memory (MB): peak = 1558.633 ; gain = 1225.230
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -1304,7 +1331,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:02:05 ; elapsed = 00:02:08 . Memory (MB): peak = 1553.305 ; gain = 1219.930
+Finished Renaming Generated Instances : Time (s): cpu = 00:02:44 ; elapsed = 00:02:47 . Memory (MB): peak = 1558.633 ; gain = 1225.230
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1316,25 +1343,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:06 ; elapsed = 00:02:09 . Memory (MB): peak = 1553.305 ; gain = 1219.930
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:45 ; elapsed = 00:02:49 . Memory (MB): peak = 1558.633 ; gain = 1225.230
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:02:06 ; elapsed = 00:02:09 . Memory (MB): peak = 1553.305 ; gain = 1219.930
+Finished Renaming Generated Ports : Time (s): cpu = 00:02:45 ; elapsed = 00:02:49 . Memory (MB): peak = 1558.633 ; gain = 1225.230
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:02:06 ; elapsed = 00:02:09 . Memory (MB): peak = 1553.305 ; gain = 1219.930
+Finished Handling Custom Attributes : Time (s): cpu = 00:02:45 ; elapsed = 00:02:49 . Memory (MB): peak = 1558.633 ; gain = 1225.230
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:02:06 ; elapsed = 00:02:09 . Memory (MB): peak = 1553.305 ; gain = 1219.930
+Finished Renaming Generated Nets : Time (s): cpu = 00:02:45 ; elapsed = 00:02:49 . Memory (MB): peak = 1558.633 ; gain = 1225.230
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -1351,72 +1378,73 @@ Report Cell Usage:
 |      |Cell      |Count |
 +------+----------+------+
 |1     |BUFG      |     1|
-|2     |CARRY4    |   841|
-|3     |DSP48E1   |     5|
-|4     |DSP48E1_1 |     6|
-|5     |DSP48E1_2 |     3|
-|6     |DSP48E1_3 |     9|
-|7     |DSP48E1_4 |     1|
+|2     |CARRY4    |   885|
+|3     |DSP48E1   |     1|
+|4     |DSP48E1_1 |     4|
+|5     |DSP48E1_2 |     9|
+|6     |DSP48E1_3 |     3|
+|7     |DSP48E1_4 |     2|
 |8     |DSP48E1_5 |     1|
-|9     |LUT1      |   436|
-|10    |LUT2      |  1578|
-|11    |LUT3      |  1046|
-|12    |LUT4      |   878|
-|13    |LUT5      |   751|
-|14    |LUT6      |  1798|
-|15    |MUXF7     |    26|
-|16    |MUXF8     |     1|
-|17    |FDRE      |  1306|
-|18    |FDSE      |    62|
-|19    |IBUF      |     9|
-|20    |IOBUF     |     4|
-|21    |OBUF      |     4|
+|9     |DSP48E1_6 |     5|
+|10    |LUT1      |   528|
+|11    |LUT2      |  1671|
+|12    |LUT3      |  1105|
+|13    |LUT4      |  1004|
+|14    |LUT5      |   782|
+|15    |LUT6      |  1727|
+|16    |MUXF7     |    26|
+|17    |MUXF8     |     1|
+|18    |FDRE      |  1372|
+|19    |FDSE      |    46|
+|20    |IBUF      |     9|
+|21    |IOBUF     |     4|
+|22    |OBUF      |     4|
 +------+----------+------+
 
 Report Instance Areas: 
 +------+--------------------------+--------------------------+------+
 |      |Instance                  |Module                    |Cells |
 +------+--------------------------+--------------------------+------+
-|1     |top                       |                          |  8766|
-|2     |  u_control               |pid_swing_top             |  8445|
-|3     |    \g_ads.u_ads          |ads1115_reader            |   852|
-|4     |      u_i2c               |i2c_ads_master            |   144|
-|5     |    \g_oled_ui.u_oled_ui  |oled_ssd1306_ui           |  1910|
-|6     |      u_i2c               |i2c_txn_master            |   115|
-|7     |    u_angle_pid           |pid_fixed__parameterized0 |   637|
-|8     |    u_encoder             |quad_encoder              |   842|
+|1     |top                       |                          |  9190|
+|2     |  u_control               |pid_swing_top             |  8877|
+|3     |    \g_ads.u_ads          |ads1115_reader            |  1042|
+|4     |      u_i2c               |i2c_ads_master            |   152|
+|5     |    \g_oled_ui.u_oled_ui  |oled_ssd1306_ui           |  1902|
+|6     |      u_i2c               |i2c_txn_master            |   107|
+|7     |    u_angle_pid           |pid_fixed__parameterized0 |   737|
+|8     |    u_encoder             |quad_encoder              |   840|
 |9     |    u_kd_filter           |adc_filter_12             |   179|
-|10    |    u_keys                |key_events                |   245|
+|10    |    u_keys                |key_events                |   250|
 |11    |    u_ki_filter           |adc_filter_12_0           |   179|
 |12    |    u_kp_filter           |adc_filter_12_1           |   179|
-|13    |    u_motor_pwm           |tb6612_pwm                |   122|
-|14    |    u_position_pid        |pid_fixed                 |   561|
-|15    |    u_swing_ctrl          |swing_balance_ctrl        |  1014|
-|16    |    u_ui                  |pendulum_ui               |  1541|
+|13    |    u_motor_pwm           |tb6612_pwm                |   156|
+|14    |    u_position_pid        |pid_fixed                 |   692|
+|15    |    u_swing_ctrl          |swing_balance_ctrl        |   985|
+|16    |    u_ui                  |pendulum_ui               |  1551|
 +------+--------------------------+--------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:02:06 ; elapsed = 00:02:09 . Memory (MB): peak = 1553.305 ; gain = 1219.930
+Finished Writing Synthesis Report : Time (s): cpu = 00:02:45 ; elapsed = 00:02:49 . Memory (MB): peak = 1558.633 ; gain = 1225.230
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:01:58 ; elapsed = 00:02:04 . Memory (MB): peak = 1553.305 ; gain = 840.523
-Synthesis Optimization Complete : Time (s): cpu = 00:02:06 ; elapsed = 00:02:10 . Memory (MB): peak = 1553.305 ; gain = 1219.930
+Synthesis Optimization Runtime : Time (s): cpu = 00:02:37 ; elapsed = 00:02:43 . Memory (MB): peak = 1558.633 ; gain = 845.113
+Synthesis Optimization Complete : Time (s): cpu = 00:02:46 ; elapsed = 00:02:50 . Memory (MB): peak = 1558.633 ; gain = 1225.230
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 897 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 941 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1553.305 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1558.633 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 4 instances were transformed.
   IOBUF => IOBUF (IBUF, OBUFT): 4 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-251 Infos, 125 Warnings, 0 Critical Warnings and 0 Errors encountered.
+252 Infos, 127 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:02:09 ; elapsed = 00:02:13 . Memory (MB): peak = 1553.305 ; gain = 1232.949
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1553.305 ; gain = 0.000
+synth_design: Time (s): cpu = 00:02:49 ; elapsed = 00:02:53 . Memory (MB): peak = 1558.633 ; gain = 1238.125
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1558.633 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'D:/FPGA/FPGA_PID/PID_swing/PID_swing.runs/synth_1/pid_swing_hw_top.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file pid_swing_hw_top_utilization_synth.rpt -pb pid_swing_hw_top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sun Nov  1 20:06:30 2026...
+INFO: [Common 17-206] Exiting Vivado at Sun Nov  1 23:37:47 2026...

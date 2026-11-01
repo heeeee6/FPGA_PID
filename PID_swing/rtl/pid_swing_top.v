@@ -315,6 +315,7 @@ module pid_swing_top #(
         .capture_reset(capture_clear),
         .key_click(key_click), .key_long(key_long),
         .key_pressed(key_pressed),
+        .adc_ready(adc_ready), .angle_adc(angle_adc_source),
         .rp1_adc(kp_adc_f), .rp2_adc(ki_adc_f), .rp3_adc(kd_adc_f),
         .rp4_adc(rp4_adc_f), .run_request(ui_run_request), .page(ui_page_int),
         .location_target(ui_location_target), .angle_kp_q8(ui_angle_kp_q8),
@@ -409,7 +410,10 @@ module pid_swing_top #(
 
     // STM32 Mode31_Tick updates the inner loop every 5 ms.  The scheduler
     // keeps the motor state machine at 1 kHz but feeds this PID at inner_tick.
-    pid_fixed #(.OUT_LIMIT(100), .INTEGRAL_LIMIT(20000), .PIPELINE_ERROR(1)) u_angle_pid (
+    // Match the actual final motor authority so integral anti-windup sees the
+    // same limit as the TB6612 command clamp.
+    pid_fixed #(.OUT_LIMIT(MOTOR_COMMAND_LIMIT), .INTEGRAL_LIMIT(20000),
+                .PIPELINE_ERROR(1)) u_angle_pid (
         .clk(clk_50m), .rst_n(rst_n), .clear(capture_clear), .update(inner_tick),
         .enable(control_run_enable && (mode == 2'd2)), .setpoint(angle_setpoint),
         .measurement(control_angle_error_counts), .kp_q8(control_kp_q8),
@@ -431,6 +435,7 @@ module pid_swing_top #(
     swing_balance_ctrl #(
         .START_PWM(START_PWM), .START_TIME_MS(START_TIME_MS), .STARTUP_HOLD_MS(STARTUP_HOLD_MS),
         .COMMAND_SLEW_STEP(COMMAND_SLEW_STEP),
+        .CAPTURE_HALF_WIDTH(300), .FALL_HALF_WIDTH(1000),
         .USE_SECOND_ANGLE(USE_SECOND_ANGLE),
         .RUNTIME_PARAMS(USE_STM32_UI)
     ) u_swing_ctrl (
@@ -438,6 +443,7 @@ module pid_swing_top #(
         .run_enable(control_run_enable), .motor_fault(motor_fault),
         .angle_adc_raw(angle_adc_source),
         .angle2_adc_raw(angle2_adc_source),
+        .center_angle(ui_center_angle),
         .pid_output(pid_output), .command(controller_command),
         .start_pwm_value((USE_STM32_UI != 0) ? ui_start_pwm : legacy_start_pwm),
         .start_time_value((USE_STM32_UI != 0) ? ui_start_time_ms : legacy_start_time),

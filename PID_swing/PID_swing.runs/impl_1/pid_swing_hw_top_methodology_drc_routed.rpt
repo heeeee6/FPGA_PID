@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-| Date         : Sun Nov  1 20:08:00 2026
+| Date         : Sun Nov  1 23:39:21 2026
 | Host         : Huffs running 64-bit major release  (build 9200)
 | Command      : report_methodology -file pid_swing_hw_top_methodology_drc_routed.rpt -pb pid_swing_hw_top_methodology_drc_routed.pb -rpx pid_swing_hw_top_methodology_drc_routed.rpx
 | Design       : pid_swing_hw_top
@@ -23,12 +23,12 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 24
+             Violations found: 21
 +-----------+----------+-------------------------------+------------+
 | Rule      | Severity | Description                   | Violations |
 +-----------+----------+-------------------------------+------------+
 | SYNTH-11  | Warning  | DSP output not registered     | 2          |
-| SYNTH-13  | Warning  | combinational multiplier      | 6          |
+| SYNTH-13  | Warning  | combinational multiplier      | 3          |
 | TIMING-18 | Warning  | Missing input or output delay | 16         |
 +-----------+----------+-------------------------------+------------+
 
@@ -36,42 +36,27 @@ Table of Contents
 -----------------
 SYNTH-11#1 Warning
 DSP output not registered  
-DSP instance u_control/u_position_pid/output_value5 is not fully pipelined on the output side. MREG/PREG are not used.
+DSP instance u_control/u_position_pid/integral_value6 is not fully pipelined on the output side. MREG/PREG are not used.
 Related violations: <none>
 
 SYNTH-11#2 Warning
 DSP output not registered  
-DSP instance u_control/u_position_pid/output_value5__0 is not fully pipelined on the output side. MREG/PREG are not used.
+DSP instance u_control/u_position_pid/integral_value6__0 is not fully pipelined on the output side. MREG/PREG are not used.
 Related violations: <none>
 
 SYNTH-13#1 Warning
 combinational multiplier  
-Detected combinational multiplier in DSP instance u_control/g_oled_ui.u_oled_ui/q8_to_x10014_return0.
+Detected combinational multiplier in DSP instance u_control/g_oled_ui.u_oled_ui/q8_to_x100_return0.
 Related violations: <none>
 
 SYNTH-13#2 Warning
 combinational multiplier  
-Detected combinational multiplier in DSP instance u_control/g_oled_ui.u_oled_ui/q8_to_x1002_return0.
+Detected combinational multiplier in DSP instance u_control/u_angle_pid/integral_value6.
 Related violations: <none>
 
 SYNTH-13#3 Warning
 combinational multiplier  
-Detected combinational multiplier in DSP instance u_control/g_oled_ui.u_oled_ui/q8_to_x1005_return0.
-Related violations: <none>
-
-SYNTH-13#4 Warning
-combinational multiplier  
-Detected combinational multiplier in DSP instance u_control/g_oled_ui.u_oled_ui/q8_to_x1008_return0.
-Related violations: <none>
-
-SYNTH-13#5 Warning
-combinational multiplier  
-Detected combinational multiplier in DSP instance u_control/u_angle_pid/output_value5.
-Related violations: <none>
-
-SYNTH-13#6 Warning
-combinational multiplier  
-Detected combinational multiplier in DSP instance u_control/u_angle_pid/output_value5__0.
+Detected combinational multiplier in DSP instance u_control/u_angle_pid/integral_value6__0.
 Related violations: <none>
 
 TIMING-18#1 Warning

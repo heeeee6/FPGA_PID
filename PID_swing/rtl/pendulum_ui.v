@@ -11,16 +11,20 @@
 // available for the same fixed 408-count steps as the STM32 application.
 module pendulum_ui #(
     parameter integer ADC_SPAN_COUNTS = 3974,
-    parameter integer DEFAULT_ANGLE_KP_Q8 = 82,
-    parameter integer DEFAULT_ANGLE_KI_Q8 = 3,
-    parameter integer DEFAULT_ANGLE_KD_Q8 = 108,
-    parameter integer DEFAULT_LOCATION_KP_Q8 = 102,
+    parameter integer DEFAULT_ANGLE_KP_Q8 = 64,
+    parameter integer DEFAULT_ANGLE_KI_Q8 = 0,
+    parameter integer DEFAULT_ANGLE_KD_Q8 = 0,
+    parameter integer DEFAULT_LOCATION_KP_Q8 = 0,
     parameter integer DEFAULT_LOCATION_KI_Q8 = 0,
-    parameter integer DEFAULT_LOCATION_KD_Q8 = 1024,
-    parameter integer DEFAULT_CENTER_ANGLE = 2094,
+    parameter integer DEFAULT_LOCATION_KD_Q8 = 0,
+    parameter integer DEFAULT_CENTER_ANGLE = 2067,
     parameter integer DEFAULT_START_PWM = 45,
-    parameter integer DEFAULT_START_TIME_MS = 186,
+    parameter integer DEFAULT_START_TIME_MS = 100,
     parameter integer DEFAULT_PWM_OFFSET = 0,
+    // Capture the actual upright sensor value on the K1 start edge.  The
+    // acceptance window prevents a hanging pendulum from replacing CENTER.
+    parameter integer AUTO_CENTER_ON_START = 1,
+    parameter integer AUTO_CENTER_WINDOW = 300,
     parameter integer USE_RP4_TARGET = 1
 ) (
     input  wire        clk,
@@ -30,6 +34,8 @@ module pendulum_ui #(
     input  wire [3:0]  key_click,
     input  wire [3:0]  key_long,
     input  wire [3:0]  key_pressed,
+    input  wire        adc_ready,
+    input  wire [11:0] angle_adc,
     input  wire [11:0] rp1_adc,
     input  wire [11:0] rp2_adc,
     input  wire [11:0] rp3_adc,
@@ -113,6 +119,27 @@ module pendulum_ui #(
             location_kp_armed <= 1'b0;
             location_ki_armed <= 1'b0;
             location_kd_armed <= 1'b0;
+        end
+    endtask
+
+    // K1 is the operator's confirmation that the pendulum is in its intended
+    // starting pose.  If that pose is upright, use the live sensor reading as
+    // CENTER instead of retaining a value calibrated during an earlier run.
+    // A hanging pendulum lies outside this window and cannot overwrite CENTER.
+    task automatic toggle_run_request;
+        integer center_delta;
+        begin
+            if (!run_request) begin
+                center_delta =
+                    $signed({1'b0, angle_adc}) -
+                    $signed({1'b0, center_angle});
+                if ((AUTO_CENTER_ON_START != 0) && adc_ready &&
+                    (abs_i(center_delta) <= AUTO_CENTER_WINDOW))
+                    center_angle <= angle_adc;
+                run_request <= 1'b1;
+            end else begin
+                run_request <= 1'b0;
+            end
         end
     endtask
 
@@ -227,7 +254,7 @@ module pendulum_ui #(
                             default: if (pwm_offset > 0) pwm_offset <= pwm_offset - 1'b1;
                         endcase
                     end else begin
-                        run_request <= ~run_request;
+                        toggle_run_request();
                     end
                 end
                 if (key_click[1]) begin
@@ -262,7 +289,7 @@ module pendulum_ui #(
             end else begin
                 // K1/K2/K3 retain Mode31 behavior on both gain pages.
                 if (key_click[0])
-                    run_request <= ~run_request;
+                    toggle_run_request();
                 if (key_click[1]) begin
                     if (location_target < 8999 - 408)
                         location_target <= location_target + 408;

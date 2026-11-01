@@ -22,8 +22,9 @@ module tb6612_pwm #(
     // fallback for other parameter combinations.
     localparam integer PWM_COUNTS_PER_PERCENT = PWM_PERIOD / 100;
     reg [31:0] pwm_count;
-    reg [31:0] duty_count_reg;
-    reg [31:0] duty_count_next;
+    reg [31:0] duty_latched;
+    reg        neg_latched;
+    reg [31:0] duty_next;
     integer abs_command;
 
     always @* begin
@@ -34,43 +35,50 @@ module tb6612_pwm #(
         if (abs_command > 100)
             abs_command = 100;
         if (PWM_PERIOD == 2500)
-            duty_count_next = abs_command * 25;
+            duty_next = abs_command * 25;
         else
-            duty_count_next = abs_command * PWM_COUNTS_PER_PERCENT;
+            duty_next = abs_command * PWM_COUNTS_PER_PERCENT;
     end
 
     always @(posedge clk) begin
         if (!rst_n) begin
             pwm_count <= 32'd0;
-            duty_count_reg <= 32'd0;
+            duty_latched <= 32'd0;
+            neg_latched  <= 1'b0;
             pwm       <= 1'b0;
             in1       <= 1'b0;
             in2       <= 1'b0;
             stby      <= 1'b0;
         end else begin
-            if (pwm_count >= PWM_PERIOD - 1)
+            if (pwm_count >= PWM_PERIOD - 1) begin
                 pwm_count <= 32'd0;
-            else
+                // Latch magnitude and direction only at the PWM period
+                // boundary.  A command change can therefore never create a
+                // shortened pulse or a mid-period direction reversal.
+                duty_latched <= (!enable || fault || (command == 0)) ?
+                                32'd0 : duty_next;
+                neg_latched  <= (command < 0);
+            end else begin
                 pwm_count <= pwm_count + 1'b1;
+            end
 
             // Keep the TB6612 in standby while the command is zero.  The
             // control state machine uses this during reset and its startup
             // hold, so a powered board cannot energize the motor merely
             // because the FPGA has finished configuration.
-            stby <= enable && !fault && (command != 0);
-            // Register the slow command-derived values.  This isolates the
-            // control command from the high-rate PWM compare path and adds
-            // at most one 50 MHz clock of command-to-output latency.
-            duty_count_reg  <= (!enable || fault) ? 32'd0 : duty_count_next;
-            if (!enable || fault || (command == 0)) begin
+            // Keep the bridge enabled for the whole control run.  Magnitude
+            // and direction are latched below, so a zero command becomes a
+            // zero-duty period instead of chopping the current PWM period.
+            stby <= enable && !fault;
+            if (!enable || fault) begin
                 pwm <= 1'b0;
                 in1 <= 1'b0;
                 in2 <= 1'b0;
             end else begin
-                pwm <= (pwm_count < duty_count_reg);
-                // Match Motor_SetPWM() in the STM32 reference:
-                // positive command: PB12/AIN1=0, PB13/AIN2=1.
-                if (command < 0) begin
+                pwm <= (pwm_count < duty_latched);
+                // Match Motor_SetPWM() in the STM32 reference.  Sign is also
+                // latched at the PWM boundary to keep each period coherent.
+                if (neg_latched) begin
                     in1 <= 1'b1;
                     in2 <= 1'b0;
                 end else begin

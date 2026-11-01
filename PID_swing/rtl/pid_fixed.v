@@ -1,9 +1,11 @@
 `timescale 1ns/1ps
 
-// Position PID in Q8.8 coefficient format.
-// The error and output use engineering units of 0.1 degree and percent,
-// respectively.  This is the same position form used by PID_library:
-// u = Kp*e + Ki*sum(e) + Kd*(e-e_prev), with integral and output limits.
+// PID in Q8.8 coefficient format.
+//
+// The P/I/D numerator terms are added in full precision before one final
+// divide and truncation-toward-zero conversion.  This follows the integer
+// control structure used by the reference FPGA inverted-pendulum project and
+// avoids discarding small P/D fractions in each term independently.
 module pid_fixed #(
     parameter integer OUT_LIMIT = 100,
     parameter integer INTEGRAL_LIMIT = 20000,
@@ -32,7 +34,9 @@ module pid_fixed #(
     reg signed [63:0] i_term;
     reg signed [63:0] d_term;
     reg signed [63:0] sum_term;
-    reg signed [63:0] product_term;
+    reg        [63:0] sum_abs;
+    reg        [63:0] out_limit_scaled;
+    reg        [63:0] out_mag;
 
     always @* begin
         if (PIPELINE_ERROR != 0)
@@ -45,13 +49,13 @@ module pid_fixed #(
         else if (integral_next < -INTEGRAL_LIMIT)
             integral_next = -INTEGRAL_LIMIT;
 
-        product_term = $signed(kp_q8) * error_next;
-        p_term = product_term >>> 8;
-        product_term = $signed(ki_q8) * integral_next;
-        i_term = product_term >>> 8;
-        product_term = $signed(kd_q8) * (error_next - error_prev);
-        d_term = product_term >>> 8;
+        p_term = $signed(kp_q8) * error_next;
+        i_term = $signed(ki_q8) * integral_next;
+        d_term = $signed(kd_q8) * (error_next - error_prev);
         sum_term = p_term + i_term + d_term;
+        sum_abs = sum_term[63] ? -sum_term : sum_term;
+        out_limit_scaled = OUT_LIMIT << 8;
+        out_mag = sum_abs >> 8;
     end
 
     always @(posedge clk) begin
@@ -76,14 +80,23 @@ module pid_fixed #(
                      ((error_next >= INTEGRAL_THRESHOLD) ||
                       (error_next <= -INTEGRAL_THRESHOLD)))
                 integral_value <= 32'sd0;
+            else if (((sum_term > $signed(out_limit_scaled)) &&
+                      (error_next > 0)) ||
+                     ((sum_term < -$signed(out_limit_scaled)) &&
+                      (error_next < 0)))
+                // Conditional integration: do not wind farther after the
+                // output has saturated in the same direction as the error.
+                integral_value <= integral_value;
             else
                 integral_value <= integral_next;
-            if (sum_term > OUT_LIMIT)
+            if (sum_term > $signed(out_limit_scaled))
                 output_value <= OUT_LIMIT;
-            else if (sum_term < -OUT_LIMIT)
+            else if (sum_term < -$signed(out_limit_scaled))
                 output_value <= -OUT_LIMIT;
+            else if (sum_term[63])
+                output_value <= -$signed(out_mag[15:0]);
             else
-                output_value <= sum_term[15:0];
+                output_value <= $signed(out_mag[15:0]);
         end
         if (rst_n && enable && (PIPELINE_ERROR != 0))
             error_input_reg <= $signed(setpoint) - $signed(measurement);

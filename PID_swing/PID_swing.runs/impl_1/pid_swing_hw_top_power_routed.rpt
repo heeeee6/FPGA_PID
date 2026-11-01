@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-| Date             : Sun Nov  1 20:08:02 2026
+| Date             : Sun Nov  1 23:39:23 2026
 | Host             : Huffs running 64-bit major release  (build 9200)
 | Command          : report_power -file pid_swing_hw_top_power_routed.rpt -pb pid_swing_hw_top_power_summary_routed.pb -rpx pid_swing_hw_top_power_routed.rpx
 | Design           : pid_swing_hw_top
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.137        |
+| Total On-Chip Power (W)  | 0.142        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.034        |
+| Dynamic (W)              | 0.039        |
 | Device Static (W)        | 0.103        |
 | Effective TJA (C/W)      | 11.5         |
 | Max Ambient (C)          | 83.4         |
@@ -53,17 +53,17 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |     0.004 |        3 |       --- |             --- |
-| Slice Logic    |     0.012 |     8763 |       --- |             --- |
-|   LUT as Logic |     0.011 |     5203 |     53200 |            9.78 |
-|   CARRY4       |     0.001 |      841 |     13300 |            6.32 |
-|   Register     |    <0.001 |     1368 |    106400 |            1.29 |
+| Slice Logic    |     0.014 |     9187 |       --- |             --- |
+|   LUT as Logic |     0.013 |     5396 |     53200 |           10.14 |
+|   CARRY4       |     0.001 |      885 |     13300 |            6.65 |
+|   Register     |    <0.001 |     1418 |    106400 |            1.33 |
 |   F7/F8 Muxes  |    <0.001 |       27 |     53200 |            0.05 |
 |   Others       |     0.000 |       41 |       --- |             --- |
-| Signals        |     0.012 |     6704 |       --- |             --- |
-| DSPs           |     0.006 |       25 |       220 |           11.36 |
+| Signals        |     0.013 |     7040 |       --- |             --- |
+| DSPs           |     0.007 |       25 |       220 |           11.36 |
 | I/O            |    <0.001 |       17 |       200 |            8.50 |
 | Static Power   |     0.103 |          |           |                 |
-| Total          |     0.137 |          |           |                 |
+| Total          |     0.142 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -73,7 +73,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.042 |       0.034 |      0.008 |
+| Vccint    |       1.000 |     0.046 |       0.039 |      0.008 |
 | Vccaux    |       1.800 |     0.010 |       0.000 |      0.010 |
 | Vcco33    |       3.300 |     0.000 |       0.000 |      0.000 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -149,14 +149,14 @@ Table of Contents
 +-------------------------+-----------+
 | Name                    | Power (W) |
 +-------------------------+-----------+
-| pid_swing_hw_top        |     0.034 |
-|   u_control             |     0.033 |
+| pid_swing_hw_top        |     0.039 |
+|   u_control             |     0.037 |
 |     g_ads.u_ads         |     0.002 |
-|     g_oled_ui.u_oled_ui |     0.009 |
+|     g_oled_ui.u_oled_ui |     0.011 |
 |     u_angle_pid         |     0.003 |
 |     u_encoder           |     0.005 |
 |     u_position_pid      |     0.004 |
-|     u_ui                |     0.007 |
+|     u_ui                |     0.008 |
 +-------------------------+-----------+
 
 

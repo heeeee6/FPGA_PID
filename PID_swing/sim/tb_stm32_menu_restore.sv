@@ -11,6 +11,8 @@ module tb_stm32_menu_restore;
     reg [3:0] key_click = 4'b0000;
     reg [3:0] key_long = 4'b0000;
     reg [3:0] key_pressed = 4'b0000;
+    reg adc_ready = 1'b1;
+    reg [11:0] angle_adc = 12'd2067;
     reg [11:0] rp1_adc = 12'd0;
     reg [11:0] rp2_adc = 12'd0;
     reg [11:0] rp3_adc = 12'd0;
@@ -37,6 +39,7 @@ module tb_stm32_menu_restore;
         .capture_reset(capture_reset),
         .key_click(key_click), .key_long(key_long),
         .key_pressed(key_pressed),
+        .adc_ready(adc_ready), .angle_adc(angle_adc),
         .rp1_adc(rp1_adc), .rp2_adc(rp2_adc),
         .rp3_adc(rp3_adc), .rp4_adc(rp4_adc),
         .run_request(run_request), .page(page),
@@ -99,11 +102,11 @@ module tb_stm32_menu_restore;
         rst_n = 1'b1;
         @(negedge clk);
 
-        if (angle_kp_q8 !== 16'd82 || angle_ki_q8 !== 16'd3 ||
-            angle_kd_q8 !== 16'd108 || location_kp_q8 !== 16'd102 ||
-            location_ki_q8 !== 16'd0 || location_kd_q8 !== 16'd1024 ||
-            center_angle !== 12'd2094 || start_pwm !== 8'd45 ||
-            start_time_ms !== 16'd186)
+        if (angle_kp_q8 !== 16'd64 || angle_ki_q8 !== 16'd0 ||
+            angle_kd_q8 !== 16'd0 || location_kp_q8 !== 16'd0 ||
+            location_ki_q8 !== 16'd0 || location_kd_q8 !== 16'd0 ||
+            center_angle !== 12'd2067 || start_pwm !== 8'd45 ||
+            start_time_ms !== 16'd100)
             $fatal(1, "STM32-compatible defaults were not restored");
 
         // K4 cycles PAGE0 -> PAGE1 -> PAGE2 -> PAGE3.
@@ -127,17 +130,17 @@ module tb_stm32_menu_restore;
             $fatal(1, "PAGE3 edit mode or run interlock failed");
 
         click(0);
-        if (center_angle !== 12'd2084)
+        if (center_angle !== 12'd2057)
             $fatal(1, "K1 short press did not decrease CENTER by 10");
         click(1);
-        if (center_angle !== 12'd2094)
+        if (center_angle !== 12'd2067)
             $fatal(1, "K2 short press did not increase CENTER by 10");
 
         long_press(0);
-        if (center_angle !== 12'd2093)
+        if (center_angle !== 12'd2066)
             $fatal(1, "long K1 did not repeat a one-count CENTER decrease");
         long_press(1);
-        if (center_angle !== 12'd2094)
+        if (center_angle !== 12'd2067)
             $fatal(1, "long K2 did not repeat a one-count CENTER increase");
 
         click(2);
@@ -151,17 +154,17 @@ module tb_stm32_menu_restore;
             $fatal(1, "did not select TIME");
         click(2);
         long_press(0);
-        if (start_time_ms !== 16'd185)
+        if (start_time_ms !== 16'd99)
             $fatal(1, "long K1 did not repeat a TIME decrease");
         long_press(1);
-        if (start_time_ms !== 16'd186)
+        if (start_time_ms !== 16'd100)
             $fatal(1, "long K2 did not repeat a TIME increase");
         click(2);
 
         // The edited values remain the runtime values, and K1 starts the
         // controller without leaving PAGE3.
-        if (center_angle !== 12'd2094 || start_pwm !== 8'd45 ||
-            start_time_ms !== 16'd186 || pwm_offset !== 8'd0)
+        if (center_angle !== 12'd2067 || start_pwm !== 8'd45 ||
+            start_time_ms !== 16'd100 || pwm_offset !== 8'd0)
             $fatal(1, "PAGE3 runtime parameters were not retained");
         click(0);
         if (!run_request)
@@ -174,6 +177,22 @@ module tb_stm32_menu_restore;
         click(0);
         if (!run_request)
             $fatal(1, "K1 did not request controller run from PAGE0");
+
+        // The K1 start edge calibrates CENTER from an upright measurement.
+        click(0);
+        if (run_request)
+            $fatal(1, "K1 did not stop before center-capture test");
+        angle_adc = 12'd2140;
+        click(0);
+        if (!run_request || center_angle !== 12'd2140)
+            $fatal(1, "K1 did not capture the upright center");
+
+        // A hanging start must not overwrite the calibrated center.
+        click(0);
+        angle_adc = 12'd200;
+        click(0);
+        if (!run_request || center_angle !== 12'd2140)
+            $fatal(1, "hanging start overwrote the calibrated center");
 
         $display("tb_stm32_menu_restore: PASS");
         $finish;

@@ -141,6 +141,7 @@ module tb_pid_swing_top;
     reg swing_check_tick;
     reg swing_check_run;
     reg [11:0] swing_check_angle_adc;
+    reg [11:0] swing_check_center;
     wire signed [15:0] swing_check_command;
     wire [1:0] swing_check_mode;
     wire swing_check_armed;
@@ -151,6 +152,7 @@ module tb_pid_swing_top;
         .run_enable(swing_check_run), .motor_fault(1'b0),
         .angle_adc_raw(swing_check_angle_adc),
         .angle2_adc_raw(12'd2050),
+        .center_angle(swing_check_center),
         .pid_output(16'sd0), .command(swing_check_command),
         .start_pwm_value(8'd20), .start_time_value(16'd0),
         .pwm_offset_value(8'd0),
@@ -255,6 +257,7 @@ module tb_pid_swing_top;
         swing_check_tick = 1'b0;
         swing_check_run = 1'b0;
         swing_check_angle_adc = 12'd0;
+        swing_check_center = 12'd2067;
 
         wait_cycles(5);
         rst_n = 1'b1;
@@ -413,8 +416,8 @@ module tb_pid_swing_top;
             $fatal(1, "judge state did not hold zero command: mode=%0d cmd=%0d",
                    swing_check_mode, swing_check_command);
 
-        // Restart so the judge history and judge counter start from a known
-        // state before testing capture.
+        // Restart upright.  The startup confirmation must enter balance
+        // directly without issuing a swing-up kick.
         swing_check_run = 1'b0;
         wait_cycles(2);
         swing_check_angle_adc = 12'd2050;
@@ -422,33 +425,37 @@ module tb_pid_swing_top;
         swing_check_step;
         swing_check_step;
         swing_check_step;
-
-        // The first in-window sample must not capture on its own.
         swing_judge_sample(12'd2050);
-        if (swing_check_mode !== 2'd1)
-            $fatal(1, "single in-window sample captured too early");
+        if (swing_check_mode !== 2'd2)
+            $fatal(1, "upright startup did not enter balance: mode=%0d",
+                   swing_check_mode);
 
-        // The second in-window sample captures the upright pendulum.  Drive
-        // the last judge tick manually so the one-clock capture_clear pulse
-        // can be observed before it clears.
-        swing_check_angle_adc = 12'd2050;
-        begin : capture_observe
-            integer k;
-            for (k = 0; k < 39; k = k + 1)
-                swing_check_step;
-            @(negedge clk);
-            swing_check_tick = 1'b1;
-            @(posedge clk);
-            #1;
-            swing_check_tick = 1'b0;
-            if (swing_check_mode !== 2'd2 || !swing_check_capture)
-                $fatal(1, "upright pair did not capture: mode=%0d capture=%0d",
-                       swing_check_mode, swing_check_capture);
-            @(posedge clk);
-            #1;
-        end
+        // With CENTER captured at a different value, the capture window must
+        // move with it and accept an angle outside the former fixed window.
+        swing_check_run = 1'b0;
+        wait_cycles(2);
+        swing_check_center = 12'd2300;
+        swing_check_angle_adc = 12'd2450;
+        swing_check_run = 1'b1;
+        swing_check_step;
+        swing_check_step;
+        swing_check_step;
+        swing_judge_sample(12'd2450);
+        if (swing_check_mode !== 2'd2)
+            $fatal(1, "centered upright capture did not track CENTER");
+        swing_check_run = 1'b0;
+        wait_cycles(2);
+        swing_check_center = 12'd2067;
 
         // A fallen reading while balancing returns to idle, not to swing.
+        swing_check_angle_adc = 12'd2050;
+        swing_check_run = 1'b1;
+        swing_check_step;
+        swing_check_step;
+        swing_check_step;
+        swing_judge_sample(12'd2050);
+        if (swing_check_mode !== 2'd2)
+            $fatal(1, "balance restart before fallen test failed");
         swing_check_angle_adc = 12'd500;
         swing_check_step;
         if (swing_check_mode !== 2'd0)
@@ -457,15 +464,15 @@ module tb_pid_swing_top;
         swing_check_run = 1'b0;
         wait_cycles(2);
 
-        // Right peak: three samples beyond ANGLE_B with the middle one the
-        // smallest selects the left impulse sequence (+START_PWM first).
+        // Right peak: three samples beyond the centered upper limit with the
+        // middle one smallest selects the left impulse sequence.
         swing_check_angle_adc = 12'd2500;
         swing_check_run = 1'b1;
         swing_check_step;
         swing_check_step;
         swing_check_step;
         swing_judge_sample(12'd2500);
-        swing_judge_sample(12'd2300);
+        swing_judge_sample(12'd2450);
         swing_judge_sample(12'd2500);
         swing_check_step;   // S_L1 sets the +START_PWM target
         swing_check_step;   // slew now reaches +START_PWM
@@ -475,8 +482,8 @@ module tb_pid_swing_top;
         swing_check_run = 1'b0;
         wait_cycles(2);
 
-        // Left peak: three samples below ANGLE_A with the middle one the
-        // largest selects the right impulse sequence (-START_PWM first).
+        // Left peak: three samples below the centered lower limit with the
+        // middle one largest selects the right impulse sequence.
         swing_check_angle_adc = 12'd1000;
         swing_check_run = 1'b1;
         swing_check_step;
