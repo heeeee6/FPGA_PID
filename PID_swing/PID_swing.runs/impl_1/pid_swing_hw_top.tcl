@@ -65,16 +65,15 @@ start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
-  set_param xicom.use_bs_reader 1
   create_project -in_memory -part xc7z020clg484-1
   set_property design_mode GateLvl [current_fileset]
   set_param project.singleFileAddWarning.threshold 0
-  set_property webtalk.parent_dir D:/FPGA/PID_swing/PID_swing.cache/wt [current_project]
-  set_property parent.project_path D:/FPGA/PID_swing/PID_swing.xpr [current_project]
-  set_property ip_output_repo D:/FPGA/PID_swing/PID_swing.cache/ip [current_project]
+  set_property webtalk.parent_dir D:/FPGA/FPGA_PID/PID_swing/PID_swing.cache/wt [current_project]
+  set_property parent.project_path D:/FPGA/FPGA_PID/PID_swing/PID_swing.xpr [current_project]
+  set_property ip_output_repo D:/FPGA/FPGA_PID/PID_swing/PID_swing.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
-  add_files -quiet D:/FPGA/PID_swing/PID_swing.runs/synth_1/pid_swing_hw_top.dcp
-  read_xdc D:/FPGA/PID_swing/constr/SmartZynq_V1_3B.xdc
+  add_files -quiet D:/FPGA/FPGA_PID/PID_swing/PID_swing.runs/synth_1/pid_swing_hw_top.dcp
+  read_xdc D:/FPGA/FPGA_PID/PID_swing/constr/SmartZynq_V1_3B.xdc
   link_design -top pid_swing_hw_top -part xc7z020clg484-1
   close_msg_db -file init_design.pb
 } RESULT]

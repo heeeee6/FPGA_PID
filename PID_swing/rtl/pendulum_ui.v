@@ -11,9 +11,15 @@
 // available for the same fixed 408-count steps as the STM32 application.
 module pendulum_ui #(
     parameter integer ADC_SPAN_COUNTS = 3974,
-    parameter integer DEFAULT_CENTER_ANGLE = 2050,
-    parameter integer DEFAULT_START_PWM = 35,
-    parameter integer DEFAULT_START_TIME_MS = 90,
+    parameter integer DEFAULT_ANGLE_KP_Q8 = 82,
+    parameter integer DEFAULT_ANGLE_KI_Q8 = 3,
+    parameter integer DEFAULT_ANGLE_KD_Q8 = 108,
+    parameter integer DEFAULT_LOCATION_KP_Q8 = 102,
+    parameter integer DEFAULT_LOCATION_KI_Q8 = 0,
+    parameter integer DEFAULT_LOCATION_KD_Q8 = 1024,
+    parameter integer DEFAULT_CENTER_ANGLE = 2094,
+    parameter integer DEFAULT_START_PWM = 45,
+    parameter integer DEFAULT_START_TIME_MS = 186,
     parameter integer DEFAULT_PWM_OFFSET = 0,
     parameter integer USE_RP4_TARGET = 1
 ) (
@@ -23,6 +29,7 @@ module pendulum_ui #(
     input  wire        capture_reset,
     input  wire [3:0]  key_click,
     input  wire [3:0]  key_long,
+    input  wire [3:0]  key_pressed,
     input  wire [11:0] rp1_adc,
     input  wire [11:0] rp2_adc,
     input  wire [11:0] rp3_adc,
@@ -55,6 +62,7 @@ module pendulum_ui #(
     localparam [1:0] PAGE_ANGLE    = 2'd1;
     localparam [1:0] PAGE_LOCATION = 2'd2;
     localparam [1:0] PAGE_MENU     = 2'd3;
+    localparam integer TIME_REPEAT_MS = 50;
 
     // Q8.8 maxima are the same engineering ranges as STM32 Mode31.c:
     // angle (Kp/Ki/Kd) = (1, 0.5, 1), location = (5, 1, 10).  Each mapping
@@ -110,17 +118,22 @@ module pendulum_ui #(
 
     integer gain_diff;
     integer signed_diff;
+    reg        repeat_active;
+    reg        repeat_up;
+    reg        repeat_key;
+    reg        repeat_center;
+    reg [7:0]  repeat_count;
     always @(posedge clk) begin
         if (!rst_n) begin
             run_request <= 1'b0;
             page <= PAGE_RUN;
             location_target <= 32'sd0;
-            angle_kp_q8 <= 16'd64;       // 0.25
-            angle_ki_q8 <= 16'd2;        // 0.0078, nearest Q8.8 to 0.009
-            angle_kd_q8 <= 16'd105;      // 0.41
-            location_kp_q8 <= 16'd133;   // 0.52
-            location_ki_q8 <= 16'd3;     // 0.0117, nearest Q8.8 to 0.01
-            location_kd_q8 <= 16'd1167;  // 4.56
+            angle_kp_q8 <= DEFAULT_ANGLE_KP_Q8[15:0];
+            angle_ki_q8 <= DEFAULT_ANGLE_KI_Q8[15:0];
+            angle_kd_q8 <= DEFAULT_ANGLE_KD_Q8[15:0];
+            location_kp_q8 <= DEFAULT_LOCATION_KP_Q8[15:0];
+            location_ki_q8 <= DEFAULT_LOCATION_KI_Q8[15:0];
+            location_kd_q8 <= DEFAULT_LOCATION_KD_Q8[15:0];
             center_angle <= DEFAULT_CENTER_ANGLE[11:0];
             start_pwm <= DEFAULT_START_PWM[7:0];
             start_time_ms <= DEFAULT_START_TIME_MS[15:0];
@@ -135,6 +148,11 @@ module pendulum_ui #(
             location_ki_armed <= 1'b0;
             location_kd_armed <= 1'b0;
             location_target_armed <= 1'b0;
+            repeat_active <= 1'b0;
+            repeat_up <= 1'b0;
+            repeat_key <= 1'b0;
+            repeat_center <= 1'b0;
+            repeat_count <= 8'd0;
         end else begin
             save_pulse <= 1'b0;
 
@@ -143,9 +161,63 @@ module pendulum_ui #(
             if (key_long[3])
                 save_pulse <= 1'b1;
 
+            // STM32 Menu.c numeric editing is retained for short presses.
+            // CENTER and TIME additionally repeat at 20 Hz while K1/K2 stay
+            // pressed, which permits precise commissioning without a long
+            // series of individual clicks.
+            if ((page == PAGE_MENU) && menu_edit &&
+                ((menu_index == 2'd0) || (menu_index == 2'd2))) begin
+                if (key_long[0]) begin
+                    repeat_active <= 1'b1;
+                    repeat_up     <= 1'b0;
+                    repeat_key    <= 1'b0;
+                    repeat_center <= (menu_index == 2'd0);
+                    repeat_count  <= 8'd0;
+                end else if (key_long[1]) begin
+                    repeat_active <= 1'b1;
+                    repeat_up     <= 1'b1;
+                    repeat_key    <= 1'b1;
+                    repeat_center <= (menu_index == 2'd0);
+                    repeat_count  <= 8'd0;
+                end
+                if (sample_tick_1ms && repeat_active) begin
+                    if (!key_pressed[repeat_key]) begin
+                        repeat_active <= 1'b0;
+                        repeat_count  <= 8'd0;
+                    end else if (repeat_count >= TIME_REPEAT_MS - 1) begin
+                        repeat_count <= 8'd0;
+                        if (repeat_center) begin
+                            if (repeat_up) begin
+                                if (center_angle < 2200)
+                                    center_angle <= center_angle + 1'b1;
+                            end else if (center_angle > 1900) begin
+                                center_angle <= center_angle - 1'b1;
+                            end
+                        end else begin
+                            if (repeat_up) begin
+                                if (start_time_ms < 200)
+                                    start_time_ms <= start_time_ms + 1'b1;
+                            end else if (start_time_ms > 1) begin
+                                start_time_ms <= start_time_ms - 1'b1;
+                            end
+                        end
+                    end else begin
+                        repeat_count <= repeat_count + 1'b1;
+                    end
+                end
+            end else begin
+                repeat_active <= 1'b0;
+                repeat_key    <= 1'b0;
+                repeat_center <= 1'b0;
+                repeat_count  <= 8'd0;
+            end
+
             if (page == PAGE_MENU) begin
-                // Menu.c: K1=up/decrease, K2=down/increase, K3=enter,
-                // K4=back.  Values are clamped to the STM32 limits.
+                // PAGE3 commissioning page:
+                //   browse: K1=run/stop, K2=next item, K3=edit, K4=back
+                //   edit  : K1=decrease, K2=increase, K3=finish, K4=back
+                // This keeps K1 available for starting the pendulum without
+                // leaving the parameter page.
                 if (key_click[0]) begin
                     if (menu_edit) begin
                         case (menu_index)
@@ -154,10 +226,8 @@ module pendulum_ui #(
                             2'd2: if (start_time_ms > 0) start_time_ms <= start_time_ms - 1'b1;
                             default: if (pwm_offset > 0) pwm_offset <= pwm_offset - 1'b1;
                         endcase
-                    end else if (menu_index == 0) begin
-                        menu_index <= 2'd3;
                     end else begin
-                        menu_index <= menu_index - 1'b1;
+                        run_request <= ~run_request;
                     end
                 end
                 if (key_click[1]) begin
@@ -174,13 +244,20 @@ module pendulum_ui #(
                         menu_index <= menu_index + 1'b1;
                     end
                 end
-                if (key_click[2])
+                if (key_click[2]) begin
                     menu_edit <= ~menu_edit;
+                    // Parameter editing is a commissioning state.  Stop the
+                    // motor before accepting K1/K2 as value keys so a key
+                    // press can never be interpreted as both edit and run.
+                    run_request <= 1'b0;
+                end
                 if (key_click[3]) begin
                     menu_edit <= 1'b0;
                     page <= PAGE_RUN;
+                    run_request <= 1'b0;
                     clear_takeover();
                     location_target_armed <= 1'b0;
+                    repeat_active <= 1'b0;
                 end
             end else begin
                 // K1/K2/K3 retain Mode31 behavior on both gain pages.
@@ -206,6 +283,9 @@ module pendulum_ui #(
                     end else if (page == PAGE_ANGLE) begin
                         page <= PAGE_LOCATION;
                     end else begin
+                        // Match the STM32 Mode31 -> Menu transition: enter
+                        // the parameter page with the motor safely stopped.
+                        run_request <= 1'b0;
                         page <= PAGE_MENU;
                         menu_index <= 2'd0;
                         menu_edit <= 1'b0;

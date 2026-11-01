@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='D:/FPGA/PID_swing/PID_swing.runs/impl_1'
+HD_PWD='D:/FPGA/FPGA_PID/PID_swing/PID_swing.runs/impl_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

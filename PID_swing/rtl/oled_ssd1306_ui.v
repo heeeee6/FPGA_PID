@@ -27,8 +27,17 @@ module oled_ssd1306_ui #(
     input  wire [15:0]           location_kp_q8,
     input  wire [15:0]           location_ki_q8,
     input  wire [15:0]           location_kd_q8,
+    input  wire signed [31:0]    location_target,
     input  wire [1:0]            mode,
     input  wire [1:0]            page,
+    input  wire [11:0]           center_angle,
+    input  wire [7:0]            start_pwm,
+    input  wire [15:0]           start_time_ms,
+    input  wire [7:0]            pwm_offset,
+    input  wire [1:0]            menu_index,
+    input  wire                  menu_edit,
+    input  wire                  run_request,
+    input  wire                  k1_pressed,
     output wire                  oled_scl_low,
     output wire                  oled_sda_low,
     input  wire                  oled_sda_in
@@ -69,9 +78,31 @@ module oled_ssd1306_ui #(
     reg signed [15:0] angle_error_s;
     reg signed [15:0] encoder_position_s;
     reg signed [15:0] encoder_velocity_s;
+    reg [7:0] angle_d3_s, angle_d4_s, angle_d5_s, angle_d6_s;
+    reg [7:0] error_sign_s, error_d3_s, error_d4_s, error_d5_s, error_d6_s;
+    reg [7:0] pos_sign_s, pos_d0_s, pos_d1_s, pos_d2_s;
+    reg [7:0] pos_d3_s, pos_d4_s, pos_d5_s;
+    reg [7:0] vel_sign_s, vel_d3_s, vel_d4_s, vel_d5_s, vel_d6_s;
+    reg [7:0] target_sign_s, target_d3_s, target_d4_s, target_d5_s, target_d6_s;
     reg [15:0] angle_kp_s, angle_ki_s, angle_kd_s;
     reg [15:0] location_kp_s, location_ki_s, location_kd_s;
+    reg [7:0] akp_d0_s, akp_d1_s, akp_d2_s;
+    reg [7:0] aki_d0_s, aki_d1_s, aki_d2_s;
+    reg [7:0] akd_d0_s, akd_d1_s, akd_d2_s;
+    reg [7:0] lkp_d0_s, lkp_d1_s, lkp_d2_s;
+    reg [7:0] lki_d0_s, lki_d1_s, lki_d2_s;
+    reg [7:0] lkd_d0_s, lkd_d1_s, lkd_d2_s;
+    reg signed [15:0] location_target_s;
     reg [1:0] mode_s, page_s;
+    reg [11:0] center_angle_s;
+    reg [7:0] start_pwm_s, pwm_offset_s;
+    reg [15:0] start_time_ms_s;
+    reg [7:0] center_d3_s, center_d4_s, center_d5_s, center_d6_s;
+    reg [7:0] pwm_d4_s, pwm_d5_s, pwm_d6_s;
+    reg [7:0] time_d4_s, time_d5_s, time_d6_s;
+    reg [7:0] offset_d5_s, offset_d6_s;
+    reg [1:0] menu_index_s;
+    reg menu_edit_s, run_request_s, k1_pressed_s;
     reg [7:0] glyph_data_r;
     reg [7:0] char_r;
     reg       next_is_refresh;
@@ -125,7 +156,7 @@ module oled_ssd1306_ui #(
         reg [31:0] product;
         begin
             product = q8 * 100;
-            q8_to_x100 = product >> 8;
+            q8_to_x100 = (product + 128) >> 8;
         end
     endfunction
 
@@ -186,47 +217,161 @@ module oled_ssd1306_ui #(
         begin
             text_char = 8'h20;
             value = 0;
+            if (page_s == 2'd3) begin
+                // PAGE 3 keeps the STM32 menu layout while reserving K1 for
+                // run/stop in browse mode.  The selected item is marked with
+                // '>' and K1's physical level is shown independently from the
+                // latched RUN request.
+                case (row)
+                    3'd0: begin // MENU:0 EDIT RUN
+                        case (index)
+                            0:text_char="M"; 1:text_char="E"; 2:text_char="N";
+                            3:text_char="U"; 4:text_char=":";
+                            5:text_char=8'h30 + menu_index_s;
+                            7:text_char=menu_edit_s ? "E" : "S";
+                            8:text_char=menu_edit_s ? "D" : "E";
+                            9:text_char=menu_edit_s ? "I" : "L";
+                            10:text_char=menu_edit_s ? "T" : "E";
+                            11:text_char=menu_edit_s ? " " : "C";
+                            12:text_char=menu_edit_s ? "R" : "T";
+                            13:text_char=menu_edit_s ? "U" : " ";
+                            14:text_char=menu_edit_s ? "N" : " ";
+                            default:text_char=" ";
+                        endcase
+                    end
+                    3'd1: begin // >CENTER:2094
+                        case (index)
+                            0:text_char=(menu_index_s==2'd0) ? ">" : " ";
+                            2:text_char="C"; 3:text_char="E"; 4:text_char="N";
+                            5:text_char="T"; 6:text_char="E"; 7:text_char="R";
+                            8:text_char=":";
+                            9:text_char=center_d3_s;
+                            10:text_char=center_d4_s;
+                            11:text_char=center_d5_s;
+                            12:text_char=center_d6_s;
+                            default:text_char=" ";
+                        endcase
+                    end
+                    3'd2: begin // >PWM:045
+                        case (index)
+                            0:text_char=(menu_index_s==2'd1) ? ">" : " ";
+                            2:text_char="P"; 3:text_char="W"; 4:text_char="M";
+                            5:text_char=":";
+                            6:text_char=pwm_d4_s;
+                            7:text_char=pwm_d5_s;
+                            8:text_char=pwm_d6_s;
+                            default:text_char=" ";
+                        endcase
+                    end
+                    3'd3: begin // >TIME:186
+                        case (index)
+                            0:text_char=(menu_index_s==2'd2) ? ">" : " ";
+                            2:text_char="T"; 3:text_char="I"; 4:text_char="M";
+                            5:text_char="E"; 6:text_char=":";
+                            7:text_char=time_d4_s;
+                            8:text_char=time_d5_s;
+                            9:text_char=time_d6_s;
+                            default:text_char=" ";
+                        endcase
+                    end
+                    3'd4: begin // >OFFSET:00
+                        case (index)
+                            0:text_char=(menu_index_s==2'd3) ? ">" : " ";
+                            2:text_char="O"; 3:text_char="F"; 4:text_char="F";
+                            5:text_char="S"; 6:text_char="E"; 7:text_char="T";
+                            8:text_char=":";
+                            9:text_char=offset_d5_s;
+                            10:text_char=offset_d6_s;
+                            default:text_char=" ";
+                        endcase
+                    end
+                    3'd5: begin // STM32 Menu.c key legend
+                        case (index)
+                            0:text_char="K"; 1:text_char="1";
+                            2:text_char=" ";
+                            3:text_char=menu_edit_s ? "-" : "R";
+                            4:text_char=menu_edit_s ? " " : "U";
+                            5:text_char=menu_edit_s ? " " : "N";
+                            7:text_char="K"; 8:text_char="2";
+                            9:text_char=" ";
+                            10:text_char=menu_edit_s ? "+" : "N";
+                            11:text_char=menu_edit_s ? " " : "E";
+                            12:text_char=menu_edit_s ? " " : "X";
+                            13:text_char=menu_edit_s ? " " : "T";
+                            15:text_char="K"; 16:text_char="3";
+                            17:text_char=" ";
+                            18:text_char=menu_edit_s ? "O" : "E";
+                            19:text_char=menu_edit_s ? "K" : "D";
+                            default:text_char=" ";
+                        endcase
+                    end
+                    3'd6: begin // K1:DN RUN:ON
+                        case (index)
+                            0:text_char="K"; 1:text_char="1"; 2:text_char=":";
+                            3:text_char=k1_pressed_s ? "D" : "U";
+                            4:text_char=k1_pressed_s ? "N" : "P";
+                            6:text_char="R"; 7:text_char="U"; 8:text_char="N";
+                            9:text_char=":";
+                            10:text_char=run_request_s ? "O" : "O";
+                            11:text_char=run_request_s ? "N" : "F";
+                            12:text_char=run_request_s ? " " : "F";
+                            default:text_char=" ";
+                        endcase
+                    end
+                    default: begin // K4:BACK
+                        case (index)
+                            0:text_char="K"; 1:text_char="4"; 2:text_char=":";
+                            3:text_char="B"; 4:text_char="A"; 5:text_char="C";
+                            6:text_char="K";
+                            9:text_char="L"; 10:text_char="O"; 11:text_char="N";
+                            12:text_char="G"; 14:text_char="S"; 15:text_char="A";
+                            16:text_char="V"; 17:text_char="E";
+                            default:text_char=" ";
+                        endcase
+                    end
+                endcase
+            end else begin
             case (row)
                 3'd0: begin // ANG:#### E:+####
                     case (index)
                         0:text_char="A"; 1:text_char="N"; 2:text_char="G"; 3:text_char=":";
-                        4:text_char=digit_at(angle_adc_s,3); 5:text_char=digit_at(angle_adc_s,4);
-                        6:text_char=digit_at(angle_adc_s,5); 7:text_char=digit_at(angle_adc_s,6);
-                        9:text_char="E"; 10:text_char=":"; 11:text_char=sign_char(angle_error_s);
-                        12:text_char=digit_at(angle_error_s,3); 13:text_char=digit_at(angle_error_s,4);
-                        14:text_char=digit_at(angle_error_s,5); 15:text_char=digit_at(angle_error_s,6);
+                        4:text_char=angle_d3_s; 5:text_char=angle_d4_s;
+                        6:text_char=angle_d5_s; 7:text_char=angle_d6_s;
+                        9:text_char="E"; 10:text_char=":"; 11:text_char=error_sign_s;
+                        12:text_char=error_d3_s; 13:text_char=error_d4_s;
+                        14:text_char=error_d5_s; 15:text_char=error_d6_s;
                         default: text_char=" ";
                     endcase
                 end
                 3'd1: begin // POS:+###### V:+####
                     case (index)
                         0:text_char="P"; 1:text_char="O"; 2:text_char="S"; 3:text_char=":";
-                        4:text_char=sign_char(encoder_position_s);
-                        5:text_char=digit_at(encoder_position_s,0); 6:text_char=digit_at(encoder_position_s,1);
-                        7:text_char=digit_at(encoder_position_s,2); 8:text_char=digit_at(encoder_position_s,3);
-                        9:text_char=digit_at(encoder_position_s,4); 10:text_char=digit_at(encoder_position_s,5);
-                        12:text_char="V"; 13:text_char=":"; 14:text_char=sign_char(encoder_velocity_s);
-                        15:text_char=digit_at(encoder_velocity_s,3); 16:text_char=digit_at(encoder_velocity_s,4);
-                        17:text_char=digit_at(encoder_velocity_s,5); 18:text_char=digit_at(encoder_velocity_s,6);
+                        4:text_char=pos_sign_s;
+                        5:text_char=pos_d0_s; 6:text_char=pos_d1_s;
+                        7:text_char=pos_d2_s; 8:text_char=pos_d3_s;
+                        9:text_char=pos_d4_s; 10:text_char=pos_d5_s;
+                        12:text_char="V"; 13:text_char=":"; 14:text_char=vel_sign_s;
+                        15:text_char=vel_d3_s; 16:text_char=vel_d4_s;
+                        17:text_char=vel_d5_s; 18:text_char=vel_d6_s;
                         default: text_char=" ";
                     endcase
                 end
                 3'd2: begin // A KP:0.00 KI:0.00
                     case (index)
                         0:text_char="A"; 1:text_char=" "; 2:text_char="K"; 3:text_char="P"; 4:text_char=":";
-                        5:text_char=gain_digit(q8_to_x100(angle_kp_s),0); 6:text_char=".";
-                        7:text_char=gain_digit(q8_to_x100(angle_kp_s),1); 8:text_char=gain_digit(q8_to_x100(angle_kp_s),2);
+                        5:text_char=akp_d0_s; 6:text_char=".";
+                        7:text_char=akp_d1_s; 8:text_char=akp_d2_s;
                         10:text_char="K"; 11:text_char="I"; 12:text_char=":";
-                        13:text_char=gain_digit(q8_to_x100(angle_ki_s),0); 14:text_char=".";
-                        15:text_char=gain_digit(q8_to_x100(angle_ki_s),1); 16:text_char=gain_digit(q8_to_x100(angle_ki_s),2);
+                        13:text_char=aki_d0_s; 14:text_char=".";
+                        15:text_char=aki_d1_s; 16:text_char=aki_d2_s;
                         default:text_char=" ";
                     endcase
                 end
                 3'd3: begin // A KD:0.00 MODE:X
                     case (index)
                         0:text_char="A"; 1:text_char=" "; 2:text_char="K"; 3:text_char="D"; 4:text_char=":";
-                        5:text_char=gain_digit(q8_to_x100(angle_kd_s),0); 6:text_char=".";
-                        7:text_char=gain_digit(q8_to_x100(angle_kd_s),1); 8:text_char=gain_digit(q8_to_x100(angle_kd_s),2);
+                        5:text_char=akd_d0_s; 6:text_char=".";
+                        7:text_char=akd_d1_s; 8:text_char=akd_d2_s;
                         10:text_char="M"; 11:text_char="O"; 12:text_char="D"; 13:text_char="E"; 14:text_char=":";
                         15:text_char=(mode_s==2'd0)?"I":(mode_s==2'd1)?"S":(mode_s==2'd2)?"B":"F";
                         default:text_char=" ";
@@ -235,42 +380,60 @@ module oled_ssd1306_ui #(
                 3'd4: begin // L KP:0.00 KI:0.00
                     case (index)
                         0:text_char="L"; 1:text_char=" "; 2:text_char="K"; 3:text_char="P"; 4:text_char=":";
-                        5:text_char=gain_digit(q8_to_x100(location_kp_s),0); 6:text_char=".";
-                        7:text_char=gain_digit(q8_to_x100(location_kp_s),1); 8:text_char=gain_digit(q8_to_x100(location_kp_s),2);
+                        5:text_char=lkp_d0_s; 6:text_char=".";
+                        7:text_char=lkp_d1_s; 8:text_char=lkp_d2_s;
                         10:text_char="K"; 11:text_char="I"; 12:text_char=":";
-                        13:text_char=gain_digit(q8_to_x100(location_ki_s),0); 14:text_char=".";
-                        15:text_char=gain_digit(q8_to_x100(location_ki_s),1); 16:text_char=gain_digit(q8_to_x100(location_ki_s),2);
+                        13:text_char=lki_d0_s; 14:text_char=".";
+                        15:text_char=lki_d1_s; 16:text_char=lki_d2_s;
                         default:text_char=" ";
                     endcase
                 end
                 3'd5: begin // L KD:00.00 PAGE:X
                     case (index)
                         0:text_char="L"; 1:text_char=" "; 2:text_char="K"; 3:text_char="D"; 4:text_char=":";
-                        5:text_char=gain_digit(q8_to_x100(location_kd_s),0);
-                        7:text_char="."; 8:text_char=gain_digit(q8_to_x100(location_kd_s),1); 9:text_char=gain_digit(q8_to_x100(location_kd_s),2);
+                        5:text_char=lkd_d0_s;
+                        7:text_char="."; 8:text_char=lkd_d1_s; 9:text_char=lkd_d2_s;
                         11:text_char="P"; 12:text_char="A"; 13:text_char="G"; 14:text_char="E"; 15:text_char=":";
                         16:text_char=8'h30 + page_s;
                         default:text_char=" ";
                     endcase
                 end
-                3'd6: begin // commissioning protection reference
+                3'd6: begin // C:2094 P:045 T:186
                     case (index)
-                        0:text_char="A"; 1:text_char="D"; 2:text_char="C"; 3:text_char=" ";
-                        4:text_char="R"; 5:text_char="A"; 6:text_char="N"; 7:text_char="G"; 8:text_char="E";
-                        10:text_char="1"; 11:text_char="0"; 12:text_char="0"; 13:text_char="0";
-                        14:text_char="-"; 15:text_char="3"; 16:text_char="0"; 17:text_char="0"; 18:text_char="0";
+                        0:text_char="C"; 1:text_char=":";
+                        2:text_char=center_d3_s;
+                        3:text_char=center_d4_s;
+                        4:text_char=center_d5_s;
+                        5:text_char=center_d6_s;
+                        7:text_char="P"; 8:text_char=":";
+                        9:text_char=pwm_d4_s;
+                        10:text_char=pwm_d5_s;
+                        11:text_char=pwm_d6_s;
+                        13:text_char="T"; 14:text_char=":";
+                        15:text_char=time_d4_s;
+                        16:text_char=time_d5_s;
+                        17:text_char=time_d6_s;
                         default:text_char=" ";
                     endcase
                 end
-                default: begin // I2C OLED 3C OK
+                default: begin // K1:UP R:0 T:+408
                     case (index)
-                        0:text_char="I"; 1:text_char="2"; 2:text_char="C"; 3:text_char=" ";
-                        4:text_char="O"; 5:text_char="L"; 6:text_char="E"; 7:text_char="D";
-                        9:text_char="3"; 10:text_char="C"; 12:text_char="O"; 13:text_char="K";
+                        0:text_char="K"; 1:text_char="1"; 2:text_char=":";
+                        3:text_char=k1_pressed_s ? "D" : "U";
+                        4:text_char=k1_pressed_s ? "N" : "P";
+                        6:text_char="R"; 7:text_char=":";
+                        8:text_char=run_request_s ? "1" : "0";
+                        10:text_char="T"; 11:text_char=":";
+                        12:text_char=target_sign_s;
+                        13:text_char=target_d3_s;
+                        14:text_char=target_d4_s;
+                        15:text_char=target_d5_s;
+                        16:text_char=target_d6_s;
                         default:text_char=" ";
                     endcase
                 end
             endcase
+            end
         end
     endfunction
 
@@ -307,7 +470,12 @@ module oled_ssd1306_ui #(
                     "P": case(column)0:glyph_column=8'h7F;1:glyph_column=8'h09;2:glyph_column=8'h09;3:glyph_column=8'h09;default:glyph_column=8'h06;endcase
                     "R": case(column)0:glyph_column=8'h7F;1:glyph_column=8'h09;2:glyph_column=8'h19;3:glyph_column=8'h29;default:glyph_column=8'h46;endcase
                     "S": case(column)0:glyph_column=8'h46;1:glyph_column=8'h49;2:glyph_column=8'h49;3:glyph_column=8'h49;default:glyph_column=8'h31;endcase
+                    "T": case(column)0:glyph_column=8'h01;1:glyph_column=8'h01;2:glyph_column=8'h7F;3:glyph_column=8'h01;default:glyph_column=8'h01;endcase
+                    "U": case(column)0:glyph_column=8'h7F;1:glyph_column=8'h40;2:glyph_column=8'h40;3:glyph_column=8'h40;default:glyph_column=8'h7F;endcase
                     "V": case(column)0:glyph_column=8'h1F;1:glyph_column=8'h20;2:glyph_column=8'h40;3:glyph_column=8'h20;default:glyph_column=8'h1F;endcase
+                    "W": case(column)0:glyph_column=8'h7F;1:glyph_column=8'h20;2:glyph_column=8'h18;3:glyph_column=8'h20;default:glyph_column=8'h7F;endcase
+                    "X": case(column)0:glyph_column=8'h63;1:glyph_column=8'h14;2:glyph_column=8'h08;3:glyph_column=8'h14;default:glyph_column=8'h63;endcase
+                    ">": case(column)0:glyph_column=8'h41;1:glyph_column=8'h22;2:glyph_column=8'h14;3:glyph_column=8'h08;default:glyph_column=8'h00;endcase
                     "+": case(column)0:glyph_column=8'h08;1:glyph_column=8'h08;2:glyph_column=8'h3E;3:glyph_column=8'h08;default:glyph_column=8'h08;endcase
                     "-": case(column)0:glyph_column=8'h08;1:glyph_column=8'h08;2:glyph_column=8'h08;3:glyph_column=8'h08;default:glyph_column=8'h08;endcase
                     ":": case(column)0:glyph_column=8'h00;1:glyph_column=8'h36;2:glyph_column=8'h36;3:glyph_column=8'h00;default:glyph_column=8'h00;endcase
@@ -372,8 +540,31 @@ module oled_ssd1306_ui #(
             i2c_data0 <= 0; i2c_data1 <= 0; i2c_data2 <= 0; i2c_data3 <= 0;
             angle_adc_s <= 0; angle_error_s <= 0; encoder_position_s <= 0;
             encoder_velocity_s <= 0; angle_kp_s <= 0; angle_ki_s <= 0;
+            angle_d3_s <= 0; angle_d4_s <= 0; angle_d5_s <= 0; angle_d6_s <= 0;
+            error_sign_s <= 0; error_d3_s <= 0; error_d4_s <= 0;
+            error_d5_s <= 0; error_d6_s <= 0;
+            pos_sign_s <= 0; pos_d0_s <= 0; pos_d1_s <= 0; pos_d2_s <= 0;
+            pos_d3_s <= 0; pos_d4_s <= 0; pos_d5_s <= 0;
+            vel_sign_s <= 0; vel_d3_s <= 0; vel_d4_s <= 0;
+            vel_d5_s <= 0; vel_d6_s <= 0;
+            target_sign_s <= 0; target_d3_s <= 0; target_d4_s <= 0;
+            target_d5_s <= 0; target_d6_s <= 0;
             angle_kd_s <= 0; location_kp_s <= 0; location_ki_s <= 0;
-            location_kd_s <= 0; mode_s <= 0; page_s <= 0;
+            akp_d0_s <= 0; akp_d1_s <= 0; akp_d2_s <= 0;
+            aki_d0_s <= 0; aki_d1_s <= 0; aki_d2_s <= 0;
+            akd_d0_s <= 0; akd_d1_s <= 0; akd_d2_s <= 0;
+            lkp_d0_s <= 0; lkp_d1_s <= 0; lkp_d2_s <= 0;
+            lki_d0_s <= 0; lki_d1_s <= 0; lki_d2_s <= 0;
+            lkd_d0_s <= 0; lkd_d1_s <= 0; lkd_d2_s <= 0;
+            location_kd_s <= 0; location_target_s <= 0;
+            mode_s <= 0; page_s <= 0;
+            center_angle_s <= 0; start_pwm_s <= 0; start_time_ms_s <= 0;
+            pwm_offset_s <= 0; menu_index_s <= 0; menu_edit_s <= 0;
+            center_d3_s <= 0; center_d4_s <= 0; center_d5_s <= 0; center_d6_s <= 0;
+            pwm_d4_s <= 0; pwm_d5_s <= 0; pwm_d6_s <= 0;
+            time_d4_s <= 0; time_d5_s <= 0; time_d6_s <= 0;
+            offset_d5_s <= 0; offset_d6_s <= 0;
+            run_request_s <= 0; k1_pressed_s <= 0;
             glyph_data_r <= 0; char_r <= 0; next_is_refresh <= 0; next_is_page <= 0;
         end else begin
             i2c_start <= 1'b0;
@@ -403,9 +594,75 @@ module oled_ssd1306_ui #(
                 ST_CAPTURE: begin
                     angle_adc_s <= angle_adc; angle_error_s <= angle_error_counts;
                     encoder_position_s <= encoder_position; encoder_velocity_s <= encoder_velocity;
+                    angle_d3_s <= digit_at(angle_adc,3);
+                    angle_d4_s <= digit_at(angle_adc,4);
+                    angle_d5_s <= digit_at(angle_adc,5);
+                    angle_d6_s <= digit_at(angle_adc,6);
+                    error_sign_s <= sign_char(angle_error_counts);
+                    error_d3_s <= digit_at(angle_error_counts,3);
+                    error_d4_s <= digit_at(angle_error_counts,4);
+                    error_d5_s <= digit_at(angle_error_counts,5);
+                    error_d6_s <= digit_at(angle_error_counts,6);
+                    pos_sign_s <= sign_char(encoder_position);
+                    pos_d0_s <= digit_at(encoder_position,0);
+                    pos_d1_s <= digit_at(encoder_position,1);
+                    pos_d2_s <= digit_at(encoder_position,2);
+                    pos_d3_s <= digit_at(encoder_position,3);
+                    pos_d4_s <= digit_at(encoder_position,4);
+                    pos_d5_s <= digit_at(encoder_position,5);
+                    vel_sign_s <= sign_char(encoder_velocity);
+                    vel_d3_s <= digit_at(encoder_velocity,3);
+                    vel_d4_s <= digit_at(encoder_velocity,4);
+                    vel_d5_s <= digit_at(encoder_velocity,5);
+                    vel_d6_s <= digit_at(encoder_velocity,6);
                     angle_kp_s <= angle_kp_q8; angle_ki_s <= angle_ki_q8; angle_kd_s <= angle_kd_q8;
                     location_kp_s <= location_kp_q8; location_ki_s <= location_ki_q8; location_kd_s <= location_kd_q8;
-                    mode_s <= mode; page_s <= page; line_index <= 0; state <= ST_PAGE_START;
+                    akp_d0_s <= gain_digit(q8_to_x100(angle_kp_q8),0);
+                    akp_d1_s <= gain_digit(q8_to_x100(angle_kp_q8),1);
+                    akp_d2_s <= gain_digit(q8_to_x100(angle_kp_q8),2);
+                    aki_d0_s <= gain_digit(q8_to_x100(angle_ki_q8),0);
+                    aki_d1_s <= gain_digit(q8_to_x100(angle_ki_q8),1);
+                    aki_d2_s <= gain_digit(q8_to_x100(angle_ki_q8),2);
+                    akd_d0_s <= gain_digit(q8_to_x100(angle_kd_q8),0);
+                    akd_d1_s <= gain_digit(q8_to_x100(angle_kd_q8),1);
+                    akd_d2_s <= gain_digit(q8_to_x100(angle_kd_q8),2);
+                    lkp_d0_s <= gain_digit(q8_to_x100(location_kp_q8),0);
+                    lkp_d1_s <= gain_digit(q8_to_x100(location_kp_q8),1);
+                    lkp_d2_s <= gain_digit(q8_to_x100(location_kp_q8),2);
+                    lki_d0_s <= gain_digit(q8_to_x100(location_ki_q8),0);
+                    lki_d1_s <= gain_digit(q8_to_x100(location_ki_q8),1);
+                    lki_d2_s <= gain_digit(q8_to_x100(location_ki_q8),2);
+                    lkd_d0_s <= gain_digit(q8_to_x100(location_kd_q8),0);
+                    lkd_d1_s <= gain_digit(q8_to_x100(location_kd_q8),1);
+                    lkd_d2_s <= gain_digit(q8_to_x100(location_kd_q8),2);
+                    location_target_s <= location_target[15:0];
+                    target_sign_s <= sign_char(location_target[15:0]);
+                    target_d3_s <= digit_at(location_target[15:0],3);
+                    target_d4_s <= digit_at(location_target[15:0],4);
+                    target_d5_s <= digit_at(location_target[15:0],5);
+                    target_d6_s <= digit_at(location_target[15:0],6);
+                    mode_s <= mode; page_s <= page;
+                    center_angle_s <= center_angle;
+                    start_pwm_s <= start_pwm;
+                    start_time_ms_s <= start_time_ms;
+                    pwm_offset_s <= pwm_offset;
+                    center_d3_s <= digit_at(center_angle,3);
+                    center_d4_s <= digit_at(center_angle,4);
+                    center_d5_s <= digit_at(center_angle,5);
+                    center_d6_s <= digit_at(center_angle,6);
+                    pwm_d4_s <= digit_at({8'd0, start_pwm},4);
+                    pwm_d5_s <= digit_at({8'd0, start_pwm},5);
+                    pwm_d6_s <= digit_at({8'd0, start_pwm},6);
+                    time_d4_s <= digit_at(start_time_ms,4);
+                    time_d5_s <= digit_at(start_time_ms,5);
+                    time_d6_s <= digit_at(start_time_ms,6);
+                    offset_d5_s <= digit_at({8'd0, pwm_offset},5);
+                    offset_d6_s <= digit_at({8'd0, pwm_offset},6);
+                    menu_index_s <= menu_index;
+                    menu_edit_s <= menu_edit;
+                    run_request_s <= run_request;
+                    k1_pressed_s <= k1_pressed;
+                    line_index <= 0; state <= ST_PAGE_START;
                 end
                 ST_PAGE_START: begin
                     // This request is one-shot.  Leaving it asserted sends the

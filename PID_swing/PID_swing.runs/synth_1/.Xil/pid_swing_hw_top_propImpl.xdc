@@ -1,4 +1,4 @@
-set_property SRC_FILE_INFO {cfile:D:/FPGA/PID_swing/constr/SmartZynq_V1_3B.xdc rfile:../../../constr/SmartZynq_V1_3B.xdc id:1} [current_design]
+set_property SRC_FILE_INFO {cfile:D:/FPGA/FPGA_PID/PID_swing/constr/SmartZynq_V1_3B.xdc rfile:../../../constr/SmartZynq_V1_3B.xdc id:1} [current_design]
 set_property src_info {type:XDC file:1 line:2 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN M19 [get_ports clk_50m]
 set_property src_info {type:XDC file:1 line:11 export:INPUT save:INPUT read:READ} [current_design]

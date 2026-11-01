@@ -1,0 +1,2136 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Sat Oct 31 15:07:25 2026
+# Process ID: 35668
+# Current directory: D:/FPGA/PID_swing
+# Command line: vivado.exe -mode batch -source D:\FPGA\PID_swing\tmp_rebuild_ui_fix.tcl
+# Log file: D:/FPGA/PID_swing/vivado.log
+# Journal file: D:/FPGA/PID_swing\vivado.jou
+#-----------------------------------------------------------
+source {D:\FPGA\PID_swing\tmp_rebuild_ui_fix.tcl}
+# set project_file "D:/FPGA/PID_swing/PID_swing.xpr"
+# open_project $project_file
+Scanning sources...
+Finished scanning sources
+# reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. PID not specified
+
+# launch_runs synth_1 -jobs 2
+[Sat Oct 31 15:07:32 2026] Launched synth_1...
+Run output will be captured here: D:/FPGA/PID_swing/PID_swing.runs/synth_1/runme.log
+# wait_on_run synth_1
+[Sat Oct 31 15:07:32 2026] Waiting for synth_1 to finish...
+
+*** Running vivado
+    with args -log pid_swing_hw_top.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source pid_swing_hw_top.tcl
+
+
+****** Vivado v2018.3 (64-bit)
+  **** SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source pid_swing_hw_top.tcl -notrace
+Command: synth_design -top pid_swing_hw_top -part xc7z020clg484-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 34856 
+WARNING: [Synth 8-2292] literal value truncated to fit in 4 bits [D:/FPGA/PID_swing/rtl/swing_balance_ctrl.v:51]
+WARNING: [Synth 8-2292] literal value truncated to fit in 4 bits [D:/FPGA/PID_swing/rtl/swing_balance_ctrl.v:52]
+WARNING: [Synth 8-2292] literal value truncated to fit in 4 bits [D:/FPGA/PID_swing/rtl/swing_balance_ctrl.v:53]
+WARNING: [Synth 8-2292] literal value truncated to fit in 4 bits [D:/FPGA/PID_swing/rtl/swing_balance_ctrl.v:54]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 444.535 ; gain = 110.602
+-------------------------------------------------------------------------open_run impl_1
+INFO: [Netlist 29-17] Analyzing 804 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2018.3
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.526 . Memory (MB): peak = 2761.820 ; gain = 3.059
+Restored from archive | CPU: 1.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.526 . Memory (MB): peak = 2761.820 ; gain = 3.059
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 2761.871 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 4 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 4 instances
+
+open_run: Time (s): cpu = 00:00:28 ; elapsed = 00:00:23 . Memory (MB): peak = 2955.422 ; gain = 1064.340
+CRITICAL WARNING: [Timing 38-282] The design failed to meet the timing requirements. Please see the timing summary report for details on the timing violations.
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory D:/FPGA/PID_swing/PID_swing.runs/synth_1
+
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+[Sat Oct 31 15:14:07 2026] Launched synth_1...
+Run output will be captured here: D:/FPGA/PID_swing/PID_swing.runs/synth_1/runme.log
+[Sat Oct 31 15:14:07 2026] Launched impl_1...
+Run output will be captured here: D:/FPGA/PID_swing/PID_swing.runs/impl_1/runme.log
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {D:/FPGA/PID_swing/PID_swing.runs/impl_1/pid_swing_hw_top.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+g/rtl/ads1115_reader.v:19]
+	Parameter CLK_HZ bound to: 50000000 - type: integer 
+	Parameter I2C_HZ bound to: 200000 - type: integer 
+	Parameter PERIOD_US bound to: 1000 - type: integer 
+	Parameter STARTUP_MS bound to: 20 - type: integer 
+	Parameter RETRY_MS bound to: 20 - type: integer 
+	Parameter FS_COUNTS bound to: 26400 - type: integer 
+	Parameter ADDR_ANGLE bound to: 7'b1001000 
+	Parameter ADDR_POT bound to: 7'b1001001 
+	Parameter PERIOD_CYCLES bound to: 50000 - type: integer 
+	Parameter STARTUP_TICKS bound to: 20 - type: integer 
+	Parameter RETRY_TICKS bound to: 20 - type: integer 
+	Parameter RECIP_Q16 bound to: 10166 - type: integer 
+	Parameter S_WAIT bound to: 3'b000 
+	Parameter S_LAUNCH bound to: 3'b001 
+	Parameter S_BUSY bound to: 3'b010 
+	Parameter S_PERIOD bound to: 3'b011 
+	Parameter A_CFG bound to: 3'b000 
+	Parameter A_PTR bound to: 3'b001 
+	Parameter A_READ bound to: 3'b010 
+	Parameter B_CFG bound to: 3'b011 
+	Parameter B_PTR bound to: 3'b100 
+	Parameter B_READ bound to: 3'b101 
+INFO: [Synth 8-6157] synthesizing module 'i2c_ads_master' [D:/FPGA/PID_swing/rtl/i2c_ads_master.v:11]
+	Parameter CLK_HZ bound to: 50000000 - type: integer 
+	Parameter I2C_HZ bound to: 200000 - type: integer 
+	Parameter QDIV_RAW bound to: 62 - type: integer 
+	Parameter QDIV bound to: 62 - type: integer 
+	Parameter ST_IDLE bound to: 3'b000 
+	Parameter ST_START bound to: 3'b001 
+	Parameter ST_TX bound to: 3'b010 
+	Parameter ST_TXACK bound to: 3'b011 
+	Parameter ST_RX bound to: 3'b100 
+	Parameter ST_RXACK bound to: 3'b101 
+	Parameter ST_STOP bound to: 3'b110 
+	Parameter ST_FIN bound to: 3'b111 
+INFO: [Synth 8-226] default block is never used [D:/FPGA/PID_swing/rtl/i2c_ads_master.v:129]
+INFO: [Synth 8-226] default block is never used [D:/FPGA/PID_swing/rtl/i2c_ads_master.v:153]
+INFO: [Synth 8-226] default block is never used [D:/FPGA/PID_swing/rtl/i2c_ads_master.v:183]
+INFO: [Synth 8-6155] done synthesizing module 'i2c_ads_master' (2#1) [D:/FPGA/PID_swing/rtl/i2c_ads_master.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'ads1115_reader' (3#1) [D:/FPGA/PID_swing/rtl/ads1115_reader.v:19]
+INFO: [Synth 8-6157] synthesizing module 'oled_ssd1306_ui' [D:/FPGA/PID_swing/rtl/oled_ssd1306_ui.v:9]
+	Parameter CLK_HZ bound to: 50000000 - type: integer 
+	Parameter I2C_HZ bound to: 400000 - type: integer 
+	Parameter STARTUP_CYCLES bound to: 5000000 - type: integer 
+	Parameter REFRESH_CYCLES bound to: 2500000 - type: integer 
+	Parameter SAFE_STARTUP bound to: 5000000 - type: integer 
+	Parameter SAFE_REFRESH bound to: 2500000 - type: integer 
+	Parameter ST_RESET_WAIT bound to: 5'b00000 
+	Parameter ST_INIT_START bound to: 5'b00001 
+	Parameter ST_INIT_WAIT bound to: 5'b00010 
+	Parameter ST_REFRESH_WAIT bound to: 5'b00011 
+	Parameter ST_CAPTURE bound to: 5'b00100 
+	Parameter ST_PAGE_START bound to: 5'b00101 
+	Parameter ST_PAGE_WAIT bound to: 5'b00110 
+	Parameter ST_LOW_START bound to: 5'b00111 
+	Parameter ST_LOW_WAIT bound to: 5'b01000 
+	Parameter ST_HIGH_START bound to: 5'b01001 
+	Parameter ST_HIGH_WAIT bound to: 5'b01010 
+	Parameter ST_DATA_START bound to: 5'b01011 
+	Parameter ST_DATA_WAIT bound to: 5'b01100 
+	Parameter ST_CHAR bound to: 5'b01101 
+	Parameter ST_GLYPH bound to: 5'b01110 
+INFO: [Synth 8-6157] synthesizing module 'i2c_txn_master' [D:/FPGA/PID_swing/rtl/i2c_txn_master.v:4]
+	Parameter CLK_HZ bound to: 50000000 - type: integer 
+	Parameter I2C_HZ bound to: 400000 - type: integer 
+	Parameter HALF_DIV bound to: 62 - type: integer 
+	Parameter ST_IDLE bound to: 4'b0000 
+	Parameter ST_START bound to: 4'b0001 
+	Parameter ST_START_LOW bound to: 4'b0010 
+	Parameter ST_BIT_LOW bound to: 4'b0011 
+	Parameter ST_BIT_HIGH bound to: 4'b0100 
+	Parameter ST_ACK_LOW bound to: 4'b0101 
+	Parameter ST_ACK_HIGH bound to: 4'b0110 
+	Parameter ST_STOP_LOW bound to: 4'b0111 
+	Parameter ST_STOP_HIGH bound to: 4'b1000 
+	Parameter ST_DONE bound to: 4'b1001 
+	Parameter ST_NEXT_BYTE bound to: 4'b1010 
+	Parameter ST_STOP_SCL_HIGH bound to: 4'b1011 
+INFO: [Synth 8-6155] done synthesizing module 'i2c_txn_master' (4#1) [D:/FPGA/PID_swing/rtl/i2c_txn_master.v:4]
+INFO: [Synth 8-6155] done synthesizing module 'oled_ssd1306_ui' (5#1) [D:/FPGA/PID_swing/rtl/oled_ssd1306_ui.v:9]
+INFO: [Synth 8-6157] synthesizing module 'adc_filter_12' [D:/FPGA/PID_swing/rtl/adc_filter_gain.v:6]
+	Parameter FILTER_SHIFT bound to: 3 - type: integer 
+WARNING: [Synth 8-6014] Unused sequential element diff_reg was removed.  [D:/FPGA/PID_swing/rtl/adc_filter_gain.v:26]
+WARNING: [Synth 8-6014] Unused sequential element step_reg was removed.  [D:/FPGA/PID_swing/rtl/adc_filter_gain.v:29]
+INFO: [Synth 8-6155] done synthesizing module 'adc_filter_12' (6#1) [D:/FPGA/PID_swing/rtl/adc_filter_gain.v:6]
+INFO: [Synth 8-6157] synthesizing module 'angle_from_adc' [D:/FPGA/PID_swing/rtl/adc_filter_gain.v:43]
+	Parameter ADC_SPAN_COUNTS bound to: 4095 - type: integer 
+	Parameter RECIP_Q22 bound to: 22'b1110011111101000010011 
+INFO: [Synth 8-6155] done synthesizing module 'angle_from_adc' (7#1) [D:/FPGA/PID_swing/rtl/adc_filter_gain.v:43]
+INFO: [Synth 8-6157] synthesizing module 'angle_center_map' [D:/FPGA/PID_swing/rtl/angle_center_map.v:8]
+	Parameter ADC_SPAN_COUNTS bound to: 4095 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'angle_center_map' (8#1) [D:/FPGA/PID_swing/rtl/angle_center_map.v:8]
+INFO: [Synth 8-6157] synthesizing module 'gain_from_adc' [D:/FPGA/PID_swing/rtl/adc_filter_gain.v:111]
+	Parameter MAX_Q8 bound to: 256 - type: integer 
+	Parameter ADC_SPAN_COUNTS bound to: 4095 - type: integer 
+	Parameter RECIP_Q24_2048 bound to: 24'b100000111110110111110111 
+	Parameter RECIP_Q24_512 bound to: 24'b001000001111101101111110 
+INFO: [Synth 8-6155] done synthesizing module 'gain_from_adc' (9#1) [D:/FPGA/PID_swing/rtl/adc_filter_gain.v:111]
+INFO: [Synth 8-6157] synthesizing module 'gain_from_adc__parameterized0' [D:/FPGA/PID_swing/rtl/adc_filter_gain.v:111]
+	Parameter MAX_Q8 bound to: 128 - type: integer 
+	Parameter ADC_SPAN_COUNTS bound to: 4095 - type: integer 
+	Parameter RECIP_Q24_2048 bound to: 24'b100000111110110111110111 
+	Parameter RECIP_Q24_512 bound to: 24'b001000001111101101111110 
+INFO: [Synth 8-6155] done synthesizing module 'gain_from_adc__parameterized0' (9#1) [D:/FPGA/PID_swing/rtl/adc_filter_gain.v:111]
+INFO: [Synth 8-6157] synthesizing module 'key_events' [D:/FPGA/PID_swing/rtl/key_events.v:10]
+	Parameter CLK_HZ bound to: 50000000 - type: integer 
+	Parameter SAMPLE_HZ bound to: 1000 - type: integer 
+	Parameter DEBOUNCE_MS bound to: 20 - type: integer 
+	Parameter LONG_MS bound to: 1000 - type: integer 
+	Parameter SAMPLE_DIV bound to: 50000 - type: integer 
+	Parameter DB_SAMPLES bound to: 20 - type: integer 
+	Parameter LONG_SAMPLES bound to: 1000 - type: integer 
+	Parameter DB_W bound to: 5 - type: integer 
+	Parameter LONG_W bound to: 10 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'key_events' (10#1) [D:/FPGA/PID_swing/rtl/key_events.v:10]
+INFO: [Synth 8-6157] synthesizing module 'pendulum_ui' [D:/FPGA/PID_swing/rtl/pendulum_ui.v:12]
+	Parameter ADC_SPAN_COUNTS bound to: 4095 - type: integer 
+	Parameter DEFAULT_CENTER_ANGLE bound to: 2050 - type: integer 
+	Parameter DEFAULT_START_PWM bound to: 35 - type: integer 
+	Parameter DEFAULT_START_TIME_MS bound to: 90 - type: integer 
+	Parameter DEFAULT_PWM_OFFSET bound to: 0 - type: integer 
+	Parameter USE_RP4_TARGET bound to: 0 - type: integer 
+	Parameter PAGE_RUN bound to: 2'b00 
+	Parameter PAGE_ANGLE bound to: 2'b01 
+	Parameter PAGE_LOCATION bound to: 2'b10 
+	Parameter PAGE_MENU bound to: 2'b11 
+	Parameter SPAN64 bound to: 4095 - type: integer 
+	Parameter RECIP64_256 bound to: 64'b0000000000000000000000000000000000000000000100000000000100000001 
+	Parameter RECIP64_128 bound to: 64'b0000000000000000000000000000000000000000000010000000000010000001 
+	Parameter RECIP64_1280 bound to: 64'b0000000000000000000000000000000000000000010100000000010100000001 
+	Parameter RECIP64_2560 bound to: 64'b0000000000000000000000000000000000000000101000000000101000000001 
+	Parameter RECIP_Q24_256 bound to: 24'b000100000000000100000001 
+	Parameter RECIP_Q24_128 bound to: 24'b000010000000000010000001 
+	Parameter RECIP_Q24_1280 bound to: 24'b010100000000010100000001 
+	Parameter RECIP_Q24_2560 bound to: 24'b101000000000101000000001 
+WARNING: [Synth 8-6014] Unused sequential element signed_diff_reg was removed.  [D:/FPGA/PID_swing/rtl/pendulum_ui.v:220]
+INFO: [Synth 8-6155] done synthesizing module 'pendulum_ui' (11#1) [D:/FPGA/PID_swing/rtl/pendulum_ui.v:12]
+INFO: [Synth 8-6157] synthesizing module 'quad_encoder' [D:/FPGA/PID_swing/rtl/quad_encoder.v:6]
+	Parameter SAMPLE_WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'quad_encoder' (12#1) [D:/FPGA/PID_swing/rtl/quad_encoder.v:6]
+INFO: [Synth 8-6157] synthesizing module 'pid_fixed' [D:/FPGA/PID_swing/rtl/pid_fixed.v:7]
+	Parameter OUT_LIMIT bound to: 100 - type: integer 
+	Parameter INTEGRAL_LIMIT bound to: 20000 - type: integer 
+	Parameter INTEGRAL_THRESHOLD bound to: 100 - type: integer 
+	Parameter PIPELINE_ERROR bound to: 1 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'pid_fixed' (13#1) [D:/FPGA/PID_swing/rtl/pid_fixed.v:7]
+INFO: [Synth 8-6157] synthesizing module 'pid_fixed__parameterized0' [D:/FPGA/PID_swing/rtl/pid_fixed.v:7]
+	Parameter OUT_LIMIT bound to: 100 - type: integer 
+	Parameter INTEGRAL_LIMIT bound to: 20000 - type: integer 
+	Parameter INTEGRAL_THRESHOLD bound to: 0 - type: integer 
+	Parameter PIPELINE_ERROR bound to: 1 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'pid_fixed__parameterized0' (13#1) [D:/FPGA/PID_swing/rtl/pid_fixed.v:7]
+INFO: [Synth 8-6157] synthesizing module 'swing_balance_ctrl' [D:/FPGA/PID_swing/rtl/swing_balance_ctrl.v:14]
+	Parameter START_PWM bound to: 20 - type: integer 
+	Parameter START_TIME_MS bound to: 90 - type: integer 
+	Parameter STARTUP_HOLD_MS bound to: 3000 - type: integer 
+	Parameter COMMAND_SLEW_STEP bound to: 1 - type: integer 
+	Parameter ANGLE_A bound to: 1700 - type: integer 
+	Parameter ANGLE_B bound to: 2300 - type: integer 
+	Parameter FALL_LOW bound to: 1000 - type: integer 
+	Parameter FALL_HIGH bound to: 3000 - type: integer 
+	Parameter PEAK_MARGIN bound to: 2 - type: integer 
+	Parameter USE_SECOND_ANGLE bound to: 0 - type: integer 
+	Parameter RUNTIME_PARAMS bound to: 1 - type: integer 
+	Parameter S_IDLE bound to: 4'b0000 
+	Parameter S_JUDGE bound to: 4'b0001 
+	Parameter S_L1 bound to: 4'b1011 
+	Parameter S_L2 bound to: 4'b1100 
+	Parameter S_L3 bound to: 4'b1101 
+	Parameter S_L4 bound to: 4'b1110 
+	Parameter S_R1 bound to: 4'b0101 
+	Parameter S_R2 bound to: 4'b0110 
+	Parameter S_R3 bound to: 4'b0111 
+	Parameter S_R4 bound to: 4'b1000 
+	Parameter S_BALANCE bound to: 4'b0010 
+	Parameter MODE_IDLE bound to: 2'b00 
+	Parameter MODE_SWING bound to: 2'b01 
+	Parameter MODE_BALANCE bound to: 2'b10 
+	Parameter MODE_FAULT bound to: 2'b11 
+INFO: [Synth 8-6155] done synthesizing module 'swing_balance_ctrl' (14#1) [D:/FPGA/PID_swing/rtl/swing_balance_ctrl.v:14]
+INFO: [Synth 8-6157] synthesizing module 'tb6612_pwm' [D:/FPGA/PID_swing/rtl/tb6612_pwm.v:5]
+	Parameter CLK_HZ bound to: 50000000 - type: integer 
+	Parameter PWM_HZ bound to: 20000 - type: integer 
+	Parameter PWM_PERIOD bound to: 2500 - type: integer 
+	Parameter PWM_COUNTS_PER_PERCENT bound to: 25 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'tb6612_pwm' (15#1) [D:/FPGA/PID_swing/rtl/tb6612_pwm.v:5]
+WARNING: [Synth 8-6014] Unused sequential element kp_x100_reg was removed.  [D:/FPGA/PID_swing/rtl/pid_swing_top.v:493]
+WARNING: [Synth 8-6014] Unused sequential element ki_x100_reg was removed.  [D:/FPGA/PID_swing/rtl/pid_swing_top.v:494]
+WARNING: [Synth 8-6014] Unused sequential element kd_x100_reg was removed.  [D:/FPGA/PID_swing/rtl/pid_swing_top.v:495]
+INFO: [Synth 8-6155] done synthesizing module 'pid_swing_top' (16#1) [D:/FPGA/PID_swing/rtl/pid_swing_top.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'pid_swing_hw_top' (17#1) [D:/FPGA/PID_swing/rtl/pid_swing_hw_top.v:12]
+WARNING: [Synth 8-3331] design swing_balance_ctrl has unconnected port angle2_adc_raw[11]
+WARNING: [Synth 8-3331] design swing_balance_ctrl has unconnected port angle2_adc_raw[10]
+WARNING: [Synth 8-3331] design swing_balance_ctrl has unconnected port angle2_adc_raw[9]
+WARNING: [Synth 8-3331] design swing_balance_ctrl has unconnected port angle2_adc_raw[8]
+WARNING: [Synth 8-3331] design swing_balance_ctrl has unconnected port angle2_adc_raw[7]
+WARNING: [Synth 8-3331] design swing_balance_ctrl has unconnected port angle2_adc_raw[6]
+WARNING: [Synth 8-3331] design swing_balance_ctrl has unconnected port angle2_adc_raw[5]
+WARNING: [Synth 8-3331] design swing_balance_ctrl has unconnected port angle2_adc_raw[4]
+WARNING: [Synth 8-3331] design swing_balance_ctrl has unconnected port angle2_adc_raw[3]
+WARNING: [Synth 8-3331] design swing_balance_ctrl has unconnected port angle2_adc_raw[2]
+WARNING: [Synth 8-3331] design swing_balance_ctrl has unconnected port angle2_adc_raw[1]
+WARNING: [Synth 8-3331] design swing_balance_ctrl has unconnected port angle2_adc_raw[0]
+WARNING: [Synth 8-3331] design pendulum_ui has unconnected port key_long[2]
+WARNING: [Synth 8-3331] design pendulum_ui has unconnected port key_long[1]
+WARNING: [Synth 8-3331] design pendulum_ui has unconnected port key_long[0]
+WARNING: [Synth 8-3331] design pendulum_ui has unconnected port rp4_adc[11]
+WARNING: [Synth 8-3331] design pendulum_ui has unconnected port rp4_adc[10]
+WARNING: [Synth 8-3331] design pendulum_ui has unconnected port rp4_adc[9]
+WARNING: [Synth 8-3331] design pendulum_ui has unconnected port rp4_adc[8]
+WARNING: [Synth 8-3331] design pendulum_ui has unconnected port rp4_adc[7]
+WARNING: [Synth 8-3331] design pendulum_ui has unconnected port rp4_adc[6]
+WARNING: [Synth 8-3331] design pendulum_ui has unconnected port rp4_adc[5]
+WARNING: [Synth 8-3331] design pendulum_ui has unconnected port rp4_adc[4]
+WARNING: [Synth 8-3331] design pendulum_ui has unconnected port rp4_adc[3]
+WARNING: [Synth 8-3331] design pendulum_ui has unconnected port rp4_adc[2]
+WARNING: [Synth 8-3331] design pendulum_ui has unconnected port rp4_adc[1]
+WARNING: [Synth 8-3331] design pendulum_ui has unconnected port rp4_adc[0]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[11]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[10]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[9]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[8]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[7]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[6]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[5]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[4]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[3]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[2]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[1]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle_adc_raw[0]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[11]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[10]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[9]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[8]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[7]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[6]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[5]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[4]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[3]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[2]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[1]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kp_adc_raw[0]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[11]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[10]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[9]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[8]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[7]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[6]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[5]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[4]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[3]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[2]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[1]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port ki_adc_raw[0]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[11]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[10]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[9]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[8]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[7]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[6]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[5]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[4]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[3]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[2]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[1]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port kd_adc_raw[0]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle2_adc_raw[11]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle2_adc_raw[10]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle2_adc_raw[9]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle2_adc_raw[8]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle2_adc_raw[7]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle2_adc_raw[6]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle2_adc_raw[5]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle2_adc_raw[4]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle2_adc_raw[3]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle2_adc_raw[2]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle2_adc_raw[1]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port angle2_adc_raw[0]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port rp4_adc_raw[11]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port rp4_adc_raw[10]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port rp4_adc_raw[9]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port rp4_adc_raw[8]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port rp4_adc_raw[7]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port rp4_adc_raw[6]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port rp4_adc_raw[5]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port rp4_adc_raw[4]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port rp4_adc_raw[3]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port rp4_adc_raw[2]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port rp4_adc_raw[1]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port rp4_adc_raw[0]
+WARNING: [Synth 8-3331] design pid_swing_top has unconnected port vauxp[6]
+INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 511.965 ; gain = 178.031
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 511.965 ; gain = 178.031
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 511.965 ; gain = 178.031
+---------------------------------------------------------------------------------
+INFO: [Netlist 29-17] Analyzing 4 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [D:/FPGA/PID_swing/constr/SmartZynq_V1_3B.xdc]
+Finished Parsing XDC File [D:/FPGA/PID_swing/constr/SmartZynq_V1_3B.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/FPGA/PID_swing/constr/SmartZynq_V1_3B.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/pid_swing_hw_top_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/pid_swing_hw_top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 891.715 ; gain = 0.000
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 891.746 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 4 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 4 instances
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 891.746 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 891.746 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 891.746 ; gain = 557.812
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg484-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 891.746 ; gain = 557.812
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 891.746 ; gain = 557.812
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'i2c_ads_master'
+INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "bit_idx" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "done" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "q" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "m_start" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "sample_valid" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "state" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "wait_ticks" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "sda_low" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "state" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "wait_count" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "init_index" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "n_line" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5587] ROM size for "i2c_start" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5546] ROM "angle_adc_s" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "angle_error_s" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "glyph_data_r" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "char_r" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5587] ROM size for "text_char" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [D:/FPGA/PID_swing/rtl/adc_filter_gain.v:25]
+INFO: [Synth 8-4471] merging register 'pressed_reg[3:0]' into 'stable_pressed_reg[3:0]' [D:/FPGA/PID_swing/rtl/key_events.v:45]
+INFO: [Synth 8-5544] ROM "menu_index" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-802] inferred FSM for state register 'page_reg' in module 'pendulum_ui'
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [D:/FPGA/PID_swing/rtl/quad_encoder.v:27]
+INFO: [Synth 8-4471] merging register 'error_value_reg[31:0]' into 'error_prev_reg[31:0]' [D:/FPGA/PID_swing/rtl/pid_fixed.v:61]
+INFO: [Synth 8-4471] merging register 'error_value_reg[31:0]' into 'error_prev_reg[31:0]' [D:/FPGA/PID_swing/rtl/pid_fixed.v:61]
+INFO: [Synth 8-5546] ROM "integral_value" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5545] ROM "state" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "phase_count" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "target_command" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE0 |                              000 |                              000
+                 iSTATE1 |                              001 |                              001
+                 iSTATE4 |                              010 |                              010
+                 iSTATE2 |                              011 |                              011
+                 iSTATE6 |                              100 |                              100
+                 iSTATE3 |                              101 |                              101
+                 iSTATE5 |                              110 |                              110
+                  iSTATE |                              111 |                              111
+*
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'i2c_ads_master'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE1 |                             0001 |                               00
+                 iSTATE2 |                             0010 |                               01
+                  iSTATE |                             0100 |                               10
+*
+                 iSTATE0 |                             1000 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'page_reg' using encoding 'one-hot' in module 'pendulum_ui'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 891.746 ; gain = 557.812
+---------------------------------------------------------------------------------
+INFO: [Synth 8-223] decloning instance 'u_control/u_kp_map' (gain_from_adc) to 'u_control/u_kp_display'
+INFO: [Synth 8-223] decloning instance 'u_control/u_kd_map' (gain_from_adc) to 'u_control/u_kd_display'
+INFO: [Synth 8-223] decloning instance 'u_control/u_ki_map' (gain_from_adc__parameterized0) to 'u_control/u_ki_display'
+
+Report RTL Partitions: 
++------+----------------------+------------+----------+
+|      |RTL Partition         |Replication |Instances |
++------+----------------------+------------+----------+
+|1     |pid_swing_top__GB0    |           1|     27609|
+|2     |pid_swing_top__GB1    |           1|      8852|
+|3     |pid_swing_top__GB2    |           1|      7936|
+|4     |pid_swing_top__GB3    |           1|     10946|
+|5     |pid_swing_hw_top__GC0 |           1|       121|
++------+----------------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     64 Bit       Adders := 2     
+	   3 Input     33 Bit       Adders := 4     
+	   2 Input     32 Bit       Adders := 20    
+	   3 Input     32 Bit       Adders := 18    
+	   3 Input     17 Bit       Adders := 8     
+	   2 Input     16 Bit       Adders := 9     
+	   2 Input     14 Bit       Adders := 2     
+	   2 Input     13 Bit       Adders := 3     
+	   3 Input     13 Bit       Adders := 1     
+	   2 Input     12 Bit       Adders := 2     
+	   2 Input     10 Bit       Adders := 4     
+	   2 Input      8 Bit       Adders := 5     
+	   2 Input      7 Bit       Adders := 1     
+	   2 Input      6 Bit       Adders := 4     
+	   2 Input      5 Bit       Adders := 6     
+	   2 Input      4 Bit       Adders := 1     
+	   2 Input      3 Bit       Adders := 7     
+	   2 Input      2 Bit       Adders := 4     
++---Registers : 
+	               32 Bit    Registers := 13    
+	               16 Bit    Registers := 29    
+	               12 Bit    Registers := 9     
+	               10 Bit    Registers := 4     
+	                8 Bit    Registers := 19    
+	                7 Bit    Registers := 1     
+	                6 Bit    Registers := 3     
+	                5 Bit    Registers := 7     
+	                4 Bit    Registers := 9     
+	                3 Bit    Registers := 12    
+	                2 Bit    Registers := 7     
+	                1 Bit    Registers := 54    
++---Multipliers : 
+	                16x33  Multipliers := 2     
+	                16x32  Multipliers := 4     
+	                 6x32  Multipliers := 1     
+	                13x32  Multipliers := 2     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 56    
+	  16 Input     32 Bit        Muxes := 1     
+	   3 Input     32 Bit        Muxes := 2     
+	  12 Input     32 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 31    
+	   4 Input     16 Bit        Muxes := 2     
+	  12 Input     16 Bit        Muxes := 1     
+	   6 Input     16 Bit        Muxes := 1     
+	   2 Input     15 Bit        Muxes := 1     
+	   2 Input     12 Bit        Muxes := 17    
+	   4 Input     12 Bit        Muxes := 1     
+	   4 Input      8 Bit        Muxes := 6     
+	   2 Input      8 Bit        Muxes := 13    
+	  16 Input      8 Bit        Muxes := 1     
+	  11 Input      8 Bit        Muxes := 2     
+	   6 Input      8 Bit        Muxes := 2     
+	   2 Input      7 Bit        Muxes := 33    
+	  17 Input      7 Bit        Muxes := 2     
+	   4 Input      7 Bit        Muxes := 29    
+	  16 Input      7 Bit        Muxes := 1     
+	   2 Input      6 Bit        Muxes := 5     
+	   4 Input      6 Bit        Muxes := 2     
+	   2 Input      5 Bit        Muxes := 3     
+	  16 Input      5 Bit        Muxes := 2     
+	   3 Input      4 Bit        Muxes := 2     
+	  13 Input      4 Bit        Muxes := 1     
+	  14 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 19    
+	   4 Input      4 Bit        Muxes := 1     
+	   7 Input      4 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 14    
+	  13 Input      3 Bit        Muxes := 1     
+	  16 Input      3 Bit        Muxes := 2     
+	  12 Input      3 Bit        Muxes := 1     
+	   7 Input      3 Bit        Muxes := 1     
+	   8 Input      3 Bit        Muxes := 1     
+	  11 Input      3 Bit        Muxes := 2     
+	   2 Input      2 Bit        Muxes := 8     
+	   4 Input      2 Bit        Muxes := 2     
+	  12 Input      2 Bit        Muxes := 1     
+	  15 Input      2 Bit        Muxes := 1     
+	   9 Input      2 Bit        Muxes := 1     
+	  10 Input      2 Bit        Muxes := 1     
+	  13 Input      1 Bit        Muxes := 10    
+	   2 Input      1 Bit        Muxes := 204   
+	   6 Input      1 Bit        Muxes := 5     
+	  16 Input      1 Bit        Muxes := 14    
+	   4 Input      1 Bit        Muxes := 46    
+	   3 Input      1 Bit        Muxes := 9     
+	  12 Input      1 Bit        Muxes := 7     
+	   7 Input      1 Bit        Muxes := 12    
+	   9 Input      1 Bit        Muxes := 4     
+	  11 Input      1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module pid_swing_hw_top 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 1     
+Module i2c_txn_master 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      6 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 1     
+	   2 Input      3 Bit       Adders := 2     
++---Registers : 
+	                8 Bit    Registers := 4     
+	                6 Bit    Registers := 1     
+	                4 Bit    Registers := 2     
+	                3 Bit    Registers := 2     
+	                1 Bit    Registers := 7     
++---Muxes : 
+	   4 Input      8 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 1     
+	   3 Input      4 Bit        Muxes := 1     
+	  13 Input      4 Bit        Muxes := 1     
+	  14 Input      4 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 3     
+	  13 Input      3 Bit        Muxes := 1     
+	  13 Input      1 Bit        Muxes := 9     
+	   2 Input      1 Bit        Muxes := 7     
+	   6 Input      1 Bit        Muxes := 1     
+Module oled_ssd1306_ui 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
+	   2 Input     16 Bit       Adders := 4     
+	   2 Input      5 Bit       Adders := 2     
+	   2 Input      3 Bit       Adders := 2     
++---Registers : 
+	               32 Bit    Registers := 1     
+	               16 Bit    Registers := 9     
+	               12 Bit    Registers := 1     
+	                8 Bit    Registers := 5     
+	                7 Bit    Registers := 1     
+	                5 Bit    Registers := 3     
+	                3 Bit    Registers := 3     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 3     
+	  16 Input     32 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 3     
+	   2 Input      8 Bit        Muxes := 1     
+	  16 Input      8 Bit        Muxes := 1     
+	   2 Input      7 Bit        Muxes := 33    
+	  17 Input      7 Bit        Muxes := 2     
+	   4 Input      7 Bit        Muxes := 29    
+	  16 Input      7 Bit        Muxes := 1     
+	   2 Input      6 Bit        Muxes := 5     
+	   4 Input      6 Bit        Muxes := 2     
+	   2 Input      5 Bit        Muxes := 3     
+	  16 Input      5 Bit        Muxes := 2     
+	   2 Input      4 Bit        Muxes := 3     
+	   2 Input      3 Bit        Muxes := 4     
+	  16 Input      3 Bit        Muxes := 2     
+	   2 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 17    
+	  16 Input      1 Bit        Muxes := 14    
+Module pid_fixed 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     64 Bit       Adders := 1     
+	   3 Input     33 Bit       Adders := 1     
+	   3 Input     32 Bit       Adders := 1     
+	   2 Input     32 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 3     
+	               16 Bit    Registers := 1     
++---Multipliers : 
+	                16x33  Multipliers := 1     
+	                16x32  Multipliers := 2     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 2     
+	   2 Input     16 Bit        Muxes := 4     
+	   2 Input      1 Bit        Muxes := 6     
+Module quad_encoder 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
+	   3 Input     32 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 3     
+	                1 Bit    Registers := 6     
++---Muxes : 
+	   3 Input     32 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 1     
+Module pendulum_ui 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 8     
+	   3 Input     17 Bit       Adders := 6     
+	   2 Input     16 Bit       Adders := 1     
+	   2 Input     12 Bit       Adders := 2     
+	   2 Input      8 Bit       Adders := 5     
+	   2 Input      7 Bit       Adders := 1     
+	   2 Input      6 Bit       Adders := 1     
+	   2 Input      2 Bit       Adders := 2     
++---Registers : 
+	               32 Bit    Registers := 1     
+	               16 Bit    Registers := 6     
+	                8 Bit    Registers := 2     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 10    
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 11    
+	   2 Input     16 Bit        Muxes := 2     
+	   4 Input     16 Bit        Muxes := 1     
+	   2 Input     12 Bit        Muxes := 2     
+	   4 Input     12 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 6     
+	   4 Input      8 Bit        Muxes := 2     
+	   4 Input      4 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 6     
+	   4 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 48    
+	   4 Input      1 Bit        Muxes := 8     
+	   3 Input      1 Bit        Muxes := 9     
+Module pid_fixed__parameterized0 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     64 Bit       Adders := 1     
+	   3 Input     33 Bit       Adders := 1     
+	   3 Input     32 Bit       Adders := 1     
+	   2 Input     32 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 3     
+	               16 Bit    Registers := 1     
++---Multipliers : 
+	                16x33  Multipliers := 1     
+	                16x32  Multipliers := 2     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 2     
+	   2 Input     16 Bit        Muxes := 4     
+	   2 Input      1 Bit        Muxes := 6     
+Module swing_balance_ctrl 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     33 Bit       Adders := 2     
+	   2 Input     32 Bit       Adders := 2     
+	   3 Input     32 Bit       Adders := 1     
+	   3 Input     17 Bit       Adders := 2     
+	   2 Input     16 Bit       Adders := 3     
+	   2 Input     14 Bit       Adders := 2     
+	   2 Input     13 Bit       Adders := 2     
++---Registers : 
+	               32 Bit    Registers := 1     
+	               16 Bit    Registers := 3     
+	               12 Bit    Registers := 3     
+	                4 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 5     
++---Muxes : 
+	  12 Input     32 Bit        Muxes := 1     
+	   2 Input     32 Bit        Muxes := 4     
+	  12 Input     16 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 8     
+	   6 Input     16 Bit        Muxes := 1     
+	   2 Input     12 Bit        Muxes := 6     
+	   3 Input      4 Bit        Muxes := 1     
+	   7 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 2     
+	  12 Input      3 Bit        Muxes := 1     
+	  12 Input      2 Bit        Muxes := 1     
+	  15 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 31    
+	  12 Input      1 Bit        Muxes := 7     
+	   4 Input      1 Bit        Muxes := 1     
+	  13 Input      1 Bit        Muxes := 1     
+Module tb6612_pwm 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
+	                1 Bit    Registers := 4     
++---Multipliers : 
+	                 6x32  Multipliers := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 5     
+Module angle_center_map__1 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     32 Bit       Adders := 3     
+	   2 Input     32 Bit       Adders := 2     
++---Multipliers : 
+	                13x32  Multipliers := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 8     
+	   2 Input     16 Bit        Muxes := 1     
+Module angle_center_map 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     32 Bit       Adders := 3     
+	   2 Input     32 Bit       Adders := 2     
++---Multipliers : 
+	                13x32  Multipliers := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 8     
+	   2 Input     16 Bit        Muxes := 1     
+Module key_events 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     10 Bit       Adders := 4     
+	   2 Input      5 Bit       Adders := 4     
++---Registers : 
+	               10 Bit    Registers := 4     
+	                5 Bit    Registers := 4     
+	                4 Bit    Registers := 6     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      4 Bit        Muxes := 14    
+	   2 Input      1 Bit        Muxes := 33    
+Module angle_from_adc 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     13 Bit       Adders := 1     
++---Muxes : 
+	   2 Input     15 Bit        Muxes := 1     
+Module adc_filter_12__1 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     32 Bit       Adders := 2     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 4     
+	   2 Input     12 Bit        Muxes := 2     
+Module adc_filter_12__2 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     32 Bit       Adders := 2     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 4     
+	   2 Input     12 Bit        Muxes := 2     
+Module adc_filter_12__3 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     32 Bit       Adders := 2     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 4     
+	   2 Input     12 Bit        Muxes := 2     
+Module adc_filter_12 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     32 Bit       Adders := 2     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 4     
+	   2 Input     12 Bit        Muxes := 2     
+Module i2c_ads_master 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      6 Bit       Adders := 1     
+	   2 Input      3 Bit       Adders := 2     
+	   2 Input      2 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 2     
+	                8 Bit    Registers := 4     
+	                6 Bit    Registers := 1     
+	                3 Bit    Registers := 3     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 9     
++---Muxes : 
+	   4 Input      8 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 7     
+	   7 Input      3 Bit        Muxes := 1     
+	   8 Input      3 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 22    
+	   4 Input      1 Bit        Muxes := 21    
+	   7 Input      1 Bit        Muxes := 11    
+Module ads1115_reader 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 1     
+	   2 Input      2 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 1     
+	               12 Bit    Registers := 5     
+	                8 Bit    Registers := 4     
+	                3 Bit    Registers := 3     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 5     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 1     
+	   4 Input     16 Bit        Muxes := 1     
+	   2 Input     12 Bit        Muxes := 1     
+	  11 Input      8 Bit        Muxes := 2     
+	   2 Input      8 Bit        Muxes := 4     
+	   4 Input      8 Bit        Muxes := 2     
+	   6 Input      8 Bit        Muxes := 2     
+	  11 Input      3 Bit        Muxes := 2     
+	   9 Input      2 Bit        Muxes := 1     
+	  10 Input      2 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 1     
+	   4 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 23    
+	   4 Input      1 Bit        Muxes := 16    
+	   6 Input      1 Bit        Muxes := 4     
+	   9 Input      1 Bit        Muxes := 4     
+	   7 Input      1 Bit        Muxes := 1     
+	  11 Input      1 Bit        Muxes := 1     
+Module pid_swing_top 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
+	   3 Input     13 Bit       Adders := 1     
+	   2 Input      6 Bit       Adders := 1     
+	   2 Input      3 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 6     
+	                6 Bit    Registers := 1     
+	                3 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 7     
+	   2 Input      1 Bit        Muxes := 5     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+INFO: [Synth 8-5544] ROM "sda_low" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "init_index" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "wait_count" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "state" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "n_line" won't be mapped to RAM because it is too sparse
+DSP Report: Generating DSP q8_to_x100_return0, operation Mode is: A2*(B:0x64).
+DSP Report: register angle_kp_s_reg is absorbed into DSP q8_to_x100_return0.
+DSP Report: operator q8_to_x100_return0 is absorbed into DSP q8_to_x100_return0.
+DSP Report: Generating DSP q8_to_x1002_return0, operation Mode is: A2*(B:0x64).
+DSP Report: register angle_ki_s_reg is absorbed into DSP q8_to_x1002_return0.
+DSP Report: operator q8_to_x1002_return0 is absorbed into DSP q8_to_x1002_return0.
+DSP Report: Generating DSP q8_to_x1005_return0, operation Mode is: A2*(B:0x64).
+DSP Report: register angle_kd_s_reg is absorbed into DSP q8_to_x1005_return0.
+DSP Report: operator q8_to_x1005_return0 is absorbed into DSP q8_to_x1005_return0.
+DSP Report: Generating DSP q8_to_x1008_return0, operation Mode is: A2*(B:0x64).
+DSP Report: register location_kp_s_reg is absorbed into DSP q8_to_x1008_return0.
+DSP Report: operator q8_to_x1008_return0 is absorbed into DSP q8_to_x1008_return0.
+DSP Report: Generating DSP q8_to_x10011_return0, operation Mode is: A2*(B:0x64).
+DSP Report: register location_ki_s_reg is absorbed into DSP q8_to_x10011_return0.
+DSP Report: operator q8_to_x10011_return0 is absorbed into DSP q8_to_x10011_return0.
+DSP Report: Generating DSP q8_to_x10014_return0, operation Mode is: A2*(B:0x64).
+DSP Report: register location_kd_s_reg is absorbed into DSP q8_to_x10014_return0.
+DSP Report: operator q8_to_x10014_return0 is absorbed into DSP q8_to_x10014_return0.
+DSP Report: Generating DSP rp_location_kd_p, operation Mode is: (A:0xa00a01)*B.
+DSP Report: operator rp_location_kd_p is absorbed into DSP rp_location_kd_p.
+DSP Report: Generating DSP rp_location_ki_p, operation Mode is: (A:0x100101)*B.
+DSP Report: operator rp_location_ki_p is absorbed into DSP rp_location_ki_p.
+DSP Report: Generating DSP rp_location_kp_p, operation Mode is: (A:0x500501)*B.
+DSP Report: operator rp_location_kp_p is absorbed into DSP rp_location_kp_p.
+DSP Report: Generating DSP rp_angle_ki_p, operation Mode is: (A:0x80081)*B.
+DSP Report: operator rp_angle_ki_p is absorbed into DSP rp_angle_ki_p.
+DSP Report: Generating DSP rp_angle_kp_p, operation Mode is: (A:0x100101)*B.
+DSP Report: operator rp_angle_kp_p is absorbed into DSP rp_angle_kp_p.
+DSP Report: Generating DSP rp_angle_kd_p, operation Mode is: (A:0x100101)*B.
+DSP Report: operator rp_angle_kd_p is absorbed into DSP rp_angle_kd_p.
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 2 [D:/FPGA/PID_swing/rtl/pid_fixed.v:50]
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 2 [D:/FPGA/PID_swing/rtl/pid_fixed.v:52]
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 2 [D:/FPGA/PID_swing/rtl/pid_fixed.v:48]
+DSP Report: Generating DSP u_position_pid/output_value5, operation Mode is: A*B.
+DSP Report: operator u_position_pid/output_value5 is absorbed into DSP u_position_pid/output_value5.
+DSP Report: operator u_position_pid/output_value5 is absorbed into DSP u_position_pid/output_value5.
+DSP Report: Generating DSP u_position_pid/output_value5, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator u_position_pid/output_value5 is absorbed into DSP u_position_pid/output_value5.
+DSP Report: operator u_position_pid/output_value5 is absorbed into DSP u_position_pid/output_value5.
+DSP Report: Generating DSP u_position_pid/output_value4, operation Mode is: A*B.
+DSP Report: operator u_position_pid/output_value4 is absorbed into DSP u_position_pid/output_value4.
+DSP Report: operator u_position_pid/output_value4 is absorbed into DSP u_position_pid/output_value4.
+DSP Report: Generating DSP u_position_pid/output_value4, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator u_position_pid/output_value4 is absorbed into DSP u_position_pid/output_value4.
+DSP Report: operator u_position_pid/output_value4 is absorbed into DSP u_position_pid/output_value4.
+DSP Report: Generating DSP u_position_pid/output_value5, operation Mode is: A2*B.
+DSP Report: register A is absorbed into DSP u_position_pid/output_value5.
+DSP Report: operator u_position_pid/output_value5 is absorbed into DSP u_position_pid/output_value5.
+DSP Report: operator u_position_pid/output_value5 is absorbed into DSP u_position_pid/output_value5.
+DSP Report: Generating DSP u_position_pid/output_value5, operation Mode is: (PCIN>>17)+A*B2.
+DSP Report: register B is absorbed into DSP u_position_pid/output_value5.
+DSP Report: operator u_position_pid/output_value5 is absorbed into DSP u_position_pid/output_value5.
+DSP Report: operator u_position_pid/output_value5 is absorbed into DSP u_position_pid/output_value5.
+INFO: [Synth 8-5545] ROM "phase_count" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "state" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "target_command" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5546] ROM "u_angle_pid/integral_value" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 2 [D:/FPGA/PID_swing/rtl/pid_fixed.v:50]
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 2 [D:/FPGA/PID_swing/rtl/pid_fixed.v:52]
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 2 [D:/FPGA/PID_swing/rtl/pid_fixed.v:48]
+DSP Report: Generating DSP u_angle_pid/output_value5, operation Mode is: A*B.
+DSP Report: operator u_angle_pid/output_value5 is absorbed into DSP u_angle_pid/output_value5.
+DSP Report: operator u_angle_pid/output_value5 is absorbed into DSP u_angle_pid/output_value5.
+DSP Report: Generating DSP u_angle_pid/output_value5, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator u_angle_pid/output_value5 is absorbed into DSP u_angle_pid/output_value5.
+DSP Report: operator u_angle_pid/output_value5 is absorbed into DSP u_angle_pid/output_value5.
+DSP Report: Generating DSP u_angle_pid/output_value4, operation Mode is: A*B.
+DSP Report: operator u_angle_pid/output_value4 is absorbed into DSP u_angle_pid/output_value4.
+DSP Report: operator u_angle_pid/output_value4 is absorbed into DSP u_angle_pid/output_value4.
+DSP Report: Generating DSP u_angle_pid/output_value4, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator u_angle_pid/output_value4 is absorbed into DSP u_angle_pid/output_value4.
+DSP Report: operator u_angle_pid/output_value4 is absorbed into DSP u_angle_pid/output_value4.
+DSP Report: Generating DSP u_angle_pid/output_value5, operation Mode is: A2*B.
+DSP Report: register A is absorbed into DSP u_angle_pid/output_value5.
+DSP Report: operator u_angle_pid/output_value5 is absorbed into DSP u_angle_pid/output_value5.
+DSP Report: operator u_angle_pid/output_value5 is absorbed into DSP u_angle_pid/output_value5.
+DSP Report: Generating DSP u_angle_pid/output_value5, operation Mode is: (PCIN>>17)+A*B2.
+DSP Report: register B is absorbed into DSP u_angle_pid/output_value5.
+DSP Report: operator u_angle_pid/output_value5 is absorbed into DSP u_angle_pid/output_value5.
+DSP Report: operator u_angle_pid/output_value5 is absorbed into DSP u_angle_pid/output_value5.
+DSP Report: Generating DSP angle_deg_x103, operation Mode is: A*(B:0xe10).
+DSP Report: operator angle_deg_x103 is absorbed into DSP angle_deg_x103.
+INFO: [Synth 8-5544] ROM "u_i2c/state" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "wait_ticks" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "state" won't be mapped to RAM because it is too sparse
+DSP Report: Generating DSP angle14, operation Mode is: A''*(B:0x27b6).
+DSP Report: register u_i2c/shift_reg is absorbed into DSP angle14.
+DSP Report: register u_i2c/rx_data_reg is absorbed into DSP angle14.
+DSP Report: operator angle14 is absorbed into DSP angle14.
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_1/\g_oled_ui.u_oled_ui /\glyph_data_r_reg[7] )
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_ui/location_kp_q8_reg[11]' (FDRE) to 'u_controli_1/u_ui/location_kp_q8_reg[15]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_ui/location_kp_q8_reg[12]' (FDRE) to 'u_controli_1/u_ui/location_kp_q8_reg[15]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_ui/location_kp_q8_reg[13]' (FDRE) to 'u_controli_1/u_ui/location_kp_q8_reg[15]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_ui/location_kp_q8_reg[14]' (FDRE) to 'u_controli_1/u_ui/location_kp_q8_reg[15]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_1/\u_ui/location_kp_q8_reg[15] )
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_ui/location_ki_q8_reg[9]' (FDRE) to 'u_controli_1/u_ui/location_ki_q8_reg[10]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_ui/location_ki_q8_reg[10]' (FDRE) to 'u_controli_1/u_ui/location_ki_q8_reg[11]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_ui/location_ki_q8_reg[11]' (FDRE) to 'u_controli_1/u_ui/location_ki_q8_reg[12]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_ui/location_ki_q8_reg[12]' (FDRE) to 'u_controli_1/u_ui/location_ki_q8_reg[13]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_ui/location_ki_q8_reg[13]' (FDRE) to 'u_controli_1/u_ui/location_ki_q8_reg[14]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_ui/location_ki_q8_reg[14]' (FDRE) to 'u_controli_1/u_ui/location_ki_q8_reg[15]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_1/\u_ui/location_ki_q8_reg[15] )
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_ui/location_kd_q8_reg[12]' (FDRE) to 'u_controli_1/u_ui/location_kd_q8_reg[15]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_ui/location_kd_q8_reg[13]' (FDRE) to 'u_controli_1/u_ui/location_kd_q8_reg[15]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_ui/location_kd_q8_reg[14]' (FDRE) to 'u_controli_1/u_ui/location_kd_q8_reg[15]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_1/\u_ui/location_kd_q8_reg[15] )
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_position_pid/error_input_reg_reg[16]' (FDRE) to 'u_controli_1/u_position_pid/error_input_reg_reg[17]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_position_pid/error_prev_reg[16]' (FDRE) to 'u_controli_1/u_position_pid/error_prev_reg[17]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_position_pid/error_input_reg_reg[17]' (FDRE) to 'u_controli_1/u_position_pid/error_input_reg_reg[18]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_position_pid/error_prev_reg[17]' (FDRE) to 'u_controli_1/u_position_pid/error_prev_reg[18]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_position_pid/error_input_reg_reg[18]' (FDRE) to 'u_controli_1/u_position_pid/error_input_reg_reg[19]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_position_pid/error_prev_reg[18]' (FDRE) to 'u_controli_1/u_position_pid/error_prev_reg[19]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_position_pid/error_input_reg_reg[19]' (FDRE) to 'u_controli_1/u_position_pid/error_input_reg_reg[20]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_position_pid/error_prev_reg[19]' (FDRE) to 'u_controli_1/u_position_pid/error_prev_reg[20]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_position_pid/error_input_reg_reg[20]' (FDRE) to 'u_controli_1/u_position_pid/error_input_reg_reg[21]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_position_pid/error_prev_reg[20]' (FDRE) to 'u_controli_1/u_position_pid/error_prev_reg[21]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_position_pid/error_input_reg_reg[21]' (FDRE) to 'u_controli_1/u_position_pid/error_input_reg_reg[22]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_position_pid/error_prev_reg[21]' (FDRE) to 'u_controli_1/u_position_pid/error_prev_reg[22]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_position_pid/error_input_reg_reg[22]' (FDRE) to 'u_controli_1/u_position_pid/error_input_reg_reg[23]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_position_pid/error_prev_reg[22]' (FDRE) to 'u_controli_1/u_position_pid/error_prev_reg[23]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_position_pid/error_input_reg_reg[23]' (FDRE) to 'u_controli_1/u_position_pid/error_input_reg_reg[24]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_position_pid/error_prev_reg[23]' (FDRE) to 'u_controli_1/u_position_pid/error_prev_reg[24]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_position_pid/error_input_reg_reg[24]' (FDRE) to 'u_controli_1/u_position_pid/error_input_reg_reg[25]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_position_pid/error_prev_reg[24]' (FDRE) to 'u_controli_1/u_position_pid/error_prev_reg[25]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_position_pid/error_input_reg_reg[25]' (FDRE) to 'u_controli_1/u_position_pid/error_input_reg_reg[26]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_position_pid/error_prev_reg[25]' (FDRE) to 'u_controli_1/u_position_pid/error_prev_reg[26]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_position_pid/error_input_reg_reg[26]' (FDRE) to 'u_controli_1/u_position_pid/error_input_reg_reg[27]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_position_pid/error_prev_reg[26]' (FDRE) to 'u_controli_1/u_position_pid/error_prev_reg[27]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_position_pid/error_input_reg_reg[27]' (FDRE) to 'u_controli_1/u_position_pid/error_input_reg_reg[28]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_position_pid/error_prev_reg[27]' (FDRE) to 'u_controli_1/u_position_pid/error_prev_reg[28]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_position_pid/error_input_reg_reg[28]' (FDRE) to 'u_controli_1/u_position_pid/error_input_reg_reg[29]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_position_pid/error_prev_reg[28]' (FDRE) to 'u_controli_1/u_position_pid/error_prev_reg[29]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_position_pid/error_input_reg_reg[29]' (FDRE) to 'u_controli_1/u_position_pid/error_input_reg_reg[30]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_position_pid/error_prev_reg[29]' (FDRE) to 'u_controli_1/u_position_pid/error_prev_reg[30]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_position_pid/error_input_reg_reg[30]' (FDRE) to 'u_controli_1/u_position_pid/error_input_reg_reg[31]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_position_pid/error_prev_reg[30]' (FDRE) to 'u_controli_1/u_position_pid/error_prev_reg[31]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data0_reg[7]' (FDRE) to 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data0_reg[0]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data1_reg[7]' (FDRE) to 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data0_reg[0]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data3_reg[7]' (FDRE) to 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data0_reg[0]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data0_reg[6]' (FDRE) to 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data0_reg[3]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data3_reg[6]' (FDRE) to 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data0_reg[0]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data0_reg[5]' (FDRE) to 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data0_reg[3]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data1_reg[5]' (FDRE) to 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data0_reg[0]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data3_reg[5]' (FDRE) to 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data0_reg[0]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data0_reg[4]' (FDRE) to 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data0_reg[3]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data1_reg[4]' (FDRE) to 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data0_reg[0]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data3_reg[4]' (FDRE) to 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data0_reg[0]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data0_reg[3]' (FDRE) to 'u_controli_1/g_oled_ui.u_oled_ui/i2c_length_reg[1]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data1_reg[3]' (FDRE) to 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data0_reg[0]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data3_reg[3]' (FDRE) to 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data0_reg[0]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data0_reg[2]' (FDRE) to 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data0_reg[0]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data1_reg[2]' (FDRE) to 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data0_reg[0]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data3_reg[2]' (FDRE) to 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data0_reg[0]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data0_reg[1]' (FDRE) to 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data0_reg[0]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data1_reg[1]' (FDRE) to 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data0_reg[0]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data3_reg[1]' (FDRE) to 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data0_reg[0]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data0_reg[0]' (FDRE) to 'u_controli_1/g_oled_ui.u_oled_ui/i2c_length_reg[2]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data1_reg[0]' (FDRE) to 'u_controli_1/g_oled_ui.u_oled_ui/i2c_length_reg[2]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/g_oled_ui.u_oled_ui/i2c_data3_reg[0]' (FDRE) to 'u_controli_1/g_oled_ui.u_oled_ui/i2c_length_reg[2]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_1/\g_oled_ui.u_oled_ui /\state_reg[4] )
+INFO: [Synth 8-3886] merging instance 'u_controli_1/g_oled_ui.u_oled_ui/i2c_length_reg[1]' (FDRE) to 'u_controli_1/g_oled_ui.u_oled_ui/i2c_length_reg[0]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_1/\g_oled_ui.u_oled_ui /\i2c_length_reg[2] )
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_ui/angle_kd_q8_reg[9]' (FDRE) to 'u_controli_1/u_ui/angle_kd_q8_reg[15]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_ui/angle_kd_q8_reg[10]' (FDRE) to 'u_controli_1/u_ui/angle_kd_q8_reg[15]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_ui/angle_kd_q8_reg[11]' (FDRE) to 'u_controli_1/u_ui/angle_kd_q8_reg[15]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_ui/angle_kd_q8_reg[12]' (FDRE) to 'u_controli_1/u_ui/angle_kd_q8_reg[15]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_ui/angle_kd_q8_reg[13]' (FDRE) to 'u_controli_1/u_ui/angle_kd_q8_reg[15]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_ui/angle_kd_q8_reg[14]' (FDRE) to 'u_controli_1/u_ui/angle_kd_q8_reg[15]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_1/\u_ui/angle_kd_q8_reg[15] )
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_ui/angle_ki_q8_reg[8]' (FDRE) to 'u_controli_1/u_ui/angle_ki_q8_reg[15]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_ui/angle_ki_q8_reg[9]' (FDRE) to 'u_controli_1/u_ui/angle_ki_q8_reg[15]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_ui/angle_ki_q8_reg[10]' (FDRE) to 'u_controli_1/u_ui/angle_ki_q8_reg[15]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_ui/angle_ki_q8_reg[11]' (FDRE) to 'u_controli_1/u_ui/angle_ki_q8_reg[15]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_ui/angle_ki_q8_reg[12]' (FDRE) to 'u_controli_1/u_ui/angle_ki_q8_reg[15]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_ui/angle_ki_q8_reg[13]' (FDRE) to 'u_controli_1/u_ui/angle_ki_q8_reg[15]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_ui/angle_ki_q8_reg[14]' (FDRE) to 'u_controli_1/u_ui/angle_ki_q8_reg[15]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_1/\u_ui/angle_ki_q8_reg[15] )
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_ui/angle_kp_q8_reg[9]' (FDRE) to 'u_controli_1/u_ui/angle_kp_q8_reg[15]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_ui/angle_kp_q8_reg[10]' (FDRE) to 'u_controli_1/u_ui/angle_kp_q8_reg[15]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_ui/angle_kp_q8_reg[11]' (FDRE) to 'u_controli_1/u_ui/angle_kp_q8_reg[15]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_ui/angle_kp_q8_reg[12]' (FDRE) to 'u_controli_1/u_ui/angle_kp_q8_reg[15]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_ui/angle_kp_q8_reg[13]' (FDRE) to 'u_controli_1/u_ui/angle_kp_q8_reg[15]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/u_ui/angle_kp_q8_reg[14]' (FDRE) to 'u_controli_1/u_ui/angle_kp_q8_reg[15]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_1/\u_ui/angle_kp_q8_reg[15] )
+INFO: [Synth 8-3886] merging instance 'u_controli_1/g_oled_ui.u_oled_ui/u_i2c/length_reg_reg[0]' (FDE) to 'u_controli_1/g_oled_ui.u_oled_ui/u_i2c/length_reg_reg[1]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_1/\g_oled_ui.u_oled_ui /u_i2c/\length_reg_reg[2] )
+INFO: [Synth 8-3886] merging instance 'u_controli_1/g_oled_ui.u_oled_ui/u_i2c/tx0_reg[6]' (FDRE) to 'u_controli_1/g_oled_ui.u_oled_ui/u_i2c/tx0_reg[3]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/g_oled_ui.u_oled_ui/u_i2c/tx0_reg[5]' (FDRE) to 'u_controli_1/g_oled_ui.u_oled_ui/u_i2c/tx0_reg[3]'
+INFO: [Synth 8-3886] merging instance 'u_controli_1/g_oled_ui.u_oled_ui/u_i2c/tx0_reg[4]' (FDRE) to 'u_controli_1/g_oled_ui.u_oled_ui/u_i2c/tx0_reg[3]'
+INFO: [Synth 8-3886] merging instance 'u_controli_2/control_angle_error_counts_reg[12]' (FDRE) to 'u_controli_2/control_angle_error_counts_reg[15]'
+INFO: [Synth 8-3886] merging instance 'u_controli_2/control_angle_error_counts_reg[13]' (FDRE) to 'u_controli_2/control_angle_error_counts_reg[15]'
+INFO: [Synth 8-3886] merging instance 'u_controli_2/control_angle_error_counts_reg[14]' (FDRE) to 'u_controli_2/control_angle_error_counts_reg[15]'
+INFO: [Synth 8-3886] merging instance 'u_controli_2/u_angle_pid/error_input_reg_reg[16]' (FDRE) to 'u_controli_2/u_angle_pid/error_input_reg_reg[17]'
+INFO: [Synth 8-3886] merging instance 'u_controli_2/u_angle_pid/error_prev_reg[16]' (FDRE) to 'u_controli_2/u_angle_pid/error_prev_reg[17]'
+INFO: [Synth 8-3886] merging instance 'u_controli_2/u_angle_pid/error_input_reg_reg[17]' (FDRE) to 'u_controli_2/u_angle_pid/error_input_reg_reg[18]'
+INFO: [Synth 8-3886] merging instance 'u_controli_2/u_angle_pid/error_prev_reg[17]' (FDRE) to 'u_controli_2/u_angle_pid/error_prev_reg[18]'
+INFO: [Synth 8-3886] merging instance 'u_controli_2/u_angle_pid/error_input_reg_reg[18]' (FDRE) to 'u_controli_2/u_angle_pid/error_input_reg_reg[19]'
+INFO: [Synth 8-3886] merging instance 'u_controli_2/u_angle_pid/error_prev_reg[18]' (FDRE) to 'u_controli_2/u_angle_pid/error_prev_reg[19]'
+INFO: [Synth 8-3886] merging instance 'u_controli_2/u_angle_pid/error_input_reg_reg[19]' (FDRE) to 'u_controli_2/u_angle_pid/error_input_reg_reg[20]'
+INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_4/\g_ads.u_ads /\m_t1_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_4/\g_ads.u_ads /\state_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (u_controli_2/\control_kd_q8_reg[15] )
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 1002.910 ; gain = 668.977
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+ROM:
++----------------+--------------+---------------+----------------+
+|Module Name     | RTL Object   | Depth x Width | Implemented As | 
++----------------+--------------+---------------+----------------+
+|oled_ssd1306_ui | init_command | 32x8          | LUT            | 
+|oled_ssd1306_ui | text_char    | 32x7          | LUT            | 
+|oled_ssd1306_ui | init_command | 32x8          | LUT            | 
+|oled_ssd1306_ui | text_char    | 32x7          | LUT            | 
++----------------+--------------+---------------+----------------+
+
+
+DSP: Preliminary Mapping  Report (see note below)
++-----------------+-----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name      | DSP Mapping     | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++-----------------+-----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|oled_ssd1306_ui  | A2*(B:0x64)     | 16     | 7      | -      | -      | 23     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|oled_ssd1306_ui  | A2*(B:0x64)     | 16     | 7      | -      | -      | 23     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|oled_ssd1306_ui  | A2*(B:0x64)     | 16     | 7      | -      | -      | 23     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|oled_ssd1306_ui  | A2*(B:0x64)     | 16     | 7      | -      | -      | 23     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|oled_ssd1306_ui  | A2*(B:0x64)     | 16     | 7      | -      | -      | 23     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|oled_ssd1306_ui  | A2*(B:0x64)     | 16     | 7      | -      | -      | 23     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|pendulum_ui      | (A:0xa00a01)*B  | 24     | 12     | -      | -      | 36     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pendulum_ui      | (A:0x100101)*B  | 21     | 12     | -      | -      | 33     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pendulum_ui      | (A:0x500501)*B  | 23     | 12     | -      | -      | 35     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pendulum_ui      | (A:0x80081)*B   | 20     | 12     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pendulum_ui      | (A:0x100101)*B  | 21     | 12     | -      | -      | 33     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pendulum_ui      | (A:0x100101)*B  | 21     | 12     | -      | -      | 33     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pid_swing_hw_top | A*B             | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pid_swing_hw_top | (PCIN>>17)+A*B  | 16     | 15     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pid_swing_hw_top | A*B             | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pid_swing_hw_top | (PCIN>>17)+A*B  | 16     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pid_swing_hw_top | A2*B            | 18     | 16     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|pid_swing_hw_top | (PCIN>>17)+A*B2 | 16     | 15     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|pid_swing_hw_top | A*B             | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pid_swing_hw_top | (PCIN>>17)+A*B  | 16     | 15     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pid_swing_hw_top | A*B             | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pid_swing_hw_top | (PCIN>>17)+A*B  | 16     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pid_swing_hw_top | A2*B            | 18     | 16     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|pid_swing_hw_top | (PCIN>>17)+A*B2 | 16     | 15     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|angle_from_adc   | A*(B:0xe10)     | 12     | 12     | -      | -      | 24     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|ads1115_reader   | A''*(B:0x27b6)  | 15     | 14     | -      | -      | 29     | 2    | 0    | -    | -    | -     | 0    | 0    | 
++-----------------+-----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++------+----------------------+------------+----------+
+|      |RTL Partition         |Replication |Instances |
++------+----------------------+------------+----------+
+|1     |pid_swing_top__GB0    |           1|     11636|
+|2     |pid_swing_top__GB1    |           1|      3035|
+|3     |pid_swing_top__GB3    |           1|      2265|
+|4     |pid_swing_hw_top__GC0 |           1|        53|
++------+----------------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:41 ; elapsed = 00:00:42 . Memory (MB): peak = 1002.910 ; gain = 668.977
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:02 ; elapsed = 00:01:04 . Memory (MB): peak = 1338.176 ; gain = 1004.242
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++------+----------------------+------------+----------+
+|      |RTL Partition         |Replication |Instances |
++------+----------------------+------------+----------+
+|1     |pid_swing_top__GB0    |           1|     11554|
+|2     |pid_swing_top__GB1    |           1|      3035|
+|3     |pid_swing_top__GB3    |           1|      2265|
+|4     |pid_swing_hw_top__GC0 |           1|        53|
++------+----------------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:07 ; elapsed = 00:01:09 . Memory (MB): peak = 1338.176 ; gain = 1004.242
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[1] is being inverted and renamed to u_control/u_position_pid/output_value_reg[1]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[2] is being inverted and renamed to u_control/u_position_pid/output_value_reg[2]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[3] is being inverted and renamed to u_control/u_position_pid/output_value_reg[3]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[4] is being inverted and renamed to u_control/u_position_pid/output_value_reg[4]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[5] is being inverted and renamed to u_control/u_position_pid/output_value_reg[5]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[6] is being inverted and renamed to u_control/u_position_pid/output_value_reg[6]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[7] is being inverted and renamed to u_control/u_position_pid/output_value_reg[7]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[8] is being inverted and renamed to u_control/u_position_pid/output_value_reg[8]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[9] is being inverted and renamed to u_control/u_position_pid/output_value_reg[9]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[10] is being inverted and renamed to u_control/u_position_pid/output_value_reg[10]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[11] is being inverted and renamed to u_control/u_position_pid/output_value_reg[11]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[12] is being inverted and renamed to u_control/u_position_pid/output_value_reg[12]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[13] is being inverted and renamed to u_control/u_position_pid/output_value_reg[13]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[14] is being inverted and renamed to u_control/u_position_pid/output_value_reg[14]_inv.
+INFO: [Synth 8-5365] Flop u_control/u_position_pid/output_value_reg[15] is being inverted and renamed to u_control/u_position_pid/output_value_reg[15]_inv.
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:08 ; elapsed = 00:01:10 . Memory (MB): peak = 1338.176 ; gain = 1004.242
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:08 ; elapsed = 00:01:10 . Memory (MB): peak = 1338.176 ; gain = 1004.242
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:10 ; elapsed = 00:01:12 . Memory (MB): peak = 1338.176 ; gain = 1004.242
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:10 ; elapsed = 00:01:12 . Memory (MB): peak = 1338.176 ; gain = 1004.242
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:10 ; elapsed = 00:01:12 . Memory (MB): peak = 1338.176 ; gain = 1004.242
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:10 ; elapsed = 00:01:12 . Memory (MB): peak = 1338.176 ; gain = 1004.242
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+----------+------+
+|      |Cell      |Count |
++------+----------+------+
+|1     |BUFG      |     1|
+|2     |CARRY4    |   766|
+|3     |DSP48E1   |     8|
+|4     |DSP48E1_1 |     8|
+|5     |DSP48E1_2 |     8|
+|6     |DSP48E1_3 |     1|
+|7     |LUT1      |   416|
+|8     |LUT2      |  1502|
+|9     |LUT3      |   903|
+|10    |LUT4      |   928|
+|11    |LUT5      |   702|
+|12    |LUT6      |  1323|
+|13    |MUXF7     |     9|
+|14    |FDRE      |  1139|
+|15    |FDSE      |    64|
+|16    |IBUF      |     9|
+|17    |IOBUF     |     4|
+|18    |OBUF      |     4|
++------+----------+------+
+
+Report Instance Areas: 
++------+--------------------------+--------------------------+------+
+|      |Instance                  |Module                    |Cells |
++------+--------------------------+--------------------------+------+
+|1     |top                       |                          |  7795|
+|2     |  u_control               |pid_swing_top             |  7409|
+|3     |    \g_ads.u_ads          |ads1115_reader            |   444|
+|4     |      u_i2c               |i2c_ads_master            |   143|
+|5     |    \g_oled_ui.u_oled_ui  |oled_ssd1306_ui           |  2732|
+|6     |      u_i2c               |i2c_txn_master            |   114|
+|7     |    u_angle_pid           |pid_fixed__parameterized0 |   636|
+|8     |    u_encoder             |quad_encoder              |   110|
+|9     |    u_kd_filter           |adc_filter_12             |   179|
+|10    |    u_keys                |key_events                |   258|
+|11    |    u_ki_filter           |adc_filter_12_0           |   179|
+|12    |    u_kp_filter           |adc_filter_12_1           |   179|
+|13    |    u_motor_pwm           |tb6612_pwm                |   156|
+|14    |    u_position_pid        |pid_fixed                 |   584|
+|15    |    u_swing_ctrl          |swing_balance_ctrl        |   981|
+|16    |    u_ui                  |pendulum_ui               |   776|
++------+--------------------------+--------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:10 ; elapsed = 00:01:12 . Memory (MB): peak = 1338.176 ; gain = 1004.242
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:01 ; elapsed = 00:01:06 . Memory (MB): peak = 1338.176 ; gain = 624.461
+Synthesis Optimization Complete : Time (s): cpu = 00:01:10 ; elapsed = 00:01:12 . Memory (MB): peak = 1338.176 ; gain = 1004.242
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 804 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1338.176 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 4 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 4 instances
+
+INFO: [Common 17-83] Releasing license: Synthesis
+243 Infos, 110 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:12 ; elapsed = 00:01:15 . Memory (MB): peak = 1338.176 ; gain = 1017.273
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1338.176 ; gain = 0.000
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint 'D:/FPGA/PID_swing/PID_swing.runs/synth_1/pid_swing_hw_top.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file pid_swing_hw_top_utilization_synth.rpt -pb pid_swing_hw_top_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sat Oct 31 15:08:55 2026...
+[Sat Oct 31 15:08:57 2026] synth_1 finished
+wait_on_run: Time (s): cpu = 00:00:00 ; elapsed = 00:01:25 . Memory (MB): peak = 339.609 ; gain = 0.000
+# if {[get_property PROGRESS [get_runs synth_1]] != "100%"} {
+#     error "synth_1 failed"
+# }
+# launch_runs impl_1 -to_step write_bitstream -jobs 2
+[Sat Oct 31 15:08:57 2026] Launched impl_1...
+Run output will be captured here: D:/FPGA/PID_swing/PID_swing.runs/impl_1/runme.log
+# wait_on_run impl_1
+[Sat Oct 31 15:08:57 2026] Waiting for impl_1 to finish...
+
+*** Running vivado
+    with args -log pid_swing_hw_top.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source pid_swing_hw_top.tcl -notrace
+
+
+****** Vivado v2018.3 (64-bit)
+  **** SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source pid_swing_hw_top.tcl -notrace
+Command: link_design -top pid_swing_hw_top -part xc7z020clg484-1
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
+INFO: [Netlist 29-17] Analyzing 804 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2018.3
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [D:/FPGA/PID_swing/constr/SmartZynq_V1_3B.xdc]
+Finished Parsing XDC File [D:/FPGA/PID_swing/constr/SmartZynq_V1_3B.xdc]
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 687.953 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 4 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 4 instances
+
+7 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+link_design completed successfully
+link_design: Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 687.953 ; gain = 362.141
+Command: opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+Running DRC as a precondition to command opt_design
+
+Starting DRC Task
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Project 1-461] DRC finished with 0 Errors
+INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.499 . Memory (MB): peak = 696.977 ; gain = 9.023
+
+Starting Cache Timing Information Task
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Ending Cache Timing Information Task | Checksum: e3ffaf36
+
+Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1245.664 ; gain = 548.688
+
+Starting Logic Optimization Task
+
+Phase 1 Retarget
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Opt 31-49] Retargeted 0 cell(s).
+Phase 1 Retarget | Checksum: e4d7ebb2
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.345 . Memory (MB): peak = 1343.441 ; gain = 0.000
+INFO: [Opt 31-389] Phase Retarget created 0 cells and removed 1 cells
+
+Phase 2 Constant propagation
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Phase 2 Constant propagation | Checksum: d472e328
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.443 . Memory (MB): peak = 1343.441 ; gain = 0.000
+INFO: [Opt 31-389] Phase Constant propagation created 0 cells and removed 0 cells
+
+Phase 3 Sweep
+Phase 3 Sweep | Checksum: 86b3d711
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.640 . Memory (MB): peak = 1343.441 ; gain = 0.000
+INFO: [Opt 31-389] Phase Sweep created 0 cells and removed 0 cells
+
+Phase 4 BUFG optimization
+Phase 4 BUFG optimization | Checksum: 86b3d711
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.795 . Memory (MB): peak = 1343.441 ; gain = 0.000
+INFO: [Opt 31-662] Phase BUFG optimization created 0 cells of which 0 are BUFGs and removed 0 cells.
+
+Phase 5 Shift Register Optimization
+Phase 5 Shift Register Optimization | Checksum: da1ab2e5
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 1343.441 ; gain = 0.000
+INFO: [Opt 31-389] Phase Shift Register Optimization created 0 cells and removed 0 cells
+
+Phase 6 Post Processing Netlist
+Phase 6 Post Processing Netlist | Checksum: da1ab2e5
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 1343.441 ; gain = 0.000
+INFO: [Opt 31-389] Phase Post Processing Netlist created 0 cells and removed 0 cells
+Opt_design Change Summary
+=========================
+
+
+-------------------------------------------------------------------------------------------------------------------------
+|  Phase                        |  #Cells created  |  #Cells Removed  |  #Constrained objects preventing optimizations  |
+-------------------------------------------------------------------------------------------------------------------------
+|  Retarget                     |               0  |               1  |                                              0  |
+|  Constant propagation         |               0  |               0  |                                              0  |
+|  Sweep                        |               0  |               0  |                                              0  |
+|  BUFG optimization            |               0  |               0  |                                              0  |
+|  Shift Register Optimization  |               0  |               0  |                                              0  |
+|  Post Processing Netlist      |               0  |               0  |                                              0  |
+-------------------------------------------------------------------------------------------------------------------------
+
+
+
+Starting Connectivity Check Task
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.014 . Memory (MB): peak = 1343.441 ; gain = 0.000
+Ending Logic Optimization Task | Checksum: da1ab2e5
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 1343.441 ; gain = 0.000
+
+Starting Power Optimization Task
+INFO: [Pwropt 34-132] Skipping clock gating for clocks with a period < 2.00 ns.
+Ending Power Optimization Task | Checksum: da1ab2e5
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.013 . Memory (MB): peak = 1343.441 ; gain = 0.000
+
+Starting Final Cleanup Task
+Ending Final Cleanup Task | Checksum: da1ab2e5
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1343.441 ; gain = 0.000
+
+Starting Netlist Obfuscation Task
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1343.441 ; gain = 0.000
+Ending Netlist Obfuscation Task | Checksum: da1ab2e5
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1343.441 ; gain = 0.000
+INFO: [Common 17-83] Releasing license: Implementation
+23 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+opt_design completed successfully
+opt_design: Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1343.441 ; gain = 655.488
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1343.441 ; gain = 0.000
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Writing placer database...
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.040 . Memory (MB): peak = 1343.441 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1343.441 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'D:/FPGA/PID_swing/PID_swing.runs/impl_1/pid_swing_hw_top_opt.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_drc -file pid_swing_hw_top_drc_opted.rpt -pb pid_swing_hw_top_drc_opted.pb -rpx pid_swing_hw_top_drc_opted.rpx
+Command: report_drc -file pid_swing_hw_top_drc_opted.rpt -pb pid_swing_hw_top_drc_opted.pb -rpx pid_swing_hw_top_drc_opted.rpx
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx/Vivado/2018.3/data/ip'.
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Coretcl 2-168] The results of DRC are in file D:/FPGA/PID_swing/PID_swing.runs/impl_1/pid_swing_hw_top_drc_opted.rpt.
+report_drc completed successfully
+Command: place_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+Running DRC as a precondition to command place_design
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+
+Starting Placer Task
+INFO: [Place 30-611] Multithreading enabled for place_design using a maximum of 2 CPUs
+
+Phase 1 Placer Initialization
+
+Phase 1.1 Placer Initialization Netlist Sorting
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1343.441 ; gain = 0.000
+Phase 1.1 Placer Initialization Netlist Sorting | Checksum: 870b20d8
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 1343.441 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1343.441 ; gain = 0.000
+
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: fece8e80
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 1363.211 ; gain = 19.770
+
+Phase 1.3 Build Placer Netlist Model
+Phase 1.3 Build Placer Netlist Model | Checksum: 1bfd0249f
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:03 . Memory (MB): peak = 1398.684 ; gain = 55.242
+
+Phase 1.4 Constrain Clocks/Macros
+Phase 1.4 Constrain Clocks/Macros | Checksum: 1bfd0249f
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:03 . Memory (MB): peak = 1398.684 ; gain = 55.242
+Phase 1 Placer Initialization | Checksum: 1bfd0249f
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:03 . Memory (MB): peak = 1398.684 ; gain = 55.242
+
+Phase 2 Global Placement
+
+Phase 2.1 Floorplanning
+Phase 2.1 Floorplanning | Checksum: 18aab754a
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:03 . Memory (MB): peak = 1398.684 ; gain = 55.242
+
+Phase 2.2 Physical Synthesis In Placer
+INFO: [Physopt 32-65] No nets found for high-fanout optimization.
+INFO: [Physopt 32-232] Optimized 0 net. Created 0 new instance.
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-456] No candidate cells for DSP register optimization found in the design.
+INFO: [Physopt 32-775] End 2 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-677] No candidate cells for Shift Register optimization found in the design
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-526] No candidate cells for BRAM register optimization found in the design
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-949] No candidate nets found for HD net replication
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1398.684 ; gain = 0.000
+
+Summary of Physical Synthesis Optimizations
+============================================
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+|  Optimization                  |  Added Cells  |  Removed Cells  |  Optimized Cells/Nets  |  Dont Touch  |  Iterations  |  Elapsed   |
+----------------------------------------------------------------------------------------------------------------------------------------
+|  Very High Fanout              |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  DSP Register                  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Shift Register                |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  BRAM Register                 |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  HD Interface Net Replication  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Total                         |            0  |              0  |                     0  |           0  |           5  |  00:00:00  |
+----------------------------------------------------------------------------------------------------------------------------------------
+
+
+Phase 2.2 Physical Synthesis In Placer | Checksum: 1c5da1602
+
+Time (s): cpu = 00:00:11 ; elapsed = 00:00:08 . Memory (MB): peak = 1398.684 ; gain = 55.242
+Phase 2 Global Placement | Checksum: 144bf8ca9
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:08 . Memory (MB): peak = 1398.684 ; gain = 55.242
+
+Phase 3 Detail Placement
+
+Phase 3.1 Commit Multi Column Macros
+Phase 3.1 Commit Multi Column Macros | Checksum: 144bf8ca9
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:08 . Memory (MB): peak = 1398.684 ; gain = 55.242
+
+Phase 3.2 Commit Most Macros & LUTRAMs
+Phase 3.2 Commit Most Macros & LUTRAMs | Checksum: 1b0eae1b2
+
+Time (s): cpu = 00:00:13 ; elapsed = 00:00:09 . Memory (MB): peak = 1398.684 ; gain = 55.242
+
+Phase 3.3 Area Swap Optimization
+Phase 3.3 Area Swap Optimization | Checksum: 1c5a1e858
+
+Time (s): cpu = 00:00:13 ; elapsed = 00:00:10 . Memory (MB): peak = 1398.684 ; gain = 55.242
+
+Phase 3.4 Pipeline Register Optimization
+Phase 3.4 Pipeline Register Optimization | Checksum: 20616e3bd
+
+Time (s): cpu = 00:00:13 ; elapsed = 00:00:10 . Memory (MB): peak = 1398.684 ; gain = 55.242
+
+Phase 3.5 Fast Optimization
+Phase 3.5 Fast Optimization | Checksum: 1cc8a4637
+
+Time (s): cpu = 00:00:14 ; elapsed = 00:00:11 . Memory (MB): peak = 1398.684 ; gain = 55.242
+
+Phase 3.6 Small Shape Detail Placement
+Phase 3.6 Small Shape Detail Placement | Checksum: 164554f39
+
+Time (s): cpu = 00:00:16 ; elapsed = 00:00:12 . Memory (MB): peak = 1398.684 ; gain = 55.242
+
+Phase 3.7 Re-assign LUT pins
+Phase 3.7 Re-assign LUT pins | Checksum: 18f6e2841
+
+Time (s): cpu = 00:00:16 ; elapsed = 00:00:13 . Memory (MB): peak = 1398.684 ; gain = 55.242
+
+Phase 3.8 Pipeline Register Optimization
+Phase 3.8 Pipeline Register Optimization | Checksum: 240236878
+
+Time (s): cpu = 00:00:16 ; elapsed = 00:00:13 . Memory (MB): peak = 1398.684 ; gain = 55.242
+
+Phase 3.9 Fast Optimization
+Phase 3.9 Fast Optimization | Checksum: 19df75d80
+
+Time (s): cpu = 00:00:19 ; elapsed = 00:00:16 . Memory (MB): peak = 1398.684 ; gain = 55.242
+Phase 3 Detail Placement | Checksum: 19df75d80
+
+Time (s): cpu = 00:00:19 ; elapsed = 00:00:16 . Memory (MB): peak = 1398.684 ; gain = 55.242
+
+Phase 4 Post Placement Optimization and Clean-Up
+
+Phase 4.1 Post Commit Optimization
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+
+Phase 4.1.1 Post Placement Optimization
+Post Placement Optimization Initialization | Checksum: 1f06a731f
+
+Phase 4.1.1.1 BUFG Insertion
+INFO: [Place 46-46] BUFG insertion identified 0 candidate nets, 0 success, 0 bufg driver replicated, 0 skipped for placement/routing, 0 skipped for timing, 0 skipped for netlist change reason
+Phase 4.1.1.1 BUFG Insertion | Checksum: 1f06a731f
+
+Time (s): cpu = 00:00:21 ; elapsed = 00:00:17 . Memory (MB): peak = 1410.148 ; gain = 66.707
+INFO: [Place 30-746] Post Placement Timing Summary WNS=0.393. For the most accurate timing information please run report_timing.
+Phase 4.1.1 Post Placement Optimization | Checksum: ee0bcd89
+
+Time (s): cpu = 00:00:31 ; elapsed = 00:00:29 . Memory (MB): peak = 1410.621 ; gain = 67.180
+Phase 4.1 Post Commit Optimization | Checksum: ee0bcd89
+
+Time (s): cpu = 00:00:31 ; elapsed = 00:00:29 . Memory (MB): peak = 1410.621 ; gain = 67.180
+
+Phase 4.2 Post Placement Cleanup
+Phase 4.2 Post Placement Cleanup | Checksum: ee0bcd89
+
+Time (s): cpu = 00:00:31 ; elapsed = 00:00:29 . Memory (MB): peak = 1410.621 ; gain = 67.180
+
+Phase 4.3 Placer Reporting
+Phase 4.3 Placer Reporting | Checksum: ee0bcd89
+
+Time (s): cpu = 00:00:31 ; elapsed = 00:00:29 . Memory (MB): peak = 1410.621 ; gain = 67.180
+
+Phase 4.4 Final Placement Cleanup
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1410.621 ; gain = 0.000
+Phase 4.4 Final Placement Cleanup | Checksum: 4fbfba05
+
+Time (s): cpu = 00:00:32 ; elapsed = 00:00:29 . Memory (MB): peak = 1410.621 ; gain = 67.180
+Phase 4 Post Placement Optimization and Clean-Up | Checksum: 4fbfba05
+
+Time (s): cpu = 00:00:32 ; elapsed = 00:00:29 . Memory (MB): peak = 1410.621 ; gain = 67.180
+Ending Placer Task | Checksum: 2bc835c9
+
+Time (s): cpu = 00:00:32 ; elapsed = 00:00:29 . Memory (MB): peak = 1410.621 ; gain = 67.180
+INFO: [Common 17-83] Releasing license: Implementation
+55 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+place_design completed successfully
+place_design: Time (s): cpu = 00:00:33 ; elapsed = 00:00:30 . Memory (MB): peak = 1410.621 ; gain = 67.180
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1410.621 ; gain = 0.000
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Writing placer database...
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1418.195 ; gain = 0.000
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.519 . Memory (MB): peak = 1418.207 ; gain = 7.586
+INFO: [Common 17-1381] The checkpoint 'D:/FPGA/PID_swing/PID_swing.runs/impl_1/pid_swing_hw_top_placed.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_io -file pid_swing_hw_top_io_placed.rpt
+report_io: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.047 . Memory (MB): peak = 1418.207 ; gain = 0.000
+INFO: [runtcl-4] Executing : report_utilization -file pid_swing_hw_top_utilization_placed.rpt -pb pid_swing_hw_top_utilization_placed.pb
+INFO: [runtcl-4] Executing : report_control_sets -verbose -file pid_swing_hw_top_control_sets_placed.rpt
+report_control_sets: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.011 . Memory (MB): peak = 1418.207 ; gain = 0.000
+Command: route_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+Running DRC as a precondition to command route_design
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+
+
+Starting Routing Task
+INFO: [Route 35-254] Multithreading enabled for route_design using a maximum of 2 CPUs
+Checksum: PlaceDB: 228642a ConstDB: 0 ShapeSum: 299fd19f RouteDB: 0
+
+Phase 1 Build RT Design
+Phase 1 Build RT Design | Checksum: 7846d298
+
+Time (s): cpu = 00:00:24 ; elapsed = 00:00:20 . Memory (MB): peak = 1550.113 ; gain = 131.906
+Post Restoration Checksum: NetGraph: 63dc9a11 NumContArr: 146a3887 Constraints: 0 Timing: 0
+
+Phase 2 Router Initialization
+
+Phase 2.1 Create Timer
+Phase 2.1 Create Timer | Checksum: 7846d298
+
+Time (s): cpu = 00:00:24 ; elapsed = 00:00:20 . Memory (MB): peak = 1578.172 ; gain = 159.965
+
+Phase 2.2 Fix Topology Constraints
+Phase 2.2 Fix Topology Constraints | Checksum: 7846d298
+
+Time (s): cpu = 00:00:24 ; elapsed = 00:00:20 . Memory (MB): peak = 1585.273 ; gain = 167.066
+
+Phase 2.3 Pre Route Cleanup
+Phase 2.3 Pre Route Cleanup | Checksum: 7846d298
+
+Time (s): cpu = 00:00:24 ; elapsed = 00:00:20 . Memory (MB): peak = 1585.273 ; gain = 167.066
+ Number of Nodes with overlaps = 0
+
+Phase 2.4 Update Timing
+Phase 2.4 Update Timing | Checksum: 1f835b17a
+
+Time (s): cpu = 00:00:26 ; elapsed = 00:00:22 . Memory (MB): peak = 1597.695 ; gain = 179.488
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.469  | TNS=0.000  | WHS=-0.147 | THS=-14.790|
+
+Phase 2 Router Initialization | Checksum: 22054d611
+
+Time (s): cpu = 00:00:26 ; elapsed = 00:00:22 . Memory (MB): peak = 1634.793 ; gain = 216.586
+
+Phase 3 Initial Routing
+Phase 3 Initial Routing | Checksum: 1f08e00e2
+
+Time (s): cpu = 00:00:28 ; elapsed = 00:00:23 . Memory (MB): peak = 1634.793 ; gain = 216.586
+
+Phase 4 Rip-up And Reroute
+
+Phase 4.1 Global Iteration 0
+ Number of Nodes with overlaps = 2053
+ Number of Nodes with overlaps = 867
+ Number of Nodes with overlaps = 384
+ Number of Nodes with overlaps = 174
+ Number of Nodes with overlaps = 63
+ Number of Nodes with overlaps = 18
+ Number of Nodes with overlaps = 8
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-0.502 | TNS=-3.144 | WHS=N/A    | THS=N/A    |
+
+Phase 4.1 Global Iteration 0 | Checksum: bba940d2
+
+Time (s): cpu = 00:00:41 ; elapsed = 00:00:31 . Memory (MB): peak = 1634.793 ; gain = 216.586
+
+Phase 4.2 Global Iteration 1
+ Number of Nodes with overlaps = 796
+ Number of Nodes with overlaps = 346
+ Number of Nodes with overlaps = 145
+ Number of Nodes with overlaps = 43
+ Number of Nodes with overlaps = 43
+ Number of Nodes with overlaps = 22
+ Number of Nodes with overlaps = 1
+ Number of Nodes with overlaps = 4
+ Number of Nodes with overlaps = 4
+ Number of Nodes with overlaps = 4
+ Number of Nodes with overlaps = 1
+ Number of Nodes with overlaps = 1
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-0.191 | TNS=-2.090 | WHS=N/A    | THS=N/A    |
+
+Phase 4.2 Global Iteration 1 | Checksum: 10cc6f124
+
+Time (s): cpu = 00:00:49 ; elapsed = 00:00:37 . Memory (MB): peak = 1634.793 ; gain = 216.586
+
+Phase 4.3 Global Iteration 2
+ Number of Nodes with overlaps = 654
+ Number of Nodes with overlaps = 235
+ Number of Nodes with overlaps = 78
+ Number of Nodes with overlaps = 50
+ Number of Nodes with overlaps = 25
+ Number of Nodes with overlaps = 20
+ Number of Nodes with overlaps = 2
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-0.236 | TNS=-0.647 | WHS=N/A    | THS=N/A    |
+
+Phase 4.3 Global Iteration 2 | Checksum: 125e8752e
+
+Time (s): cpu = 00:00:55 ; elapsed = 00:00:41 . Memory (MB): peak = 1634.793 ; gain = 216.586
+Phase 4 Rip-up And Reroute | Checksum: 125e8752e
+
+Time (s): cpu = 00:00:55 ; elapsed = 00:00:41 . Memory (MB): peak = 1634.793 ; gain = 216.586
+
+Phase 5 Delay and Skew Optimization
+
+Phase 5.1 Delay CleanUp
+
+Phase 5.1.1 Update Timing
+Phase 5.1.1 Update Timing | Checksum: 14c57b935
+
+Time (s): cpu = 00:00:55 ; elapsed = 00:00:41 . Memory (MB): peak = 1634.793 ; gain = 216.586
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-0.076 | TNS=-0.408 | WHS=N/A    | THS=N/A    |
+
+ Number of Nodes with overlaps = 0
+Phase 5.1 Delay CleanUp | Checksum: 18e1325cd
+
+Time (s): cpu = 00:00:55 ; elapsed = 00:00:41 . Memory (MB): peak = 1634.793 ; gain = 216.586
+
+Phase 5.2 Clock Skew Optimization
+Phase 5.2 Clock Skew Optimization | Checksum: 18e1325cd
+
+Time (s): cpu = 00:00:55 ; elapsed = 00:00:41 . Memory (MB): peak = 1634.793 ; gain = 216.586
+Phase 5 Delay and Skew Optimization | Checksum: 18e1325cd
+
+Time (s): cpu = 00:00:55 ; elapsed = 00:00:41 . Memory (MB): peak = 1634.793 ; gain = 216.586
+
+Phase 6 Post Hold Fix
+
+Phase 6.1 Hold Fix Iter
+
+Phase 6.1.1 Update Timing
+Phase 6.1.1 Update Timing | Checksum: 19ebbb767
+
+Time (s): cpu = 00:00:56 ; elapsed = 00:00:41 . Memory (MB): peak = 1634.793 ; gain = 216.586
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-0.065 | TNS=-0.362 | WHS=0.144  | THS=0.000  |
+
+Phase 6.1 Hold Fix Iter | Checksum: 19ebbb767
+
+Time (s): cpu = 00:00:56 ; elapsed = 00:00:41 . Memory (MB): peak = 1634.793 ; gain = 216.586
+Phase 6 Post Hold Fix | Checksum: 19ebbb767
+
+Time (s): cpu = 00:00:56 ; elapsed = 00:00:41 . Memory (MB): peak = 1634.793 ; gain = 216.586
+
+Phase 7 Route finalize
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 1.03107 %
+  Global Horizontal Routing Utilization  = 1.52316 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 0
+  Number of Unrouted Nets             = 0
+  Number of Partially Routed Nets     = 0
+  Number of Node Overlaps             = 0
+
+Congestion Report
+North Dir 1x1 Area, Max Cong = 36.036%, No Congested Regions.
+South Dir 1x1 Area, Max Cong = 44.1441%, No Congested Regions.
+East Dir 1x1 Area, Max Cong = 52.9412%, No Congested Regions.
+West Dir 1x1 Area, Max Cong = 70.5882%, No Congested Regions.
+
+------------------------------
+Reporting congestion hotspots
+------------------------------
+Direction: North
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 0
+Direction: South
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 0
+Direction: East
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 0
+Direction: West
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 0
+
+Phase 7 Route finalize | Checksum: 1d9137681
+
+Time (s): cpu = 00:00:56 ; elapsed = 00:00:41 . Memory (MB): peak = 1634.793 ; gain = 216.586
+
+Phase 8 Verifying routed nets
+
+ Verification completed successfully
+Phase 8 Verifying routed nets | Checksum: 1d9137681
+
+Time (s): cpu = 00:00:56 ; elapsed = 00:00:41 . Memory (MB): peak = 1634.793 ; gain = 216.586
+
+Phase 9 Depositing Routes
+Phase 9 Depositing Routes | Checksum: 19c475a83
+
+Time (s): cpu = 00:00:56 ; elapsed = 00:00:42 . Memory (MB): peak = 1634.793 ; gain = 216.586
+
+Phase 10 Post Router Timing
+INFO: [Route 35-57] Estimated Timing Summary | WNS=-0.065 | TNS=-0.362 | WHS=0.144  | THS=0.000  |
+
+WARNING: [Route 35-328] Router estimated timing not met.
+Resolution: For a complete and accurate timing signoff, report_timing_summary must be run after route_design. Alternatively, route_design can be run with the -timing_summary option to enable a complete timing signoff at the end of route_design.
+Phase 10 Post Router Timing | Checksum: 19c475a83
+
+Time (s): cpu = 00:00:56 ; elapsed = 00:00:42 . Memory (MB): peak = 1634.793 ; gain = 216.586
+INFO: [Route 35-16] Router Completed Successfully
+
+Time (s): cpu = 00:00:56 ; elapsed = 00:00:42 . Memory (MB): peak = 1634.793 ; gain = 216.586
+
+Routing Is Done.
+INFO: [Common 17-83] Releasing license: Implementation
+74 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+route_design completed successfully
+route_design: Time (s): cpu = 00:00:57 ; elapsed = 00:00:43 . Memory (MB): peak = 1634.793 ; gain = 216.586
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1634.793 ; gain = 0.000
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Writing placer database...
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1634.793 ; gain = 0.000
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.650 . Memory (MB): peak = 1634.793 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'D:/FPGA/PID_swing/PID_swing.runs/impl_1/pid_swing_hw_top_routed.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_drc -file pid_swing_hw_top_drc_routed.rpt -pb pid_swing_hw_top_drc_routed.pb -rpx pid_swing_hw_top_drc_routed.rpx
+Command: report_drc -file pid_swing_hw_top_drc_routed.rpt -pb pid_swing_hw_top_drc_routed.pb -rpx pid_swing_hw_top_drc_routed.rpx
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Coretcl 2-168] The results of DRC are in file D:/FPGA/PID_swing/PID_swing.runs/impl_1/pid_swing_hw_top_drc_routed.rpt.
+report_drc completed successfully
+INFO: [runtcl-4] Executing : report_methodology -file pid_swing_hw_top_methodology_drc_routed.rpt -pb pid_swing_hw_top_methodology_drc_routed.pb -rpx pid_swing_hw_top_methodology_drc_routed.rpx
+Command: report_methodology -file pid_swing_hw_top_methodology_drc_routed.rpt -pb pid_swing_hw_top_methodology_drc_routed.pb -rpx pid_swing_hw_top_methodology_drc_routed.rpx
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [DRC 23-133] Running Methodology with 2 threads
+INFO: [Coretcl 2-1520] The results of Report Methodology are in file D:/FPGA/PID_swing/PID_swing.runs/impl_1/pid_swing_hw_top_methodology_drc_routed.rpt.
+report_methodology completed successfully
+INFO: [runtcl-4] Executing : report_power -file pid_swing_hw_top_power_routed.rpt -pb pid_swing_hw_top_power_summary_routed.pb -rpx pid_swing_hw_top_power_routed.rpx
+Command: report_power -file pid_swing_hw_top_power_routed.rpt -pb pid_swing_hw_top_power_summary_routed.pb -rpx pid_swing_hw_top_power_routed.rpx
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Running Vector-less Activity Propagation...
+
+Finished Running Vector-less Activity Propagation
+WARNING: [Power 33-332] Found switching activity that implies high-fanout reset nets being asserted for excessive periods of time which may result in inaccurate power analysis.
+Resolution: To review and fix problems, please run Power Constraints Advisor in the GUI from Tools > Power Constraints Advisor or run report_power with the -advisory option to generate a text report.
+86 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
+report_power completed successfully
+INFO: [runtcl-4] Executing : report_route_status -file pid_swing_hw_top_route_status.rpt -pb pid_swing_hw_top_route_status.pb
+INFO: [runtcl-4] Executing : report_timing_summary -max_paths 10 -file pid_swing_hw_top_timing_summary_routed.rpt -pb pid_swing_hw_top_timing_summary_routed.pb -rpx pid_swing_hw_top_timing_summary_routed.rpx -warn_on_violation 
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
+CRITICAL WARNING: [Timing 38-282] The design failed to meet the timing requirements. Please see the timing summary report for details on the timing violations.
+INFO: [runtcl-4] Executing : report_incremental_reuse -file pid_swing_hw_top_incremental_reuse_routed.rpt
+INFO: [Vivado_Tcl 4-1062] Incremental flow is disabled. No incremental reuse Info to report.
+INFO: [runtcl-4] Executing : report_clock_utilization -file pid_swing_hw_top_clock_utilization_routed.rpt
+INFO: [runtcl-4] Executing : report_bus_skew -warn_on_violation -file pid_swing_hw_top_bus_skew_routed.rpt -pb pid_swing_hw_top_bus_skew_routed.pb -rpx pid_swing_hw_top_bus_skew_routed.rpx
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
+Command: write_bitstream -force pid_swing_hw_top.bit
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+Running DRC as a precondition to command write_bitstream
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+INFO: [DRC 23-27] Running DRC with 2 threads
+WARNING: [DRC BUFC-1] Input Buffer Connections: Input buffer u_ads_scl_iobuf/IBUF has no loads. It is recommended to have an input buffer drive an internal load.
+WARNING: [DRC BUFC-1] Input Buffer Connections: Input buffer u_oled_scl_iobuf/IBUF has no loads. It is recommended to have an input buffer drive an internal load.
+WARNING: [DRC BUFC-1] Input Buffer Connections: Input buffer u_oled_sda_iobuf/IBUF has no loads. It is recommended to have an input buffer drive an internal load.
+WARNING: [DRC DPIP-1] Input pipelining: DSP u_control/u_angle_pid/output_value4 input u_control/u_angle_pid/output_value4/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP u_control/u_angle_pid/output_value4 input u_control/u_angle_pid/output_value4/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP u_control/u_angle_pid/output_value4__0 input u_control/u_angle_pid/output_value4__0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP u_control/u_angle_pid/output_value4__0 input u_control/u_angle_pid/output_value4__0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP u_control/u_angle_pid/output_value5 input u_control/u_angle_pid/output_value5/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP u_control/u_angle_pid/output_value5 input u_control/u_angle_pid/output_value5/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP u_control/u_angle_pid/output_value5__0 input u_control/u_angle_pid/output_value5__0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP u_control/u_angle_pid/output_value5__0 input u_control/u_angle_pid/output_value5__0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP u_control/u_angle_pid/output_value5__1 input u_control/u_angle_pid/output_value5__1/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP u_control/u_angle_pid/output_value5__2 input u_control/u_angle_pid/output_value5__2/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP u_control/u_position_pid/output_value4 input u_control/u_position_pid/output_value4/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP u_control/u_position_pid/output_value4 input u_control/u_position_pid/output_value4/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP u_control/u_position_pid/output_value4__0 input u_control/u_position_pid/output_value4__0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP u_control/u_position_pid/output_value4__0 input u_control/u_position_pid/output_value4__0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP u_control/u_position_pid/output_value5 input u_control/u_position_pid/output_value5/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP u_control/u_position_pid/output_value5 input u_control/u_position_pid/output_value5/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP u_control/u_position_pid/output_value5__0 input u_control/u_position_pid/output_value5__0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP u_control/u_position_pid/output_value5__0 input u_control/u_position_pid/output_value5__0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP u_control/u_position_pid/output_value5__1 input u_control/u_position_pid/output_value5__1/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPIP-1] Input pipelining: DSP u_control/u_position_pid/output_value5__2 input u_control/u_position_pid/output_value5__2/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP u_control/g_ads.u_ads/angle14 output u_control/g_ads.u_ads/angle14/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP u_control/g_oled_ui.u_oled_ui/q8_to_x10011_return0 output u_control/g_oled_ui.u_oled_ui/q8_to_x10011_return0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP u_control/g_oled_ui.u_oled_ui/q8_to_x10014_return0 output u_control/g_oled_ui.u_oled_ui/q8_to_x10014_return0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP u_control/g_oled_ui.u_oled_ui/q8_to_x1002_return0 output u_control/g_oled_ui.u_oled_ui/q8_to_x1002_return0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP u_control/g_oled_ui.u_oled_ui/q8_to_x1005_return0 output u_control/g_oled_ui.u_oled_ui/q8_to_x1005_return0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP u_control/g_oled_ui.u_oled_ui/q8_to_x1008_return0 output u_control/g_oled_ui.u_oled_ui/q8_to_x1008_return0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP u_control/g_oled_ui.u_oled_ui/q8_to_x100_return0 output u_control/g_oled_ui.u_oled_ui/q8_to_x100_return0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP u_control/u_angle_pid/output_value4 output u_control/u_angle_pid/output_value4/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP u_control/u_angle_pid/output_value4__0 output u_control/u_angle_pid/output_value4__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP u_control/u_angle_pid/output_value5 output u_control/u_angle_pid/output_value5/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP u_control/u_angle_pid/output_value5__0 output u_control/u_angle_pid/output_value5__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP u_control/u_angle_pid/output_value5__1 output u_control/u_angle_pid/output_value5__1/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP u_control/u_angle_pid/output_value5__2 output u_control/u_angle_pid/output_value5__2/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP u_control/u_position_pid/output_value4 output u_control/u_position_pid/output_value4/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP u_control/u_position_pid/output_value4__0 output u_control/u_position_pid/output_value4__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP u_control/u_position_pid/output_value5 output u_control/u_position_pid/output_value5/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP u_control/u_position_pid/output_value5__0 output u_control/u_position_pid/output_value5__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP u_control/u_position_pid/output_value5__1 output u_control/u_position_pid/output_value5__1/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP u_control/u_position_pid/output_value5__2 output u_control/u_position_pid/output_value5__2/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP u_control/u_ui/rp_angle_kd_p output u_control/u_ui/rp_angle_kd_p/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP u_control/u_ui/rp_angle_ki_p output u_control/u_ui/rp_angle_ki_p/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP u_control/u_ui/rp_angle_kp_p output u_control/u_ui/rp_angle_kp_p/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP u_control/u_ui/rp_location_kd_p output u_control/u_ui/rp_location_kd_p/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP u_control/u_ui/rp_location_ki_p output u_control/u_ui/rp_location_ki_p/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-1] PREG Output pipelining: DSP u_control/u_ui/rp_location_kp_p output u_control/u_ui/rp_location_kp_p/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP u_control/g_ads.u_ads/angle14 multiplier stage u_control/g_ads.u_ads/angle14/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP u_control/g_oled_ui.u_oled_ui/q8_to_x10011_return0 multiplier stage u_control/g_oled_ui.u_oled_ui/q8_to_x10011_return0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP u_control/g_oled_ui.u_oled_ui/q8_to_x10014_return0 multiplier stage u_control/g_oled_ui.u_oled_ui/q8_to_x10014_return0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP u_control/g_oled_ui.u_oled_ui/q8_to_x1002_return0 multiplier stage u_control/g_oled_ui.u_oled_ui/q8_to_x1002_return0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP u_control/g_oled_ui.u_oled_ui/q8_to_x1005_return0 multiplier stage u_control/g_oled_ui.u_oled_ui/q8_to_x1005_return0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP u_control/g_oled_ui.u_oled_ui/q8_to_x1008_return0 multiplier stage u_control/g_oled_ui.u_oled_ui/q8_to_x1008_return0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP u_control/g_oled_ui.u_oled_ui/q8_to_x100_return0 multiplier stage u_control/g_oled_ui.u_oled_ui/q8_to_x100_return0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP u_control/u_angle_pid/output_value4 multiplier stage u_control/u_angle_pid/output_value4/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP u_control/u_angle_pid/output_value4__0 multiplier stage u_control/u_angle_pid/output_value4__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP u_control/u_angle_pid/output_value5 multiplier stage u_control/u_angle_pid/output_value5/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP u_control/u_angle_pid/output_value5__0 multiplier stage u_control/u_angle_pid/output_value5__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP u_control/u_angle_pid/output_value5__1 multiplier stage u_control/u_angle_pid/output_value5__1/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP u_control/u_angle_pid/output_value5__2 multiplier stage u_control/u_angle_pid/output_value5__2/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP u_control/u_position_pid/output_value4 multiplier stage u_control/u_position_pid/output_value4/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP u_control/u_position_pid/output_value4__0 multiplier stage u_control/u_position_pid/output_value4__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP u_control/u_position_pid/output_value5 multiplier stage u_control/u_position_pid/output_value5/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP u_control/u_position_pid/output_value5__0 multiplier stage u_control/u_position_pid/output_value5__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP u_control/u_position_pid/output_value5__1 multiplier stage u_control/u_position_pid/output_value5__1/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP u_control/u_position_pid/output_value5__2 multiplier stage u_control/u_position_pid/output_value5__2/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP u_control/u_ui/rp_angle_kd_p multiplier stage u_control/u_ui/rp_angle_kd_p/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP u_control/u_ui/rp_angle_ki_p multiplier stage u_control/u_ui/rp_angle_ki_p/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP u_control/u_ui/rp_angle_kp_p multiplier stage u_control/u_ui/rp_angle_kp_p/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP u_control/u_ui/rp_location_kd_p multiplier stage u_control/u_ui/rp_location_kd_p/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP u_control/u_ui/rp_location_ki_p multiplier stage u_control/u_ui/rp_location_ki_p/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC DPOP-2] MREG Output pipelining: DSP u_control/u_ui/rp_location_kp_p multiplier stage u_control/u_ui/rp_location_kp_p/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+WARNING: [DRC ZPS7-1] PS7 block required: The PS7 cell must be used in this Zynq design in order to enable correct default configuration.
+INFO: [Vivado 12-3199] DRC finished with 0 Errors, 74 Warnings
+INFO: [Vivado 12-3200] Please refer to the DRC report (report_drc) for more information.
+INFO: [Designutils 20-2272] Running write_bitstream with 2 threads.
+Loading data files...
+Loading site data...
+Loading route data...
+Processing options...
+Creating bitmap...
+Creating bitstream...
+Writing bitstream ./pid_swing_hw_top.bit...
+INFO: [Vivado 12-1842] Bitgen Completed Successfully.
+INFO: [Project 1-120] WebTalk data collection is mandatory when using a WebPACK part without a full Vivado license. To see the specific WebTalk data collected for your design, open the usage_statistics_webtalk.html or usage_statistics_webtalk.xml file in the implementation directory.
+INFO: [Common 17-83] Releasing license: Implementation
+105 Infos, 76 Warnings, 1 Critical Warnings and 0 Errors encountered.
+write_bitstream completed successfully
+write_bitstream: Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 2101.664 ; gain = 442.184
+INFO: [Common 17-206] Exiting Vivado at Sat Oct 31 15:11:05 2026...
+[Sat Oct 31 15:11:08 2026] impl_1 finished
+wait_on_run: Time (s): cpu = 00:00:00 ; elapsed = 00:02:10 . Memory (MB): peak = 339.609 ; gain = 0.000
+# if {[get_property PROGRESS [get_runs impl_1]] != "100%"} {
+#     error "impl_1 failed"
+# }
+# puts "PROJECT_BITSTREAM_PASS"
+PROJECT_BITSTREAM_PASS
+# close_project
+INFO: [Common 17-206] Exiting Vivado at Sat Oct 31 15:11:08 2026...

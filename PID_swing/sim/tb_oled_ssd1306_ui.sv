@@ -18,8 +18,17 @@ module tb_oled_ssd1306_ui;
     reg [15:0] location_kp_q8 = 16'd133;
     reg [15:0] location_ki_q8 = 16'd3;
     reg [15:0] location_kd_q8 = 16'd1167;
+    reg signed [31:0] location_target = 32'sd408;
     reg [1:0] mode = 2'd2;
     reg [1:0] page = 2'd0;
+    reg [11:0] center_angle = 12'd2094;
+    reg [7:0] start_pwm = 8'd45;
+    reg [15:0] start_time_ms = 16'd186;
+    reg [7:0] pwm_offset = 8'd0;
+    reg [1:0] menu_index = 2'd2;
+    reg menu_edit = 1'b1;
+    reg run_request = 1'b1;
+    reg k1_pressed = 1'b0;
 
     wire oled_scl_low;
     wire oled_sda_low;
@@ -45,7 +54,14 @@ module tb_oled_ssd1306_ui;
         .location_kp_q8(location_kp_q8),
         .location_ki_q8(location_ki_q8),
         .location_kd_q8(location_kd_q8),
+        .location_target(location_target),
         .mode(mode), .page(page),
+        .center_angle(center_angle),
+        .start_pwm(start_pwm),
+        .start_time_ms(start_time_ms),
+        .pwm_offset(pwm_offset),
+        .menu_index(menu_index), .menu_edit(menu_edit),
+        .run_request(run_request), .k1_pressed(k1_pressed),
         .oled_scl_low(oled_scl_low),
         .oled_sda_low(oled_sda_low),
         .oled_sda_in(1'b1)
@@ -79,6 +95,29 @@ module tb_oled_ssd1306_ui;
             $fatal(1, "second refresh did not capture the changed angle");
         if (dut.angle_error_s !== 16'sd295)
             $fatal(1, "second refresh did not capture the changed error");
+
+        page = 2'd3;
+        center_angle = 12'd2094;
+        start_pwm = 8'd45;
+        start_time_ms = 16'd186;
+        menu_index = 2'd2;
+        menu_edit = 1'b1;
+        run_request = 1'b0;
+        k1_pressed = 1'b1;
+        location_target = 32'sd408;
+
+        wait (capture_count == 3);
+        #1;
+        if (dut.page_s !== 2'd3 ||
+            dut.center_angle_s !== 12'd2094 ||
+            dut.start_pwm_s !== 8'd45 ||
+            dut.start_time_ms_s !== 16'd186 ||
+            dut.menu_index_s !== 2'd2 ||
+            dut.menu_edit_s !== 1'b1 ||
+            dut.k1_pressed_s !== 1'b1 ||
+            dut.run_request_s !== 1'b0 ||
+            dut.location_target_s !== 16'sd408)
+            $fatal(1, "PAGE3/parameter/K1 snapshot was not captured");
 
         wait (pages_seen == 8'hff);
         if (!saw_last_column)

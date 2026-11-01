@@ -297,6 +297,8 @@ module pid_swing_top #(
     wire [15:0] ui_start_time_ms;
     wire [7:0]  ui_pwm_offset;
     wire [1:0]  ui_page_int;
+    wire [1:0]  ui_menu_index;
+    wire        ui_menu_edit;
     wire [3:0]  key_click;
     wire [3:0]  key_long;
     wire [3:0]  key_pressed;
@@ -312,6 +314,7 @@ module pid_swing_top #(
         .clk(clk_50m), .rst_n(rst_n), .sample_tick_1ms(control_tick),
         .capture_reset(capture_clear),
         .key_click(key_click), .key_long(key_long),
+        .key_pressed(key_pressed),
         .rp1_adc(kp_adc_f), .rp2_adc(ki_adc_f), .rp3_adc(kd_adc_f),
         .rp4_adc(rp4_adc_f), .run_request(ui_run_request), .page(ui_page_int),
         .location_target(ui_location_target), .angle_kp_q8(ui_angle_kp_q8),
@@ -319,8 +322,9 @@ module pid_swing_top #(
         .location_kp_q8(ui_location_kp_q8), .location_ki_q8(ui_location_ki_q8),
         .location_kd_q8(ui_location_kd_q8), .center_angle(ui_center_angle),
         .start_pwm(ui_start_pwm), .start_time_ms(ui_start_time_ms),
-        .pwm_offset(ui_pwm_offset), .menu_index(), .menu_edit(),
-        .save_pulse(), .angle_kp_armed(), .angle_ki_armed(),
+        .pwm_offset(ui_pwm_offset), .menu_index(ui_menu_index),
+        .menu_edit(ui_menu_edit), .save_pulse(),
+        .angle_kp_armed(), .angle_ki_armed(),
         .angle_kd_armed(), .location_kp_armed(), .location_ki_armed(),
         .location_kd_armed(), .location_target_armed()
     );
@@ -523,7 +527,16 @@ module pid_swing_top #(
                 .location_kp_q8(ui_location_kp_q8),
                 .location_ki_q8(ui_location_ki_q8),
                 .location_kd_q8(ui_location_kd_q8),
+                .location_target(ui_location_target),
                 .mode(mode), .page(ui_page_int),
+                .center_angle(ui_center_angle),
+                .start_pwm(ui_start_pwm),
+                .start_time_ms(ui_start_time_ms),
+                .pwm_offset(ui_pwm_offset),
+                .menu_index(ui_menu_index),
+                .menu_edit(ui_menu_edit),
+                .run_request(ui_run_request),
+                .k1_pressed(key_pressed[0]),
                 .oled_scl_low(oled_scl_low), .oled_sda_low(oled_sda_low),
                 .oled_sda_in(oled_sda_in)
             );
