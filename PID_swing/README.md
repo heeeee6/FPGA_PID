@@ -1,135 +1,114 @@
-# SmartZynq rotary inverted pendulum controller
+# FPGA 旋转倒立摆控制系统
 
-This Vivado 2018.3 project targets the SmartZynq V1.3B (`xc7z020clg484-1`).
-The hardware top is `pid_swing_hw_top`; `tb_pid_swing_top` and
-`tb_i2c_txn_master` are behavioral testbenches. The onboard 50 MHz PL clock
-uses package pin M19.
+基于 SmartZynq V1.3B（XC7Z020）的旋转倒立摆自动起摆与双环 PID 控制工程。
+项目使用 Verilog 实现传感器采集、起摆状态机、角度/位置双环 PID、OLED 参数
+界面和 TB6612 电机驱动，可在运行时通过按键与电位器完成主要调试。
 
-## Analog inputs on J5
+## 主要功能
 
-The angle sensor and four potentiometers feed the XADC through separate
-dividers. For each channel, connect the signal through **24 kΩ** to VAUXP,
-connect **10 kΩ** from VAUXP to analog ground, and connect its matching VAUXN
-to analog ground. A second angle sensor may be fitted on VAUX1; it is left
-disabled by default in the hardware wrapper until that sensor is connected.
-Share ground between the sensors and FPGA. At a 3.3 V input, the divider gives
-about 0.9706 V at VAUXP, corresponding to about 3974 XADC counts. The hardware
-wrapper sets `ADC_SPAN_COUNTS=3974`; calibrate this value against measured
-hardware before operating the motor.
+- 左右交替脉冲自动起摆，进入直立捕获窗口后切换到双环 PID。
+- K1 启动时自动采样并锁存当前直立中心，降低传感器零点偏移的影响。
+- 捕获窗口跟随中心：`CENTER ± 300`；落摆保护窗口：`CENTER ± 1000`。
+- 1 ms 连续样本快速捕获与 40 ms 摆幅峰值判断并行工作。
+- 角度环 5 ms 更新，位置环 50 ms 更新。
+- 20 kHz PWM，最终电机命令限幅 `±35%`。
+- 四页 OLED 界面，支持中心、起摆力度、起摆时间、PWM 偏移及双环参数调节。
+- 双 ADS1115 采集，OLED 使用独立 I2C 总线。
 
-| Signal | XADC channel | VAUXP package / J5 physical pin | VAUXN package / J5 physical pin |
-| --- | --- | --- | --- |
-| Pendulum angle | VAUX0 | F16 / 38 | E16 / 37 |
-| Optional angle 2 | VAUX1 | E15 / 34 | D15 / 33 |
-| RP1 Kp control | VAUX2 | C15 / 30 | B15 / 29 |
-| RP2 Ki control | VAUX3 | A16 / 26 | A17 / 25 |
-| RP3 Kd control | VAUX4 | D20 / 27 | C20 / 28 |
-| RP4 (reserved target knob) | VAUX6 | G19 / 15 | F19 / 16 |
+## 硬件组成
 
-The XADC channel assignments above are verified against the SmartZynq V1.3B
-official pin-constraint reference (schematic sheet 11) and the Xilinx
-`xc7z020_clg484` package data (`AD0P/N` through `AD6P/N` on bank 35). VAUX5
-(`E21`/`D21`) is not brought out on J5, so `vauxp[5]`/`vauxn[5]` are left
-unplaced in the XDC.
+- 主控：SmartZynq V1.3B，`xc7z020clg484-1`
+- 时钟：板载 50 MHz PL 时钟
+- 角度采集：ADS1115 #1，地址 `0x48`，AIN0 接角度传感器
+- 电位器采集：ADS1115 #2，地址 `0x49`，AIN0～AIN3 接 RP1～RP4
+- 显示：SSD1306 OLED，地址 `0x3C`
+- 电机驱动：TB6612
+- 反馈：正交编码器 A/B 相
+- 输入：K1～K4 低电平有效按键
 
-RP1, RP2 and RP3 map to the angle-loop Kp, Ki and Kd controls on the angle
-page. On the location page the same three knobs adjust the outer-loop gains,
-matching the STM32 menu. RP4 is read for diagnostics but is disabled as a
-position-target input in the default build, so there is no target-speed knob.
-Set `USE_SECOND_ANGLE` to `1` in `pid_swing_hw_top.v` only after the optional
-second sensor is wired and calibrated.
+### 数字接口
 
-## Digital wiring on J6
+| 信号 | J6 | FPGA 引脚 | 连接 |
+|---|---:|---|---|
+| `motor_pwm` | 1 | U22 | TB6612 PWMA |
+| `motor_in1` | 2 | T22 | TB6612 AIN1 |
+| `motor_in2` | 3 | W22 | TB6612 AIN2 |
+| `motor_stby` | 4 | V22 | TB6612 STBY |
+| `motor_enc_a` | 5 | Y21 | 编码器 A |
+| `motor_enc_b` | 6 | Y20 | 编码器 B |
+| `oled_scl` | 7 | AB22 | OLED SCL |
+| `oled_sda` | 8 | AA22 | OLED SDA |
+| `rst_n` | 9 | AB21 | 低电平复位 |
+| `run_enable` | 10 | AA21 | 高电平允许运行 |
+| `ads_scl` | 11 | AB19 | 两颗 ADS1115 SCL |
+| `ads_sda` | 12 | AB20 | 两颗 ADS1115 SDA |
+| K1 | 13 | AA19 | 按键到 GND |
+| K2 | 14 | Y19 | 按键到 GND |
+| K3 | 15 | AB16 | 按键到 GND |
+| K4 | 16 | AA16 | 按键到 GND |
 
-The following is the proposed harness allocation in
-`constr/SmartZynq_V1_3B.xdc`. Set **J6 VADJ to 3.3 V** before connecting any
-digital device.
+J6 的 VADJ 必须设置为 **3.3 V**。ADS1115、OLED、编码器和全部数字信号均使用
+3.3 V 逻辑，并与 FPGA 共地。
 
-| J6 physical pin | Package pin | FPGA signal | Connect to |
-| --- | --- | --- | --- |
-| 1 | U22 | `motor_pwm` | TB6612 PWMA |
-| 2 | T22 | `motor_in1` | TB6612 AIN1 |
-| 3 | W22 | `motor_in2` | TB6612 AIN2 |
-| 4 | V22 | `motor_stby` | TB6612 STBY |
-| 5 | Y21 | `motor_enc_a` | Encoder A, 3.3 V logic |
-| 6 | Y20 | `motor_enc_b` | Encoder B, 3.3 V logic |
-| 7 | AB22 | `oled_scl` | SSD1306 SCL |
-| 8 | AA22 | `oled_sda` | SSD1306 SDA |
-| 9 | AB21 | `rst_n` | 3.3 V switch/jumper to release reset |
-| 10 | AA21 | `run_enable` | 3.3 V switch/jumper to enable motor |
+## 按键操作
 
-The J6 pin-to-package mapping above is verified against the SmartZynq V1.3B
-official `J6[*]` constraints (schematic sheet 11, bank 33 / VADJ). J6 pins
-13-16 (`AA19`, `Y19`, `AB16`, `AA16`) carry the four active-low buttons
-K1-K4, matching the STM32 `Key.c` assignment.
+### PAGE0～PAGE2
 
-## STM32 minimum-system socket compatibility
+| 按键 | 功能 |
+|---|---|
+| K1 | 启动/停止 |
+| K2 | 位置目标增加 408 |
+| K3 | 位置目标减少 408 |
+| K4 | 下一页 |
 
-The PID baseboard drives the motor, OLED, buttons, sensors, and knobs through
-the STM32F103C8T6 minimum-system board socket. To keep the FPGA port
-pin-compatible, connect each SmartZynq J6 signal to the matching baseboard net
-below. The socket pin numbers come from the PID board schematic
-(`PID电机驱动及控制板-V1.0.pdf`); the net names and their roles match the
-STM32 firmware in `16-倒立摆-自动启摆`.
+PAGE1 中 RP1、RP2、RP3 分别调节角度环 Kp、Ki、Kd；PAGE2 中相同旋钮调节
+位置环。旋钮需先回到当前参数附近才会接管控制。
 
-Digital signals:
+### PAGE3
 
-| FPGA signal | J6 pin | PID board net | STM32 socket pin |
-| --- | --- | --- | --- |
-| `motor_pwm` | 1 | TB6612 PWMA | 25 (PA0) |
-| `motor_in1` | 2 | TB6612 AIN1 | 1 (PB12) |
-| `motor_in2` | 3 | TB6612 AIN2 | 2 (PB13) |
-| `motor_stby` | 4 | TB6612 STBY | 3 (PB14), board ties high |
-| `motor_enc_a` | 5 | Encoder E1A | 31 (PA6) |
-| `motor_enc_b` | 6 | Encoder E1B | 32 (PA7) |
-| `oled_scl` | 7 | OLED SCL | 16 (PB8) |
-| `oled_sda` | 8 | OLED SDA | 17 (PB9) |
-| `key_n[0]` (K1) | 13 | K1 | 35 (PB10) |
-| `key_n[1]` (K2) | 14 | K2 | 36 (PB11) |
-| `key_n[2]` (K3) | 15 | K3 | 8 (PA11) |
-| `key_n[3]` (K4) | 16 | K4 | 9 (PA12) |
+| 按键 | 浏览状态 | 编辑状态 |
+|---|---|---|
+| K1 | 启动/停止 | 当前参数减小 |
+| K2 | 下一项 | 当前参数增大 |
+| K3 | 进入编辑 | 完成编辑 |
+| K4 | 返回 PAGE0 | 返回 PAGE0 |
 
-Analog signals (0-1 V into XADC after the 24 kΩ / 10 kΩ divider):
+中心角度和起摆时间支持长按 K1/K2 连续调节。
 
-| XADC input | J5 pins | PID board net | STM32 socket pin |
-| --- | --- | --- | --- |
-| VAUX0 (F16/E16) | 38/37 | SENSOR1 (pendulum angle) | 33 (PB0) |
-| VAUX1 (E15/D15) | 34/33 | SENSOR2 (optional angle 2) | 34 (PB1) |
-| VAUX2 (C15/B15) | 30/29 | RP1 (Kp) | 27 (PA2) |
-| VAUX3 (A16/A17) | 26/25 | RP2 (Ki) | 28 (PA3) |
-| VAUX4 (D20/C20) | 27/28 | RP3 (Kd) | 29 (PA4) |
-| VAUX6 (G19/F19) | 15/16 | RP4 (reserved) | 30 (PA5) |
+## 默认参数
 
-`rst_n` (J6 pin 9) and `run_enable` (J6 pin 10) are FPGA-only hard-inhibit /
-motor-enable inputs; they have no STM32 equivalent and can be wired to any
-convenient switch or tied to 3.3 V. The STM32 project leaves TB6612 STBY
-enabled at all times, so `motor_stby` is optional if the baseboard already
-ties it high; keep the J6 `motor_stby` pulldown in the XDC when it is
-connected.
+```text
+角度环：Kp=0.25, Ki=0, Kd=0
+位置环：Kp=0, Ki=0, Kd=0
+CENTER=2067
+起摆力度=45%
+起摆时间=100 ms
+PWM 偏移=0
+```
 
-The hardware wrapper uses a 100 ms internal power-on reset. K1 starts and
-stops the controller exactly as in the STM32 Mode31 program; after the
-3-second commissioning hold the run state machine performs the Mode31
-resonant swing-up (40 ms angle sampling with left/right peak detection), then
-hands over to the cascade PID when the pendulum enters the capture window and
-stops when it actually falls. The motor command ramps by at most one
-percentage point per 1 kHz update and is limited to 35%. `rst_n` remains a
-hard motor inhibit and has a weak pull-up in the XDC. `run_enable` is always
-honored as a physical motor-enable input; pulling J6 pin 10 low returns the
-controller to idle and restarts the 3-second hold when released. The
-controller and PID state are cleared whenever reset, run disable, startup
-hold, or fault is active.
-The OLED uses I²C address `0x3C`; SCL
-and SDA need pull-ups to **3.3 V**. The hardware wrapper provides open-drain
-I/O buffers. Supply the TB6612 with **VM = 12 V** for the motor and
-**VCC = 3.3 V** for logic. Connect motor power, FPGA, OLED, encoder, and sensor
-grounds together. The motor connects only to the TB6612 output. The TB6612
-has no fault output, so the wrapper ties the internal `motor_fault` input low.
-Provide a physical motor power stop for commissioning.
+这些默认值是调试起点，不是对所有机械结构通用的整定结果。
 
-## Vivado and simulation
+## 工程结构
 
-From the project directory, with Vivado 2018.3 on `PATH`:
+```text
+rtl/         Verilog RTL
+sim/         XSim 自检测试
+constr/      Vivado 引脚与时序约束
+scripts/     工程更新、仿真、实现和位流脚本
+```
+
+主要顶层：
+
+- `rtl/pid_swing_hw_top.v`：物理板顶层
+- `rtl/pid_swing_top.v`：控制与调度顶层
+- `rtl/swing_balance_ctrl.v`：起摆与平衡状态机
+- `rtl/pid_fixed.v`：Q8.8 定点 PID
+- `rtl/pendulum_ui.v`：按键、菜单与参数管理
+- `rtl/ads1115_reader.v`：双 ADS1115 采集
+
+## 构建与仿真
+
+需要 Vivado 2018.3，在工程目录执行：
 
 ```powershell
 vivado -mode batch -source scripts/update_project.tcl
@@ -138,35 +117,25 @@ vivado -mode batch -source scripts/check_impl_route.tcl
 vivado -mode batch -source scripts/write_bitstream.tcl
 ```
 
-`update_project.tcl` registers the RTL, both testbenches, and the XDC in
-`PID_swing.xpr`, then selects `pid_swing_hw_top` for synthesis and
-`tb_pid_swing_top` for the project simulator. `run_sim.ps1` compiles all RTL
-and runs every `sim/tb_*.sv` testbench with Vivado XSim. Simulation output is
-written under `.sim_check`.
+已生成的主要位流：
 
-`check_impl_route.tcl` performs synthesis, placement, routing, DRC, and timing
-analysis and writes `route_check.dcp`, `route_drc.rpt`, and `route_timing.rpt`.
-`write_bitstream.tcl` converts that routed checkpoint into
-`pid_swing_hw_top.bit`. On the current Vivado 2018.3 run, all four XSim
-testbenches pass (including every 12-bit Kp/Ki mapping input). The routed
-50 MHz design has zero DRC errors and hold WHS +0.10 ns. All control-loop,
-encoder, XADC, key, and I2C paths meet timing; the single worst setup path is
-the OLED velocity text formatter at WNS -0.18 ns, a cosmetic display path.
+```text
+pid_swing_hw_top_upright_autocenter.bit
+```
 
-The RTL and wiring have not been tested on a physical board. During the first
-test, keep the 12 V motor supply disconnected or use a physical emergency stop,
-confirm that STBY stays low throughout the 3-second hold, and verify the
-direction and angle polarity at low command before free-running the pendulum.
+当前验证结果：
 
-The repository also contains `rtl/key_events.v`.  It accepts the four
-active-low STM32-compatible key inputs and produces one-clock `click` and
-`long_press` events after a 20 ms debounce.  A 1 s hold produces one
-`long_press` event and no click on release, matching `Hardware/Key.c`.
+- 10 个 XSim 测试通过
+- 路由后 WNS `+0.182 ns`
+- 路由后 WHS `+0.095 ns`
+- DRC `0 Error`
 
-`rtl/pendulum_ui.v` contains the Mode31/Menu state machine and parameter
-handover logic.  `rtl/angle_center_map.v` converts the absolute angle ADC
-sample into a shortest signed error around the configurable STM32 center
-angle (default 2050 counts).  These two modules are intentionally separate
-from the motor top level so that the pin-compatible wrapper can select the
-desired OLED page and control-loop implementation without duplicating key or
-angle arithmetic.
+## 调试提示
+
+- 上电后先将摆杆放在期望的直立位置，再按 K1 完成中心采样。
+- 若机构静摩擦或联轴器间隙较大，应先检查正反方向启动死区，再调整 PID。
+- 如果 STBY 已在外部固定接高，J6-4 可不连接，但 FPGA 将无法通过软件进入待机。
+- 调试起摆和闭环参数时必须保留电机电源急停。
+- 机械中心、传感器安装和电机方向应在低 PWM 下完成校准。
+
+详细修改记录见 [MODIFICATION_LOG.md](MODIFICATION_LOG.md)。
